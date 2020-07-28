@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="18px" viewBox="0 0 33 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>下划线激活</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="33" height="18"></rect>
+        <filter x="-1.5%" y="-2.8%" width="103.0%" height="105.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="-1" dy="0" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.196623689 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="下划线激活" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="下划线">
+            <g id="选中">
+                <use fill="#0062F0" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            </g>
+            <path d="M20.6246846,13 L12.3753154,13 C12.1680344,13 12,13.2238576 12,13.5 C12,13.7761424 12.1680344,14 12.3753154,14 L20.6246846,14 C20.8319656,14 21,13.7761424 21,13.5 C21,13.2238576 20.8319656,13 20.6246846,13 M16.4993961,12 C17.4277585,12.0001582 18.3181523,11.6358523 18.9746602,10.9872421 C19.6311682,10.338632 20,9.45886059 20,8.54150814 L20,4 L18.7439614,4 L18.7439614,8.54150814 C18.7439614,9.76611625 17.7393056,10.7588573 16.5,10.7588573 C15.2606944,10.7588573 14.2560386,9.76611625 14.2560386,8.54150814 L14.2560386,4 L13,4 L13,8.54150814 C13,10.4515804 14.5670034,12 16.5,12" fill="#FFFFFF" fill-rule="nonzero" opacity="0.948242188"></path>
+        </g>
+    </g>
+</svg>
