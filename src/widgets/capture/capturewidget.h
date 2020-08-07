@@ -1,19 +1,19 @@
 // Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
+//         2020, KylinSoft Co., Ltd.
+// This file is part of Kylin-Screenshot.
 //
-// This file is part of Flameshot.
-//
-//     Flameshot is free software: you can redistribute it and/or modify
+//     Kylin-Screenshotis free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
 //     the Free Software Foundation, either version 3 of the License, or
 //     (at your option) any later version.
 //
-//     Flameshot is distributed in the hope that it will be useful,
+//     Kylin-Screenshot is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //     GNU General Public License for more details.
 //
 //     You should have received a copy of the GNU General Public License
-//     along with Flameshot.  If not, see <http://www.gnu.org/licenses/>.
+//     along with Kylin-Screenshot.  If not, see <http://www.gnu.org/licenses/>.
 
 // Based on Lightscreen areadialog.h, Copyright 2017  Christian Kaiser <info@ckaiser.com.ar>
 // released under the GNU GPL2  <https://www.gnu.org/licenses/gpl-2.0.txt>
@@ -22,7 +22,6 @@
 // released under the GNU LGPL  <http://www.gnu.org/licenses/old-licenses/library.txt>
 
 #pragma once
-
 #include "capturebutton.h"
 #include "src/tools/capturecontext.h"
 #include "src/tools/capturetool.h"
@@ -39,7 +38,6 @@
 #include "save_location2.h"
 #include "font_options.h"
 #include "font_options2.h"
-#include "src/widgets/widget.h"
 
 class QPaintEvent;
 class QResizeEvent;
@@ -51,24 +49,22 @@ class ColorPicker;
 class Screenshot;
 class NotifierBox;
 class HoverEventFilter;
-
+class ScreenRecorder;
 class CaptureWidget : public QWidget {
     Q_OBJECT
 
 public:
-
     explicit CaptureWidget(const uint id = 0,
                            const QString &savePath = QString(),
                            bool fullScreen = true,
                            QWidget *parent = nullptr);
     ~CaptureWidget();
-
     QString file;
     void updateButtons();
     QPixmap pixmap();
     QVector<CaptureButton*> vectorButtons;
     QPoint  *font_color_point;
-    Widget *screenCap;
+    ScreenRecorder *screenCap;
     void hide_window();
     void show_window();
 

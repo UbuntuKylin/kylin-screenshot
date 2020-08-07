@@ -1,0 +1,13 @@
+Package: kylin-screenshot-dbgsym
+Package-Type: ddeb
+Source: kylin-screenshot
+Version: 1.0.0-7
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: huanhuan zhang <zhanghuanhuan@kylinos.cn>
+Installed-Size: 24997
+Depends: kylin-screenshot (= 1.0.0-7)
+Section: debug
+Priority: optional
+Description: debug symbols for kylin-screenshot
+Build-Ids: c7eb0e5adb82226fcad54c36a3b253d4b7d86d97

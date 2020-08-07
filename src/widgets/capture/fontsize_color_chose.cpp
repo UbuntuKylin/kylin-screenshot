@@ -1,11 +1,32 @@
+/*
+ *
+ * Copyright:   2020 KylinSoft Co., Ltd.
+ * Authors:
+ *   huanhuan zhang <zhanghuanhuan@cs2c.com.cn.com>
+ * This program or library is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General
+ * Public License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA
+ *
+ */
 #include "fontsize_color_chose.h"
 #include <QHBoxLayout>
 #include <QPainter>
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
 #define SHADOW_WIDTH  15     //小三角的阴影宽度
-#define TRIANGLE_WIDTH 15    //小三角的宽度
-#define TRIANGLE_HEIGHT 15    //小三角的高度
+#define TRIANGLE_WIDTH 5    //小三角的宽度
+#define TRIANGLE_HEIGHT 10    //小三角的高度
 #define BORDER_RADIUS 10       //窗口边角弧度
 
 FontSize_Color_Chose::FontSize_Color_Chose(QWidget *parent)
@@ -17,7 +38,7 @@ FontSize_Color_Chose::FontSize_Color_Chose(QWidget *parent)
 
 {
     setCursor(Qt::ArrowCursor);
-    setWindowFlag(Qt::FramelessWindowHint);
+    setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
     //设置阴影边框
     auto shadowEffect = new QGraphicsDropShadowEffect(this);

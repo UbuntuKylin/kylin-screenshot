@@ -1,19 +1,19 @@
 ﻿// Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
+//              2020 KylinSoft Co., Ltd.
+// This file is part of Kylin-Screenshot.
 //
-// This file is part of Flameshot.
-//
-//     Flameshot is free software: you can redistribute it and/or modify
+//     Kylin-Screenshot is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
 //     the Free Software Foundation, either version 3 of the License, or
 //     (at your option) any later version.
 //
-//     Flameshot is distributed in the hope that it will be useful,
+//     Kylin-Screenshot is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //     GNU General Public License for more details.
 //
 //     You should have received a copy of the GNU General Public License
-//     along with Flameshot.  If not, see <http://www.gnu.org/licenses/>.
+//     along with Kylin-Screenshot.  If not, see <http://www.gnu.org/licenses/>.
 
 // Based on Lightscreen areadialog.cpp, Copyright 2017  Christian Kaiser <info@ckaiser.com.ar>
 // released under the GNU GPL2  <https://www.gnu.org/licenses/gpl-2.0.txt>
@@ -49,6 +49,7 @@
 #include <QStandardPaths>
 // CaptureWidget is the main component used to capture the screen. It scontains an
 // are of selection with its respective buttons.
+#include "src/widgets/screenrecorder.h"
 
 // enableSaveWIndow
 CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
@@ -136,8 +137,9 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     font_options = new  Font_Options(this);
     font_options2 = new Font_Options2(this);
 
-    screenCap = new Widget();
+    screenCap = new ScreenRecorder();
     screenCap->hide();
+
     connect(m_colorPicker, &ColorPicker::colorSelected,
             this, &CaptureWidget::setDrawColor);
     connect(font_color,&FontSize_Color_Chose::font_size_change,
@@ -237,9 +239,6 @@ void CaptureWidget::updateButtons() {
     auto buttons = m_config.getButtons();
     for (const CaptureButton::ButtonType &t: buttons) {
         CaptureButton *b = new CaptureButton(t, this);
-        /*if (t == CaptureButton::TYPE_SELECTIONINDICATOR) {
-            m_sizeIndButton = b;
-        }*/
         if (t == CaptureButton::TYPE_OPTION) {
             m_sizeIndButton = b;
             m_sizeIndButton->setColor(Qt::black);
@@ -291,7 +290,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
            painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,pixmap2);
            painter.setOpacity(0.5);
            painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,crosspixmap);
-            painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
+           painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
                              .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
            update();
        }
@@ -404,7 +403,6 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
        /* m_rightClick = true;
        m_colorPicker->move(e->pos().x()-m_colorPicker->width()/2,
                             e->pos().y()-m_colorPicker->height()/2);
-
         m_colorPicker->show();*/
     } else if (e->button() == Qt::LeftButton) {
         m_showInitialMsg = false;
@@ -1175,7 +1173,7 @@ void CaptureWidget::setState(CaptureButton *b) {
              //update();
              break;
          case CaptureTool::REQ_LUPING:
-             //update();
+             //m_captureDone = true;
              hide_window();
              screenCap->show();
              break;
@@ -1622,7 +1620,7 @@ void CaptureWidget::setState(CaptureButton *b) {
              setWindowFlags(Qt::BypassWindowManagerHint
                          | Qt::FramelessWindowHint
                          | Qt::Tool);
-
+            this->hide();
          }
          void CaptureWidget::show_window()
          {

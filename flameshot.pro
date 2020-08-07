@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 win32:LIBS += -luser32 -lshell32
+
 LIBS += -lavutil -lavformat -lavcodec -lswscale -lX11 -lXext -lXfixes -lXinerama -lpulse
 
 TAG_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
@@ -20,6 +21,7 @@ unix:!macx {
 }
 
 CONFIG += c++11 link_pkgconfig
+QMAKE_CXXFLAGS += -std=c++0x
 
 #CONFIG += packaging   # Enables "make install" for packaging paths
 
@@ -144,6 +146,7 @@ SOURCES += src/main.cpp \
     src/tools/imgur/imguruploader.cpp \
     src/widgets/loadspinner.cpp \
     src/widgets/imagelabel.cpp \
+    src/widgets/mypopup.cpp \
     src/widgets/notificationwidget.cpp \
     src/widgets/capture/notifierbox.cpp \
     src/utils/desktopinfo.cpp \
@@ -176,6 +179,7 @@ SOURCES += src/main.cpp \
     src/tools/text/textconfig.cpp \
     src/widgets/panel/sidepanelwidget.cpp \
     src/widgets/screenoption.cpp \
+    src/widgets/screenrecorder.cpp \
     src/widgets/screentype.cpp \
     src/widgets/widget.cpp
 
@@ -255,6 +259,7 @@ HEADERS  += src/widgets/capture/buttonhandler.h \
     src/tools/imgur/imguruploader.h \
     src/widgets/loadspinner.h \
     src/widgets/imagelabel.h \
+    src/widgets/mypopup.h \
     src/widgets/notificationwidget.h \
     src/widgets/capture/notifierbox.h \
     src/utils/desktopinfo.h \
@@ -287,6 +292,7 @@ HEADERS  += src/widgets/capture/buttonhandler.h \
     src/tools/text/textconfig.h \
     src/widgets/panel/sidepanelwidget.h \
     src/widgets/screenoption.h \
+    src/widgets/screenrecorder.h \
     src/widgets/screentype.h \
     src/widgets/widget.h
 

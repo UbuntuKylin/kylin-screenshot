@@ -1,19 +1,19 @@
 // Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
+//              2020 KylinSoft Co., Ltd.
+// This file is part of Kylin-Screenshot.
 //
-// This file is part of Flameshot.
-//
-//     Flameshot is free software: you can redistribute it and/or modify
+//     Kylin-Screenshot is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
 //     the Free Software Foundation, either version 3 of the License, or
 //     (at your option) any later version.
 //
-//     Flameshot is distributed in the hope that it will be useful,
+//     Kylin-Screenshot is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //     GNU General Public License for more details.
 //
 //     You should have received a copy of the GNU General Public License
-//     along with Flameshot.  If not, see <http://www.gnu.org/licenses/>.
+//     along with Kylin-Screenshot.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "src/core/controller.h"
 #include "singleapplication.h"
@@ -29,6 +29,7 @@
 #include <QTextStream>
 #include <QTimer>
 #include <QDir>
+#include "src/common/CommandLineOptions.h"
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
 #include "src/core/flameshotdbusadapter.h"
@@ -46,7 +47,8 @@ int main(int argc, char *argv[]) {
     // no arguments, just launch Flameshot
     if (argc == 1) {
         SingleApplication app(argc, argv);
-
+        CommandLineOptions command_line_options;
+        Logger logger;
         QTranslator translator, qtTranslator;
         QStringList trPaths = PathInfo::translationsPaths();
 

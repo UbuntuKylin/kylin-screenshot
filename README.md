@@ -5,7 +5,7 @@
         <img src="img/app/flameshot.svg" alt="Flameshot" />
       </a>
       <br />
-      Flameshot
+      Kylin-Screenshot
     </h1>
     <h4>Powerful yet simple to use screenshot software.</h4>
   </p>
@@ -79,43 +79,43 @@ Example commands:
 - Capture with GUI:
 
     ```shell
-    flameshot gui
+    kylin-screenshot gui
     ```
 
 - Capture with GUI with custom save path:
 
     ```shell
-    flameshot gui -p ~/myStuff/captures
+    kylin-screenshot gui -p ~/myStuff/captures
     ```
 
 - Capture with GUI after 2 seconds delay (can be useful to take screenshots of mouse hover tooltips, etc.):
 
     ```shell
-    flameshot gui -d 2000
+    kylin-screenshot gui -d 2000
     ```
 
 - Fullscreen capture with custom save path (no GUI) and delayed:
 
     ```shell
-    flameshot full -p ~/myStuff/captures -d 5000
+    kylin-screenshot full -p ~/myStuff/captures -d 5000
     ```
 
 - Fullscreen capture with custom save path copying to clipboard:
 
     ```shell
-    flameshot full -c -p ~/myStuff/captures
+    kylin-screenshot full -c -p ~/myStuff/captures
     ```
 
 - Capture the screen containing the mouse and print the image (bytes) in PNG format:
 
     ```shell
-    flameshot screen -r
+    kylin-screenshot screen -r
     ```
 
 - Capture the screen number 1 and copy it to the clipboard:
 
     ```shell
-    flameshot screen -n 1 -c
+    kylin-screenshot screen -n 1 -c
     ```
 
 In case of doubt choose the first or the second command as shortcut in your favorite desktop environment.
@@ -131,19 +131,19 @@ You can use the graphical menu to configure Flameshot, but alternatively you can
 - Open the configuration menu:
 
     ```shell
-    flameshot config
+    kylin-screenshot config
     ```
 
 - Show the initial help message in the capture mode:
 
     ```shell
-    flameshot config --showhelp true
+    kylin-screenshot config --showhelp true
     ```
 
 - For more information about the available options use the help flag:
 
     ```shell
-    flameshot config -h
+    kylin-screenshot config -h
     ```
 
 ## Keyboard shortcuts
@@ -168,7 +168,7 @@ These shortcuts are available in GUI mode:
 
 ### Global
 
-If you want use Flameshot as a default screenshot utility, chances are you want to launch it using the <kbd>Prt Sc</kbd> key. Flameshot doesn't yet offer a fully-automated option to do so, but you can configure your system to do so.
+If you want use Kylin-Screenshot as a default screenshot utility, chances are you want to launch it using the <kbd>Prt Sc</kbd> key. Flameshot doesn't yet offer a fully-automated option to do so, but you can configure your system to do so.
 
 #### On KDE Plasma desktop
 
