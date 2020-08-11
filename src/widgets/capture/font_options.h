@@ -47,13 +47,14 @@ public:
         QColor(255,255,255)
     };
     //设置小三角的起始位置
-    void setStartPos(int startX);
+    void setStartPos(double startX);
     //设置小三角的宽和高
-    void setTriangleInfo(int width,int height );
+    void setTriangleInfo(double width,double height );
    //设置中间区域
     void setCenterWidget(QWidget* widget = nullptr);
     //void mouseMoveEvent(QMouseEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
+
 protected:
     void paintEvent(QPaintEvent *event) ;
 
@@ -74,14 +75,14 @@ public  slots:
     void font_italic_selete();
 private:
     //小三角的起始位置
-    int m_startx;
+    double m_startx;
     //小三角的宽
-    int m_triangleWidth;
+    double m_triangleWidth;
     //小三角的高
-    int m_triangleHeight;
+    double m_triangleHeight;
     int  extrasize = 6;
     double Rect_h,Rect_w;
-    int radius;
+    double radius;
     double Rect_x,Rect_y;
     double Start_x, Start_y;
     QFrame *line1;

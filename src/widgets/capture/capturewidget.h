@@ -72,16 +72,14 @@ public slots:
     void deleteToolwidgetOrClose();
     void ClickedSavedir();
     void ClickedSavedir2();
-    void ClickedSaveType();
-    void ClickedSaveType2();
+    void ClickedSaveType(int i);
+    void ClickedSaveType2(int i);
 signals:
     void captureTaken(uint id, QPixmap p);
     void captureFailed(uint id);
     void colorChanged(const QColor &c);
     void thicknessChanged(const int thickness);
-
 private slots:
-
     // TODO replace with tools
     void copyScreenshot();
     void saveScreenshot();
@@ -107,11 +105,13 @@ private slots:
     void  font_bold_clicked(bool);
     void  font_delete_clicked(bool);
     void  font_underline_clicked(bool);
-
+private:
     void font_options_defult();
     void font_options2_defult();
     void fontsize_color_chose_default();
     void fontsize_color_chose2_default();
+    void savetype_chose_default();
+    void savetype_chose2_default();
 
 protected:
     void paintEvent(QPaintEvent *);
@@ -185,6 +185,4 @@ private:
     QPoint m_dragStartPoint;
     SelectionWidget::SideType m_mouseOverHandle;
     uint m_id;
-
-
 };

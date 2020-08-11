@@ -27,41 +27,44 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QRadioButton>
-
+#include <QMouseEvent>
 class Save_Location : public QWidget
 {
     Q_OBJECT
 public:
     explicit Save_Location(QWidget *parent = nullptr);
     //设置小三角的起始位置
-    void setStartPos(int startX);
+    void setStartPos(double startX);
     //设置小三角的宽和高
-    void setTriangleInfo(int width,int height );
+    void setTriangleInfo(double width,double height );
    //设置中间区域
     void setCenterWidget(QWidget* widget = nullptr);
      QPushButton *SaveDir;
      QString file_path ;
+     QVector<QRect> m_TypeList;
+     QLabel *label1, *label2, *label3;
      QRadioButton *jpg , *png,*bmp;
+     void mousePressEvent(QMouseEvent *event) override;
 signals:
-     void  save_type_clicked();
-public slots:
-     void  save_type_click();
+     void  save_type_clicked(int i);
 
 protected:
     void paintEvent(QPaintEvent *event) ;
 private:
-    QVBoxLayout *vLayout;
-    QHBoxLayout *hMainLayout;
     QStringList *file;
     QLabel *savedir , * savetype;
     //小三角的起始位置
-    int m_startx;
-    int m_startY;
+    double m_startx;
+    double m_startY;
     //小三角的宽
-    int m_triangleWidth;
+    double  m_triangleWidth;
     //小三角的高
-    int m_triangleHeight;
-
+    double m_triangleHeight;
+    //RadioButton 半径
+    double radius;
+    double Rect_h,Rect_w;
+public:
+    QRect type_rect;
 };
 
 #endif // SAVE_LOCATION_H

@@ -25,9 +25,9 @@
 #include <QPainter>
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
-#define SHADOW_WIDTH  15     //小三角的阴影宽度
-#define TRIANGLE_WIDTH 15    //小三角的宽度
-#define TRIANGLE_HEIGHT 15    //小三角的高度
+#define SHADOW_WIDTH  5     //小三角的阴影宽度
+#define TRIANGLE_WIDTH  10    //小三角的宽度
+#define TRIANGLE_HEIGHT 5    //小三角的高度
 #define BORDER_RADIUS 10       //窗口边角弧度
 Font_Options2::Font_Options2(QWidget *parent)
     : QWidget(parent)
@@ -50,65 +50,68 @@ Font_Options2::Font_Options2(QWidget *parent)
     shadowEffect->setBlurRadius(BORDER_RADIUS);
     this->setGraphicsEffect(shadowEffect);
     this->setMouseTracking(true);
-    Start_x  = 220;
-    Start_y = 30;
+    Start_x  = 160;
+    Start_y = 18;
      for (int i=0;i<4;i++)
      {
-          m_colorAreaList.append(QRect(Start_x,Start_y,20,20));
-          Start_x += 25;
+          m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
+          Start_x += 24;
      }
-     Start_x  = 220;
-     Start_y = 60;
+     Start_x  = 160;
+     Start_y = 37;
      for (int i=4;i<8;i++)
      {
-          m_colorAreaList.append(QRect(Start_x,Start_y,20,20));
-          Start_x += 25;
+          m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
+          Start_x += 24;
      }
-
 }
-void Font_Options2::setStartPos(int startX)
+void Font_Options2::setStartPos(double startX)
 {
     m_startx = startX;
 }
-void Font_Options2::setTriangleInfo(int width, int height)
+void Font_Options2::setTriangleInfo(double width, double height)
 {
     m_triangleWidth = width;
     m_triangleHeight = height;
 }
 void Font_Options2::setCenterWidget(QWidget *widget)
 {
-    Start_x  = 5;
-    Start_y = 30;
+    Start_x  = 11;
+    Start_y = 12;
     Font_type = new  QFontComboBox(this);
     Font_type->setCurrentFont(QFont("华文黑体"));
     Font_type->move(Start_x,Start_y);
     Font_size = new  QSpinBox(this);
-    Font_type->setFixedSize(150,25);
-    Font_size->setFixedSize(40,25);
+    Font_type->setFixedSize(90,18);
+    Font_size->setFixedSize(36,18);
     Font_size->setValue(2);
-    Start_x  = 165;
-    Start_y = 30;
+    Start_x  = 106;
+    Start_y = 12;
     Font_size->move(Start_x,Start_y);
     delete_btn = new QPushButton(this);
-    delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete.png"));
-    delete_btn->move(5,60);
+    delete_btn->setStyleSheet("QPushButton{border-image:url"
+                            "(:/img/material/white/delete.png)}");
+    delete_btn->move(11,37);
     Underline_btn= new QPushButton(this);
-    Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "underline.png"));
-    Underline_btn->move(55,60);
+    Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                                 "(:/img/material/white/underline.png)}");
+    Underline_btn->move(43,37);
     bold_btn = new QPushButton(this);
-    bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold.png"));
-    bold_btn->move(105,60);
+    bold_btn->setStyleSheet("QPushButton{border-image:url"
+                            "(:/img/material/white/bold.png)}");
+    bold_btn->move(75,37);
     Italic_btn = new QPushButton(this);
-    Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic.png"));
-    Italic_btn->move(155,60);
+    Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/white/italic.png)}");
+    Italic_btn->move(107,37);
     delete_btn->setToolTip(tr("StrikeOut"));
     Underline_btn->setToolTip(tr("Underline"));
     bold_btn->setToolTip(tr("Bold"));
     Italic_btn->setToolTip(tr("Italic"));
-    delete_btn->setFixedSize(50,20);
-    Underline_btn->setFixedSize(50,20);
-    bold_btn->setFixedSize(50,20);
-    Italic_btn->setFixedSize(50,20);
+    delete_btn->setFixedSize(32,18);
+    Underline_btn->setFixedSize(32,18);
+    bold_btn->setFixedSize(32,18);
+    Italic_btn->setFixedSize(32,18);
     connect(Font_size,SIGNAL(valueChanged(int)),
             this,SLOT(font_size_change(int)));
     connect(Font_type,SIGNAL(currentFontChanged(QFont)),
@@ -128,7 +131,7 @@ void Font_Options2::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.setPen(Qt::NoPen);
-    painter.setBrush(QColor(225,225,225));
+    painter.setBrush(QColor(225,225,225,180));
     //
     QPolygon trianglePolygon;
     trianglePolygon << QPoint(m_startx,height()- m_triangleWidth - SHADOW_WIDTH);
@@ -143,14 +146,14 @@ void Font_Options2::paintEvent(QPaintEvent *event)
     drawPath.addPolygon(trianglePolygon);
     painter.drawPath(drawPath);
     painter.setBrush(QColor(25,25,25));
-    painter.drawRect(213,35,2,40);
+    painter.drawRect(148,23,1,20);
     for (int i =0;i<8;i++)
     {
         QRect rect = m_colorAreaList.at(i);
         QColor color1 =  m_colorList.at(i);
         if (color == color1){
              Rect_h= rect.height()+4;
-             Rect_w = rect.width() +4;
+             Rect_w = rect.width()+4;
              painter.setBrush(QColor(255,255,255));
              painter.drawRect(QRect(rect.x()-2,rect.y()-2,Rect_h,Rect_w));
         }
@@ -158,28 +161,36 @@ void Font_Options2::paintEvent(QPaintEvent *event)
         painter.drawRect(m_colorAreaList.at(i));
     }
     if (bold)
-         bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "bold_active.png"));
+        bold_btn->setStyleSheet("QPushButton{border-image:url"
+                               "(:/img/material/black/boldactive.png)}");
     else {
-        bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold.png"));
+        bold_btn->setStyleSheet("QPushButton{border-image:url"
+                                "(:/img/material/white/bold.png)}");
     }
     if (Delete)
     {
-         delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "delete_active.png"));
+        delete_btn->setStyleSheet("QPushButton{border-image:url"
+                               "(:/img/material/black/delete_active.png)}");
     }
     else {
-         delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete.png"));
+        delete_btn->setStyleSheet("QPushButton{border-image:url"
+                                  "(:/img/material/white/delete.png)}");
     }
     if (italic)
-         Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "italic_active.png"));
+        Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                                  "(:/img/material/black/italic_active.png)}");
     else {
-        Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic.png"));
+        Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                                  "(:/img/material/white/italic.png)}");
     }
     if (Underline)
     {
-         Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "underline_active.png"));
-     }
+         Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                                  "(:/img/material/black/underline_active.png)}");
+    }
     else {
-         Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "underline.png"));
+        Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                                 "(:/img/material/white/underline.png)}");
     }
 }
 void Font_Options2::mousePressEvent(QMouseEvent *e)
@@ -207,9 +218,11 @@ void Font_Options2::font_bold_selete()
 {
     bold = !bold;
     if (bold)
-         bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "bold_active.png"));
+        bold_btn->setStyleSheet("QPushButton{border-image:url"
+                               "(:/img/material/black/boldactive.png)}");
     else {
-        bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold.png"));
+        bold_btn->setStyleSheet("QPushButton{border-image:url"
+                               "(:/img/material/white/bold.png)}");
     }
     emit font_bold_change(bold);
 }
@@ -217,13 +230,11 @@ void Font_Options2::font_delete_selete()
 {
     Delete = !Delete;
     if (Delete)
-    {
-         delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "delete_active.png"));
-         qDebug()<<"222333111";
-    }
+         delete_btn->setStyleSheet("QPushButton{border-image:url"
+                               "(:/img/material/black/delete_active.png)}");
     else {
-         delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete.png"));
-         qDebug()<<"111222333";
+        delete_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/white/delete.png)}");
     }
     emit font_delete_change(Delete);
 }
@@ -231,21 +242,22 @@ void Font_Options2::font_underline_selete()
 {
     Underline = !Underline;
     if (Underline)
-    {
-         Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "underline_active.png"));
-   }
+         Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/black/underline_active.png)}");
     else {
-         Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "underline.png"));
+        Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/white/underline.png)}");
     }
     emit font_underline_change(Underline);
 }
 void Font_Options2::font_italic_selete()
-{
-    italic = !italic;
+{italic = !italic;
     if (italic)
-         Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "italic_active.png"));
+         Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/black/italic_active.png)}");
     else {
-        Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic.png"));
+        Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/white/italic.png)}");
     }
     emit font_italic_change(italic);
 }

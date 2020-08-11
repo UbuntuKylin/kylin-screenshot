@@ -22,6 +22,7 @@
 #include "src/tools/toolfactory.h"
 #include "src/utils/globalvalues.h"
 #include "src/utils/colorutils.h"
+#include <QFont>
 #include <QIcon>
 #include <QPropertyAnimation>
 #include <QToolTip>
@@ -37,6 +38,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
 {
     initButton();
     setCursor(Qt::ArrowCursor);
+    QFont font ( "Noto Sans CJK Regular", 12, 20);
     if (t == TYPE_OPTION)
     {
         label = new  QLabel();
@@ -44,6 +46,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         layout = new  QHBoxLayout(this);
         label->setAlignment( Qt::AlignCenter);
         label2->setAlignment( Qt::AlignCenter|Qt::AlignHCenter);
+        label->setFont(font);
         label->setText("选项");
         label2->setPixmap(QPixmap(QStringLiteral(":/img/material/white/down.svg")));
         layout->addWidget(label);
@@ -59,6 +62,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         {
             setFlat(false);
             setStyleSheet(styleSheet());
+            setFont(font);
             setText("保存");
         }
         else

@@ -21,7 +21,6 @@
  */
 #include "screenrecorder.h"
 #include <QDebug>
-
 #include <QFile>
 #include "src/common/utils.h"
 #include "src/common/CommandLineOptions.h"
@@ -59,6 +58,7 @@ ENUMSTRINGS(ssr::enum_audio_codec) = {
 };
 ScreenRecorder::ScreenRecorder(QWidget *parent) :QWidget(parent)
 {
+    setCursor(Qt::ArrowCursor);
    //初始化页面部件
     Init();
     //选项页面
@@ -153,7 +153,7 @@ void ScreenRecorder::Init()
     QPushButton *button_cancel = new QPushButton(tr("Cancel recording"), this);
     button_cancel->move(400,400);
     QPushButton *button_save = new QPushButton(tr("Save recording"), this);
-    button_save->move(400,4050);
+    button_save->move(400,450);
     //QComboBox 里添加类型
     for(unsigned int i = 0; i < CONTAINER_COUNT; ++i) {
         QString name = "\u200e" + m_containers[i].name + "\u200e";
@@ -404,7 +404,7 @@ void ScreenRecorder::Prepare_Record()
     m_recorded_something = false;
     //get the audio input settings
     //获取是否录音
-    m_audio_enabled =  GetAudioEnabled();
+    m_audio_enabled = true;// GetAudioEnabled();
     m_audio_channels = 2;
     m_audio_sample_rate = 48000;
     m_video_area_follow_fullscreen = true;
@@ -545,7 +545,7 @@ void ScreenRecorder::StartInput()
 
         //start the audio input
 #if SSR_USE_PULSEAUDIO
-//            if(m_audio_backend == ssr::enum_audio_backend::AUDIO_BACKEND_PULSEAUDIO)
+     //      if(m_audio_backend == ssr::enum_audio_backend::AUDIO_BACKEND_PULSEAUDIO)
                 m_pulseaudio_input.reset(new PulseAudioInput(m_pulseaudio_source, m_audio_sample_rate));
 #endif
         Logger::LogInfo("[PageRecord::StartInput] " + tr("Started input."));
@@ -662,11 +662,16 @@ void ScreenRecorder::OnUpdateRecordingFrame()
 {
     if(m_spinbox_video_x->hasFocus() || m_spinbox_video_y->hasFocus() || m_spinbox_video_w->hasFocus() || m_spinbox_video_h->hasFocus()) {
         if(m_recording_frame == NULL)
+        {
+            qDebug()<<"frame  selsected";
             m_recording_frame.reset(new RecordingFrameWindow(this));
+        }
         QRect rect = MapToLogicalCoordinates(ValidateRubberBandRectangle(QRect(GetVideoX(), GetVideoY(), GetVideoW(), GetVideoH())));
         if(rect.isNull()) {
+            qDebug()<<"frame  selsected ..........";
             m_recording_frame->hide();
         } else {
+            qDebug()<<"frame  selsected 333333333333";
             m_recording_frame->setGeometry(rect);
             m_recording_frame->show();
         }

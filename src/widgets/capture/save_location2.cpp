@@ -27,14 +27,15 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QDir>
-#define SHADOW_WIDTH  15     //小三角的阴影宽度
-#define TRIANGLE_WIDTH 15    //小三角的宽度
-#define TRIANGLE_HEIGHT 15    //小三角的高度
-#define BORDER_RADIUS 10       //窗口边角弧度
+#define SHADOW_WIDTH  5     //小三角的阴影宽度
+#define TRIANGLE_WIDTH 10    //小三角的宽度
+#define TRIANGLE_HEIGHT 5    //小三角的高度
+#define BORDER_RADIUS 10      //窗口边角弧度
 
 Save_Location2::Save_Location2(QWidget *parent)
     :  QWidget(parent)
-    , m_startx(5)
+    , m_startx(13)
+    , radius(5)
     , m_triangleWidth(TRIANGLE_WIDTH)
     , m_triangleHeight(TRIANGLE_HEIGHT)
 {
@@ -48,46 +49,36 @@ Save_Location2::Save_Location2(QWidget *parent)
     shadowEffect->setColor(Qt::gray);
     shadowEffect->setBlurRadius(BORDER_RADIUS);
     this->setGraphicsEffect(shadowEffect);
-    //setFixedSize(100,100);
+    for (int i =0;i<3;i++)
+    {
+       m_TypeList.append(QRect(m_startx,107,radius*2, radius*2));
+       m_startx += 40;
+    }
 }
-void Save_Location2::setStartPos(int startX)
+void Save_Location2::setStartPos(double startX)
 {
       m_startx = startX;
 }
 void Save_Location2::setCenterWidget(QWidget *widget)
 {
-    vLayout = new QVBoxLayout(this);
-    hMainLayout = new  QHBoxLayout();
-    //hMainLayout->addWidget(widget);
-    savedir = new QLabel("存储位置");
-    SaveDir = new  QPushButton();
+    savedir = new QLabel("存储位置",this);
+    savedir->move(13,21);
+    SaveDir = new  QPushButton(this);
+    SaveDir->resize(118,20);
+    SaveDir->move(13,50);
+    savetype = new QLabel("存储格式",this);
     QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
     SaveDir->setText(a.at(0));
-    savetype = new QLabel("存储格式");
-
-    jpg = new QRadioButton("jpg");
-    png = new QRadioButton("png");
-    png->setChecked(true);
-    bmp = new QRadioButton("bmp");
-
-    hMainLayout->addWidget(jpg);
-    hMainLayout->addWidget(png);
-    hMainLayout->addWidget(bmp);
-    vLayout->addWidget(savedir);
-    vLayout->addWidget(SaveDir);
-    vLayout->addWidget(savetype);
-    vLayout->addLayout(hMainLayout);
-    vLayout->setSpacing(0);
-    vLayout->setContentsMargins(0,0,SHADOW_WIDTH+m_triangleWidth+5,m_triangleHeight+SHADOW_WIDTH);
-    connect(jpg,&QRadioButton::clicked,
-            this,&Save_Location2::save_type_click);
-    connect(png,&QRadioButton::clicked,
-            this,&Save_Location2::save_type_click);
-    connect(bmp,&QRadioButton::clicked,
-            this,&Save_Location2::save_type_click);
-
+    savetype->move(13,82);
+    label1 = new  QLabel("jpg",this);
+    label1->move(24,100);
+    label2 = new  QLabel("png",this);
+    label2->move(64,100);
+    label3 = new  QLabel("bmp",this);
+    label3->move(104,100);
+    setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH);
 }
-void Save_Location2::setTriangleInfo(int width, int height)
+void Save_Location2::setTriangleInfo(double width, double height)
 {
     m_triangleWidth = width;
     m_triangleHeight = height;
@@ -98,21 +89,42 @@ void Save_Location2::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.setPen(Qt::NoPen);
-    painter.setBrush(QColor(225,225,225));
+    painter.setBrush(QColor(225,225,225,180));
+    //
     //
     QPolygon trianglePolygon;
-    trianglePolygon << QPoint(m_startx, height()- m_triangleWidth - SHADOW_WIDTH);
+    trianglePolygon << QPoint(m_startx,height()- m_triangleWidth - SHADOW_WIDTH);
     trianglePolygon << QPoint(m_startx+m_triangleWidth/2,height()-SHADOW_WIDTH);
-    trianglePolygon << QPoint(m_startx + m_triangleWidth,height()-m_triangleHeight - SHADOW_WIDTH);
-
+    trianglePolygon << QPoint(m_startx + m_triangleWidth,height()-m_triangleHeight-SHADOW_WIDTH);
     QPainterPath drawPath;
     drawPath.addRoundRect(QRect(0 , 0 ,width()-SHADOW_WIDTH *2,height()- m_triangleWidth - SHADOW_WIDTH),
-                          BORDER_RADIUS,BORDER_RADIUS);
-
+                                        BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
     painter.drawPath(drawPath);
+    for (int i=0;i<3;i++)
+    {
+        QRect rect = m_TypeList.at(i);
+        painter.setBrush(QColor(25,25,25));
+        painter.drawEllipse(rect);
+        Rect_h = rect.height()-2;
+        Rect_w = rect.width()-2;
+        painter.setBrush(QColor(255,255,255));
+        painter.drawEllipse(QRect(rect.x()+1,rect.y()+1,Rect_h,Rect_w));
+        if (type_rect == rect){
+            Rect_h = rect.height()-1;
+            Rect_w = rect.width()-1;
+            painter.setBrush(QColor(Qt::blue));
+            painter.drawEllipse(QRect(rect.x()+1,rect.y()+1,Rect_h,Rect_w));
+        }
+   }
 }
-void Save_Location2::save_type_click()
-{
-    emit save_type_clicked();
+void Save_Location2::mousePressEvent(QMouseEvent *e) {
+    for (int i = 0; i < 3; i++) {
+        if (m_TypeList.at(i).contains(e->pos())) {
+           type_rect = m_TypeList.at(i);
+            emit save_type_clicked(i);
+            update();
+            break;
+         }
+    }
 }
