@@ -42,7 +42,7 @@ SystemNotification::SystemNotification(QObject *parent) : QObject(parent) {
 #endif
 
 void SystemNotification::sendMessage(const QString &text, const QString &savePath) {
-    sendMessage(text, tr("Flameshot Info"), savePath);
+    sendMessage(text, tr("Kylin-ScreenShot Info"), savePath);
 }
 
 void SystemNotification::sendMessage(

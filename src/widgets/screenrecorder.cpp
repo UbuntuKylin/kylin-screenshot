@@ -56,6 +56,20 @@ ENUMSTRINGS(ssr::enum_audio_codec) = {
     {ssr::enum_audio_codec::AUDIO_CODEC_UNCOMPRESSED, "uncompressed"},
     {ssr::enum_audio_codec::AUDIO_CODEC_OTHER, "other"},
 };
+
+QPoint GetMousePhysicalCoordinates() {
+    if(IsPlatformX11()) {
+        Window root, child;
+        int root_x, root_y;
+        int win_x, win_y;
+        unsigned int mask_return;
+        XQueryPointer(QX11Info::display(), QX11Info::appRootWindow(), &root, &child, &root_x, &root_y, &win_x, &win_y, &mask_return);
+        return QPoint(root_x, root_y);
+    } else {
+        return QPoint(0, 0); // TODO: implement for wayland
+    }
+}
+
 ScreenRecorder::ScreenRecorder(QWidget *parent) :QWidget(parent)
 {
     setCursor(Qt::ArrowCursor);
@@ -102,6 +116,7 @@ void ScreenRecorder::Init()
     m_spinbox_video_frame_rate->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     m_spinbox_video_frame_rate->setToolTip(tr("The number of frames per second in the final video. Higher frame rates use more CPU time."));
     m_spinbox_video_frame_rate->move(150,200);
+
     m_pushbutton_start = new QPushButton(this);
     m_pushbutton_start->setText("开始录制");
 
@@ -173,6 +188,7 @@ void ScreenRecorder::Init()
                                         "- OGG supports only Theora and Vorbis."));
     LoadSettings();
 }
+
 
 void ScreenRecorder::Input_init()
 {
@@ -687,8 +703,12 @@ void ScreenRecorder::OnUpdateVideoAreaFields()
 
 void ScreenRecorder::mousePressEvent(QMouseEvent *event)
 {
+    qDebug()<<"m_grabbing"<<m_grabbing;
+    qDebug()<<"IsPlatformX11()"<<IsPlatformX11();
     if (m_grabbing) {
+        QPoint mouse_physical = GetMousePhysicalCoordinates();
         if (event->button() == Qt::LeftButton) {
+            qDebug()<<"11111111111111111111";
             if (IsPlatformX11()) {
                 QPoint mouse_physical = GetMousePhysicalCoordinates();
                 if (m_selecting_window) {
@@ -734,23 +754,28 @@ void ScreenRecorder::mousePressEvent(QMouseEvent *event)
                                 if (data != NULL)
                                     XFree(data);
                             }
-
+                            qDebug()<<"m_rubber_band_rect  is clicked";
                              // pick the inner rectangle if the users clicks inside the window, or the outer rectangle otherwise
                             m_rubber_band_rect = (m_select_window_inner_rect.contains(mouse_physical)) ? m_select_window_inner_rect : m_select_window_outer_rect;
                             UpdateRubberBand();
                         }
                     }
                 } else {
+                    qDebug()<<"m_rubber_band_rect  is not  clicked";
                     m_rubber_band_rect = QRect(mouse_physical, mouse_physical);
                     UpdateRubberBand();
                 }
             }
         } else {
+            qDebug()<<"m_rubber_band_rect  is not  clicked.......";
+            m_rubber_band_rect = QRect(mouse_physical, mouse_physical);
             StopGrabbing();
         }
+        qDebug()<<"m_rubber_band_rect  is not eeeeee clicked.......";
         event->accept();
         return;
     }
+    qDebug()<<"m_rubber_band_rect  is ignore  clicked.......";
     event->ignore();
 }
 
@@ -1133,8 +1158,10 @@ void ScreenRecorder::StartGrabbing()
     m_grabbing = true;
     if (m_selecting_window) {
         m_pushbutton_video_select_window->setDown(true);
+        qDebug()<<"m_pushbutton_video_select_window";
     } else {
         m_pushbutton_video_select_rectangle->setDown(true);
+        qDebug()<<"m_pushbutton_video_select_window   11111";
     }
     this->lower();
     grabMouse(Qt::CrossCursor);

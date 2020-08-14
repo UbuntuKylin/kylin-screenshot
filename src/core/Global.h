@@ -87,6 +87,7 @@ inline bool IsPlatformX11() {
 #else
 inline bool IsPlatformX11() {
     char *v = getenv("XDG_SESSION_TYPE");
+    //return true;
     return ((v == NULL || strcasecmp(v, "x11") == 0) && QX11Info::isPlatformX11());
 }
 #endif

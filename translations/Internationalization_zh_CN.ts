@@ -125,13 +125,18 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+84"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+85"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+239"/>
+        <location line="+214"/>
+        <source>%1 , %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
         <source>Select an area with the mouse, or press Esc to exit.
 Press Enter to capture the screen.
 Press Right Click to show the color picker.
@@ -144,13 +149,13 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+32"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1084"/>
-        <location line="+45"/>
+        <location line="+1064"/>
+        <location line="+23"/>
         <source>Open Directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -235,7 +240,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Cut</name>
     <message>
-        <location filename="../src/tools/cut/cut.cpp" line="+20"/>
+        <location filename="../src/tools/cut/cut.cpp" line="+41"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
@@ -324,7 +329,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+68"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+92"/>
         <source>StrikeOut</source>
         <translation type="unfinished">删除线</translation>
     </message>
@@ -347,7 +352,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+81"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+107"/>
         <source>StrikeOut</source>
         <translation type="unfinished">删除线</translation>
     </message>
@@ -545,7 +550,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="+38"/>
+        <location filename="../src/widgets/infowindow.cpp" line="+40"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -654,9 +659,632 @@ Press Space to open the side panel.</source>
     </message>
 </context>
 <context>
+    <name>Logger</name>
+    <message>
+        <location filename="../src/AV/FastResampler.cpp" line="+123"/>
+        <source>Error: Resample ratio is out of range!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: Drift ratio is out of range!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <source>Resample ratio is %1 (was %2).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/FastScaler.cpp" line="+124"/>
+        <source>Warning: Pixel format is not supported (%1 -&gt; %2), using swscale instead. This is not a problem, but performance will be worse.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Error: Can&apos;t get swscale context:</source>
+        <comment>Don&apos;t translate &apos;swscale&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <location line="+25"/>
+        <location line="+25"/>
+        <location line="+24"/>
+        <location line="+22"/>
+        <location line="+23"/>
+        <source>Warning: Memory is not properly aligned for SSE, using fallback converter instead. This is not a problem, but performance will be worse.</source>
+        <comment>Don&apos;t translate &apos;fallback&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="+32"/>
+        <source>Error: pa_mainloop_prepare failed!</source>
+        <comment>Don&apos;t translate &apos;pa_mainloop_prepare&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: pa_mainloop_poll failed!</source>
+        <comment>Don&apos;t translate &apos;pa_mainloop_poll&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: pa_mainloop_dispatch failed!</source>
+        <comment>Don&apos;t translate &apos;pa_mainloop_dispatch&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Error: Could not create main loop!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Error: Could not create context!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Error: Could not connect! Reason: %1
+It is possible that your system doesn&apos;t use PulseAudio. Try using the ALSA backend instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: Could not connect! Reason: %1
+It is possible that your system doesn&apos;t use PulseAudio.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Error: Connection attempt failed! Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Error: Could not create stream! Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Error: Could not connect stream! Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Error: Stream connection attempt failed! Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+90"/>
+        <source>Found source: [%1] %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Generating source list ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Error: Could not get names of sources! Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+48"/>
+        <source>Error: Could not get source info! Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Stream is a monitor.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Stream is not a monitor.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="+424"/>
+        <source>Input thread started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Error: pa_stream_peek failed!</source>
+        <comment>Don&apos;t translate &apos;pa_stream_peek&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+67"/>
+        <source>Warning: Audio source was suspended. The current segment will be stopped until the source is resumed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Warning: Stream was moved to a different source.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="+113"/>
+        <source>Input thread stopped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="+4"/>
+        <source>Exception &apos;%1&apos; in input thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="+3"/>
+        <source>Unknown exception in input thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/input/X11Input.cpp" line="-495"/>
+        <source>Error: Unsupported X11 image pixel format!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+124"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="+94"/>
+        <source>Error: Width or height is zero!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="+4"/>
+        <source>Error: Width or height is too large, the maximum width and height is %1!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Stopping input thread ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Error: Can&apos;t open X display!</source>
+        <comment>Don&apos;t translate &apos;display&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Using X11 shared memory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not using X11 shared memory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Warning: XFixes is not supported by X server, the cursor has been hidden.</source>
+        <comment>Don&apos;t translate &apos;XFixes&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+42"/>
+        <source>Error: Can&apos;t create shared image!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Error: Can&apos;t get shared memory!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Error: Can&apos;t attach to shared memory!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Error: Can&apos;t attach server to shared memory!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+44"/>
+        <source>Warning: Xinerama is not supported by X server, multi-monitor support may not work properly.</source>
+        <comment>Don&apos;t translate &apos;Xinerama&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Warning: No monitors detected, multi-monitor support may not work properly.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Error: Invalid screen bounding box!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+116"/>
+        <source>Error: Can&apos;t get image (using shared memory)!
+    Usually this means the recording area is not completely inside the screen. Or did you change the screen resolution?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Error: Can&apos;t get image (not using shared memory)!
+    Usually this means the recording area is not completely inside the screen. Or did you change the screen resolution?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="+96"/>
+        <source>Error: Channel count is zero.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: Sample rate is zero.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
+        <source>Using sample format %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Error: Encoder requires an unsupported sample format!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Error: Sending of audio frame failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Error: Receiving of audio packet failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <location line="+22"/>
+        <source>Error: Encoding of audio frame failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="+28"/>
+        <location line="+9"/>
+        <source>Error: Option &apos;%1&apos; could not be parsed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Stopping encoder thread ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+75"/>
+        <source>Error: Can&apos;t open codec!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Warning: Codec option &apos;%1&apos; was not recognised!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Encoder thread started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Flushing encoder ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Encoder thread stopped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Exception &apos;%1&apos; in encoder thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Unknown exception in encoder thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/output/Muxer.cpp" line="+70"/>
+        <source>Stopping encoders ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Waiting for muxer thread to stop ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <location line="+24"/>
+        <source>Error: Can&apos;t copy parameters to stream!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Error: Can&apos;t write header!</source>
+        <comment>Don&apos;t translate &apos;header&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Finishing encoders ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+42"/>
+        <source>Error: Can&apos;t find chosen output format!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Using format %1 (%2).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Error: Can&apos;t allocate format context!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Error: Can&apos;t open output file!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Error: Can&apos;t write trailer, continuing anyway.</source>
+        <comment>Don&apos;t translate &apos;trailer&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
+        <source>Error: Can&apos;t find codec!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Using codec %1 (%2).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Error: Can&apos;t create new stream!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Error: Can&apos;t create new codec context!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Error: Can&apos;t get codec context defaults!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Warning: This codec is considered experimental by libav/ffmpeg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Muxer thread started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+60"/>
+        <source>Error: Can&apos;t write frame to muxer!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Muxer thread stopped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Exception &apos;%1&apos; in muxer thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Unknown exception in muxer thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/output/OutputManager.cpp" line="+66"/>
+        <source>Stopping fragment thread ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+278"/>
+        <source>Fragment thread started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Next fragment ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Finishing ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Fragment thread stopped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Exception &apos;%1&apos; in fragment thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Unknown exception in fragment thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="+218"/>
+        <source>Stopping synchronizer thread ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+110"/>
+        <source>Warning: Received video frame with non-monotonic timestamp.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Warning: Video buffer overflow, some frames will be lost. The audio input seems to be too slow.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+59"/>
+        <source>Warning: Received audio samples with non-monotonic timestamp.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Warning: Too many audio samples, dropping samples to keep the audio in sync with the video.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Warning: Not enough audio samples, inserting silence to keep the audio in sync with the video.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+68"/>
+        <source>Warning: Audio input is more than 2% too slow!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Warning: Audio input is more than 2% too fast!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
+        <source>Warning: Audio buffer overflow, starting new segment to keep the audio in sync with the video (some video and/or audio may be lost). The video input seems to be too slow.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Warning: Received hole in audio stream, inserting silence to keep the audio in sync with the video.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+307"/>
+        <source>Synchronizer thread started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+24"/>
+        <source>Synchronizer thread stopped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Exception &apos;%1&apos; in synchronizer thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Unknown exception in synchronizer thread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="+4"/>
+        <source>Error: Width or height is not an even number!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: Frame rate is zero!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+57"/>
+        <source>Using pixel format %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Error: The pixel format is not supported by the codec!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Error: Sending of video frame failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Error: Receiving of video packet failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <location line="+21"/>
+        <source>Error: Encoding of video frame failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/common/CPUFeatures.cpp" line="+42"/>
+        <source>CPU features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/common/CommandLineOptions.cpp" line="+76"/>
+        <source>Error: Command-line option &apos;%1&apos; requires a value!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Error: Command-line option &apos;%1&apos; does not take a value!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+93"/>
+        <source>Error: Unknown command-line option &apos;%1&apos;!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Error: Unknown command-line argument &apos;%1&apos;!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+43"/>
+        <source>Error: Can&apos;t create .ssr directory!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LuPing</name>
     <message>
-        <location filename="../src/tools/luping/luping.cpp" line="+20"/>
+        <location filename="../src/tools/luping/luping.cpp" line="+41"/>
         <source>LuPing</source>
         <translation type="unfinished"></translation>
     </message>
@@ -695,7 +1323,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Options</name>
     <message>
-        <location filename="../src/tools/options/options.cpp" line="+20"/>
+        <location filename="../src/tools/options/options.cpp" line="+41"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -758,7 +1386,7 @@ Press Space to open the side panel.</source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+77"/>
+        <location filename="../src/main.cpp" line="+79"/>
         <location line="+150"/>
         <location line="+149"/>
         <location line="+24"/>
@@ -785,9 +1413,8 @@ Press Space to open the side panel.</source>
 <context>
     <name>QPlatformTheme</name>
     <message>
-	<location filename="qplatformtheme.cpp" line="+732"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="vanished">取消</translation>
     </message>
 </context>
 <context>
@@ -830,11 +1457,312 @@ Press Space to open the side panel.</source>
     </message>
 </context>
 <context>
+    <name>ScreenCap</name>
+    <message>
+        <location filename="../src/tools/screencap/screencap.cpp" line="+30"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options tool</source>
+        <translation type="unfinished">截图保存配置</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenCapExit</name>
+    <message>
+        <location filename="../src/tools/screencapexit/screencapexit.cpp" line="+30"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options tool</source>
+        <translation type="unfinished">截图保存配置</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenCapOption</name>
+    <message>
+        <location filename="../src/tools/screencapoption/screencapoption.cpp" line="+30"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options tool</source>
+        <translation type="unfinished">截图保存配置</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenCapStart</name>
+    <message>
+        <location filename="../src/tools/screencapstart/screencapstart.cpp" line="+30"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options tool</source>
+        <translation type="unfinished">截图保存配置</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenCut</name>
+    <message>
+        <location filename="../src/tools/screencut/screencut.cpp" line="+30"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options tool</source>
+        <translation type="unfinished">截图保存配置</translation>
+    </message>
+</context>
+<context>
     <name>ScreenGrabber</name>
     <message>
         <location filename="../src/utils/screengrabber.cpp" line="+76"/>
         <source>Unable to capture screen</source>
         <translation>无法捕获屏幕</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenMouse</name>
+    <message>
+        <location filename="../src/tools/screenmouse/screenmouse.cpp" line="+30"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options tool</source>
+        <translation type="unfinished">截图保存配置</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenMouseCursor</name>
+    <message>
+        <location filename="../src/tools/screenmousecursor/screenmousecursor.cpp" line="+30"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options tool</source>
+        <translation type="unfinished">截图保存配置</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenRecorder</name>
+    <message>
+        <location filename="../src/widgets/screenrecorder.cpp" line="+112"/>
+        <source>Frame rate:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The number of frames per second in the final video. Higher frame rates use more CPU time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Container:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Save as:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Record cursor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Record audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Cancel recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Save recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>(not installed)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>The container (file format) that will be used to save the recording.
+Note that not all codecs are supported by all containers, and that not all media players can read all file formats.
+- Matroska (MKV) supports all the codecs, but is less well-known.
+- MP4 is the most well-known format and will play on almost any modern media player, but supports only H.264 video
+   (and many media players only support AAC audio).
+- WebM is intended for embedding video into websites (with the HTML5 &lt;video&gt; tag). The format was created by Google.
+   WebM is supported by default in Firefox, Chrome and Opera, and plugins are available for Internet Explorer and Safari.
+   It supports only VP8 and Vorbis.
+- OGG supports only Theora and Vorbis.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+68"/>
+        <source>Save recording as</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+48"/>
+        <location line="+3"/>
+        <location line="+3"/>
+        <location line="+3"/>
+        <location line="+42"/>
+        <source>%1 files</source>
+        <comment>This appears in the file dialog, e.g. &apos;MP4 files&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-39"/>
+        <location line="+6"/>
+        <location line="+7"/>
+        <source>Other...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-1"/>
+        <source>Uncompressed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+66"/>
+        <source>Error: Could not find any suitable container in libavformat!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: Could not find any suitable video codec in libavcodec!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: Could not find any suitable audio codec in libavcodec!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+63"/>
+        <source>Starting page ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Started page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+65"/>
+        <location line="+8"/>
+        <source>not installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-6"/>
+        <location line="+8"/>
+        <source>not supported by container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Starting input ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Started input.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <location line="+104"/>
+        <source>Error: Something went wrong during initialization.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-90"/>
+        <source>Stopping input ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Stopped input.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+54"/>
+        <source>Starting output ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location line="+404"/>
+        <source>Pause recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-385"/>
+        <source>Started output.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+302"/>
+        <source>Stopping page ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Stopped page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Stopping output ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Stopped output.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Start recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Encoding remaining data ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenVoice</name>
+    <message>
+        <location filename="../src/tools/screenvoice/screenvoice.cpp" line="+30"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options tool</source>
+        <translation type="unfinished">截图保存配置</translation>
     </message>
 </context>
 <context>
@@ -995,11 +1923,38 @@ Press Space to open the side panel.</source>
     </message>
 </context>
 <context>
+    <name>SyncDiagram</name>
+    <message>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="-675"/>
+        <source>Video in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Audio in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Video out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Audio out</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SystemNotification</name>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="+29"/>
         <source>Flameshot Info</source>
-        <translation>Flameshot 消息</translation>
+        <translation type="vanished">Flameshot 消息</translation>
+    </message>
+    <message>
+        <location filename="../src/utils/systemnotification.cpp" line="+45"/>
+        <source>Kylin-ScreenShot Info</source>
+        <translation>Kylin-ScreenShot Info</translation>
     </message>
 </context>
 <context>
@@ -1120,6 +2075,39 @@ Press Space to open the side panel.</source>
     <message>
         <source>luping</source>
         <translation type="vanished">录屏模式</translation>
+    </message>
+</context>
+<context>
+    <name>mypopup</name>
+    <message>
+        <location filename="../src/widgets/mypopup.cpp" line="+124"/>
+        <source>All screens: %1x%2</source>
+        <comment>This appears in the screen selection combobox</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Screen %1: %2x%3 at %4,%5</source>
+        <comment>This appears in the screen selection combobox</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+198"/>
+        <location line="+8"/>
+        <source>not installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-6"/>
+        <location line="+8"/>
+        <source>not supported by container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Screen %1</source>
+        <comment>This appears in the screen labels</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

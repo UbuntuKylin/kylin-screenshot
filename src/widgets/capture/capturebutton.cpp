@@ -54,14 +54,16 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         this->setFixedSize(GlobalValues::buttonBaseSize()*2,GlobalValues::buttonBaseSize());
         QFont f = this->font();
         f.setBold(true);
-        setFlat(false);
+        //setFlat(false);
     }
     else
     {
         if (t == TYPE_SAVE)
         {
+            setStyleSheet("QPushButton {"
+                           "background-color:rgba(100,0, 0,1)}");
             setFlat(false);
-            setStyleSheet(styleSheet());
+            //setStyleSheet(styleSheet());
             setFont(font);
             setText("保存");
         }
@@ -76,6 +78,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
 void CaptureButton::initButton() {
     m_tool = ToolFactory().CreateTool(m_buttonType, this);
     setFocusPolicy(Qt::NoFocus);
+
     if (m_tool->name() =="Options")
     {
         resize(GlobalValues::buttonBaseSize()*2, GlobalValues::buttonBaseSize());
@@ -107,7 +110,7 @@ void CaptureButton::initButton() {
 void CaptureButton::updateIcon() {
     setIcon(icon());
     setIconSize(size()*0.6);
-    //setFlat(true);
+    setFlat(true);
 }
 
 QVector<CaptureButton::ButtonType> CaptureButton::getIterableButtonTypes() {

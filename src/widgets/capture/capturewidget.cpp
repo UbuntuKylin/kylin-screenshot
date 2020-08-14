@@ -180,6 +180,9 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
                 this,&CaptureWidget::ClickedSaveType);
     connect(save_location2,&Save_Location2::save_type_clicked,
                 this,&CaptureWidget::ClickedSaveType2);
+    connect(screenCap->m_pushbutton_video_select_rectangle, &QPushButton::clicked, screenCap, &ScreenRecorder::on_m_pushbutton_video_select_rectangle_clicked);
+    connect(screenCap->m_pushbutton_video_select_window, &QPushButton::clicked, screenCap, &ScreenRecorder::on_m_pushbutton_video_select_window_clicked);
+
     m_colorPicker->hide();
     font_color->setStartPos(95);
     font_color->setTriangleInfo(10, 10);
@@ -367,7 +370,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             painter.drawRoundRect(rr,6,6);
             QPainterPath path;
             QColor color(92,93,95,50);
-            int arr[5] = {50,25,20,10,5};
+            int arr[5] = {20,15,10,10,5};
             for(int i=0; i<5; i++)
             {
                 QPainterPath path;

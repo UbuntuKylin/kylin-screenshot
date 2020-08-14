@@ -67,20 +67,6 @@ QRect MapToLogicalCoordinates(const QRect& rect) {
     return rect;
 };
 
-QPoint
-GetMousePhysicalCoordinates()
-{
-    if(IsPlatformX11()) {
-        Window root, child;
-        int root_x, root_y;
-        int win_x, win_y;
-        unsigned int mask_return;
-        //XQueryPointer(QX11Info::display(), QX11Info::appRootWindow(), &root, &child, &root_x, &root_y, &win_x, &win_y, &mask_return);
-        return QPoint(root_x, root_y);
-    } else {
-        return QPoint(0, 0); // TODO: implement for wayland
-    }
-}
 
 // Tries to find the real window that corresponds to a top-level window (the actual window without window manager decorations).
 // Returns None if it can't find the window (probably because the window is not handled by the window manager).

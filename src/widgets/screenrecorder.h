@@ -35,13 +35,7 @@
 #endif
 class mypopup;
 class X11Input;
-
-class input_widgets : public QWidget{};
-
-class output_widgets : public QWidget{};
-
-class record_widgets : public QWidget{};
-
+class RecordingFrameWindow;
 class ScreenRecorder : public QWidget
 {
     Q_OBJECT
@@ -112,8 +106,7 @@ public:
 
 private slots:
     void on_m_toolButton_options_clicked();
-    void on_m_pushbutton_video_select_rectangle_clicked();
-    void on_m_pushbutton_video_select_window_clicked();
+
     void OnUpdateInformation();
     void OnRecordStart();
     void OnRecordPause();
@@ -146,6 +139,8 @@ public slots:
     void OnUpdateVideoAreaFields();
     void OnUpdateSuffixAndContainerFields();
     void OnUpdateContainerFields();
+    void on_m_pushbutton_video_select_rectangle_clicked();
+    void on_m_pushbutton_video_select_window_clicked();
 protected:
     virtual void mousePressEvent(QMouseEvent* event) override;
     virtual void mouseReleaseEvent(QMouseEvent* event) override;
@@ -164,7 +159,7 @@ private:
     bool m_video_record_cursor;
     bool m_audio_enabled;
     unsigned int m_audio_channels, m_audio_sample_rate;
-
+public:
     OutputSettings m_output_settings;
     std::unique_ptr<OutputManager> m_output_manager;
     QButtonGroup *m_buttongroup_video_area;
@@ -294,7 +289,6 @@ public:
     inline unsigned int GetPulseAudioSource() { return clamp(m_combobox_pulseaudio_source->currentIndex(), 0, (int) m_pulseaudio_sources.size() - 1); }
 #endif
     inline void SetFile(const QString& file) { m_lineedit_file->setText(file); }
-
 private:
     QLineEdit *m_lineedit_audio_options_not_shown;
 #if SSR_USE_PULSEAUDIO

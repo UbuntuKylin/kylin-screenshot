@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
         app.installTranslator(&translator);
         app.installTranslator(&qtTranslator);
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
-        app.setApplicationName(QStringLiteral("flameshot"));
+        app.setApplicationName(QStringLiteral("kylin-screenshot"));
         app.setOrganizationName(QStringLiteral("Dharkael"));
 
         auto c = Controller::getInstance();
@@ -92,19 +92,19 @@ int main(int argc, char *argv[]) {
      * CLI parsing  |
      * ------------*/
     QCoreApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral("flameshot"));
+    app.setApplicationName(QStringLiteral("Kylin-Screenshot"));
     app.setOrganizationName(QStringLiteral("Dharkael"));
     app.setApplicationVersion(qApp->applicationVersion());
     CommandLineParser parser;
     // Add description
     parser.setDescription(
                 QStringLiteral("Powerful yet simple to use screenshot software."));
-    parser.setGeneralErrorMessage(QStringLiteral("See 'flameshot --help'."));
+    parser.setGeneralErrorMessage(QStringLiteral("See 'Kylin-Screenshot --help'."));
     // Arguments
     CommandArgument fullArgument(QStringLiteral("full"), QStringLiteral("Capture the entire desktop."));
     CommandArgument launcherArgument(QStringLiteral("launcher"), QStringLiteral("Open the capture launcher."));
     CommandArgument guiArgument(QStringLiteral("gui"), QStringLiteral("Start a manual capture in GUI mode."));
-    CommandArgument configArgument(QStringLiteral("config"), QStringLiteral("Configure flameshot."));
+    CommandArgument configArgument(QStringLiteral("config"), QStringLiteral("Configure Kylin-Screenshot."));
     CommandArgument screenArgument(QStringLiteral("screen"), QStringLiteral("Capture a single screen."));
 
     // Options
