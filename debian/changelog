@@ -1,10 +1,10 @@
-kylin-screenshot (1.0.0-1)  groovy; urgency=medium
+kylin-screenshot (1.0.0.2) focal; urgency=medium
 
   * test.
 
  -- zhanghuanhuan <zhanghuanhuan@kylinos.cn>  Sat, 01 Aug 2020 20:18:57 +0800
 
-kylin-screenshot (1.0.0-1) groovy; urgency=medium
+kylin-screenshot (1.0.0.1) focal; urgency=medium
 
   * Initial deb package.
 

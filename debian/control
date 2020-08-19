@@ -1,41 +1,38 @@
 Source: kylin-screenshot
 Section: graphics
 Priority: optional
-Maintainer: huanhuan zhang <zhanghuanhuan@kylinos.cn>
-Uploaders:
- huanhuan zhang <zhanghuanhuan@kylinos.cn>,
-Build-Depends:
- debhelper-compat (= 13),
- qt5-qmake,
- qtbase5-dev,
- qttools5-dev-tools,
- libqt5svg5-dev,
- libavformat-dev,
- libavcodec-dev,
- libavutil-dev,
- libswscale-dev,
- libpulse-dev,
- libqt5x11extras5,
- libqt5x11extras5-dev,
- libxfixes3,
- libxfixes-dev,
- libx11-dev,
- libxinerama1,
- libxinerama-dev,
+Maintainer: Kylin Team <team+kylin@tracker.debian.org>
+Uploaders: huanhuan zhang <zhanghuanhuan@kylinos.cn>
+Build-Depends: debhelper-compat (= 13),
+               qt5-qmake,
+               qtbase5-dev,
+               qttools5-dev-tools,
+               libqt5svg5-dev,
+               libavformat-dev,
+               libavcodec-dev,
+               libavutil-dev,
+               libswscale-dev,
+               libpulse-dev,
+               libqt5x11extras5,
+               libqt5x11extras5-dev,
+               libxfixes3,
+               libxfixes-dev,
+               libx11-dev,
+               libxinerama1,
+               libxinerama-dev,
 Standards-Version: 4.5.0
-Homepage: https://github.com/lupoDharkael/flameshot
-Vcs-Browser: https://github.com/lupoDharkael/flameshot
-Vcs-Git: https://github.com/lupoDharkael/flameshot.git
+Rules-Requires-Root: no
+Homepage: https://github.com/ubuntukylin/kylin-screenshot
+Vcs-Browser: https://github.com/ubuntukylin/kylin-screenshot
+Vcs-Git: https://github.com/ubuntukylin/kylin-screenshot.git
 
 Package: kylin-screenshot
 Architecture: any
-Depends:
- libqt5svg5,
- ${shlibs:Depends},
- ${misc:Depends},
-Suggests:
- ca-certificates,
- openssl,
+Depends: libqt5svg5,
+         ${shlibs:Depends},
+         ${misc:Depends},
+Suggests: ca-certificates,
+          openssl
 Description: Powerful yet simple-to-use screenshot software
  Flameshot is a powerful yet simple-to-use screenshot software.
  Notable features include customizable appearance, in-app screenshot editing,
