@@ -3,7 +3,7 @@ Section: graphics
 Priority: optional
 Maintainer: Kylin Team <team+kylin@tracker.debian.org>
 Uploaders: huanhuan zhang <zhanghuanhuan@kylinos.cn>
-Build-Depends: debhelper-compat (=12),
+Build-Depends: debhelper-compat (= 13),
                qt5-qmake,
                qtbase5-dev,
                qttools5-dev-tools,
