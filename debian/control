@@ -5,7 +5,7 @@ Maintainer: huanhuan zhang <zhanghuanhuan@kylinos.cn>
 Uploaders:
  huanhuan zhang <zhanghuanhuan@kylinos.cn>,
 Build-Depends:
- debhelper (>= 9),
+ debhelper-compat (= 13),
  qt5-qmake,
  qtbase5-dev,
  qttools5-dev-tools,
@@ -22,7 +22,7 @@ Build-Depends:
  libx11-dev,
  libxinerama1,
  libxinerama-dev,
-Standards-Version: 4.3.0
+Standards-Version: 4.5.0
 Homepage: https://github.com/lupoDharkael/flameshot
 Vcs-Browser: https://github.com/lupoDharkael/flameshot
 Vcs-Git: https://github.com/lupoDharkael/flameshot.git
