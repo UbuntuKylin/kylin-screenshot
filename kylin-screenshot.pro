@@ -28,7 +28,7 @@ QMAKE_CXXFLAGS += -std=c++0x
 TARGET = kylin-screenshot
 TEMPLATE = app
 
-win32:RC_ICONS += img/app/flameshot.ico
+win32:RC_ICONS += img/app/kylin-screenshot.ico
 
 #release: DESTDIR = build/release
 #debug:   DESTDIR = build/debug
@@ -327,30 +327,30 @@ unix:!macx {
 
     target.path = $${PREFIX}/bin/
 
-    qmfile.path = $${PREFIX}/share/flameshot/translations/
+    qmfile.path = $${PREFIX}/share/kylin-screenshot/translations/
     qmfile.files = $${TRANSLATIONS_FILES}
 
     dbus.path = $${PREFIX}/share/dbus-1/interfaces/
-    dbus.files = dbus/org.dharkael.Flameshot.xml
+    dbus.files = dbus/org.dharkael.kylin-screenshot.xml
 
     icon.path = $${PREFIX}/share/icons/hicolor/
     icon.files = img/hicolor/*
 
     completion.path = $${PREFIX}/share/bash-completion/completions/
-    completion.files = docs/bash-completion/flameshot
+    completion.files = docs/bash-completion/kylin-screenshot
 
     appdata.path = $${PREFIX}/share/metainfo/
-    appdata.files = docs/appdata/flameshot.appdata.xml
+    appdata.files = docs/appdata/kylinscreenshot.appdata.xml
 
     desktopentry.path = $${PREFIX}/share/applications
-    desktopentry.files = docs/desktopEntry/package/flameshot.desktop
+    desktopentry.files = docs/desktopEntry/package/kylinscreenshot.desktop
 
     servicedbus.path = $${PREFIX}/share/dbus-1/services/
 
     packaging {
-        servicedbus.files = dbus/package/org.dharkael.Flameshot.service
+        servicedbus.files = dbus/package/org.dharkael.kylin-screenshot.service
     } else {
-        servicedbus.files = dbus/make/org.dharkael.Flameshot.service
+        servicedbus.files = dbus/make/org.dharkael.kylin-screenshot.service
     }
 
     INSTALLS += target \

@@ -1,7 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>img/app/flameshot.svg</file>
-        <file>img/app/flameshot.png</file>
         <file>img/material/black/undo-variant.svg</file>
         <file>img/material/black/text.svg</file>
         <file>img/material/black/square.svg</file>
@@ -77,5 +75,7 @@
         <file>img/material/white/italic.png</file>
         <file>img/material/white/underline.png</file>
         <file>img/material/white/delete.png</file>
+        <file>img/app/kylin-screenshot.png</file>
+        <file>img/app/kylin-screenshot.svg</file>
     </qresource>
 </RCC>

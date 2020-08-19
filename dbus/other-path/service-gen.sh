@@ -8,7 +8,7 @@ if [ -n "$1" ]
     TARGET=${1%/}
 fi
 
-FILE='[D-BUS Service]\nName=org.dharkael.Flameshot\nExec=##REPLACE##/flameshot'
+FILE='[D-BUS Service]\nName=org.dharkael.kylin-screenshot\nExec=##REPLACE##/kylin-screenshot'
 
 FILE=${FILE//##REPLACE##/$TARGET}
-echo -e $FILE > $DIR/org.dharkael.Flameshot.service
+echo -e $FILE > $DIR/org.dharkael.kylin-screenshot.service

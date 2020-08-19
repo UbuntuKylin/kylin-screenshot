@@ -255,7 +255,7 @@ bool ConfigHandler::verifyLaunchFile() {
     bool res = false;
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    QString path = QDir::homePath() + "/.config/autostart/Flameshot.desktop";
+    QString path = QDir::homePath() + "/.config/autostart/kylin-screenshot.desktop";
     res = QFile(path).exists();
 #elif defined(Q_OS_WIN)
     QSettings bootUpSettings(
@@ -275,10 +275,10 @@ void ConfigHandler::setStartupLaunch(const bool start) {
         autostartDir.mkpath(".");
     }
 
-    QFile file(path + "Flameshot.desktop");
+    QFile file(path + "kylinscreenshot.desktop");
     if (start) {
         if (file.open(QIODevice::WriteOnly)) {
-            QByteArray data("[Desktop Entry]\nName=flameshot\nIcon=flameshot"
+            QByteArray data("[Desktop Entry]\nName=flameshot\nIcon=kylin-screenshot"
                             "\nExec=flameshot\nTerminal=false\nType=Application"
                             "\nX-GNOME-Autostart-enabled=true\n");
             file.write(data);
