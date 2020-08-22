@@ -49,15 +49,14 @@ Check this nice official documentation from Qt docs as it explains how to transl
 ## Issues
 
 1. Do a quick search on GitHub to check if the issue has already been reported.
-2. [Open an issue](https://github.com/lupoDharkael/flameshot/issues/new) and describe the issue you are having - you could include:
+2. [Open an issue](https://github.com/UbuntuKylin/kylin-screenshot/issues/new) and describe the issue you are having - you could include:
      - Screenshots
      - Ways to reproduce the issue.
-     - Your Flameshot version.
+     - Your kylin-screenshot version.
      - Your platform (e.g. Windows 10 or Ubuntu 15.04 x64)
 
 After reporting you should aim to answer questions or clarifications as this helps pinpoint the cause of the issue.
 
 ### Donations
 
-I improve Flameshot in my free time because I want to create something good for everyone to use.
-If you want you can donate some bucks [here](https://www.paypal.me/lupoDharkael).
+I improve kylin-screenshot in my free time because I want to create something good for everyone to use.

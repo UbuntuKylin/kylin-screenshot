@@ -1,6 +1,6 @@
 // Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
 //   2020, KylinSoft Co., Ltd.
-// This file is part of Flameshot.
+// This file is part of Kylin-Screenshot.
 //
 //     Kylin-Screenshot is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by

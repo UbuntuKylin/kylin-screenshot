@@ -32,11 +32,11 @@
 #include <QGuiApplication>
 #endif
 
-// InfoWindow show basic information about the usage of Flameshot
+// InfoWindow show basic information about the usage of kylin-screenshot
 
 InfoWindow::InfoWindow(QWidget *parent) : QWidget(parent) {
     setAttribute(Qt::WA_DeleteOnClose);
-    setWindowIcon(QIcon(":img/app/kylin-screenshot.svg"));
+    setWindowIcon(QIcon(":img/app/kylin_screenshot.svg"));
     setWindowTitle(tr("About"));
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))

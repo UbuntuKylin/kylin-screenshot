@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: kylin-screenshot
-Source: https://github.com/lupoDharkael/flameshot/
+Source: https://github.com/UbuntuKylin/kylin-screenshot
 
 Files: *
 Copyright: 2016-2019, lupoDharkael <izhe@hotmail.es>
@@ -18,7 +18,7 @@ Copyright: 2018, 2019, Boyuan Yang <byang@debian.org>
 License: GPL-3+
 
 Files: debian/kylin-screenshot/DEBIAN/md5sums
-Copyright: a1a1762a8a2834e12be294b223b6238e usr/share/flameshot/translations/Internationalization_ca.qm
+Copyright: a1a1762a8a2834e12be294b223b6238e usr/share/kylin-screenshot/translations/Internationalization_ca.qm
 License: GPL-3+
 Comments:
  The author copied a few lines of code from KSnapshot regiongrabber.cpp
@@ -380,7 +380,7 @@ Files: src/widgets/capture/capturewidget.cpp
 Copyright: 2017-2019, Alejandro Sirgo Rica & Contributors
 License: GPL-3+ or LGPL
 Comments:
- Relicensed under GPL-3+ under flameshot project.
+ Relicensed under GPL-3+ under kylin-screenshot project.
  .
  Originally based on Lightscreen areadialog.h,
  Copyright 2017  Christian Kaiser <info@ckaiser.com.ar>

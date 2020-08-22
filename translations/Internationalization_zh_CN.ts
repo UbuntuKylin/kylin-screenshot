@@ -461,8 +461,8 @@ Press Space to open the side panel.</source>
     </message>
     <message>
         <location line="+4"/>
-        <source>Launch Flameshot</source>
-        <translation>启动 Flameshot</translation>
+        <source>Launch Kylin-screenshot</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1948,13 +1948,9 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SystemNotification</name>
     <message>
-        <source>Flameshot Info</source>
-        <translation type="vanished">Flameshot 消息</translation>
-    </message>
-    <message>
         <location filename="../src/utils/systemnotification.cpp" line="+45"/>
         <source>Kylin-ScreenShot Info</source>
-        <translation>Kylin-ScreenShot Info</translation>
+        <translation>Kylin-ScreenShot 消息</translation>
     </message>
 </context>
 <context>

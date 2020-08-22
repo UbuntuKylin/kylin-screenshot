@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
     qApp->setApplicationVersion(static_cast<QString>(APP_VERSION));
 
-    // no arguments, just launch Flameshot
+    // no arguments, just launch kylin-screenshot
     if (argc == 1) {
         SingleApplication app(argc, argv);
         CommandLineOptions command_line_options;
@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
                         QObject::tr("Unable to connect via DBus"));
         }
         dbus.registerObject(QStringLiteral("/"), c);
-        dbus.registerService(QStringLiteral("org.dharkael.kylin-screenshot"));
+        dbus.registerService(QStringLiteral("org.dharkael.kylinscreenshot"));
 #endif
         // Exporting captures must be connected after the dbus interface
         // or the dbus signal gets blocked until we end the exports.
@@ -221,7 +221,7 @@ int main(int argc, char *argv[]) {
     if (parser.isSet(helpOption) || parser.isSet(versionOption)) {
     }
     else if (parser.isSet(launcherArgument)) { // LAUNCHER
-        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylin-screenshot"),
+        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
                                            QStringLiteral("/"), QLatin1String(""), QStringLiteral("openLauncher"));
         QDBusConnection sessionBus = QDBusConnection::sessionBus();
         if (!sessionBus.isConnected()) {
@@ -239,7 +239,7 @@ int main(int argc, char *argv[]) {
         uint id = req.id();
 
         // Send message
-        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylin-screenshot"),
+        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
                                            QStringLiteral("/"), QLatin1String(""), QStringLiteral("graphicCapture"));
         m << pathValue << delay << id;
         QDBusConnection sessionBus = QDBusConnection::sessionBus();
@@ -285,7 +285,7 @@ int main(int argc, char *argv[]) {
         DBusUtils dbusUtils;
 
         // Send message
-        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylin-screenshot"),
+        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
                                                QStringLiteral("/"), QLatin1String(""), QStringLiteral("fullScreen"));
         m << pathValue << toClipboard << delay << id;
         QDBusConnection sessionBus = QDBusConnection::sessionBus();
@@ -335,7 +335,7 @@ int main(int argc, char *argv[]) {
         DBusUtils dbusUtils;
 
         // Send message
-        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylin-screenshot"),
+        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
                                                QStringLiteral("/"), QLatin1String(""), QStringLiteral("captureScreen"));
         m << number << pathValue << toClipboard << delay << id;
         QDBusConnection sessionBus = QDBusConnection::sessionBus();
@@ -365,7 +365,7 @@ int main(int argc, char *argv[]) {
                             mainColor || contrastColor);
         ConfigHandler config;
         if (autostart) {
-            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylin-screenshot"),
+            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
                                                QStringLiteral("/"), QLatin1String(""), QStringLiteral("autostartEnabled"));
             if (parser.value(autostartOption) == QLatin1String("false")) {
                 m << false;
@@ -389,7 +389,7 @@ int main(int argc, char *argv[]) {
                        .arg(fh.parsedPattern());
         }
         if (tray) {
-            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylin-screenshot"),
+            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
                                                QStringLiteral("/"), QLatin1String(""), QStringLiteral("trayIconEnabled"));
             if (parser.value(trayOption) == QLatin1String("false")) {
                 m << false;
@@ -423,7 +423,7 @@ int main(int argc, char *argv[]) {
 
         // Open gui when no options
         if (!someFlagSet) {
-            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylin-screenshot"),
+            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
                                                QStringLiteral("/"), QLatin1String(""), QStringLiteral("openConfig"));
             QDBusConnection sessionBus = QDBusConnection::sessionBus();
             if (!sessionBus.isConnected()) {

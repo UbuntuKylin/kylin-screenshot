@@ -453,8 +453,8 @@ Enter を押すと画面をキャプチャー。
     </message>
     <message>
         <location filename="../src/config/geneneralconf.cpp" line="209"/>
-        <source>Launch Flameshot</source>
-        <translation>Flameshot を起動する</translation>
+        <source>Launch Kylin-screenshot</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/config/geneneralconf.cpp" line="217"/>
@@ -1932,10 +1932,6 @@ Note that not all codecs are supported by all containers, and that not all media
 </context>
 <context>
     <name>SystemNotification</name>
-    <message>
-        <source>Flameshot Info</source>
-        <translation type="vanished">Flameshot の情報</translation>
-    </message>
     <message>
         <location filename="../src/utils/systemnotification.cpp" line="45"/>
         <source>Kylin-ScreenShot Info</source>

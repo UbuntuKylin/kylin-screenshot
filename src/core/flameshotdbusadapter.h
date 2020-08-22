@@ -22,7 +22,7 @@
 
 class FlameshotDBusAdapter : public QDBusAbstractAdaptor {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.dharkael.kylin-screenshot")
+    Q_CLASSINFO("D-Bus Interface", "org.dharkael.kylinscreenshot")
 
 public:
     explicit FlameshotDBusAdapter(QObject *parent = nullptr);

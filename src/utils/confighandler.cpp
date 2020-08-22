@@ -13,7 +13,7 @@
 //     GNU General Public License for more details.
 //
 //     You should have received a copy of the GNU General Public License
-//     along with Flameshot.  If not, see <http://www.gnu.org/licenses/>.
+//     along with kylin-screenshot.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "confighandler.h"
 #include <algorithm>
@@ -255,13 +255,13 @@ bool ConfigHandler::verifyLaunchFile() {
     bool res = false;
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    QString path = QDir::homePath() + "/.config/autostart/kylin-screenshot.desktop";
+    QString path = QDir::homePath() + "/.config/autostart/kylinscreenshot.desktop";
     res = QFile(path).exists();
 #elif defined(Q_OS_WIN)
     QSettings bootUpSettings(
                 "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
                 QSettings::NativeFormat);
-    res = bootUpSettings.value("Flameshot").toString() ==
+    res = bootUpSettings.value("kylinscreenshot").toString() ==
             QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
 #endif
     return res;
@@ -278,8 +278,8 @@ void ConfigHandler::setStartupLaunch(const bool start) {
     QFile file(path + "kylinscreenshot.desktop");
     if (start) {
         if (file.open(QIODevice::WriteOnly)) {
-            QByteArray data("[Desktop Entry]\nName=flameshot\nIcon=kylin-screenshot"
-                            "\nExec=flameshot\nTerminal=false\nType=Application"
+            QByteArray data("[Desktop Entry]\nName=kylinscreenshot\nIcon=kylin-screenshot"
+                            "\nExec=kylin-screenshot\nTerminal=false\nType=Application"
                             "\nX-GNOME-Autostart-enabled=true\n");
             file.write(data);
         }
@@ -293,9 +293,9 @@ void ConfigHandler::setStartupLaunch(const bool start) {
     if (start) {
         QString app_path =
                 QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
-        bootUpSettings.setValue("Flameshot", app_path);
+        bootUpSettings.setValue("kylinscreenshot", app_path);
     } else {
-        bootUpSettings.remove("Flameshot");
+        bootUpSettings.remove("kylinscreenshot");
     }
 #endif
     m_settings.setValue(QStringLiteral("startupLaunch"), start);

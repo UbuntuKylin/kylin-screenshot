@@ -28,7 +28,7 @@ QMAKE_CXXFLAGS += -std=c++0x
 TARGET = kylin-screenshot
 TEMPLATE = app
 
-win32:RC_ICONS += img/app/kylin-screenshot.ico
+win32:RC_ICONS += img/app/kylin_screenshot.ico
 
 #release: DESTDIR = build/release
 #debug:   DESTDIR = build/debug
@@ -331,7 +331,7 @@ unix:!macx {
     qmfile.files = $${TRANSLATIONS_FILES}
 
     dbus.path = $${PREFIX}/share/dbus-1/interfaces/
-    dbus.files = dbus/org.dharkael.kylin-screenshot.xml
+    dbus.files = dbus/org.dharkael.kylinscreenshot.xml
 
     icon.path = $${PREFIX}/share/icons/hicolor/
     icon.files = img/hicolor/*
@@ -348,9 +348,9 @@ unix:!macx {
     servicedbus.path = $${PREFIX}/share/dbus-1/services/
 
     packaging {
-        servicedbus.files = dbus/package/org.dharkael.kylin-screenshot.service
+        servicedbus.files = dbus/package/org.dharkael.kylinscreenshot.service
     } else {
-        servicedbus.files = dbus/make/org.dharkael.kylin-screenshot.service
+        servicedbus.files = dbus/make/org.dharkael.kylinscreenshot.service
     }
 
     INSTALLS += target \

@@ -34,10 +34,10 @@ QStringList PathInfo::translationsPaths() {
     QString trPath = QDir::toNativeSeparators(binaryPath + "/translations") ;
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
     return QStringList()
-            << QStringLiteral(APP_PREFIX) + "/share/flameshot/translations"
+            << QStringLiteral(APP_PREFIX) + "/share/kylin-screenshot/translations"
             << trPath
-            << QStringLiteral("/usr/share/flameshot/translations")
-            << QStringLiteral("/usr/local/share/flameshot/translations");
+            << QStringLiteral("/usr/share/kylin-screenshot/translations")
+            << QStringLiteral("/usr/local/share/kylin-screenshot/translations");
 #elif defined(Q_OS_WIN)
     return QStringList()
             << trPath;

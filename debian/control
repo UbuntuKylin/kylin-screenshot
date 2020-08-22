@@ -3,7 +3,7 @@ Section: graphics
 Priority: optional
 Maintainer: Kylin Team <team+kylin@tracker.debian.org>
 Uploaders: huanhuan zhang <zhanghuanhuan@kylinos.cn>
-Build-Depends: debhelper-compat (= 13),
+Build-Depends: debhelper-compat (= 12),
                qt5-qmake,
                qtbase5-dev,
                qttools5-dev-tools,
@@ -34,7 +34,7 @@ Depends: libqt5svg5,
 Suggests: ca-certificates,
           openssl
 Description: Powerful yet simple-to-use screenshot software
- Flameshot is a powerful yet simple-to-use screenshot software.
+ kylin-screenshot is a powerful yet simple-to-use screenshot software.
  Notable features include customizable appearance, in-app screenshot editing,
  D-Bus interface, experimental GNOME/KDE Wayland support, integration with
  Imgur and support for both GUI and CLI interface.

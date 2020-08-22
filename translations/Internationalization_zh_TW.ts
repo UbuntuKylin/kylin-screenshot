@@ -449,7 +449,7 @@ Press Space to open the side panel.</source>
     </message>
     <message>
         <location filename="../src/config/geneneralconf.cpp" line="209"/>
-        <source>Launch Flameshot</source>
+        <source>Launch Kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

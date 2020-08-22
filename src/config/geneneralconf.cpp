@@ -107,7 +107,7 @@ void GeneneralConf::importConfiguration() {
 
 void GeneneralConf::exportFileConfiguration() {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
-                               QStringLiteral("flameshot.conf"));
+                               QStringLiteral("kylin-screenshot.conf"));
 
     // Cancel button
     if (fileName.isNull()) {
@@ -206,7 +206,7 @@ void GeneneralConf::initAutostart() {
     ConfigHandler config;
     bool checked = config.startupLaunchValue();
     m_autostart->setChecked(checked);
-    m_autostart->setToolTip(tr("Launch Flameshot"));
+    m_autostart->setToolTip(tr("Launch Kylin-screenshot"));
     m_layout->addWidget(m_autostart);
 
     connect(m_autostart, &QCheckBox::clicked, this,

@@ -56,7 +56,7 @@ public slots:
     void enableTrayIcon();
     void disableTrayIcon();
     void sendTrayNotification(const QString &text,
-                              const QString &title = QStringLiteral("Flameshot Info"),
+                              const QString &title = QStringLiteral("kylin-screenshot Info"),
                               const int timeout = 5000);
 
     void updateConfigComponents();

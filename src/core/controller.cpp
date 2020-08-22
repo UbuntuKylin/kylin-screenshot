@@ -35,7 +35,7 @@
 #include "src/core/globalshortcutfilter.h"
 #endif
 
-// Controller is the core component of Flameshot, creates the trayIcon and
+// Controller is the core component of kylin-screenshot, creates the trayIcon and
 // launches the capture widget
 
 Controller::Controller() : m_captureWindow(nullptr) {
@@ -202,7 +202,7 @@ void Controller::enableTrayIcon() {
     m_trayIcon = new QSystemTrayIcon();
     m_trayIcon->setToolTip(QStringLiteral("Kylin-Screenshot"));
     m_trayIcon->setContextMenu(trayIconMenu);
-    QIcon trayicon = QIcon::fromTheme("flameshot-tray", QIcon(":img/app/kylin-screenshot.png"));
+    QIcon trayicon = QIcon::fromTheme("kylin-screenshot-tray", QIcon(":img/app/kylin_screenshot.png"));
     m_trayIcon->setIcon(trayicon);
 
     auto trayIconActivated = [this](QSystemTrayIcon::ActivationReason r){

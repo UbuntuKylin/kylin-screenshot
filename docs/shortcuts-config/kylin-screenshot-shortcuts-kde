@@ -2,10 +2,10 @@
 DataCount=1
 
 [Data_1]
-Comment=Shortcuts for taking screenshots with Flameshot
+Comment=Shortcuts for taking screenshots with kylin-screenshot
 DataCount=4
 Enabled=true
-Name=Flameshot
+Name=kylin-screenshot
 SystemGroup=0
 Type=ACTION_DATA_GROUP
 
@@ -14,7 +14,7 @@ Comment=
 ConditionsCount=0
 
 [Data_1_1]
-Comment=Start the Flameshot screenshot tool and take a screenshot
+Comment=Start the kylin-screenshot tool and take a screenshot
 Enabled=true
 Name=Take screenshot
 Type=SIMPLE_ACTION_DATA
@@ -25,7 +25,7 @@ ActionsCount=1
 [Data_1_1Actions0]
 Arguments='Pictures/Screenshots' 0 0
 Call=graphicCapture
-RemoteApp=org.dharkael.kylin-screenshot
+RemoteApp=org.dharkael.kylinscreenshot
 RemoteObj=/
 Type=DBUS
 
@@ -43,7 +43,7 @@ Type=SHORTCUT
 Uuid={65ecb470-7d89-497a-9f9d-406b068f7207}
 
 [Data_1_2]
-Comment=Wait for 3 seconds, then start the Flameshot screenshot tool and take a screenshot
+Comment=Wait for 3 seconds, then start the kylin-screenshot screenshot tool and take a screenshot
 Enabled=true
 Name=Take screenshot with delay
 Type=SIMPLE_ACTION_DATA
@@ -54,7 +54,7 @@ ActionsCount=1
 [Data_1_2Actions0]
 Arguments='Pictures/Screenshots' 3000 0
 Call=graphicCapture
-RemoteApp=org.dharkael.kylin-screenshot
+RemoteApp=org.dharkael.kylinscreenshot
 RemoteObj=/
 Type=DBUS
 
@@ -83,7 +83,7 @@ ActionsCount=1
 [Data_1_3Actions0]
 Arguments='Pictures/Screenshots' false 0 0
 Call=fullScreen
-RemoteApp=org.dharkael.kylin-screenshot
+RemoteApp=org.dharkael.kylinscreenshot
 RemoteObj=/
 Type=DBUS
 
@@ -112,7 +112,7 @@ ActionsCount=1
 [Data_1_4Actions0]
 Arguments='' true 0 0
 Call=fullScreen
-RemoteApp=org.dharkael.kylin-screenshot
+RemoteApp=org.dharkael.kylinscreenshot
 RemoteObj=/
 Type=DBUS
 
@@ -131,5 +131,5 @@ Uuid={a724b514-0cb6-40f0-bf14-c08db726b320}
 
 [Main]
 AllowMerge=false
-ImportId=flameshot
+ImportId=kylin-screenshot
 Version=2
