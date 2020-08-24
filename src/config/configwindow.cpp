@@ -37,7 +37,7 @@ ConfigWindow::ConfigWindow(QWidget *parent) : QTabWidget(parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     const int size = GlobalValues::buttonBaseSize() * 12;
     setMinimumSize(size, size);
-    setWindowIcon(QIcon(":img/app/kylin_screenshot.svg"));
+    setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
     setWindowTitle(tr("Configuration"));
 
     auto changedSlot = [this](QString s){

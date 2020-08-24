@@ -45,7 +45,7 @@ ImgurUploader::ImgurUploader(const QPixmap &capture, QWidget *parent) :
     QWidget(parent), m_pixmap(capture)
 {
     setWindowTitle(tr("Upload to Imgur"));
-    setWindowIcon(QIcon(":img/app/kylin_screenshot.svg"));
+    setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
 
     m_spinner = new LoadSpinner(this);
     m_spinner->setColor(ConfigHandler().uiMainColorValue());

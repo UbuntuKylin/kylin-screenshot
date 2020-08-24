@@ -109,7 +109,7 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture) {
                         QMessageBox::Warning,
                         QObject::tr("Save Error"),
                         msg);
-            saveErrBox.setWindowIcon(QIcon(":img/app/kylin_screenshot.svg"));
+            saveErrBox.setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
             saveErrBox.exec();
         }
     }

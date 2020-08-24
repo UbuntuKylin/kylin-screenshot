@@ -52,7 +52,7 @@ AppLauncherWidget::AppLauncherWidget(const QPixmap &p, QWidget *parent):
     QWidget(parent), m_pixmap(p)
 {
     setAttribute(Qt::WA_DeleteOnClose);
-    setWindowIcon(QIcon(":img/app/kylin_screenshot.svg"));
+    setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
     setWindowTitle(tr("Open With"));
 
     m_keepOpen = ConfigHandler().keepOpenAppLauncherValue();

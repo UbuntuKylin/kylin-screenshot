@@ -8,8 +8,8 @@ debian/debhelper*
 *stamp
 debian/files
 debian/*.substvars
-img/app/kylin-screenshot*
-img/hicolor/*/apps/kylin-screenshot*
+img/app*
+img/hicolor*
 # C++ objects and libs
 *.slo
 *.lo
