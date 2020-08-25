@@ -58,7 +58,29 @@ jobs:
         run: |
           qmake .;
           make -j$(nproc);
-        
+
+  fedora-latest:
+    name: on Fedora Latest
+    runs-on: ubuntu-20.04
+    container: docker.io/library/fedora:latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Install basic debpendencies
+        run: dnf groupinstall -y @development-tools
+      - name: Install latest basic Qt5 in repository
+        run: dnf install -y qt5-devel qt5-qttools-devel qt5-qtbase-private-devel
+      - name: Add RPM Fusion repository
+        run: |
+          dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+          dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+      - name: Install project dependencies
+        run: dnf -y install ffmpeg-devel pulseaudio-libs-devel qt5-qtx11extras-devel libxfixes-devel libx11-devel libxinerama-devel
+      - name: QMake configure & make
+        run: |
+          qmake .;
+          make -j$(nproc);
+
   ubuntu-focal:
     name: on Ubuntu Focal
     runs-on: ubuntu-20.04
