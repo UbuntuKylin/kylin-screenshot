@@ -75,7 +75,7 @@ jobs:
           dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
           dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
       - name: Install project dependencies
-        run: dnf -y install ffmpeg-devel pulseaudio-libs-devel qt5-qtx11extras-devel libxfixes-devel libx11-devel libxinerama-devel
+        run: dnf -y install ffmpeg-devel pulseaudio-libs-devel qt5-qtx11extras-devel libXfixes-devel libX11-devel libXinerama-devel
       - name: QMake configure & make
         run: |
           qmake .;
