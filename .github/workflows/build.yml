@@ -17,136 +17,161 @@ jobs:
     name: on Ubuntu Focal
     runs-on: ubuntu-20.04
     container: docker.io/library/ubuntu:focal
-    env:
-      DEBIAN_FRONTEND: noninteractive
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Update APT repository
         run:  apt-get update -y
       - name: Install basic dependencies
-        run: apt-get -y install   \
-              build-essential     \
-              pkg-kde-tools       \ 
-              pkg-config          \
-              cmake               \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          BASIC_PAKCAGES: (
+            build-essential
+            pkg-kde-tools
+            pkg-config
+            cmake
+          )
+        run: apt-get -y install ${BASIC_PACKAGES[@]}
       - name: Install latest basic Qt5 in repository
-        run: apt-get -y install   \
-              qt5-default         \
-              qttools5-dev-tools  \
-              qt5-qmake           \
-              qtbase5-dev         \
-              qtbase5-private-dev \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          QT5_BASIC_PACKAGES: (
+            qt5-default
+            qttools5-dev-tools
+            qt5-qmake
+            qtbase5-dev
+            qtbase5-private-dev
+          )
+        run: apt-get -y install ${QT5_BASIC_PACKAGES[@]}
       - name: Install project denpendencies
-        run: apt-get -y install   \
-              libqt5svg5-dev      \
-              libavformat-dev     \
-              libavcodec-dev      \
-              libavutil-dev       \
-              libswscale-dev      \
-              libpulse-dev        \
-              libqt5x11extras5    \
-              libqt5x11extras5-dev\
-              libxfixes3          \
-              libxfixes-dev       \
-              libx11-dev          \
-              libxinerama1        \
-              libxinerama-dev     \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          PROJECT_PACKAGES: (
+            libqt5svg5-dev
+            libavformat-dev
+            libavcodec-dev
+            libavutil-dev
+            libswscale-dev
+            libpulse-dev
+            libqt5x11extras5
+            libqt5x11extras5-dev
+            libxfixes3
+            libxfixes-dev
+            libx11-dev
+            libxinerama1
+            libxinerama-dev
+          )
+        run: apt-get -y install ${PROJECT_PACKAGES[@]}
       - name: QMake configure & Make
         run: |
-          mkdir build;
-          cd build;
-          qmake ..;
+          qmake .;
           make -j$(nproc);
 
   ubuntu-devel:
     name: on Ubuntu Devel
     runs-on: ubuntu-20.04
     container: docker.io/library/ubuntu:devel
-    env:
-      DEBIAN_FRONTEND: noninteractive
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Update APT repository
         run:  apt-get update -y
       - name: Install basic dependencies
-        run: apt-get -y install   \
-              build-essential     \
-              pkg-kde-tools       \ 
-              pkg-config          \
-              cmake               \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          BASIC_PAKCAGES: (
+            build-essential
+            pkg-kde-tools
+            pkg-config
+            cmake
+          )
+        run: apt-get -y install ${BASIC_PACKAGES[@]}
       - name: Install latest basic Qt5 in repository
-        run: apt-get -y install   \
-              qt5-default         \
-              qttools5-dev-tools  \
-              qt5-qmake           \
-              qtbase5-dev         \
-              qtbase5-private-dev \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          QT5_BASIC_PACKAGES: (
+            qt5-default
+            qttools5-dev-tools
+            qt5-qmake
+            qtbase5-dev
+            qtbase5-private-dev
+          )
+        run: apt-get -y install ${QT5_BASIC_PACKAGES[@]}
       - name: Install project denpendencies
-        run: apt-get -y install   \
-              libqt5svg5-dev      \
-              libavformat-dev     \
-              libavcodec-dev      \
-              libavutil-dev       \
-              libswscale-dev      \
-              libpulse-dev        \
-              libqt5x11extras5    \
-              libqt5x11extras5-dev\
-              libxfixes3          \
-              libxfixes-dev       \
-              libx11-dev          \
-              libxinerama1        \
-              libxinerama-dev     \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          PROJECT_PACKAGES: (
+            libqt5svg5-dev
+            libavformat-dev
+            libavcodec-dev
+            libavutil-dev
+            libswscale-dev
+            libpulse-dev
+            libqt5x11extras5
+            libqt5x11extras5-dev
+            libxfixes3
+            libxfixes-dev
+            libx11-dev
+            libxinerama1
+            libxinerama-dev
+          )
+        run: apt-get -y install ${PROJECT_PACKAGES[@]}
       - name: QMake configure & Make
         run: |
-          mkdir build;
-          cd build;
-          qmake ..;
+          qmake .;
           make -j$(nproc);
 
   ubuntu-latest:
     name: on Ubuntu Latest
     runs-on: ubuntu-20.04
     container: docker.io/library/ubuntu:latest
-    env:
-      DEBIAN_FRONTEND: noninteractive
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Update APT repository
         run:  apt-get update -y
       - name: Install basic dependencies
-        run: apt-get -y install   \
-              build-essential     \
-              pkg-kde-tools       \ 
-              pkg-config          \
-              cmake               \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          BASIC_PAKCAGES: (
+            build-essential
+            pkg-kde-tools
+            pkg-config
+            cmake
+          )
+        run: apt-get -y install ${BASIC_PACKAGES[@]}
       - name: Install latest basic Qt5 in repository
-        run: apt-get -y install   \
-              qt5-default         \
-              qttools5-dev-tools  \
-              qt5-qmake           \
-              qtbase5-dev         \
-              qtbase5-private-dev \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          QT5_BASIC_PACKAGES: (
+            qt5-default
+            qttools5-dev-tools
+            qt5-qmake
+            qtbase5-dev
+            qtbase5-private-dev
+          )
+        run: apt-get -y install ${QT5_BASIC_PACKAGES[@]}
+              
       - name: Install project denpendencies
-        run: apt-get -y install   \
-              libqt5svg5-dev      \
-              libavformat-dev     \
-              libavcodec-dev      \
-              libavutil-dev       \
-              libswscale-dev      \
-              libpulse-dev        \
-              libqt5x11extras5    \
-              libqt5x11extras5-dev\
-              libxfixes3          \
-              libxfixes-dev       \
-              libx11-dev          \
-              libxinerama1        \
-              libxinerama-dev     \
+        env:
+          DEBIAN_FRONTEND: noninteractive
+          PROJECT_PACKAGES: (
+            libqt5svg5-dev
+            libavformat-dev
+            libavcodec-dev
+            libavutil-dev
+            libswscale-dev
+            libpulse-dev
+            libqt5x11extras5
+            libqt5x11extras5-dev
+            libxfixes3
+            libxfixes-dev
+            libx11-dev
+            libxinerama1
+            libxinerama-dev
+          )
+        run: apt-get -y install ${PROJECT_PACKAGES[@]}
       - name: QMake configure & Make
         run: |
-          mkdir build;
-          cd build;
-          qmake ..;
+          qmake .;
           make -j$(nproc);
