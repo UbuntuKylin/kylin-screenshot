@@ -94,7 +94,7 @@ jobs:
       - name: Install basic debpendencies
         run: dnf groupinstall --nogpg -y "Development Tools"
       - name: Install latest basic Qt5 in repository
-        run: dnf --nogpg install -y qt5-devel qt5-qttools-devel qt5-qtbase-private-devel
+        run: dnf --nogpg install -y qt5-qttools-devel qt5-qtbase-private-devel
       - name: Add RPM Fusion repository
         run: |
           dnf --nogpg -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
