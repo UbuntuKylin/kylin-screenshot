@@ -75,7 +75,13 @@ jobs:
           dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
           dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
       - name: Install project dependencies
-        run: dnf -y install ffmpeg-devel pulseaudio-libs-devel qt5-qtx11extras-devel libXfixes-devel libX11-devel libXinerama-devel
+        run: dnf -y install ffmpeg-devel ffmpeg-libs pulseaudio-libs-devel qt5-qtx11extras-devel libXfixes-devel libX11-devel libXinerama-devel
+      - name: Apply patch
+        run: |
+          dnf -y install curl;
+          curl -o ffmpeg.patch https://gist.githubusercontent.com/brsvh/56ee17fd4f210606228965ac307a0c8c/raw/2e49eb9404a0d531745274bb3ef247256f067ed5/kylin-software-center-fedora-ffmpeg.patch;
+          patch -p3 < ./ffmpeg.patch;
+          rm ffmepg.patch;
       - name: QMake configure & make
         run: |
           qmake-qt5 .;
