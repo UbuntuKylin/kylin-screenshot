@@ -23,6 +23,7 @@
 #include "font_options.h"
 #include <QHBoxLayout>
 #include <QPainter>
+#include <QPainterPath>
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
