@@ -32,6 +32,32 @@ jobs:
         run: |
           qmake-qt5 .;
           make -j$(nproc);
+
+  debian-unstable:
+    name: on Debian Unstable
+    runs-on: ubuntu-20.04
+    container: docker.io/library/debian:sid
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Update APT repository
+        run:  apt-get update -y
+      - name: Install basic dependencies
+        env:
+          DEBIAN_FRONTEND: noninteractive            
+        run: apt-get -y install build-essential pkg-kde-tools pkg-config cmake
+      - name: Install latest basic Qt5 in repository
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: apt-get -y install qt5-default qttools5-dev-tools qt5-qmake qtbase5-dev qtbase5-private-dev
+      - name: Install project denpendencies
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: apt-get -y install libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
+      - name: QMake configure & Make
+        run: |
+          qmake .;
+          make -j$(nproc);
         
   ubuntu-focal:
     name: on Ubuntu Focal
