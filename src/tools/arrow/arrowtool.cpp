@@ -15,6 +15,7 @@
 //     You should have received a copy of the GNU General Public License
 //     along with Kylin-Screenshot.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <QPainterPath>
 #include "arrowtool.h"
 
 namespace {
