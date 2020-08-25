@@ -79,9 +79,9 @@ jobs:
       - name: Apply patch
         run: |
           dnf -y install curl;
-          curl -o ffmpeg.patch https://gist.githubusercontent.com/brsvh/56ee17fd4f210606228965ac307a0c8c/raw/2e49eb9404a0d531745274bb3ef247256f067ed5/kylin-software-center-fedora-ffmpeg.patch;
-          git apply ffmpeg.patch;
-          rm ffmpeg.patch;
+          curl -O https://gist.githubusercontent.com/brsvh/fdc678b4528a5808f150ecb1dbf6d096/raw/3105d0460a23552a4fadc88e277ae13b12d812b9/ffmpeg.diff
+          git apply ffmpeg.diff;
+          rm ffmpeg.diff;
       - name: QMake configure & make
         run: |
           qmake-qt5 .;
