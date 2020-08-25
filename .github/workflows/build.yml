@@ -25,9 +25,9 @@ jobs:
       - name: Install basic dependencies
         run: pacman -S --noconfirm base-devel cmake pkgconf
       - name: Install latest basic Qt5 in repository
-        run: pacman -S --noconfirm qt5-base qt5-tools
+        run: pacman -S --noconfirm qt5-base qt5-tools glibc
       - name: Install project denpendencies
-        run: pacman -S --noconfirm qt5-svg ffmpeg libpulse qt5-x11extras libxfixes libx11 libxinerama glibc
+        run: pacman -S --noconfirm qt5-svg ffmpeg libpulse qt5-x11extras libxfixes libx11 libxinerama
       - name: QMake configure & Make
         run: |
           qmake-qt5 .;
