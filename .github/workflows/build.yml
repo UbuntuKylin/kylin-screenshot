@@ -13,6 +13,26 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
+  archlinux-latest:
+    name: on Archlinux Latest
+    runs-on: ubuntu-20.04
+    container: docker.io/library/archlinux:latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Refresh Pacman repository
+        run: pacman -Sy
+      - name: Install basic dependencies
+        run: pacman -S --noconfirm base-devel cmake pkgconf
+      - name: Install latest basic Qt5 in repository
+        run: pacman -S --noconfirm qt5-base qt5-tools
+      - name: Install project denpendencies
+        run: pacman -S --noconfirm qt5-svg ffmpeg libpulse qt5-x11extras libxfixes libx11 libxinerama
+      - name: QMake configure & Make
+        run: |
+          qmake-qt5 .;
+          make -j$(nproc);
+        
   ubuntu-focal:
     name: on Ubuntu Focal
     runs-on: ubuntu-20.04
@@ -33,7 +53,7 @@ jobs:
       - name: Install project denpendencies
         env:
           DEBIAN_FRONTEND: noninteractive
-        run: apt-get -y install             libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
+        run: apt-get -y install libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
       - name: QMake configure & Make
         run: |
           qmake .;
@@ -59,7 +79,7 @@ jobs:
       - name: Install project denpendencies
         env:
           DEBIAN_FRONTEND: noninteractive
-        run: apt-get -y install             libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
+        run: apt-get -y install libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
       - name: QMake configure & Make
         run: |
           qmake .;
@@ -85,7 +105,7 @@ jobs:
       - name: Install project denpendencies
         env:
           DEBIAN_FRONTEND: noninteractive
-        run: apt-get -y install             libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
+        run: apt-get -y install libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
       - name: QMake configure & Make
         run: |
           qmake .;
