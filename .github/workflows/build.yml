@@ -1,0 +1,63 @@
+name: Check build
+
+on:
+  push:
+    branches:
+      - master
+    
+  pull_request:
+    branches:
+      - master
+
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  ubuntu-focal:
+    name: on Ubuntu Focal
+    runs-on: ubuntu-20.04
+    container: docker.io/library/ubuntu:focal
+    env:
+      DEBIAN_FRONTEND: noninteractive
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Update APT repository
+        run:  apt-get update -y
+      - name: Install basic dependencies
+        run: |
+          apt-get -y install    \
+            build-essential     \
+            pkg-kde-tools       \ 
+            pkg-config          \
+            cmake               \
+      - name: Install latest basic Qt5 in repository
+        run: |
+          apt-get -y install    \
+            qt5-default         \
+            qttools5-dev-tools  \
+            qt5-qmake           \
+            qtbase5-dev         \
+            qtbase5-private-dev \
+      - name: Install project denpendencies
+        run: |
+          apt-get -y install    \
+            libqt5svg5-dev      \
+            libavformat-dev     \
+            libavcodec-dev      \
+            libavutil-dev       \
+            libswscale-dev      \
+            libpulse-dev        \
+            libqt5x11extras5    \
+            libqt5x11extras5-dev\
+            libxfixes3          \
+            libxfixes-dev       \
+            libx11-dev          \
+            libxinerama1        \
+            libxinerama-dev     \
+      - name: QMake configure & Make
+        run: |
+          mkdir build;
+          cd build;
+          qmake ..;
+          make -j$(nproc);
