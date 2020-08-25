@@ -80,7 +80,7 @@ jobs:
         run: |
           dnf -y install curl;
           curl -o ffmpeg.patch https://gist.githubusercontent.com/brsvh/56ee17fd4f210606228965ac307a0c8c/raw/2e49eb9404a0d531745274bb3ef247256f067ed5/kylin-software-center-fedora-ffmpeg.patch;
-          patch -p3 < ./ffmpeg.patch;
+          git apply ffmpeg.patch;
           rm ffmepg.patch;
       - name: QMake configure & make
         run: |
