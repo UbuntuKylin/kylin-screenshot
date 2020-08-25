@@ -92,7 +92,7 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Install basic debpendencies
-        run: dnf groupinstall -y "Development Tools"
+        run: dnf groupinstall --nogpg -y "Development Tools"
       - name: Install latest basic Qt5 in repository
         run: dnf --nogpg install -y qt5-devel qt5-qttools-devel qt5-qtbase-private-devel
       - name: Add RPM Fusion repository
