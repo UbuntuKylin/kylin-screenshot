@@ -24,44 +24,16 @@ jobs:
         run:  apt-get update -y
       - name: Install basic dependencies
         env:
-          DEBIAN_FRONTEND: noninteractive
-          BASIC_PAKCAGES: (
-            build-essential
-            pkg-kde-tools
-            pkg-config
-            cmake
-          )
-        run: apt-get -y install ${BASIC_PACKAGES[@]}
+          DEBIAN_FRONTEND: noninteractive            
+        run: apt-get -y install build-essential pkg-kde-tools pkg-config cmake
       - name: Install latest basic Qt5 in repository
         env:
           DEBIAN_FRONTEND: noninteractive
-          QT5_BASIC_PACKAGES: (
-            qt5-default
-            qttools5-dev-tools
-            qt5-qmake
-            qtbase5-dev
-            qtbase5-private-dev
-          )
-        run: apt-get -y install ${QT5_BASIC_PACKAGES[@]}
+        run: apt-get -y install qt5-default qttools5-dev-tools qt5-qmake qtbase5-dev qtbase5-private-dev
       - name: Install project denpendencies
         env:
           DEBIAN_FRONTEND: noninteractive
-          PROJECT_PACKAGES: (
-            libqt5svg5-dev
-            libavformat-dev
-            libavcodec-dev
-            libavutil-dev
-            libswscale-dev
-            libpulse-dev
-            libqt5x11extras5
-            libqt5x11extras5-dev
-            libxfixes3
-            libxfixes-dev
-            libx11-dev
-            libxinerama1
-            libxinerama-dev
-          )
-        run: apt-get -y install ${PROJECT_PACKAGES[@]}
+        run: apt-get -y install             libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
       - name: QMake configure & Make
         run: |
           qmake .;
@@ -78,44 +50,16 @@ jobs:
         run:  apt-get update -y
       - name: Install basic dependencies
         env:
-          DEBIAN_FRONTEND: noninteractive
-          BASIC_PAKCAGES: (
-            build-essential
-            pkg-kde-tools
-            pkg-config
-            cmake
-          )
-        run: apt-get -y install ${BASIC_PACKAGES[@]}
+          DEBIAN_FRONTEND: noninteractive            
+        run: apt-get -y install build-essential pkg-kde-tools pkg-config cmake
       - name: Install latest basic Qt5 in repository
         env:
           DEBIAN_FRONTEND: noninteractive
-          QT5_BASIC_PACKAGES: (
-            qt5-default
-            qttools5-dev-tools
-            qt5-qmake
-            qtbase5-dev
-            qtbase5-private-dev
-          )
-        run: apt-get -y install ${QT5_BASIC_PACKAGES[@]}
+        run: apt-get -y install qt5-default qttools5-dev-tools qt5-qmake qtbase5-dev qtbase5-private-dev
       - name: Install project denpendencies
         env:
           DEBIAN_FRONTEND: noninteractive
-          PROJECT_PACKAGES: (
-            libqt5svg5-dev
-            libavformat-dev
-            libavcodec-dev
-            libavutil-dev
-            libswscale-dev
-            libpulse-dev
-            libqt5x11extras5
-            libqt5x11extras5-dev
-            libxfixes3
-            libxfixes-dev
-            libx11-dev
-            libxinerama1
-            libxinerama-dev
-          )
-        run: apt-get -y install ${PROJECT_PACKAGES[@]}
+        run: apt-get -y install             libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
       - name: QMake configure & Make
         run: |
           qmake .;
@@ -132,45 +76,16 @@ jobs:
         run:  apt-get update -y
       - name: Install basic dependencies
         env:
-          DEBIAN_FRONTEND: noninteractive
-          BASIC_PAKCAGES: (
-            build-essential
-            pkg-kde-tools
-            pkg-config
-            cmake
-          )
-        run: apt-get -y install ${BASIC_PACKAGES[@]}
+          DEBIAN_FRONTEND: noninteractive            
+        run: apt-get -y install build-essential pkg-kde-tools pkg-config cmake
       - name: Install latest basic Qt5 in repository
         env:
           DEBIAN_FRONTEND: noninteractive
-          QT5_BASIC_PACKAGES: (
-            qt5-default
-            qttools5-dev-tools
-            qt5-qmake
-            qtbase5-dev
-            qtbase5-private-dev
-          )
-        run: apt-get -y install ${QT5_BASIC_PACKAGES[@]}
-              
+        run: apt-get -y install qt5-default qttools5-dev-tools qt5-qmake qtbase5-dev qtbase5-private-dev
       - name: Install project denpendencies
         env:
           DEBIAN_FRONTEND: noninteractive
-          PROJECT_PACKAGES: (
-            libqt5svg5-dev
-            libavformat-dev
-            libavcodec-dev
-            libavutil-dev
-            libswscale-dev
-            libpulse-dev
-            libqt5x11extras5
-            libqt5x11extras5-dev
-            libxfixes3
-            libxfixes-dev
-            libx11-dev
-            libxinerama1
-            libxinerama-dev
-          )
-        run: apt-get -y install ${PROJECT_PACKAGES[@]}
+        run: apt-get -y install             libqt5svg5-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libpulse-dev libqt5x11extras5 libqt5x11extras5-dev libxfixes3 libxfixes-dev libx11-dev libxinerama1 libxinerama-dev
       - name: QMake configure & Make
         run: |
           qmake .;
