@@ -22,6 +22,7 @@
 #include "save_location.h"
 #include <QHBoxLayout>
 #include <QPainter>
+#include <QPainterPath>
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
 #include <QFileDialog>

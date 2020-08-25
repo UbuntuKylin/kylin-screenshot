@@ -21,6 +21,7 @@
  */
 #include "fontsize_color_chose2.h"
 #include <QPainter>
+#include <QPainterPath>
 #include <QGraphicsDropShadowEffect>
 #include <QMouseEvent>
 #define SHADOW_WIDTH  5     //小三角的阴影宽度

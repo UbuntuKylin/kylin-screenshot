@@ -40,6 +40,7 @@
 #include <QShortcut>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QPainterPath>
 #include <QMouseEvent>
 #include <QBuffer>
 #include <QDesktopWidget>
