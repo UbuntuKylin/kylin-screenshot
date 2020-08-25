@@ -100,7 +100,7 @@ jobs:
           dnf --nogpg -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
           dnf --nogpg -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
       - name: Install project dependencies
-        run: dnf --nogpg -y install ffmpeg-devel ffmpeg-libs pulseaudio-libs-devel qt5-qtx11extras-devel libXfixes-devel libX11-devel libXinerama-devel
+        run: dnf --nogpg -y install ffmpeg-devel ffmpeg-libs pulseaudio-libs-devel qt5-qtsvg qt5-qtx11extras-devel libXfixes-devel libX11-devel libXinerama-devel
       - name: Apply patch
         run: |
           git apply patches/fedora-ffmpeg-path.diff;
