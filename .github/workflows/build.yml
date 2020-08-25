@@ -106,7 +106,10 @@ jobs:
         run: dnf --nogpg -y install ffmpeg-devel ffmpeg-libs pulseaudio-libs-devel qt5-qtsvg-devel qt5-qtx11extras-devel libXfixes-devel libX11-devel libXinerama-devel
       - name: Apply patch
         run: |
-          git apply patches/fedora-ffmpeg-path.diff;
+          dnf -y install curl;
+          curl -O https://gist.githubusercontent.com/brsvh/fdc678b4528a5808f150ecb1dbf6d096/raw/3105d0460a23552a4fadc88e277ae13b12d812b9/ffmpeg.diff;
+          git apply ffmpeg.diff;
+          rm ffmpeg.diff;
       - name: QMake configure & make
         run: |
           qmake-qt5 .;
