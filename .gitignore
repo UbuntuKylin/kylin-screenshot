@@ -10,6 +10,10 @@ debian/files
 debian/*.substvars
 img/app*
 img/hicolor*
+dbus/make/org.dharkael.kylin-screenshot.service
+dbus/package/org.dharkael.kylin-screenshot.service 
+dbus/org.dharkael.Flameshot.xml
+
 # C++ objects and libs
 *.slo
 *.lo

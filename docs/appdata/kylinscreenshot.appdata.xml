@@ -2,7 +2,7 @@
 <!-- Copyright 2018 Vitaly Zaitsev <vitaly@easycoding.org> -->
 <component type="desktop">
   <id>kylinscreenshot.desktop</id>
-  <metadata_license>CC0-1.0</metadata_license>
+  <metadata_license>GPL-3+</metadata_license>
   <project_license>GPL-3.0-or-later and ASL 2.0 and GPLv2 and LGPLv3 and Free Art</project_license>
   <name>kylin-screenshot</name>
   <summary>Powerful and simple to use screenshot software</summary>
@@ -12,7 +12,6 @@
       editor with advanced features.
     </p>
   </description>
-  </screenshots>
   <url type="homepage">https://github.com/UbuntuKylin/kylin-screenshot</url>
   <update_contact>https://github.com/luckhuanhuan</update_contact>
 </component>
