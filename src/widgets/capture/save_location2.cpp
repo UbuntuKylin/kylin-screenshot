@@ -1,6 +1,6 @@
 /*
  *
- * Copyright : 2020 KylinSoft Co., Ltd.
+ * Copyright: 2020 KylinSoft Co., Ltd.
  * Authors:
  *   huanhuan zhang <zhanghuanhuan@cs2c.com.cn.com>
  * This program or library is free software; you can redistribute it

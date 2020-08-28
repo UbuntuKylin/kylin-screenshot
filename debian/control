@@ -2,7 +2,7 @@ Source: kylin-screenshot
 Section: graphics
 Priority: optional
 Maintainer: Kylin Team <team+kylin@tracker.debian.org>
-Uploaders: huanhuan zhang <zhanghuanhuan@kylinos.cn>
+Uploaders: handsome_feng <jianfengli@ubuntukylin.com>
 Build-Depends: debhelper-compat (= 13),
                qt5-qmake,
                qtbase5-dev,
@@ -28,8 +28,7 @@ Vcs-Git: https://github.com/ubuntukylin/kylin-screenshot.git
 
 Package: kylin-screenshot
 Architecture: any
-Depends: libqt5svg5,
-         ${shlibs:Depends},
+Depends: ${shlibs:Depends},
          ${misc:Depends},
 Suggests: ca-certificates,
           openssl

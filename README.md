@@ -3,7 +3,7 @@
     <h1>
       Kylin-Screenshot
     </h1>
-    <h4>Powerful yet simple to use screenshot software.</h4>
+    <h4>Powerful yet simple to use screenshot software forked from flameshot.</h4>
   </p>
 </div>
 
@@ -289,10 +289,3 @@ Info: If I take code from your project and that implies a relicense to GPLv3, yo
 ## Contribute
 
 If you want to contribute check the [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## Acknowledgment
-I really appreciate those who have shown interest in the early development process:
-- [Cosmo](https://github.com/philpem)
-- [XerTheSquirrel](https://github.com/XerTheSquirrel)
-- [The members of Sugus GNU/Linux](https://github.com/SUGUS-GNULinux)
-- ismatori
