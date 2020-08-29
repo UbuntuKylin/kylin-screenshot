@@ -2,7 +2,7 @@
  *
  * Copyright: 2020 KylinSoft Co., Ltd.
  * Authors:
- *   huanhuan zhang <zhanghuanhuan@cs2c.com.cn.com>
+ *   huanhuan zhang <zhanghuanhuan@kylinos.cn>
  * This program or library is free software; you can redistribute it
  * and/or modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
