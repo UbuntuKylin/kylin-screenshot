@@ -1,5 +1,4 @@
 /*
- *
  * Copyright:  2020 KylinSoft Co., Ltd.
  * Authors:
  *   huanhuan zhang <zhanghuanhuan@cs2c.com.cn.com>
