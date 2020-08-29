@@ -15,7 +15,7 @@
 - [Usage](#usage)
   - [Dependencies](#dependencies)
   - [Installations](installations)
-  - [Terminal Commond](terminal commond)
+  - [Terminal_Commond](terminal-commond)
   - [Keyboard Shortcuts](#keyboard-shortcuts)
 
 ## Features
@@ -28,7 +28,7 @@
 ## Usage
 ### Dependencies
 You will need the following packages to compile kylin-screenshot:
--	        qt5-qmake,
+-	          qt5-qmake,
 -               qtbase5-dev,
 -               qttools5-dev-tools,
 -               libqt5svg5-dev,
