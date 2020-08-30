@@ -6,7 +6,7 @@
     <h4>Powerful yet simple to use screenshot software forked from flameshot.</h4>
   </p>
 </div>
-  kylin-screenshot is a powerful softweare to screencut and screenrerecorder , which is  developed with Qt5.The software can add circular marquee, rectangular marquee, blur, add marker, add text and other functions to the screenshot when taking screenshots.and you can set whether to record sound, display the recording mouse, set the recording frame rate and other settings when recording screen.
+  kylin-screenshot is a powerful screenshot and screen recording tool. It allows you to take screenshots of the captured images in rectangular and circular boxes, set blur, add markers, add text and more. And set mouse display, sound recording, video frame rate, audio bit rate when making screen recording.
 
 
 ## Index
@@ -28,7 +28,7 @@
 ## Usage
 ### Dependencies
 You will need the following packages to compile kylin-screenshot:
--	          qt5-qmake,
+-	            qt5-qmake,
 -               qtbase5-dev,
 -               qttools5-dev-tools,
 -               libqt5svg5-dev,
@@ -46,7 +46,7 @@ You will need the following packages to compile kylin-screenshot:
 -               libxinerama-dev,
 You can Build and Install by apt command
 ```shell
-sudo apt install kylin-screenshot-build-deps_1.0.0-1_all.deb
+sudo mk-build-deps -i kylin-screenshot/debian/control
 ```
 ###Installations
 After installing all the dependencies, finally run the following commands in the sources root directory:
@@ -55,7 +55,7 @@ git clone https://github.com/ubuntukylin/kylin-screenshot.git
 cd kylin-screenshot
 debuild
 cd ..
-dpkg -i kylin-screenshot_1.0.0-1_amd64.build
+dpkg -i kylin-screenshot_1.0.0-1_amd64.deb
 ```
 
 ### Terminal Command
@@ -90,5 +90,3 @@ These shortcuts are available in GUI mode:
 | <kbd>Ctrl</kbd> + <kbd>S</kbd>                                            | Save selection as a file                                       |
 | <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                            | Undo the last modification                                     |
 | <kbd>Spacebar</kbd>                                                       | Toggle visibility of sidebar with options of the selected tool |
-
- 
