@@ -254,7 +254,7 @@ bool ConfigHandler::verifyLaunchFile() {
     bool res = false;
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    QString path = QDir::homePath() + "/.config/autostart/kylinscreenshot.desktop";
+    QString path = QDir::homePath() + "/.config/autostart/kylin-screenshot.desktop";
     res = QFile(path).exists();
 #elif defined(Q_OS_WIN)
     QSettings bootUpSettings(
@@ -274,7 +274,7 @@ void ConfigHandler::setStartupLaunch(const bool start) {
         autostartDir.mkpath(".");
     }
 
-    QFile file(path + "kylinscreenshot.desktop");
+    QFile file(path + "kylin-screenshot.desktop");
     if (start) {
         if (file.open(QIODevice::WriteOnly)) {
             QByteArray data("[Desktop Entry]\nName=kylinscreenshot\nIcon=kylin-screenshot"

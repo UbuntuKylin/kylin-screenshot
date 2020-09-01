@@ -343,7 +343,7 @@ unix:!macx {
     appdata.files = docs/appdata/kylinscreenshot.appdata.xml
 
     desktopentry.path = $${PREFIX}/share/applications
-    desktopentry.files = docs/desktopEntry/package/kylinscreenshot.desktop
+    desktopentry.files = docs/desktopEntry/package/kylin-screenshot.desktop
 
     servicedbus.path = $${PREFIX}/share/dbus-1/services/
 
