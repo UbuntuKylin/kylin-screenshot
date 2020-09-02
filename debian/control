@@ -33,7 +33,8 @@ Depends: ${shlibs:Depends},
 Suggests: ca-certificates,
           openssl
 Description: Powerful yet simple-to-use screenshot software
- kylin-screenshot is a powerful yet simple-to-use screenshot software.
- Notable features include customizable appearance, in-app screenshot editing,
- D-Bus interface, experimental GNOME/KDE Wayland support, integration with
- Imgur and support for both GUI and CLI interface.
+ kylin-screenshot is a powerful screenshot and screen recording tool.
+ It allows you to take screenshots of the captured images in rectangular
+ and circular boxes, set blur, add markers, add text and more. And set
+ mouse display, sound recording, video frame rate, audio bit rate when
+ making screen recording.
