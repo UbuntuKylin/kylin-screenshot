@@ -356,7 +356,15 @@ void ButtonHandler::moveButtonsToPoints(
 {
     for (const QPoint &p: points) {
         auto button = m_vectorButtons[index];
-        if (index == 2 || index == 3)
+	if (index == 1)
+        {
+            button->move(p.x()-m_buttonBaseSize/4,p.y());
+        }
+	else if (index == 2 || index == 3)
+        {
+            button->move(p.x()+13,p.y());
+        }
+        else if (index == 2 || index == 3)
         {
             button->move(p.x()+13,p.y());
         }

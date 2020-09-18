@@ -37,6 +37,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
 {
     initButton();
     setCursor(Qt::ArrowCursor);
+    updateIcon();
     QFont font ( "Noto Sans CJK Regular", 12, 20);
     if (t == TYPE_OPTION)
     {
@@ -59,16 +60,12 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     {
         if (t == TYPE_SAVE)
         {
-            setStyleSheet("QPushButton {"
-                           "background-color:rgba(100,0, 0,1)}");
+            setStyleSheet("QPushButton{font-family:'宋体';font-size:20px;color:rgb(255,255,255,255);}");
             setFlat(false);
             //setStyleSheet(styleSheet());
+            //font.setStyle()
             setFont(font);
             setText("保存");
-        }
-        else
-        {
-            updateIcon();
         }
     }
 

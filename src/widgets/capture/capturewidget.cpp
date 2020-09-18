@@ -358,7 +358,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         // paint handlers
         painter.setPen(m_uiColor);
         painter.setRenderHint(QPainter::Antialiasing);
-        painter.setOpacity(0.7);
+        painter.setOpacity(0.2);
         painter.setBrush(QColor(195,195,195));
         painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,70,20);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2")
@@ -367,7 +367,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
             painter.setOpacity(0.2);
             QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
-                             GlobalValues::buttonBaseSize()*22+2,GlobalValues::buttonBaseSize()+2);
+                             GlobalValues::buttonBaseSize()*21+2,GlobalValues::buttonBaseSize()+2);
             painter.drawRoundRect(rr,6,6);
             QPainterPath path;
             QColor color(92,93,95,50);
@@ -382,7 +382,6 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 color.setAlpha(arr[i]);
                 painter.setPen(color);
                 painter.drawPath(path);
-
             }
             painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3-2,
                                     m_selection->geometry().intersected(rect()).y()+GlobalValues::buttonBaseSize()/3-1,
@@ -390,10 +389,22 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize()/2,
                                     GlobalValues::buttonBaseSize()/2);
-            painter.setBrush(QColor(0,0,0,255));
+            QColor rectColor(QColor(255,255,255));
+            painter.setOpacity(0.8);
+            //rectColor.setAlpha(200);
+            painter.setBrush(rectColor);
+            painter.drawRect(vectorButtons.first()->pos().x(),vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/10,GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize()/12*10);
+            QColor rectColor1(QColor(200,200,200));
+            painter.setBrush(rectColor1);
+            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize(),vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/10,GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize()/12*10);
+	    QColor rectColor2(QColor(0,98,240));
+            painter.setBrush(rectColor2);
+            painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*19,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,GlobalValues::buttonBaseSize()*3/2, GlobalValues::buttonBaseSize()/4*3,6,6);
+	    painter.setBrush(QColor(0,0,0,100));
             //两个分隔符
-            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+GlobalValues::buttonBaseSize()/2,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 2, GlobalValues::buttonBaseSize()/2);
-            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*16+GlobalValues::buttonBaseSize()/2-10,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 2,GlobalValues::buttonBaseSize()/2);
+            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+GlobalValues::buttonBaseSize()/2,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1, GlobalValues::buttonBaseSize()/2);
+            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*16+GlobalValues::buttonBaseSize()/2,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1,GlobalValues::buttonBaseSize()/2);
+	    painter.setOpacity(0.5);
         }
         update();
         painter.setBrush(m_uiColor);
@@ -815,7 +826,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_options2->show();
                 }
             }
-            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
+            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing")
             {
                 if (b->y()+80 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
@@ -898,7 +909,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     qDebug()<<"aaaaaaaaaaaaa2222";
                 }
             }
-            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
+            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing")
             {
                 if (b->y()-80 >= 0)
                 {
@@ -1003,7 +1014,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
-                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
+                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing")
                     {
                         if (b->y()+80 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
@@ -1088,7 +1099,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
-                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
+                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing")
                     {
                         if (b->y()-80 >= 0)
                         {
@@ -1189,8 +1200,8 @@ void CaptureWidget::setState(CaptureButton *b) {
              break;
          case CaptureTool::REQ_LUPING:
              //m_captureDone = true;
-             hide_window();
-             screenCap->show();
+             //hide_window();
+             //screenCap->show();
              break;
          case CaptureTool::REQ_OPTIONS:
              //update();

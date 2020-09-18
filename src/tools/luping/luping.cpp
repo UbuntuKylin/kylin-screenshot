@@ -25,7 +25,7 @@ LuPing::LuPing(QObject *parent) : AbstractActionTool(parent)
 }
 bool LuPing::closeOnButtonPressed() const
 {
-     return true;
+     return false;
 }
 
 QIcon LuPing:: icon(const QColor &background, bool inEditor) const
