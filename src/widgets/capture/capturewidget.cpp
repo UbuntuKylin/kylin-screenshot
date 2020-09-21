@@ -775,7 +775,7 @@ void CaptureWidget::setState(CaptureButton *b) {
         {
             if(b->tool()->name()=="Options")
             {
-                if (b->y()+155 <= QGuiApplication::primaryScreen()->geometry().height())
+                if (b->y()+170 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
                     font_color_point->setX(b->x()-67);
                     font_color_point->setY(b->y()+50);
@@ -800,7 +800,7 @@ void CaptureWidget::setState(CaptureButton *b) {
             }
             else if(b->tool()->name()=="text")
             {
-                if (b->y()+95 <= QGuiApplication::primaryScreen()->geometry().height())
+                if (b->y()+125 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
                     save_location2->hide();
                     save_location->hide();
@@ -826,9 +826,9 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_options2->show();
                 }
             }
-            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing")
+            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing" && b->tool()->name() != "blur")
             {
-                if (b->y()+80 <= QGuiApplication::primaryScreen()->geometry().height())
+                if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
                     save_location2->hide();
                     save_location->hide();
@@ -853,6 +853,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color2->show();
                 }
             }
+	    //resolved bug  19105 by zhanghuanhuan
+	    else if (b->tool()->name() == "blur")
+	    {
+		    b->setIcon(b->tool()->icon(m_contrastUiColor,true));
+	    }
          }
         else {
             if(b->tool()->name()=="Options")
@@ -909,7 +914,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     qDebug()<<"aaaaaaaaaaaaa2222";
                 }
             }
-            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing")
+            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing" && b->tool()->name() != "blur")
             {
                 if (b->y()-80 >= 0)
                 {
@@ -933,6 +938,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                     fontsize_color_chose2_default();
                     font_color->show();
                 }
+            }
+	    //resolve bug  19105 by zhanghuanhuan
+	    else if (b->tool()->name() == "blur")
+            {
+                    b->setIcon(b->tool()->icon(m_contrastUiColor,true));
             }
         }
         processTool(b->tool());
@@ -963,7 +973,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                 {
                     if(b->tool()->name()=="Options")
                     {
-                        if (b->y()+155 <= QGuiApplication::primaryScreen()->geometry().height())
+                        if (b->y()+170 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
                             font_color_point->setX(b->x()-67);
                             font_color_point->setY(b->y()+50);
@@ -988,7 +998,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     }
                     else if(b->tool()->name()=="text")
                     {
-                        if (b->y()+95 <= QGuiApplication::primaryScreen()->geometry().height())
+                        if (b->y()+125 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
                             save_location2->hide();
                             save_location->hide();
@@ -1014,9 +1024,9 @@ void CaptureWidget::setState(CaptureButton *b) {
                             qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
-                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing")
+                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing" && b->tool()->name() != "blur")
                     {
-                        if (b->y()+80 <= QGuiApplication::primaryScreen()->geometry().height())
+                        if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
                             save_location2->hide();
                             save_location->hide();
@@ -1040,6 +1050,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                             fontsize_color_chose2_default();
                             font_color2->show();
                         }
+                    }
+		     //resolved bug  19105 by zhanghuanhuan
+		    else if (b->tool()->name() == "blur")
+           	    {
+                    	 b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     }
                  }
                 else {
@@ -1099,7 +1114,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
-                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing")
+                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "LuPing" && b->tool()->name() != "blur")
                     {
                         if (b->y()-80 >= 0)
                         {
@@ -1124,6 +1139,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_color->show();
                         }
                     }
+		     //resolved bug  19105  by zhanghuanhuan
+		    else if (b->tool()->name() == "blur")
+                    {
+                            b->setIcon(b->tool()->icon(m_contrastUiColor,true));
+            	    }
                 }
                  }
                  m_activeButton = b;

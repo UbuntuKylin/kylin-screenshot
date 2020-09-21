@@ -34,7 +34,7 @@ QIcon BlurTool::icon(const QColor &background, bool inEditor) const {
                       QIcon(QStringLiteral(":/img/material/white/") + "blur.svg");
 }
 QString BlurTool::name() const {
-    return tr("Blur");
+    return tr("blur");
 }
 
 QString BlurTool::nameID() {
