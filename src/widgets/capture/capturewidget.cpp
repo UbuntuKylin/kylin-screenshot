@@ -358,9 +358,9 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         // paint handlers
         painter.setPen(m_uiColor);
         painter.setRenderHint(QPainter::Antialiasing);
-        painter.setOpacity(0.2);
+        painter.setOpacity(0.5);
         painter.setBrush(QColor(195,195,195));
-        painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,70,20);
+        painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,90,20);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2")
                          .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
 

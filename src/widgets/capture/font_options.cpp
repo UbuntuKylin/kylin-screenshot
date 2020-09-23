@@ -160,7 +160,7 @@ void Font_Options::paintEvent(QPaintEvent *event)
     }
     if (bold){
         bold_btn->setStyleSheet("QPushButton{border-image:url"
-                               "(:/img/material/black/boldactive.png)}");
+                               "(:/img/material/black/bold_active.png)}");
     }
     else {
         bold_btn->setStyleSheet("QPushButton{border-image:url"
@@ -218,7 +218,7 @@ void Font_Options::font_bold_selete()
     bold = !bold;
     if (bold)
         bold_btn->setStyleSheet("QPushButton{border-image:url"
-                               "(:/img/material/black/boldactive.png)}");
+                               "(:/img/material/black/bold_active.png)}");
     else {
         bold_btn->setStyleSheet("QPushButton{border-image:url"
                                "(:/img/material/white/bold.png)}");
