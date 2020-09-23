@@ -172,6 +172,7 @@ void Controller::enableTrayIcon() {
         return;
     }
     ConfigHandler().setDisabledTrayIcon(false);
+    startVisualCapture();
     QAction *captureAction = new QAction(tr("&Take Screenshot"), this);
     connect(captureAction, &QAction::triggered, this, [this](){
         // Wait 400 ms to hide the QMenu

@@ -407,9 +407,9 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 	    painter.setOpacity(0.5);
         }
         update();
-        painter.setBrush(m_uiColor);
+        painter.setBrush(QColor(160,160,160));
         for(auto r: m_selection->handlerAreas()) {
-            painter.drawRoundRect(r, 100, 100);
+            painter.drawRoundRect(r, 70, 70);
         }
     }
 }
