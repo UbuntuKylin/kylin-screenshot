@@ -3,10 +3,8 @@
         <file>img/material/black/undo-variant.svg</file>
         <file>img/material/black/text.svg</file>
         <file>img/material/black/square.svg</file>
-        <file>img/material/black/square-outline.svg</file>
         <file>img/material/black/size_indicator.svg</file>
         <file>img/material/black/redo-variant.svg</file>
-        <file>img/material/black/pin.svg</file>
         <file>img/material/black/pencil.svg</file>
         <file>img/material/black/open_with.svg</file>
         <file>img/material/black/name_edition.svg</file>
@@ -15,7 +13,6 @@
         <file>img/material/black/marker.svg</file>
         <file>img/material/black/line.svg</file>
         <file>img/material/black/graphics.svg</file>
-        <file>img/material/black/format-text.svg</file>
         <file>img/material/black/exit-to-app.svg</file>
         <file>img/material/black/cursor-move.svg</file>
         <file>img/material/black/content-save.svg</file>
@@ -28,12 +25,7 @@
         <file>img/material/black/blur.svg</file>
         <file>img/material/black/arrow-bottom-left.svg</file>
         <file>img/material/white/undo-variant.svg</file>
-        <file>img/material/white/text.svg</file>
         <file>img/material/white/square.svg</file>
-        <file>img/material/white/square-outline.svg</file>
-        <file>img/material/white/size_indicator.svg</file>
-        <file>img/material/white/redo-variant.svg</file>
-        <file>img/material/white/pin.svg</file>
         <file>img/material/white/pencil.svg</file>
         <file>img/material/white/open_with.svg</file>
         <file>img/material/white/name_edition.svg</file>
@@ -56,14 +48,6 @@
         <file>img/material/black/cut.svg</file>
         <file>img/material/white/luping.svg</file>
         <file>img/material/black/luping_icon.svg</file>
-        <file>img/material/white/bold_font.svg</file>
-        <file>img/material/white/delete_font.svg</file>
-        <file>img/material/white/format_underline.svg</file>
-        <file>img/material/white/italic_font.svg</file>
-        <file>img/material/black/bold.svg</file>
-        <file>img/material/black/underline.svg</file>
-        <file>img/material/black/delete.svg</file>
-        <file>img/material/black/italic.svg</file>
         <file>img/material/white/format-text.svg</file>
         <file>img/material/white/down.svg</file>
         <file>img/material/white/pin_icon.svg</file>
@@ -72,8 +56,8 @@
         <file>img/material/black/bold_active.png</file>
         <file>img/material/black/delete_active.png</file>
         <file>img/material/black/underline_active.png</file>
-        <file>img/material/white/italic.png</file>
         <file>img/material/white/underline.png</file>
         <file>img/material/white/delete.png</file>
+        <file>img/material/black/pin_icon.svg</file>
     </qresource>
 </RCC>

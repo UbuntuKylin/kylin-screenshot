@@ -356,39 +356,38 @@ void ButtonHandler::moveButtonsToPoints(
 {
     for (const QPoint &p: points) {
         auto button = m_vectorButtons[index];
-	if (index == 1)
+	if (index == 2)
         {
-            button->move(p.x()-m_buttonBaseSize/4,p.y());
+            button->move(p.x()-GlobalValues::buttonBaseSize()/8,p.y());
         }
-	else if (index == 2 || index == 3)
+	else if (index == 3)
         {
-            button->move(p.x()+13,p.y());
+            button->move(p.x()-GlobalValues::buttonBaseSize()/8-2,p.y());
         }
-        else if (index == 2 || index == 3)
+        else if (index == 4)
         {
-            button->move(p.x()+13,p.y());
+            button->move(p.x()-GlobalValues::buttonBaseSize()/4-1,p.y());
         }
-        else if (index == 4 || index == 5 || index == 6)
+        else if (index == 5 || index == 6 || index == 7)
         {
-            button->move(p.x()+2,p.y());
+            button->move(p.x()-GlobalValues::buttonBaseSize()/2,p.y());
         }
-        else if(index >= 10)
+	else if (index == 10 )
         {
-             if (index == 10 || index == 11)
-             {
-                 button->move(p.x()+16,p.y());
-             }
-             else if (index >= 12)
-             {
-                 if (index == 15)
-                 {
-                      button->move(m_selection.right() + GlobalValues::buttonBaseSize()/3+6,m_selection.top()+GlobalValues::buttonBaseSize()/3);
-                 }
-                 else
-                 button->move(p.x()+GlobalValues::buttonBaseSize()*2-5,p.y());
-             }
+                 button->move(p.x()+GlobalValues::buttonBaseSize()/8*10,p.y());
         }
-
+       else if(index == 11)
+       {
+                 button->move(p.x()+GlobalValues::buttonBaseSize(),p.y());
+       }
+	else  if (index == 12)
+	{
+		button->move(p.x()+GlobalValues::buttonBaseSize()/2*3,p.y());
+	}
+         else if (index == 13)
+        {
+               button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+        }
         else
         button->move(p);
         ++index;

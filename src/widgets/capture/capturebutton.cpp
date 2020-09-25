@@ -46,6 +46,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         layout = new  QHBoxLayout(this);
         label->setAlignment( Qt::AlignCenter);
         label2->setAlignment( Qt::AlignCenter|Qt::AlignHCenter);
+	setStyleSheet("QPushButton{font-family:'宋体';font-size:20px;color:rgb(0,0,0,255);}");
         label->setFont(font);
         label->setText("选项");
         label2->setPixmap(QPixmap(QStringLiteral(":/img/material/white/down.svg")));
@@ -182,22 +183,22 @@ void CaptureButton::setColor(const QColor &c) {
 QColor CaptureButton::m_mainColor = ConfigHandler().uiMainColorValue();
 
 static std::map<CaptureButton::ButtonType, int> buttonTypeOrder {
-     { CaptureButton::  TYPE_CUT,          0 },
-     { CaptureButton::  TYPE_LUPING,       1 },
-     { CaptureButton::  TYPE_RECT,         2 },
-     { CaptureButton:: TYPE_CIRCLE,        3 },
-     { CaptureButton::  TYPE_LINE,         4 },
-     { CaptureButton::  TYPE_ARROW,        5 },
-     { CaptureButton:: TYPE_PEN,           6 },
-     { CaptureButton:: TYPE_MARKER,        7 },
-     { CaptureButton::  TYPE_TEXT,         8 },
-     { CaptureButton::  TYPE_BLUR,         9 },
-     { CaptureButton:: TYPR_UNDO,          10 },
-     { CaptureButton:: TYPE_OPTION,        11 },
-     { CaptureButton:: TYPE_CLOSE,         12 },
-     { CaptureButton:: TYPE_COPY,          13 },
-     { CaptureButton:: TYPE_SAVE,          14 },
-     {CaptureButton::  TYPE_PIN,            15 },
+   //  { CaptureButton::  TYPE_CUT,          0 },
+    // { CaptureButton::  TYPE_LUPING,       1 },
+     { CaptureButton::  TYPE_RECT,         0 },
+     { CaptureButton:: TYPE_CIRCLE,        1 },
+     { CaptureButton::  TYPE_LINE,         2 },
+     { CaptureButton::  TYPE_ARROW,        3 },
+     { CaptureButton:: TYPE_PEN,           4 },
+     { CaptureButton:: TYPE_MARKER,        5 },
+     { CaptureButton::  TYPE_TEXT,         6 },
+     { CaptureButton::  TYPE_BLUR,         7 },
+     { CaptureButton:: TYPR_UNDO,          8 },
+     { CaptureButton:: TYPE_OPTION,        9 },
+     { CaptureButton:: TYPE_CLOSE,         10 },
+     { CaptureButton:: TYPE_COPY,          11 },
+     { CaptureButton:: TYPE_SAVE,          12 },
+     {CaptureButton::  TYPE_PIN,            13 },
 };
 
 int CaptureButton::getPriorityByButton(CaptureButton::ButtonType b) {
@@ -206,8 +207,8 @@ int CaptureButton::getPriorityByButton(CaptureButton::ButtonType b) {
 }
 
 QVector<CaptureButton::ButtonType> CaptureButton::iterableButtonTypes = {
-    CaptureButton:: TYPE_CUT,
-    CaptureButton:: TYPE_LUPING,
+    //CaptureButton:: TYPE_CUT,
+    //CaptureButton:: TYPE_LUPING,
     CaptureButton:: TYPE_RECT,
     CaptureButton:: TYPE_CIRCLE,
     CaptureButton:: TYPE_LINE,

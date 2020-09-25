@@ -21,6 +21,8 @@
 #include "src/widgets/imagelabel.h"
 #include "src/widgets/notificationwidget.h"
 #include "src/utils/screengrabber.h"
+#include "src/utils/screenshotsaver.h"
+#include "src/widgets/imagelabel.h"
 #include <QCheckBox>
 #include <QPushButton>
 #include <QGridLayout>
@@ -133,6 +135,12 @@ void CaptureLauncher::captureTaken(uint id, QPixmap p) {
         m_imageLabel->setScreenshot(p);
         show();
     }
+    auto mode = static_cast<CaptureRequest::CaptureMode>(
+    m_captureType->currentData().toInt());
+
+  if (mode == CaptureRequest::FULLSCREEN_MODE) {
+    ScreenshotSaver().saveToFilesystemGUI(p);
+  }
 }
 
 void CaptureLauncher::captureFailed(uint id) {

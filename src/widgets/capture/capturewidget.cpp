@@ -325,91 +325,77 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
     painter.drawRect(-1, -1, rect().width() + 1, rect().height() + 1);
     painter.setClipRect(rect());
 
-    if (m_showInitialMsg) {
-        QRect helpRect = QGuiApplication::primaryScreen()->geometry();
-        helpRect.moveTo(mapFromGlobal(helpRect.topLeft()));
-
-        QString helpTxt = tr("Select an area with the mouse, or press Esc to exit."
-                             "\nPress Enter to capture the screen."
-                             "\nPress Right Click to show the color picker."
-                             "\nUse the Mouse Wheel to change the thickness of your tool."
-                             "\nPress Space to open the side panel.");
-
-        // We draw the white contrasting background for the text, using the
-        //same text and options to get the boundingRect that the text will have.
-        QRectF bRect = painter.boundingRect(helpRect, Qt::AlignCenter, helpTxt);
-        // These four calls provide padding for the rect
-        const int margin = QApplication::fontMetrics().height() / 2;
-        bRect.setWidth(bRect.width() + margin);
-        bRect.setHeight(bRect.height() + margin);
-        bRect.setX(bRect.x() - margin);
-        bRect.setY(bRect.y() - margin);
-        QColor rectColor(m_uiColor);
-        rectColor.setAlpha(180);
-        QColor textColor((ColorUtils::colorIsDark(rectColor) ?
-                              Qt::white : Qt::black));
-        painter.setBrush(QBrush(rectColor, Qt::SolidPattern));
-        painter.setPen(QPen(textColor));
-        painter.drawRect(bRect);
-        painter.drawText(helpRect, Qt::AlignCenter, helpTxt);
-    }
-
     if (m_selection->isVisible()) {
         // paint handlers
         painter.setPen(m_uiColor);
         painter.setRenderHint(QPainter::Antialiasing);
         painter.setOpacity(0.5);
         painter.setBrush(QColor(195,195,195));
-        painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,90,20);
-        painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2")
+        painter.drawRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,82,24);
+        painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
                          .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
 
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
-            painter.setOpacity(0.2);
+            painter.setBrush(QColor(200,200,200));
+            painter.setOpacity(0.66);
             QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
-                             GlobalValues::buttonBaseSize()*21+2,GlobalValues::buttonBaseSize()+2);
-            painter.drawRoundRect(rr,6,6);
+                             GlobalValues::buttonBaseSize()*18+2,GlobalValues::buttonBaseSize()*1.1);
+            painter.drawRoundRect(rr,8,8);
+	    painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3,
+                                    m_selection->geometry().intersected(rect()).y(),
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize()/2,
+                                    GlobalValues::buttonBaseSize()/2);
+
             QPainterPath path;
             QColor color(92,93,95,50);
             int arr[5] = {20,15,10,10,5};
             for(int i=0; i<5; i++)
             {
+		painter.setOpacity(0.1);    
                 QPainterPath path;
                 if(i == 1)
                     path.addRect(rr.x(), rr.y(), rr.width(), rr.height());
                 else
-                   path.addRoundedRect(rr.x()-i, rr.y()-i, rr.width()+i*2,rr.height()+i*2,6,6);
+                   path.addRoundedRect(rr.x()-i, rr.y()-i, rr.width()+i*2,rr.height()+i*2,8,8);
                 color.setAlpha(arr[i]);
                 painter.setPen(color);
                 painter.drawPath(path);
             }
+	    painter.setOpacity(0.8);
+            /*
+	    QColor rectColor(QColor(255,255,255));
+	     painter.setBrush(rectColor);
             painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3-2,
                                     m_selection->geometry().intersected(rect()).y()+GlobalValues::buttonBaseSize()/3-1,
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize()/2,
                                     GlobalValues::buttonBaseSize()/2);
-            QColor rectColor(QColor(255,255,255));
+            //QColor rectColor(QColor(255,255,255));
             painter.setOpacity(0.8);
             //rectColor.setAlpha(200);
+	   /* 
             painter.setBrush(rectColor);
-            painter.drawRect(vectorButtons.first()->pos().x(),vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/10,GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize()/12*10);
+            painter.drawRoundedRect(vectorButtons.first()->pos().x(),vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,GlobalValues::buttonBaseSize()/8*10, GlobalValues::buttonBaseSize()/8*7,2,2);
             QColor rectColor1(QColor(200,200,200));
             painter.setBrush(rectColor1);
-            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize(),vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/10,GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize()/12*10);
+            painter.drawRoundedRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()/4*5,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,GlobalValues::buttonBaseSize()/8*10, GlobalValues::buttonBaseSize()/8*7,2,2);
+	    */
 	    QColor rectColor2(QColor(0,98,240));
             painter.setBrush(rectColor2);
-            painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*19,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,GlobalValues::buttonBaseSize()*3/2, GlobalValues::buttonBaseSize()/4*3,6,6);
+            painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,GlobalValues::buttonBaseSize()*3/2, GlobalValues::buttonBaseSize()/4*3,20,20);
 	    painter.setBrush(QColor(0,0,0,100));
             //两个分隔符
-            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+GlobalValues::buttonBaseSize()/2,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1, GlobalValues::buttonBaseSize()/2);
-            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*16+GlobalValues::buttonBaseSize()/2,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1,GlobalValues::buttonBaseSize()/2);
+            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*9+GlobalValues::buttonBaseSize()/2,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1, GlobalValues::buttonBaseSize()/2);
+            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13+3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1,GlobalValues::buttonBaseSize()/2);
 	    painter.setOpacity(0.5);
         }
         update();
         painter.setBrush(QColor(160,160,160));
         for(auto r: m_selection->handlerAreas()) {
-            painter.drawRoundRect(r, 70, 70);
+            painter.drawRoundRect(r, 80, 80);
         }
     }
 }

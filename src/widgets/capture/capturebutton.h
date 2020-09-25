@@ -35,8 +35,8 @@ public:
     // in the .cpp and the order value in the private array buttonTypeOrder
     enum ButtonType
     {
-        TYPE_CUT,
-        TYPE_LUPING,
+       // TYPE_CUT,
+       // TYPE_LUPING,
         TYPE_RECT,
         TYPE_CIRCLE,
         TYPE_LINE,

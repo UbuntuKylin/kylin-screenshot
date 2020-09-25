@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="17px" height="18px" viewBox="0 0 17 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>线段-激活</title>
-    <desc>Created with Sketch.</desc>
     <g id="线段-激活" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
-        <line x1="8.5" y1="-1.5" x2="8.5" y2="19.5" id="直线-5" stroke="#0062F0" stroke-width="2" transform="translate(8.500000, 9.000000) rotate(-135.000000) translate(-8.500000, -9.000000) "></line>
+        <g id="直线-6" transform="translate(4.376082, 4.724423)" stroke="#0062F0" stroke-width="2">
+            <line x1="7" y1="-2" x2="8.2478355" y2="16.5511544" id="直线-5" transform="translate(7.623918, 7.275577) rotate(-135.000000) translate(-7.623918, -7.275577) "></line>
+        </g>
     </g>
 </svg>

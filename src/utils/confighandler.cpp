@@ -37,9 +37,9 @@ QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
         buttons = fromIntToButton(buttonsInt);
     } else {
         // Default tools
-        buttons << CaptureButton:: TYPE_CUT
-               << CaptureButton:: TYPE_LUPING
-               << CaptureButton:: TYPE_RECT
+//        buttons << CaptureButton:: TYPE_CUT
+ //              << CaptureButton:: TYPE_LUPING
+       buttons << CaptureButton:: TYPE_RECT
                << CaptureButton:: TYPE_CIRCLE
                << CaptureButton:: TYPE_LINE
                << CaptureButton:: TYPE_ARROW

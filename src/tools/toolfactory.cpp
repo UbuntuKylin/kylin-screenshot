@@ -49,13 +49,14 @@ CaptureTool* ToolFactory::CreateTool(
 {
     CaptureTool *tool;
     switch (t) {
-
+/*
     case CaptureButton::TYPE_CUT:
         tool = new Cut(parent);
         break;
     case CaptureButton::TYPE_LUPING:
         tool = new LuPing(parent);
         break;
+        */
     case CaptureButton::TYPE_RECT:
         //空心矩形   矩形选择框
         tool = new  SelectionTool(parent);
