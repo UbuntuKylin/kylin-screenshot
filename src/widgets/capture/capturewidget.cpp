@@ -294,7 +294,6 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
     if (m_context.mousePos.x()< m_selection->x()||m_context.mousePos.x()>m_selection->x()+m_selection->width()
             ||m_context.mousePos.y()< m_selection->y()||m_context.mousePos.y()>m_selection->y()+m_selection->height()+m_buttonHandler->size()+20)
        {
-           painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,pixmap2);
            painter.setOpacity(0.5);
            painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,crosspixmap);
            painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
@@ -454,9 +453,9 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
 
 void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     m_context.mousePos = e->pos();
-    w = 25;
-    h = 25;
-    mypixmap = mypixmap.grabWidget(this,e->pos().x(),e->pos().y(),w,h);
+    w = 26;
+    h = 26;
+    mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
     QImage crosstmp=mypixmap.toImage();
     QRgb value = qRgb(0,0,255);
     for(int i=0;i<w;i++)
@@ -471,6 +470,22 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
         for(int j=0;j<h;j++)
         {
             crosstmp.setPixel(i,j,value);
+        }
+    }
+    for (int i=0;i<1;i++)
+    {
+        for(int j=0;j<h;j++)
+        {
+           crosstmp.setPixel(i,j,value);
+           crosstmp.setPixel(j,i,value);
+        }
+    }
+    for (int i=w-1;i<w;i++)
+    {
+        for(int j=0;j<h;j++)
+        {
+           crosstmp.setPixel(i,j,value);
+           crosstmp.setPixel(j,i,value);
         }
     }
     crosspixmap=QPixmap::fromImage( crosstmp.scaled(w*5,h*5,Qt::KeepAspectRatio) );
