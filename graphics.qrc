@@ -59,5 +59,7 @@
         <file>img/material/white/underline.png</file>
         <file>img/material/white/delete.png</file>
         <file>img/material/black/pin_icon.svg</file>
+        <file>img/material/white/italic.svg</file>
+        <file>img/material/white/italic.png</file>
     </qresource>
 </RCC>
