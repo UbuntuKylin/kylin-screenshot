@@ -336,17 +336,17 @@ void ButtonHandler::ensureSelectionMinimunSize() {
     // Detect if a side is smaller than a button in order to prevent collision
     // and redimension the base area the the base size of a single button per side
     if (m_selection.width() < m_buttonBaseSize) {
-        if (!m_blockedLeft) {
+         /*if (!m_blockedLeft) {
             m_selection.setX(m_selection.x() -
                              (m_buttonBaseSize-m_selection.width()) / 2);
-        }
+        }*/
         m_selection.setWidth(m_buttonBaseSize);
     }
     if (m_selection.height() < m_buttonBaseSize) {
-        if (!m_blockedTop) {
+        /*if (!m_blockedTop) {
             m_selection.setY(m_selection.y() -
                              (m_buttonBaseSize-m_selection.height()) / 2);
-        }
+        }*/
         m_selection.setHeight(m_buttonBaseSize);
     }
 }
@@ -374,19 +374,22 @@ void ButtonHandler::moveButtonsToPoints(
         }
 	else if (index == 10 )
         {
-                 button->move(p.x()+GlobalValues::buttonBaseSize()/8*10,p.y());
+            button->move(p.x()+GlobalValues::buttonBaseSize()/8*10,p.y());
         }
        else if(index == 11)
        {
-                 button->move(p.x()+GlobalValues::buttonBaseSize(),p.y());
+            button->move(p.x()+GlobalValues::buttonBaseSize(),p.y());
        }
 	else  if (index == 12)
 	{
-		button->move(p.x()+GlobalValues::buttonBaseSize()/2*3,p.y());
+            button->move(p.x()+GlobalValues::buttonBaseSize()/2*3,p.y());
 	}
          else if (index == 13)
         {
-               button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+	     if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
+                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+	     else
+		button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
         }
         else
         button->move(p);

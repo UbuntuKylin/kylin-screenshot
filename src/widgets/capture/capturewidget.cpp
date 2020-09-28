@@ -340,7 +340,15 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
                              GlobalValues::buttonBaseSize()*18+2,GlobalValues::buttonBaseSize()*1.1);
             painter.drawRoundRect(rr,8,8);
-	    painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3,
+	    if(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
+	    	painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3,
+                	            m_selection->geometry().intersected(rect()).y(),
+                        	    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize()/2,
+                                    GlobalValues::buttonBaseSize()/2);
+	    else
+		painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()-GlobalValues::buttonBaseSize(),
                                     m_selection->geometry().intersected(rect()).y(),
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize(),
