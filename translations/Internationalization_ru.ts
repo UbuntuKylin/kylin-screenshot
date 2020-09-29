@@ -17,33 +17,33 @@
 <context>
     <name>AppLauncherWidget</name>
     <message>
-        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="56"/>
+        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="55"/>
         <source>Open With</source>
         <translation>Открыть с помощью</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="71"/>
+        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="70"/>
         <source>Launch in terminal</source>
         <translation>Запустить в терминале</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="72"/>
+        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="71"/>
         <source>Keep open after selection</source>
         <translation>Оставить запущенным после выделения</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="99"/>
-        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="111"/>
+        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="98"/>
+        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="110"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="99"/>
+        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="98"/>
         <source>Unable to write in</source>
         <translation>Не удалось сохранить</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="112"/>
+        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="111"/>
         <source>Unable to launch in terminal.</source>
         <translation>Не удалось запустить в терминале.</translation>
     </message>
@@ -51,12 +51,12 @@
 <context>
     <name>ArrowTool</name>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="86"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="87"/>
         <source>Arrow</source>
         <translation>Стрелка</translation>
     </message>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="94"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="95"/>
         <source>Set the Arrow as the paint tool</source>
         <translation>Выбрать Стрелку инструментом для рисования</translation>
     </message>
@@ -64,9 +64,13 @@
 <context>
     <name>BlurTool</name>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="37"/>
         <source>Blur</source>
-        <translation>Размытие</translation>
+        <translation type="vanished">Размытие</translation>
+    </message>
+    <message>
+        <location filename="../src/tools/blur/blurtool.cpp" line="37"/>
+        <source>blur</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/tools/blur/blurtool.cpp" line="45"/>
@@ -77,47 +81,47 @@
 <context>
     <name>CaptureLauncher</name>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="59"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="62"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="64"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="67"/>
         <source>Rectangular Region</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="65"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="68"/>
         <source>Full Screen (All Monitors)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="72"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="75"/>
         <source>No Delay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="79"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="82"/>
         <source> second</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="79"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="82"/>
         <source> seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="83"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="86"/>
         <source>Take new screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="90"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="93"/>
         <source>Area:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="91"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="94"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -125,7 +129,7 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="85"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="86"/>
         <source>Unable to capture screen</source>
         <translation>Не удалось захватить экран</translation>
     </message>
@@ -135,26 +139,25 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="331"/>
         <source>Select an area with the mouse, or press Esc to exit.
 Press Enter to capture the screen.
 Press Right Click to show the color picker.
 Use the Mouse Wheel to change the thickness of your tool.
 Press Space to open the side panel.</source>
-        <translation>Выберите область с помощью мыши или нажмите Esc чтобы выйти.
+        <translation type="vanished">Выберите область с помощью мыши или нажмите Esc чтобы выйти.
 Нажмите Enter чтобы захватить экран.
 Нажмите правую кнопку мыши чтобы показать выбор цвета.
 Используйте колесо мыши чтобы выбрать толщину текущего инструмента.
 Нажмите Пробел чтобы открыть боковую панель.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="363"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="334"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1427"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1450"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1468"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1491"/>
         <source>Open Directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -198,29 +201,34 @@ Press Space to open the side panel.</source>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="175"/>
+        <location filename="../src/core/controller.cpp" line="176"/>
         <source>&amp;Take Screenshot</source>
         <translation>&amp;Сделать снимок</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="180"/>
+        <location filename="../src/core/controller.cpp" line="181"/>
         <source>&amp;Open Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="183"/>
+        <location filename="../src/core/controller.cpp" line="184"/>
         <source>&amp;Configuration</source>
         <translation>&amp;Настройка</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="186"/>
+        <location filename="../src/core/controller.cpp" line="187"/>
         <source>&amp;Information</source>
         <translation>&amp;Информация</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="189"/>
+        <location filename="../src/core/controller.cpp" line="190"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
+    </message>
+    <message>
+        <location filename="../src/core/controller.cpp" line="204"/>
+        <source>Kylin-Screenshot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -239,12 +247,12 @@ Press Space to open the side panel.</source>
 <context>
     <name>Cut</name>
     <message>
-        <location filename="../src/tools/cut/cut.cpp" line="41"/>
+        <location filename="../src/tools/cut/cut.cpp" line="39"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/cut/cut.cpp" line="49"/>
+        <location filename="../src/tools/cut/cut.cpp" line="47"/>
         <source>cut</source>
         <translation type="unfinished"></translation>
     </message>
@@ -252,7 +260,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>DBusUtils</name>
     <message>
-        <location filename="../src/utils/dbusutils.cpp" line="43"/>
+        <location filename="../src/utils/dbusutils.cpp" line="42"/>
         <source>Unable to connect via DBus</source>
         <translation>Не удалось подключиться через DBus</translation>
     </message>
@@ -321,22 +329,22 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="92"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="93"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Зачеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="101"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
         <source>Underline</source>
         <translation type="unfinished">Подчеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="107"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="108"/>
         <source>Bold</source>
         <translation type="unfinished">Полужирный</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="113"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="114"/>
         <source>Italic</source>
         <translation type="unfinished">Курсив</translation>
     </message>
@@ -344,22 +352,22 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="107"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="108"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Зачеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="108"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="109"/>
         <source>Underline</source>
         <translation type="unfinished">Подчеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="109"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="110"/>
         <source>Bold</source>
         <translation type="unfinished">Полужирный</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="110"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="111"/>
         <source>Italic</source>
         <translation type="unfinished">Курсив</translation>
     </message>
@@ -542,97 +550,97 @@ Press Space to open the side panel.</source>
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="40"/>
+        <location filename="../src/widgets/infowindow.cpp" line="38"/>
         <source>About</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="64"/>
+        <location filename="../src/widgets/infowindow.cpp" line="62"/>
         <source>SPACEBAR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="65"/>
+        <location filename="../src/widgets/infowindow.cpp" line="63"/>
         <source>Right Click</source>
         <translation>Правый клик</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="66"/>
+        <location filename="../src/widgets/infowindow.cpp" line="64"/>
         <source>Mouse Wheel</source>
         <translation>Колесико мыши</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="70"/>
+        <location filename="../src/widgets/infowindow.cpp" line="68"/>
         <source>Move selection 1px</source>
         <translation>Переместить выделение на 1px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="71"/>
+        <location filename="../src/widgets/infowindow.cpp" line="69"/>
         <source>Resize selection 1px</source>
         <translation>Изменить размер выделения на 1px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="72"/>
+        <location filename="../src/widgets/infowindow.cpp" line="70"/>
         <source>Quit capture</source>
         <translation>Выйти из захвата экрана</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="73"/>
+        <location filename="../src/widgets/infowindow.cpp" line="71"/>
         <source>Copy to clipboard</source>
         <translation>Скопировать в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="74"/>
+        <location filename="../src/widgets/infowindow.cpp" line="72"/>
         <source>Save selection as a file</source>
         <translation>Сохранить выделение в файл</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="75"/>
+        <location filename="../src/widgets/infowindow.cpp" line="73"/>
         <source>Undo the last modification</source>
         <translation>Отменить последнее изменение</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="76"/>
+        <location filename="../src/widgets/infowindow.cpp" line="74"/>
         <source>Toggle visibility of sidebar with options of the selected tool</source>
         <translation>Показать боковую панель с настройками выбранного инструмента</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="77"/>
+        <location filename="../src/widgets/infowindow.cpp" line="75"/>
         <source>Show color picker</source>
         <translation>Показать выбор цвета</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="78"/>
+        <location filename="../src/widgets/infowindow.cpp" line="76"/>
         <source>Change the tool&apos;s thickness</source>
         <translation>Изменить толщину инструмента</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="83"/>
+        <location filename="../src/widgets/infowindow.cpp" line="81"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>Доступные горячие клавиши в режиме захвата экрана.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="94"/>
+        <location filename="../src/widgets/infowindow.cpp" line="92"/>
         <source>Key</source>
         <translation>Клавиша</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="94"/>
+        <location filename="../src/widgets/infowindow.cpp" line="92"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="125"/>
+        <location filename="../src/widgets/infowindow.cpp" line="123"/>
         <source>&lt;u&gt;&lt;b&gt;License&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;Лицензия&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="133"/>
+        <location filename="../src/widgets/infowindow.cpp" line="131"/>
         <source>&lt;u&gt;&lt;b&gt;Version&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;Версия&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="143"/>
+        <location filename="../src/widgets/infowindow.cpp" line="141"/>
         <source>&lt;u&gt;&lt;b&gt;Shortcuts&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;Горячие клавиши&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
@@ -653,592 +661,592 @@ Press Space to open the side panel.</source>
 <context>
     <name>Logger</name>
     <message>
-        <location filename="../src/AV/FastResampler.cpp" line="123"/>
+        <location filename="../src/AV/FastResampler.cpp" line="126"/>
         <source>Error: Resample ratio is out of range!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/FastResampler.cpp" line="127"/>
+        <location filename="../src/AV/FastResampler.cpp" line="130"/>
         <source>Error: Drift ratio is out of range!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/FastResampler.cpp" line="157"/>
+        <location filename="../src/AV/FastResampler.cpp" line="160"/>
         <source>Resample ratio is %1 (was %2).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/FastScaler.cpp" line="124"/>
+        <location filename="../src/AV/FastScaler.cpp" line="126"/>
         <source>Warning: Pixel format is not supported (%1 -&gt; %2), using swscale instead. This is not a problem, but performance will be worse.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/FastScaler.cpp" line="133"/>
+        <location filename="../src/AV/FastScaler.cpp" line="135"/>
         <source>Error: Can&apos;t get swscale context:</source>
         <comment>Don&apos;t translate &apos;swscale&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/FastScaler.cpp" line="155"/>
-        <location filename="../src/AV/FastScaler.cpp" line="180"/>
-        <location filename="../src/AV/FastScaler.cpp" line="205"/>
-        <location filename="../src/AV/FastScaler.cpp" line="229"/>
-        <location filename="../src/AV/FastScaler.cpp" line="251"/>
-        <location filename="../src/AV/FastScaler.cpp" line="274"/>
+        <location filename="../src/AV/FastScaler.cpp" line="157"/>
+        <location filename="../src/AV/FastScaler.cpp" line="182"/>
+        <location filename="../src/AV/FastScaler.cpp" line="207"/>
+        <location filename="../src/AV/FastScaler.cpp" line="231"/>
+        <location filename="../src/AV/FastScaler.cpp" line="253"/>
+        <location filename="../src/AV/FastScaler.cpp" line="276"/>
         <source>Warning: Memory is not properly aligned for SSE, using fallback converter instead. This is not a problem, but performance will be worse.</source>
         <comment>Don&apos;t translate &apos;fallback&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="32"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="34"/>
         <source>Error: pa_mainloop_prepare failed!</source>
         <comment>Don&apos;t translate &apos;pa_mainloop_prepare&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="36"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="38"/>
         <source>Error: pa_mainloop_poll failed!</source>
         <comment>Don&apos;t translate &apos;pa_mainloop_poll&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="40"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="42"/>
         <source>Error: pa_mainloop_dispatch failed!</source>
         <comment>Don&apos;t translate &apos;pa_mainloop_dispatch&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="50"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="52"/>
         <source>Error: Could not create main loop!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="57"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="59"/>
         <source>Error: Could not create context!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="62"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="64"/>
         <source>Error: Could not connect! Reason: %1
 It is possible that your system doesn&apos;t use PulseAudio. Try using the ALSA backend instead.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="66"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="68"/>
         <source>Error: Could not connect! Reason: %1
 It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="80"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="82"/>
         <source>Error: Connection attempt failed! Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="116"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="118"/>
         <source>Error: Could not create stream! Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="123"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="125"/>
         <source>Error: Could not connect stream! Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="134"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="136"/>
         <source>Error: Stream connection attempt failed! Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="224"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="226"/>
         <source>Found source: [%1] %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="233"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="235"/>
         <source>Generating source list ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="245"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="247"/>
         <source>Error: Could not get names of sources! Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="293"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="295"/>
         <source>Error: Could not get source info! Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="298"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="300"/>
         <source>Stream is a monitor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="300"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="302"/>
         <source>Stream is not a monitor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="331"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="424"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="333"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="426"/>
         <source>Input thread started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="345"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="347"/>
         <source>Error: pa_stream_peek failed!</source>
         <comment>Don&apos;t translate &apos;pa_stream_peek&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="412"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="414"/>
         <source>Warning: Audio source was suspended. The current segment will be stopped until the source is resumed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="417"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="419"/>
         <source>Warning: Stream was moved to a different source.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="424"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="537"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="426"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="539"/>
         <source>Input thread stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="428"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="541"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="430"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="543"/>
         <source>Exception &apos;%1&apos; in input thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="431"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="544"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="433"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="546"/>
         <source>Unknown exception in input thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="49"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="51"/>
         <source>Error: Unsupported X11 image pixel format!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="173"/>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="94"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="175"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="96"/>
         <source>Error: Width or height is zero!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="177"/>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="98"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="179"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="100"/>
         <source>Error: Width or height is too large, the maximum width and height is %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="194"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="196"/>
         <source>Stopping input thread ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="230"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="232"/>
         <source>Error: Can&apos;t open X display!</source>
         <comment>Don&apos;t translate &apos;display&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="239"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="241"/>
         <source>Using X11 shared memory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="241"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="243"/>
         <source>Not using X11 shared memory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="248"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="250"/>
         <source>Warning: XFixes is not supported by X server, the cursor has been hidden.</source>
         <comment>Don&apos;t translate &apos;XFixes&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="290"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="292"/>
         <source>Error: Can&apos;t create shared image!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="295"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="297"/>
         <source>Error: Can&apos;t get shared memory!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="300"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="302"/>
         <source>Error: Can&apos;t attach to shared memory!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="305"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="307"/>
         <source>Error: Can&apos;t attach server to shared memory!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="349"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="351"/>
         <source>Warning: Xinerama is not supported by X server, multi-monitor support may not work properly.</source>
         <comment>Don&apos;t translate &apos;Xinerama&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="355"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="357"/>
         <source>Warning: No monitors detected, multi-monitor support may not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="374"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="376"/>
         <source>Error: Invalid screen bounding box!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="490"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="492"/>
         <source>Error: Can&apos;t get image (using shared memory)!
     Usually this means the recording area is not completely inside the screen. Or did you change the screen resolution?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="501"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="503"/>
         <source>Error: Can&apos;t get image (not using shared memory)!
     Usually this means the recording area is not completely inside the screen. Or did you change the screen resolution?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="96"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="98"/>
         <source>Error: Channel count is zero.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="100"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="102"/>
         <source>Error: Sample rate is zero.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="138"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="140"/>
         <source>Using sample format %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="143"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="145"/>
         <source>Error: Encoder requires an unsupported sample format!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="172"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="174"/>
         <source>Error: Sending of audio frame failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="193"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="195"/>
         <source>Error: Receiving of audio packet failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="206"/>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="228"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="208"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="230"/>
         <source>Error: Encoding of audio frame failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="28"/>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="37"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="30"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="39"/>
         <source>Error: Option &apos;%1&apos; could not be parsed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="88"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="90"/>
         <source>Stopping encoder thread ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="163"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="165"/>
         <source>Error: Can&apos;t open codec!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="171"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="173"/>
         <source>Warning: Codec option &apos;%1&apos; was not recognised!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="186"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="188"/>
         <source>Encoder thread started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="212"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="214"/>
         <source>Flushing encoder ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="223"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="225"/>
         <source>Encoder thread stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="227"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="229"/>
         <source>Exception &apos;%1&apos; in encoder thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="230"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="232"/>
         <source>Unknown exception in encoder thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="70"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="72"/>
         <source>Stopping encoders ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="77"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="79"/>
         <source>Waiting for muxer thread to stop ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="100"/>
-        <location filename="../src/AV/output/Muxer.cpp" line="124"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="102"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="126"/>
         <source>Error: Can&apos;t copy parameters to stream!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="146"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="148"/>
         <source>Error: Can&apos;t write header!</source>
         <comment>Don&apos;t translate &apos;header&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="157"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="159"/>
         <source>Finishing encoders ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="199"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="201"/>
         <source>Error: Can&apos;t find chosen output format!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="203"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="205"/>
         <source>Using format %1 (%2).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="209"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="211"/>
         <source>Error: Can&apos;t allocate format context!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="216"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="218"/>
         <source>Error: Can&apos;t open output file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="229"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="231"/>
         <source>Error: Can&apos;t write trailer, continuing anyway.</source>
         <comment>Don&apos;t translate &apos;trailer&apos;</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="267"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="269"/>
         <source>Error: Can&apos;t find codec!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="277"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="279"/>
         <source>Using codec %1 (%2).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="288"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="290"/>
         <source>Error: Can&apos;t create new stream!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="295"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="297"/>
         <source>Error: Can&apos;t create new codec context!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="307"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="309"/>
         <source>Error: Can&apos;t get codec context defaults!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="320"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="322"/>
         <source>Warning: This codec is considered experimental by libav/ffmpeg.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="336"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="338"/>
         <source>Muxer thread started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="396"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="398"/>
         <source>Error: Can&apos;t write frame to muxer!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="424"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="426"/>
         <source>Muxer thread stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="428"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="430"/>
         <source>Exception &apos;%1&apos; in muxer thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="431"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="433"/>
         <source>Unknown exception in muxer thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="66"/>
+        <location filename="../src/AV/output/OutputManager.cpp" line="68"/>
         <source>Stopping fragment thread ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="344"/>
+        <location filename="../src/AV/output/OutputManager.cpp" line="346"/>
         <source>Fragment thread started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="362"/>
+        <location filename="../src/AV/output/OutputManager.cpp" line="364"/>
         <source>Next fragment ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="366"/>
+        <location filename="../src/AV/output/OutputManager.cpp" line="368"/>
         <source>Finishing ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="378"/>
+        <location filename="../src/AV/output/OutputManager.cpp" line="380"/>
         <source>Fragment thread stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="382"/>
+        <location filename="../src/AV/output/OutputManager.cpp" line="384"/>
         <source>Exception &apos;%1&apos; in fragment thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="385"/>
+        <location filename="../src/AV/output/OutputManager.cpp" line="387"/>
         <source>Unknown exception in fragment thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="218"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="220"/>
         <source>Stopping synchronizer thread ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="328"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="330"/>
         <source>Warning: Received video frame with non-monotonic timestamp.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="355"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="357"/>
         <source>Warning: Video buffer overflow, some frames will be lost. The audio input seems to be too slow.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="414"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="416"/>
         <source>Warning: Received audio samples with non-monotonic timestamp.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="439"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="441"/>
         <source>Warning: Too many audio samples, dropping samples to keep the audio in sync with the video.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="445"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="447"/>
         <source>Warning: Not enough audio samples, inserting silence to keep the audio in sync with the video.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="513"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="515"/>
         <source>Warning: Audio input is more than 2% too slow!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="517"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="519"/>
         <source>Warning: Audio input is more than 2% too fast!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="556"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="558"/>
         <source>Warning: Audio buffer overflow, starting new segment to keep the audio in sync with the video (some video and/or audio may be lost). The video input seems to be too slow.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="592"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="594"/>
         <source>Warning: Received hole in audio stream, inserting silence to keep the audio in sync with the video.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="899"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="901"/>
         <source>Synchronizer thread started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="923"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="925"/>
         <source>Synchronizer thread stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="927"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="929"/>
         <source>Exception &apos;%1&apos; in synchronizer thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="930"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="932"/>
         <source>Unknown exception in synchronizer thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="102"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="104"/>
         <source>Error: Width or height is not an even number!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="106"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="108"/>
         <source>Error: Frame rate is zero!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="163"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="165"/>
         <source>Using pixel format %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="177"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="179"/>
         <source>Error: The pixel format is not supported by the codec!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="205"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="207"/>
         <source>Error: Sending of video frame failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="226"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="228"/>
         <source>Error: Receiving of video packet failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="239"/>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="260"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="241"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="262"/>
         <source>Error: Encoding of video frame failed!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1276,12 +1284,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>LuPing</name>
     <message>
-        <location filename="../src/tools/luping/luping.cpp" line="41"/>
+        <location filename="../src/tools/luping/luping.cpp" line="39"/>
         <source>LuPing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/luping/luping.cpp" line="49"/>
+        <location filename="../src/tools/luping/luping.cpp" line="47"/>
         <source>luping</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1289,12 +1297,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>MarkerTool</name>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="40"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="39"/>
         <source>Marker</source>
         <translation>Маркер</translation>
     </message>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="48"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="47"/>
         <source>Set the Marker as the paint tool</source>
         <translation>Выбрать Маркер инструментом для рисования</translation>
     </message>
@@ -1315,12 +1323,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Options</name>
     <message>
-        <location filename="../src/tools/options/options.cpp" line="41"/>
+        <location filename="../src/tools/options/options.cpp" line="39"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/options/options.cpp" line="49"/>
+        <location filename="../src/tools/options/options.cpp" line="47"/>
         <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1341,12 +1349,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PinTool</name>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="37"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="36"/>
         <source>Pin Tool</source>
         <translation>Булавка</translation>
     </message>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="45"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="44"/>
         <source>Pin image on the desktop</source>
         <translation>Прикрепить изображение к рабочему столу</translation>
     </message>
@@ -1354,45 +1362,45 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="110"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
         <source>Save Error</source>
         <translation>Ошибка сохранения</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="48"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="68"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="104"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
         <source>Capture saved as </source>
         <translation>Снимок сохранён как </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="33"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="32"/>
         <source>Capture saved to clipboard</source>
         <translation>Снимок сохранён в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="50"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="70"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="107"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
         <source>Error trying to save as </source>
         <translation>Ошибка при попытке сохранить как </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="79"/>
-        <location filename="../src/main.cpp" line="229"/>
-        <location filename="../src/main.cpp" line="378"/>
-        <location filename="../src/main.cpp" line="402"/>
-        <location filename="../src/main.cpp" line="431"/>
+        <location filename="../src/main.cpp" line="80"/>
+        <location filename="../src/main.cpp" line="230"/>
+        <location filename="../src/main.cpp" line="379"/>
+        <location filename="../src/main.cpp" line="403"/>
+        <location filename="../src/main.cpp" line="432"/>
         <source>Unable to connect via DBus</source>
         <translation>Не удалось подключиться через DBus</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/openwithprogram.cpp" line="39"/>
+        <location filename="../src/tools/launcher/openwithprogram.cpp" line="38"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/openwithprogram.cpp" line="40"/>
+        <location filename="../src/tools/launcher/openwithprogram.cpp" line="39"/>
         <source>Unable to write in</source>
         <translation>Не удалось сохранить</translation>
     </message>
@@ -1444,12 +1452,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCap</name>
     <message>
-        <location filename="../src/tools/screencap/screencap.cpp" line="30"/>
+        <location filename="../src/tools/screencap/screencap.cpp" line="28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/screencap/screencap.cpp" line="38"/>
+        <location filename="../src/tools/screencap/screencap.cpp" line="36"/>
         <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1457,12 +1465,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCapExit</name>
     <message>
-        <location filename="../src/tools/screencapexit/screencapexit.cpp" line="30"/>
+        <location filename="../src/tools/screencapexit/screencapexit.cpp" line="28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/screencapexit/screencapexit.cpp" line="38"/>
+        <location filename="../src/tools/screencapexit/screencapexit.cpp" line="36"/>
         <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1470,12 +1478,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCapOption</name>
     <message>
-        <location filename="../src/tools/screencapoption/screencapoption.cpp" line="30"/>
+        <location filename="../src/tools/screencapoption/screencapoption.cpp" line="28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/screencapoption/screencapoption.cpp" line="38"/>
+        <location filename="../src/tools/screencapoption/screencapoption.cpp" line="36"/>
         <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1483,12 +1491,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCapStart</name>
     <message>
-        <location filename="../src/tools/screencapstart/screencapstart.cpp" line="30"/>
+        <location filename="../src/tools/screencapstart/screencapstart.cpp" line="28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/screencapstart/screencapstart.cpp" line="38"/>
+        <location filename="../src/tools/screencapstart/screencapstart.cpp" line="36"/>
         <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1496,12 +1504,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCut</name>
     <message>
-        <location filename="../src/tools/screencut/screencut.cpp" line="30"/>
+        <location filename="../src/tools/screencut/screencut.cpp" line="28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/screencut/screencut.cpp" line="38"/>
+        <location filename="../src/tools/screencut/screencut.cpp" line="36"/>
         <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1517,12 +1525,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenMouse</name>
     <message>
-        <location filename="../src/tools/screenmouse/screenmouse.cpp" line="30"/>
+        <location filename="../src/tools/screenmouse/screenmouse.cpp" line="28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/screenmouse/screenmouse.cpp" line="38"/>
+        <location filename="../src/tools/screenmouse/screenmouse.cpp" line="36"/>
         <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1530,12 +1538,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenMouseCursor</name>
     <message>
-        <location filename="../src/tools/screenmousecursor/screenmousecursor.cpp" line="30"/>
+        <location filename="../src/tools/screenmousecursor/screenmousecursor.cpp" line="28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/screenmousecursor/screenmousecursor.cpp" line="38"/>
+        <location filename="../src/tools/screenmousecursor/screenmousecursor.cpp" line="36"/>
         <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1753,12 +1761,12 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="42"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="41"/>
         <source>Rectangular Selection</source>
         <translation>Прямоугольное выделение</translation>
     </message>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="50"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="49"/>
         <source>Set Selection as the paint tool</source>
         <translation>Выбрать Прямоугольное выделение инструментом для рисования</translation>
     </message>
@@ -1910,22 +1918,22 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SyncDiagram</name>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="255"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="257"/>
         <source>Video in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="256"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="258"/>
         <source>Audio in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="257"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="259"/>
         <source>Video out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="258"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="260"/>
         <source>Audio out</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1941,22 +1949,22 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>TextConfig</name>
     <message>
-        <location filename="../src/tools/text/textconfig.cpp" line="49"/>
+        <location filename="../src/tools/text/textconfig.cpp" line="48"/>
         <source>StrikeOut</source>
         <translation>Зачеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/textconfig.cpp" line="56"/>
+        <location filename="../src/tools/text/textconfig.cpp" line="55"/>
         <source>Underline</source>
         <translation>Подчеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/textconfig.cpp" line="63"/>
+        <location filename="../src/tools/text/textconfig.cpp" line="62"/>
         <source>Bold</source>
         <translation>Полужирный</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/textconfig.cpp" line="70"/>
+        <location filename="../src/tools/text/textconfig.cpp" line="69"/>
         <source>Italic</source>
         <translation>Курсив</translation>
     </message>
@@ -2036,17 +2044,17 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>VisualsEditor</name>
     <message>
-        <location filename="../src/config/visualseditor.cpp" line="53"/>
+        <location filename="../src/config/visualseditor.cpp" line="52"/>
         <source>Opacity of area outside selection:</source>
         <translation>Затемнение невыделенной области:</translation>
     </message>
     <message>
-        <location filename="../src/config/visualseditor.cpp" line="77"/>
+        <location filename="../src/config/visualseditor.cpp" line="76"/>
         <source>Button Selection</source>
         <translation>Выбор кнопок</translation>
     </message>
     <message>
-        <location filename="../src/config/visualseditor.cpp" line="83"/>
+        <location filename="../src/config/visualseditor.cpp" line="82"/>
         <source>Select All</source>
         <translation>Выбрать все</translation>
     </message>

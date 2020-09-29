@@ -17,7 +17,7 @@
 <context>
     <name>AppLauncherWidget</name>
     <message>
-        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="+56"/>
+        <location filename="../src/tools/launcher/applauncherwidget.cpp" line="+55"/>
         <source>Open With</source>
         <translation>打开</translation>
     </message>
@@ -51,7 +51,7 @@
 <context>
     <name>ArrowTool</name>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="+86"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="+87"/>
         <source>Arrow</source>
         <translation>箭头</translation>
     </message>
@@ -64,9 +64,13 @@
 <context>
     <name>BlurTool</name>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="+37"/>
         <source>Blur</source>
-        <translation>模糊</translation>
+        <translation type="vanished">模糊</translation>
+    </message>
+    <message>
+        <location filename="../src/tools/blur/blurtool.cpp" line="+37"/>
+        <source>blur</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -77,7 +81,7 @@
 <context>
     <name>CaptureLauncher</name>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="+59"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="+62"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
         <translation>&lt;b&gt;捕获模式&lt;/b&gt;</translation>
     </message>
@@ -125,36 +129,35 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+85"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+86"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+214"/>
+        <location line="+213"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
         <source>Select an area with the mouse, or press Esc to exit.
 Press Enter to capture the screen.
 Press Right Click to show the color picker.
 Use the Mouse Wheel to change the thickness of your tool.
 Press Space to open the side panel.</source>
-        <translation>用鼠标选择一个区域,或按 Esc 退出。
+        <translation type="vanished">用鼠标选择一个区域,或按 Esc 退出。
 按 Enter 键捕捉屏幕。
 按住鼠标右键显示颜色选择器。
 使用鼠标滚轮来改变绘画工具的宽度。
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1064"/>
+        <location line="+1134"/>
         <location line="+23"/>
         <source>Open Directory</source>
         <translation type="unfinished"></translation>
@@ -199,7 +202,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="+175"/>
+        <location filename="../src/core/controller.cpp" line="+176"/>
         <source>&amp;Take Screenshot</source>
         <translation>进行截图(&amp;T)</translation>
     </message>
@@ -223,6 +226,11 @@ Press Space to open the side panel.</source>
         <source>&amp;Quit</source>
         <translation>退出(&amp;Q)</translation>
     </message>
+    <message>
+        <location line="+14"/>
+        <source>Kylin-Screenshot</source>
+        <translation>麒麟截图</translation>
+    </message>
 </context>
 <context>
     <name>CopyTool</name>
@@ -240,7 +248,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Cut</name>
     <message>
-        <location filename="../src/tools/cut/cut.cpp" line="+41"/>
+        <location filename="../src/tools/cut/cut.cpp" line="+39"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
@@ -260,7 +268,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>DBusUtils</name>
     <message>
-        <location filename="../src/utils/dbusutils.cpp" line="+43"/>
+        <location filename="../src/utils/dbusutils.cpp" line="+42"/>
         <source>Unable to connect via DBus</source>
         <translation>无法通过 DBus 进行连接</translation>
     </message>
@@ -329,7 +337,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+92"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+93"/>
         <source>StrikeOut</source>
         <translation type="unfinished">删除线</translation>
     </message>
@@ -352,7 +360,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+107"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+108"/>
         <source>StrikeOut</source>
         <translation type="unfinished">删除线</translation>
     </message>
@@ -550,7 +558,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="+40"/>
+        <location filename="../src/widgets/infowindow.cpp" line="+38"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -661,7 +669,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Logger</name>
     <message>
-        <location filename="../src/AV/FastResampler.cpp" line="+123"/>
+        <location filename="../src/AV/FastResampler.cpp" line="+126"/>
         <source>Error: Resample ratio is out of range!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -676,7 +684,7 @@ Press Space to open the side panel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/FastScaler.cpp" line="+124"/>
+        <location filename="../src/AV/FastScaler.cpp" line="+126"/>
         <source>Warning: Pixel format is not supported (%1 -&gt; %2), using swscale instead. This is not a problem, but performance will be worse.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -698,7 +706,7 @@ Press Space to open the side panel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="+32"/>
+        <location filename="../src/AV/input/PulseAudioInput.cpp" line="+34"/>
         <source>Error: pa_mainloop_prepare failed!</source>
         <comment>Don&apos;t translate &apos;pa_mainloop_prepare&apos;</comment>
         <translation type="unfinished"></translation>
@@ -789,7 +797,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
     <message>
         <location line="+31"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="+424"/>
+        <location filename="../src/AV/input/X11Input.cpp" line="+426"/>
         <source>Input thread started.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -834,7 +842,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
     <message>
         <location line="+124"/>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="+94"/>
+        <location filename="../src/AV/output/VideoEncoder.cpp" line="+96"/>
         <source>Error: Width or height is zero!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -920,7 +928,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="+96"/>
+        <location filename="../src/AV/output/AudioEncoder.cpp" line="+98"/>
         <source>Error: Channel count is zero.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -956,7 +964,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="+28"/>
+        <location filename="../src/AV/output/BaseEncoder.cpp" line="+30"/>
         <location line="+9"/>
         <source>Error: Option &apos;%1&apos; could not be parsed!</source>
         <translation type="unfinished"></translation>
@@ -1002,7 +1010,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="+70"/>
+        <location filename="../src/AV/output/Muxer.cpp" line="+72"/>
         <source>Stopping encoders ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1110,7 +1118,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="+66"/>
+        <location filename="../src/AV/output/OutputManager.cpp" line="+68"/>
         <source>Stopping fragment thread ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1145,7 +1153,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="+218"/>
+        <location filename="../src/AV/output/Synchronizer.cpp" line="+220"/>
         <source>Stopping synchronizer thread ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1284,7 +1292,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>LuPing</name>
     <message>
-        <location filename="../src/tools/luping/luping.cpp" line="+41"/>
+        <location filename="../src/tools/luping/luping.cpp" line="+39"/>
         <source>LuPing</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1297,7 +1305,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>MarkerTool</name>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="+40"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="+39"/>
         <source>Marker</source>
         <translation>标记</translation>
     </message>
@@ -1323,7 +1331,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Options</name>
     <message>
-        <location filename="../src/tools/options/options.cpp" line="+41"/>
+        <location filename="../src/tools/options/options.cpp" line="+39"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1349,7 +1357,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PinTool</name>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="+37"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="+36"/>
         <source>Pin Tool</source>
         <translation>贴图工具</translation>
     </message>
@@ -1362,7 +1370,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="+110"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="+109"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1386,7 +1394,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+79"/>
+        <location filename="../src/main.cpp" line="+80"/>
         <location line="+150"/>
         <location line="+149"/>
         <location line="+24"/>
@@ -1395,7 +1403,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>无法通过DBus进行连接</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/openwithprogram.cpp" line="+39"/>
+        <location filename="../src/tools/launcher/openwithprogram.cpp" line="+38"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -1459,7 +1467,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCap</name>
     <message>
-        <location filename="../src/tools/screencap/screencap.cpp" line="+30"/>
+        <location filename="../src/tools/screencap/screencap.cpp" line="+28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1472,7 +1480,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCapExit</name>
     <message>
-        <location filename="../src/tools/screencapexit/screencapexit.cpp" line="+30"/>
+        <location filename="../src/tools/screencapexit/screencapexit.cpp" line="+28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1485,7 +1493,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCapOption</name>
     <message>
-        <location filename="../src/tools/screencapoption/screencapoption.cpp" line="+30"/>
+        <location filename="../src/tools/screencapoption/screencapoption.cpp" line="+28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1498,7 +1506,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCapStart</name>
     <message>
-        <location filename="../src/tools/screencapstart/screencapstart.cpp" line="+30"/>
+        <location filename="../src/tools/screencapstart/screencapstart.cpp" line="+28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1511,7 +1519,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCut</name>
     <message>
-        <location filename="../src/tools/screencut/screencut.cpp" line="+30"/>
+        <location filename="../src/tools/screencut/screencut.cpp" line="+28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1532,7 +1540,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenMouse</name>
     <message>
-        <location filename="../src/tools/screenmouse/screenmouse.cpp" line="+30"/>
+        <location filename="../src/tools/screenmouse/screenmouse.cpp" line="+28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1545,7 +1553,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenMouseCursor</name>
     <message>
-        <location filename="../src/tools/screenmousecursor/screenmousecursor.cpp" line="+30"/>
+        <location filename="../src/tools/screenmousecursor/screenmousecursor.cpp" line="+28"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1768,7 +1776,7 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="+42"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="+41"/>
         <source>Rectangular Selection</source>
         <translation>矩形选择</translation>
     </message>
@@ -1956,7 +1964,7 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>TextConfig</name>
     <message>
-        <location filename="../src/tools/text/textconfig.cpp" line="+49"/>
+        <location filename="../src/tools/text/textconfig.cpp" line="+48"/>
         <source>StrikeOut</source>
         <translation>删除线</translation>
     </message>
@@ -2051,7 +2059,7 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>VisualsEditor</name>
     <message>
-        <location filename="../src/config/visualseditor.cpp" line="+53"/>
+        <location filename="../src/config/visualseditor.cpp" line="+52"/>
         <source>Opacity of area outside selection:</source>
         <translation>选中区域之外的不透明度：</translation>
     </message>
