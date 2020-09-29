@@ -1958,7 +1958,7 @@ Note that not all codecs are supported by all containers, and that not all media
     <message>
         <location filename="../src/utils/systemnotification.cpp" line="+45"/>
         <source>Kylin-ScreenShot Info</source>
-        <translation>Kylin-ScreenShot 消息</translation>
+        <translation>麒麟截图 消息</translation>
     </message>
 </context>
 <context>
