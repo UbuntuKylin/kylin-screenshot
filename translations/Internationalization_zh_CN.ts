@@ -560,7 +560,7 @@ Press Space to open the side panel.</source>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="+38"/>
         <source>About</source>
-        <translation>关于</translation>
+        <translation>信息</translation>
     </message>
     <message>
         <location line="+24"/>
