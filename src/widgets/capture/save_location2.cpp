@@ -63,8 +63,9 @@ void Save_Location2::setCenterWidget(QWidget *widget)
     savedir = new QLabel("存储位置",this);
     savedir->move(13,21);
     SaveDir = new  QPushButton(this);
-    SaveDir->resize(118,20);
+    SaveDir->resize(118,25);
     SaveDir->move(13,50);
+    SaveDir->setStyleSheet("QPushButton{font-family:'宋体';font-size:100px;color:rgb(0,0,0,255);");
     savetype = new QLabel("存储格式",this);
     QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
     SaveDir->setText(a.at(0));

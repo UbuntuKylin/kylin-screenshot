@@ -160,7 +160,7 @@ Press Space to open the side panel.</source>
         <location line="+1134"/>
         <location line="+23"/>
         <source>Open Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>选择目录</translation>
     </message>
 </context>
 <context>

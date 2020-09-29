@@ -63,7 +63,7 @@ void Save_Location::setCenterWidget(QWidget *widget)
     savedir = new QLabel("存储位置",this);
     savedir->move(13,21);
     SaveDir = new  QPushButton(this);
-    SaveDir->resize(118,20);
+    SaveDir->resize(118,25);
     SaveDir->move(13,50);
     savetype = new QLabel("存储格式",this);
     savetype->move(13,82);
