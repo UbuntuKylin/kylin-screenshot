@@ -1463,50 +1463,44 @@ void CaptureWidget::setState(CaptureButton *b) {
 
      void CaptureWidget::ClickedSavedir()
      {
-         QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
          hide_window();
-         file = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                  a.at(0),
-                                                  QFileDialog::ShowDirsOnly
-                                                  | QFileDialog::DontResolveSymlinks);
-         if (file != nullptr)
-         {
-             qDebug()<<"select dir:"<<file;
-             save_location->SaveDir->setText(file);
-             m_context.savePath = file;
-             save_location->update();
+         QFileDialog fileDialog(this, Qt::CustomizeWindowHint);
+         fileDialog.setDirectory (m_context.savePath);
+         fileDialog.setAcceptMode (QFileDialog::AcceptSave);
+         fileDialog.setFileMode (QFileDialog::DirectoryOnly);
+         fileDialog.setFilter(QDir::Dirs | QDir::NoDotAndDotDot | QDir::Drives | QDir::NoSymLinks);
+         if(fileDialog.exec() == QDialog::Accepted){
+                 fileDialog.hide();
+                 file = fileDialog.selectedFiles()[0];
+                 fileDialog.hide();
+                 qDebug()<<"select dir:"<<file;
+                 save_location->SaveDir->setText(file);
+                 m_context.savePath = file;
+                 save_location->update();
          }
-         else
-         {
-            qDebug()<<"select dir:"<<a.at(0);
-            save_location->SaveDir->setText(a.at(0));
-            m_context.savePath = a.at(0);
-         }
+        fileDialog.hide();
         show_window();
       }
      void CaptureWidget::ClickedSavedir2()
      {
-         QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
-         hide_window();
-         file = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                  a.at(0),
-                                                  QFileDialog::ShowDirsOnly
-                                                  | QFileDialog::DontResolveSymlinks);
-         if (file != nullptr)
-         {
-              qDebug()<<"select dir:"<<file;
-              save_location2->SaveDir->setText(file);
-              m_context.savePath = file;
-              save_location2->update();
+	 hide_window();
+         QFileDialog fileDialog(this, Qt::CustomizeWindowHint);
+         fileDialog.setDirectory (m_context.savePath);
+         fileDialog.setAcceptMode (QFileDialog::AcceptSave);
+         fileDialog.setFileMode (QFileDialog::DirectoryOnly);
+         fileDialog.setFilter(QDir::Dirs | QDir::NoDotAndDotDot | QDir::Drives | QDir::NoSymLinks);
+         if(fileDialog.exec() == QDialog::Accepted){
+                 fileDialog.hide();
+                 file = fileDialog.selectedFiles()[0];
+                 fileDialog.hide();
+                 qDebug()<<"select dir:"<<file;
+                 save_location2->SaveDir->setText(file);
+                 m_context.savePath = file;
+                 save_location2->update();
          }
-         else
-         {
-            qDebug()<<"select dir:"<<a.at(0);
-            save_location2->SaveDir->setText(a.at(0));
-            m_context.savePath = a.at(0);
-         }
+         fileDialog.hide();
          show_window();
-      }
+     }
 
      void CaptureWidget::font_type_changed(QFont f)
      {
