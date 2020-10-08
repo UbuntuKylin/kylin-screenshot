@@ -295,9 +295,32 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             ||m_context.mousePos.y()< m_selection->y()||m_context.mousePos.y()>m_selection->y()+m_selection->height()+m_buttonHandler->size()+20)
        {
            painter.setOpacity(0.5);
-           painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,crosspixmap);
-           painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
+           if(m_context.mousePos.y()+144>=qApp->desktop()->screenGeometry().height())
+           {
+                  if(m_context.mousePos.x()+72<=qApp->desktop()->screenGeometry().width()){
+                        painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()-144,crosspixmap);
+                        painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()-24,tr("%1 , %2")
                              .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+                  }
+                  else
+                  {
+                          painter.drawPixmap(m_context.mousePos.x()-144,m_context.mousePos.y()-144,crosspixmap);
+                          painter.drawText(m_context.mousePos.x()-144,m_context.mousePos.y()-24,tr("%1 , %2")
+                             .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+                  }
+           }
+           else{
+                   if(m_context.mousePos.x()+144>=qApp->desktop()->screenGeometry().width()){
+                        painter.drawPixmap(m_context.mousePos.x()-144,m_context.mousePos.y()+10,crosspixmap);
+                        painter.drawText(m_context.mousePos.x()-144,m_context.mousePos.y()+130,tr("%1 , %2")
+                             .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+                  }
+                   else{
+                        painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,crosspixmap);
+                        painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
+                             .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+                   }
+           }
            update();
        }
     if (m_activeTool && m_mouseIsClicked) {
