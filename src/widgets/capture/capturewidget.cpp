@@ -1362,7 +1362,7 @@ void CaptureWidget::setState(CaptureButton *b) {
          new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Left), this, SLOT(leftResize()));
          new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Up), this, SLOT(upResize()));
          new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Down), this, SLOT(downResize()));
-         new QShortcut(Qt::Key_Space, this, SLOT(togglePanel()));
+         // new QShortcut(Qt::Key_Space, this, SLOT(togglePanel()));
          new QShortcut(Qt::Key_Escape, this, SLOT(deleteToolwidgetOrClose()));
          new QShortcut(Qt::Key_Return, this, SLOT(copyScreenshot()));
          new QShortcut(Qt::Key_Enter, this, SLOT(copyScreenshot()));

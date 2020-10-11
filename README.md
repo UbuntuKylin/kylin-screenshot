@@ -89,4 +89,3 @@ These shortcuts are available in GUI mode:
 | <kbd>Ctrl</kbd> + <kbd>C</kbd>                                            | Copy to clipboard                                              |
 | <kbd>Ctrl</kbd> + <kbd>S</kbd>                                            | Save selection as a file                                       |
 | <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                            | Undo the last modification                                     |
-| <kbd>Spacebar</kbd>                                                       | Toggle visibility of sidebar with options of the selected tool |

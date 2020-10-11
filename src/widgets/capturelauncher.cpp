@@ -72,7 +72,7 @@ CaptureLauncher::CaptureLauncher(QWidget *parent) :
     m_delaySpinBox->setSingleStep(1.0);
     m_delaySpinBox->setMinimum(0.0);
     m_delaySpinBox->setMaximum(999.0);
-    m_delaySpinBox->setSpecialValueText(tr("No Delay"));
+    //m_delaySpinBox->setSpecialValueText(tr("No Delay"));
     m_delaySpinBox->setMinimumWidth(160);
     // with QT 5.7 qOverload<int>(&QSpinBox::valueChanged),
     connect(m_delaySpinBox,

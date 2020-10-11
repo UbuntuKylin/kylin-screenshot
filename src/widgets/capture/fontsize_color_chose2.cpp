@@ -67,6 +67,7 @@ FontSize_Color_Chose2::FontSize_Color_Chose2(QWidget *parent)
          m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
          Start_x += 24;
     }
+    m_colorAreaList.append(QRect(5,30,7,7));
 }
 void FontSize_Color_Chose2::setStartPos(double startX)
 {
@@ -93,6 +94,11 @@ void FontSize_Color_Chose2::paintEvent(QPaintEvent *event)
                                         BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
     painter.drawPath(drawPath);
+    QRect rect = m_colorAreaList.at(12);
+    painter.setBrush(QColor(Qt::gray));
+    painter.setOpacity(0);
+    painter.drawEllipse(rect);
+    painter.setOpacity(1);
     for (int i=0;i<4;i++)
     {
         QRect rect = m_colorAreaList.at(i);
@@ -122,9 +128,18 @@ void FontSize_Color_Chose2::paintEvent(QPaintEvent *event)
     }
 }
 void FontSize_Color_Chose2::mousePressEvent(QMouseEvent *e) {
-    for (int i = 0; i < 4; i++) {
-        if (m_colorAreaList.at(i).contains(e->pos())) {
+      for (int i = 0; i < 4; i++) {
+        if(i == 0)
+        {
+            if (m_colorAreaList.at(12).contains(e->pos())) {
             color_rect = m_colorAreaList.at(i);
+            emit font_size_change2(i*8) ;
+            update();
+            break;
+         }
+        }
+        else if (m_colorAreaList.at(i).contains(e->pos())) {
+           color_rect = m_colorAreaList.at(i);
             emit font_size_change2(i*8) ;
             update();
             break;
