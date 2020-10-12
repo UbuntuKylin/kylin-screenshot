@@ -188,6 +188,8 @@ void Controller::enableTrayIcon() {
     connect(infoAction, &QAction::triggered, this,
             &Controller::openInfoWindow);
     QAction *quitAction = new QAction(tr("&Quit"), this);
+    connect(quitAction, &QAction::triggered, this,
+            &Controller::deletePidfile);
     connect(quitAction, &QAction::triggered, qApp,
             &QCoreApplication::quit);
 
@@ -237,6 +239,15 @@ void Controller::sendTrayNotification(
 void Controller::updateConfigComponents() {
     if (m_configWindow) {
         m_configWindow->updateChildren();
+    }
+}
+
+void Controller::deletePidfile()
+{
+    QFile file("/tmp/screenshot.pid");
+    if (file.exists())
+    {
+        file.remove();
     }
 }
 

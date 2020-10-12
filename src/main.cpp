@@ -30,6 +30,9 @@
 #include <QTextStream>
 #include <QTimer>
 #include <QDir>
+#include <QFile>
+#include <sys/types.h>
+#include <signal.h>
 #include "src/common/CommandLineOptions.h"
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
@@ -39,7 +42,21 @@
 #include <QDBusConnection>
 #endif
 
+#define PIDFILE		"/tmp/screenshot.pid"
+
 int main(int argc, char *argv[]) {
+
+    QFile file(PIDFILE);
+    if (file.exists()) {
+        if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
+            return 1;
+        QTextStream in(&file);
+        QString line = in.readLine();
+        if (!line.isEmpty()) {
+            kill(line.toInt(), SIGTERM);
+        }
+    }
+
     // required for the button serialization
     // TODO: change to QVector in v1.0
     qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
@@ -85,6 +102,13 @@ int main(int argc, char *argv[]) {
         // Exporting captures must be connected after the dbus interface
         // or the dbus signal gets blocked until we end the exports.
         c->enableExports();
+        QFile pidFile(PIDFILE);
+        if (!pidFile.open(QIODevice::ReadWrite | QIODevice::Text))
+            return 1;
+        char pid[1024] = {0};
+        sprintf(pid, "%d", getpid());
+        pidFile.write(pid);
+        pidFile.close();
         return app.exec();
     }
 

@@ -60,6 +60,8 @@ public slots:
 
     void updateConfigComponents();
 
+    void deletePidfile();
+
 private slots:
     void startFullscreenCapture(const uint id = 0);
     void startVisualCapture(const uint id = 0,
