@@ -21,7 +21,7 @@
 #include <QPoint>
 #include <QPixmap>
 #include <QPainter>
-
+#include <QGSettings/qgsettings.h>
 struct CaptureContext {
     // screenshot with modifications
     QPixmap screenshot;
@@ -51,5 +51,7 @@ struct CaptureContext {
     bool bold;
     bool underline;
     bool deleteline;
-    bool italic;
+    bool italic;   
+    QGSettings *style_settings;
+    QString style_name;
 };

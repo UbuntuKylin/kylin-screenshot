@@ -23,6 +23,7 @@
 #include <QWidget>
 #include <QFrame>
 #include <QMouseEvent>
+#include "src/tools/capturecontext.h"
 class FontSize_Color_Chose : public QWidget
 {
     Q_OBJECT
@@ -54,6 +55,7 @@ signals:
     void  colorSelected(QColor color);
     void  font_size_change(int thickness);
 private:
+    CaptureContext context;
     //小三角的起始位置
     double m_startx;
     //小三角的宽

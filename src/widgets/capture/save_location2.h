@@ -26,7 +26,7 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include <QMouseEvent>
-
+#include "src/tools/capturecontext.h"
 class Save_Location2 : public QWidget
 {
     Q_OBJECT
@@ -50,6 +50,7 @@ signals:
 protected:
     void paintEvent(QPaintEvent *event) ;
 private:
+    CaptureContext context;
     QVBoxLayout *vLayout;
     QHBoxLayout *hMainLayout;
     QStringList *file;

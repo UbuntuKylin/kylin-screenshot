@@ -29,13 +29,18 @@ bool SelectionTool::closeOnButtonPressed() const {
     return false;
 }
 
-QIcon SelectionTool::icon(const QColor &background, bool inEditor) const {
+QIcon SelectionTool::icon(const QColor &background, bool inEditor, const CaptureContext &context ) const {
    // Q_UNUSED(inEditor);
    // return QIcon(iconPath(background) + "square-outline.svg");
     Q_UNUSED(background);
-    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "square.svg");
-
+    }
+    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
+                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "square.png");
+    }
 }
 QString SelectionTool::name() const {
     return tr("Rectangular Selection");

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="18px" viewBox="0 0 32 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>斜体</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="截图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="截图&amp;录屏-10月版本（无录屏）深色模式" transform="translate(-252.000000, -501.000000)">
+            <g id="字体副操作栏" transform="translate(145.000000, 457.000000)">
+                <g id="类型" transform="translate(8.000000, 44.000000)">
+                    <g id="斜体" transform="translate(99.000000, 0.000000)">
+                        <g fill="#FFFFFF" id="选中" opacity="0.2">
+                            <path d="M0,0 L30,0 C31.1045695,-2.02906125e-16 32,0.8954305 32,2 L32,16 C32,17.1045695 31.1045695,18 30,18 L0,18 L0,18 L0,0 Z"></path>
+                        </g>
+                        <g filter="url(#filter-1)" id="编组" opacity="0.780180432">
+                            <g transform="translate(11.000000, 3.000000)">
+                                <polygon id="路径" fill="#000000" fill-rule="nonzero" points="9.65792092 0 9.65792092 0.845142855 8.048125 0.845142855 4.02608419 10.9834286 5.63424744 10.9834286 5.63424744 11.8285714 0.00159438616 11.8285714 0.00159438616 10.9834286 1.61057398 10.9834286 5.63424744 0.845142855 4.02526786 0.845142855 4.02526786 0"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

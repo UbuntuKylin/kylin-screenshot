@@ -41,6 +41,8 @@ Font_Options::Font_Options(QWidget *parent)
     ,bold(false)
     ,italic(false)
 {
+    context.style_settings = new QGSettings("org.ukui.style");
+    context.style_name = context.style_settings->get("style-name").toString();
     setCursor(Qt::ArrowCursor);
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
@@ -65,6 +67,8 @@ Font_Options::Font_Options(QWidget *parent)
           m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
           Start_x += 24;
      }
+     context.style_settings = new QGSettings("org.ukui.style");
+     context.style_name = context.style_settings->get("style-name").toString();
 }
 void Font_Options::setStartPos(double startX)
 {
@@ -93,28 +97,43 @@ void Font_Options::setCenterWidget(QWidget *widget)
     Font_size->move(Start_x,Start_y);
     delete_btn = new QPushButton(this);
     delete_btn->setToolTip(tr("StrikeOut"));
-    delete_btn->setFixedSize(32,18);
-    delete_btn->setStyleSheet("QPushButton{border-image:url"
-                            "(:/img/material/white/delete.png)}");
     delete_btn->move(8,49);
     Underline_btn= new QPushButton(this);
-    Underline_btn->setStyleSheet("QPushButton{border-image:url"
-                                 "(:/img/material/white/underline.png)}");
+    delete_btn->setFixedSize(32,18);
     Underline_btn->move(40,49);
     Underline_btn->setToolTip(tr("Underline"));
     Underline_btn->setFixedSize(32,18);
     bold_btn = new QPushButton(this);
-    bold_btn->setStyleSheet("QPushButton{border-image:url"
-                            "(:/img/material/white/bold.png)}");
     bold_btn->move(72,49);
     bold_btn->setToolTip(tr("Bold"));
     bold_btn->setFixedSize(32,18);
     Italic_btn = new QPushButton(this);
-    Italic_btn->setStyleSheet("QPushButton{border-image:url"
-                              "(:/img/material/white/italic.png)}");
     Italic_btn->move(104,49);
     Italic_btn->setToolTip(tr("Italic"));
     Italic_btn->setFixedSize(32,18);
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+    {
+        delete_btn->setStyleSheet("QPushButton{border-image:url"
+                            "(:/img/material/white/delete.png)}");
+        Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                                 "(:/img/material/dark-theme/underline.png)}");
+
+        bold_btn->setStyleSheet("QPushButton{border-image:url"
+                            "(:/img/material/white/bold.png)}");
+        Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/dark-theme/italic.png)}");
+    }
+    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+        delete_btn->setStyleSheet("QPushButton{border-image:url"
+                            "(:/img/material/white/delete.png)}");
+        Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                                 "(:/img/material/dark-theme/underline.png)}");
+
+        bold_btn->setStyleSheet("QPushButton{border-image:url"
+                            "(:/img/material/white/bold.png)}");
+        Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/dark-theme/italic.png)}");
+    }
     connect(Font_size,SIGNAL(valueChanged(int)),
             this,SLOT(font_size_change(int)));
     connect(Font_type,SIGNAL(currentFontChanged(QFont)),
@@ -133,7 +152,6 @@ void Font_Options::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.setPen(Qt::NoPen);
-    painter.setBrush(QColor(225,225,225,180));
     //
     QPolygon trianglePolygon;
     trianglePolygon << QPoint(m_startx, m_triangleWidth + SHADOW_WIDTH);
@@ -144,7 +162,14 @@ void Font_Options::paintEvent(QPaintEvent *event)
                                 width()-SHADOW_WIDTH *2 ,height() -SHADOW_WIDTH *2 -m_triangleHeight),
                          BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
-    painter.drawPath(drawPath);
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+        painter.setBrush(QColor(225,225,225,180));
+        painter.drawPath(drawPath);
+    }
+    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+        painter.setBrush(QColor(25,25,25,180));
+        painter.drawPath(drawPath);
+    }
     painter.setBrush(QColor(25,25,25));
     painter.drawRect(148,36,1,20);
     for (int i =0;i<8;i++)
@@ -165,8 +190,13 @@ void Font_Options::paintEvent(QPaintEvent *event)
                                "(:/img/material/black/bold_active.png)}");
     }
     else {
-        bold_btn->setStyleSheet("QPushButton{border-image:url"
-                                "(:/img/material/white/bold.png)}");
+        if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+            bold_btn->setStyleSheet("QPushButton{border-image:url"
+                                  "(:/img/material/white/bold.png)}");
+        else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+            bold_btn->setStyleSheet("QPushButton{border-image:url"
+                                  "(:/img/material/dark-theme/bold.png)}");
+        }
     }
     if (Delete)
     {
@@ -174,15 +204,25 @@ void Font_Options::paintEvent(QPaintEvent *event)
                                "(:/img/material/black/delete_active.png)}");
     }
     else {
-        delete_btn->setStyleSheet("QPushButton{border-image:url"
+        if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+            delete_btn->setStyleSheet("QPushButton{border-image:url"
                                   "(:/img/material/white/delete.png)}");
+        else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+            delete_btn->setStyleSheet("QPushButton{border-image:url"
+                                  "(:/img/material/dark-theme/delete.png)}");
+        }
     }
     if (italic)
         Italic_btn->setStyleSheet("QPushButton{border-image:url"
                                   "(:/img/material/black/italic_active.png)}");
     else {
-        Italic_btn->setStyleSheet("QPushButton{border-image:url"
+        if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+            Italic_btn->setStyleSheet("QPushButton{border-image:url"
                                   "(:/img/material/white/italic.png)}");
+        else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+            Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                                  "(:/img/material/dark-theme/italic.png)}");
+        }
     }
     if (Underline)
     {
@@ -190,8 +230,13 @@ void Font_Options::paintEvent(QPaintEvent *event)
                                   "(:/img/material/black/underline_active.png)}");
      }
     else {
-        Underline_btn->setStyleSheet("QPushButton{border-image:url"
+        if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+            Underline_btn->setStyleSheet("QPushButton{border-image:url"
                                  "(:/img/material/white/underline.png)}");
+        else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+            Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                                 "(:/img/material/dark-theme/underline.png)}");
+        }
     }
 }
 void Font_Options::mousePressEvent(QMouseEvent *e)
@@ -222,8 +267,13 @@ void Font_Options::font_bold_selete()
         bold_btn->setStyleSheet("QPushButton{border-image:url"
                                "(:/img/material/black/bold_active.png)}");
     else {
-        bold_btn->setStyleSheet("QPushButton{border-image:url"
+        if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+            bold_btn->setStyleSheet("QPushButton{border-image:url"
                                "(:/img/material/white/bold.png)}");
+        else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+            bold_btn->setStyleSheet("QPushButton{border-image:url"
+                               "(:/img/material/dark-theme/bold.png)}");
+        }
     }
     emit font_bold_change(bold);
 }
@@ -234,8 +284,13 @@ void Font_Options::font_delete_selete()
          delete_btn->setStyleSheet("QPushButton{border-image:url"
                                "(:/img/material/black/delete_active.png)}");
     else {
-        delete_btn->setStyleSheet("QPushButton{border-image:url"
+        if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+            delete_btn->setStyleSheet("QPushButton{border-image:url"
                               "(:/img/material/white/delete.png)}");
+        else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+            delete_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/dark-theme/delete.png)}");
+        }
     }
     emit font_delete_change(Delete);
 }
@@ -246,8 +301,13 @@ void Font_Options::font_underline_selete()
          Underline_btn->setStyleSheet("QPushButton{border-image:url"
                               "(:/img/material/black/underline_active.png)}");
     else {
-        Underline_btn->setStyleSheet("QPushButton{border-image:url"
+        if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+            Underline_btn->setStyleSheet("QPushButton{border-image:url"
                               "(:/img/material/white/underline.png)}");
+        else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+            Underline_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/dark-theme/underline.png)}");
+        }
     }
     emit font_underline_change(Underline);
 }
@@ -258,8 +318,13 @@ void Font_Options::font_italic_selete()
          Italic_btn->setStyleSheet("QPushButton{border-image:url"
                               "(:/img/material/black/italic_active.png)}");
     else {
-        Italic_btn->setStyleSheet("QPushButton{border-image:url"
+        if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0))
+            Italic_btn->setStyleSheet("QPushButton{border-image:url"
                               "(:/img/material/white/italic.png)}");
+        else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+            Italic_btn->setStyleSheet("QPushButton{border-image:url"
+                              "(:/img/material/dark-theme/italic.png)}");
+        }
     }
     emit font_italic_change(italic);
 }

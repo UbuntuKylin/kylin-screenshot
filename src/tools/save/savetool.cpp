@@ -27,7 +27,7 @@ bool SaveTool::closeOnButtonPressed() const {
     return true;
 }
 
-QIcon SaveTool::icon(const QColor &background, bool inEditor) const {
+QIcon SaveTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "content-save.svg");
     Q_UNUSED(background);
@@ -36,7 +36,7 @@ QIcon SaveTool::icon(const QColor &background, bool inEditor) const {
     return  QIcon();
 }
 QString SaveTool::name() const {
-    return tr("Save");
+    return tr("save");
 }
 
 QString SaveTool::nameID() {
@@ -75,7 +75,7 @@ void SaveTool::pressed(const CaptureContext &context) {
         bool ok = ScreenshotSaver().saveToFilesystem(
                     context.selectedScreenshotArea(), context.savePath, context.saveType);
         if (ok) {
-            emit requestAction(REQ_CAPTURE_DONE_OK);
+           emit requestAction(REQ_CAPTURE_DONE_OK);
         }
     }
 }

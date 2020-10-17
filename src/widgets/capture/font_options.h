@@ -29,6 +29,7 @@
 #include <QMouseEvent>
 #include <QFontComboBox>
 #include <QSpinBox>
+#include "src/tools/capturecontext.h"
 class Font_Options : public QWidget
 {
     Q_OBJECT
@@ -74,6 +75,7 @@ public  slots:
     void font_underline_selete();
     void font_italic_selete();
 private:
+    CaptureContext context;
     //小三角的起始位置
     double m_startx;
     //小三角的宽

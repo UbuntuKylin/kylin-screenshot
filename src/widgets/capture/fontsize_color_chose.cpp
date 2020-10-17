@@ -35,6 +35,8 @@ FontSize_Color_Chose::FontSize_Color_Chose(QWidget *parent)
     , m_triangleHeight(TRIANGLE_HEIGHT)
     , radius(1.5)
 {
+    context.style_settings = new QGSettings("org.ukui.style");
+    context.style_name = context.style_settings->get("style-name").toString();
     setCursor(Qt::ArrowCursor);
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
@@ -85,7 +87,6 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.setPen(Qt::NoPen);
-    painter.setBrush(QColor(225,225,225,180));
     //
     QPolygon trianglePolygon;
     trianglePolygon << QPoint(m_startx, m_triangleWidth + SHADOW_WIDTH);
@@ -96,12 +97,24 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
                                 width()-SHADOW_WIDTH *2 ,height() -SHADOW_WIDTH *2 -m_triangleHeight),
                          BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
-    painter.drawPath(drawPath);
-    QRect rect = m_colorAreaList.at(12);
-    painter.setBrush(QColor(Qt::gray));
-    painter.setOpacity(0);
-    painter.drawEllipse(rect);
-    painter.setOpacity(1);
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+        painter.setBrush(QColor(225,225,225,180));
+        painter.drawPath(drawPath);
+        QRect rect = m_colorAreaList.at(12);
+        painter.setBrush(QColor(Qt::gray));
+        painter.setOpacity(0);
+        painter.drawEllipse(rect);
+        painter.setOpacity(1);
+    }
+    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+        painter.setBrush(QColor(25,25,25,180));
+        painter.drawPath(drawPath);
+        QRect rect = m_colorAreaList.at(12);
+        painter.setBrush(QColor(Qt::black));
+        painter.setOpacity(0);
+        painter.drawEllipse(rect);
+        painter.setOpacity(1);
+    }
     for (int i=0;i<4;i++)
     {
         QRect rect = m_colorAreaList.at(i);

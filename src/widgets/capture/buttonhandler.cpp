@@ -384,12 +384,16 @@ void ButtonHandler::moveButtonsToPoints(
 	{
             button->move(p.x()+GlobalValues::buttonBaseSize()/2*3,p.y());
 	}
-         else if (index == 13)
-        {
+    else  if (index == 13)
+    {
+            button->move(p.x()+GlobalValues::buttonBaseSize(),p.y());
+    }
+    else if (index == 14)
+    {
 	     if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
-                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+            button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
 	     else
-		button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
+            button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
         }
         else
         button->move(p);

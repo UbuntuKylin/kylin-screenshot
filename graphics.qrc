@@ -61,5 +61,21 @@
         <file>img/material/black/pin_icon.svg</file>
         <file>img/material/white/italic.svg</file>
         <file>img/material/white/italic.png</file>
+        <file>img/material/dark-theme/arrow-bottom-left.png</file>
+        <file>img/material/dark-theme/blur.png</file>
+        <file>img/material/dark-theme/circle-outline.png</file>
+        <file>img/material/dark-theme/copy.png</file>
+        <file>img/material/dark-theme/down.png</file>
+        <file>img/material/dark-theme/format-text.png</file>
+        <file>img/material/dark-theme/pin_icon.png</file>
+        <file>img/material/dark-theme/line.png</file>
+        <file>img/material/dark-theme/marker.png</file>
+        <file>img/material/dark-theme/square.png</file>
+        <file>img/material/dark-theme/undo-variant.png</file>
+        <file>img/material/dark-theme/pencil.png</file>
+        <file>img/material/dark-theme/bold.png</file>
+        <file>img/material/dark-theme/delete.png</file>
+        <file>img/material/dark-theme/underline.png</file>
+        <file>img/material/dark-theme/italic.png</file>
     </qresource>
 </RCC>

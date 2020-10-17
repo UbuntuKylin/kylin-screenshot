@@ -19,11 +19,10 @@
 
 #include "src/widgets/capture/capturebutton.h"
 #include <QListWidget>
-
+#include "src/tools/capturecontext.h"
 class ButtonListView : public QListWidget {
 public:
     explicit ButtonListView(QWidget *parent= nullptr);
-
 public slots:
     void selectAll();
     void updateComponents();

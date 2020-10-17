@@ -44,7 +44,7 @@ void ButtonListView::initButtonList() {
 
         // when the background is lighter than gray, it uses the white icons
         QColor bgColor = this->palette().color(QWidget::backgroundRole());
-        m_buttonItem->setIcon(tool->icon(bgColor, false));
+       // m_buttonItem->setIcon(tool->icon(bgColor, false,m_context));
 
         m_buttonItem->setFlags(Qt::ItemIsUserCheckable);
         QColor foregroundColor = this->palette().color(QWidget::foregroundRole());

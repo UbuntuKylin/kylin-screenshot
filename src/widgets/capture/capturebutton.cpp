@@ -46,10 +46,15 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         layout = new  QHBoxLayout(this);
         label->setAlignment( Qt::AlignCenter);
         label2->setAlignment( Qt::AlignCenter|Qt::AlignHCenter);
-	setStyleSheet("QPushButton{font-family:'宋体';font-size:20px;color:rgb(0,0,0,255);}");
+        setStyleSheet("QPushButton{font-family:'宋体';font-size:20px;color:rgb(0,0,0,255);}");
         label->setFont(font);
         label->setText("选项");
-        label2->setPixmap(QPixmap(QStringLiteral(":/img/material/white/down.svg")));
+        if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0)){
+            label2->setPixmap(QPixmap(QStringLiteral(":/img/material/white/down.svg")));
+        }
+        else if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
+             label2->setPixmap(QPixmap(QStringLiteral(":/img/material/dark-theme/down.png")));
+        }
         layout->addWidget(label);
         layout->addWidget(label2);
         this->setFixedSize(GlobalValues::buttonBaseSize()*2,GlobalValues::buttonBaseSize());
@@ -67,12 +72,13 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
             //font.setStyle()
             setFont(font);
             setText("保存");
-        }
+        }       
     }
-
 }
 
 void CaptureButton::initButton() {
+    m_context.style_settings = new QGSettings("org.ukui.style");
+    m_context.style_name = m_context.style_settings->get("style-name").toString();
     m_tool = ToolFactory().CreateTool(m_buttonType, this);
     setFocusPolicy(Qt::NoFocus);
 
@@ -151,7 +157,7 @@ QString CaptureButton::styleSheet() const {
 
 // get icon returns the icon for the type of button
 QIcon CaptureButton::icon() const {
-    return m_tool->icon(m_mainColor, false);
+    return m_tool->icon(m_mainColor, false,m_context);
 }
 
 void CaptureButton::mousePressEvent(QMouseEvent *e) {
@@ -198,7 +204,8 @@ static std::map<CaptureButton::ButtonType, int> buttonTypeOrder {
      { CaptureButton:: TYPE_CLOSE,         10 },
      { CaptureButton:: TYPE_COPY,          11 },
      { CaptureButton:: TYPE_SAVE,          12 },
-     {CaptureButton::  TYPE_PIN,            13 },
+     { CaptureButton:: TYPE_SAVEAS,        13 },
+     { CaptureButton:: TYPE_PIN,           14 },
 };
 
 int CaptureButton::getPriorityByButton(CaptureButton::ButtonType b) {
@@ -222,5 +229,6 @@ QVector<CaptureButton::ButtonType> CaptureButton::iterableButtonTypes = {
     CaptureButton:: TYPE_CLOSE,
     CaptureButton:: TYPE_COPY,
     CaptureButton:: TYPE_SAVE,
+    CaptureButton:: TYPE_SAVEAS,
     CaptureButton:: TYPE_PIN,
 };

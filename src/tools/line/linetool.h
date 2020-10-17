@@ -24,7 +24,7 @@ class LineTool : public AbstractTwoPointTool {
 public:
     explicit LineTool(QObject *parent = nullptr);
 
-    QIcon icon(const QColor &background, bool inEditor) const override;
+    QIcon icon(const QColor &background, bool inEditor,const CaptureContext &context) const override;
     QString name() const override;
     static QString nameID();
     QString description() const override;

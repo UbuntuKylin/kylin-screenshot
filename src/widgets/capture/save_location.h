@@ -26,6 +26,7 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include <QMouseEvent>
+#include "src/tools/capturecontext.h"
 class Save_Location : public QWidget
 {
     Q_OBJECT
@@ -49,6 +50,7 @@ signals:
 protected:
     void paintEvent(QPaintEvent *event) ;
 private:
+    CaptureContext context;
     QStringList *file;
     QLabel *savedir , * savetype;
     //小三角的起始位置

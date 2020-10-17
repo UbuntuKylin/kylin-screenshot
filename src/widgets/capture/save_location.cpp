@@ -37,7 +37,8 @@ Save_Location::Save_Location(QWidget *parent)
     , m_triangleWidth(TRIANGLE_WIDTH)
     , m_triangleHeight(TRIANGLE_HEIGHT)
 {
-
+    context.style_settings = new QGSettings("org.ukui.style");
+    context.style_name = context.style_settings->get("style-name").toString();
     setCursor(Qt::ArrowCursor);
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
@@ -86,8 +87,6 @@ void Save_Location::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.setPen(Qt::NoPen);
-    painter.setBrush(QColor(225,225,225,180));
-    //
     QPolygon trianglePolygon;
     trianglePolygon << QPoint(m_startx, m_triangleWidth + SHADOW_WIDTH);
     trianglePolygon << QPoint(m_startx+m_triangleWidth/2,SHADOW_WIDTH);
@@ -98,7 +97,14 @@ void Save_Location::paintEvent(QPaintEvent *event)
                                 width()-SHADOW_WIDTH *2 ,height() -SHADOW_WIDTH *2 -m_triangleHeight),
                          BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
-    painter.drawPath(drawPath);
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+        painter.setBrush(QColor(225,225,225,180));
+        painter.drawPath(drawPath);
+    }
+    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+        painter.setBrush(QColor(25,25,25,180));
+        painter.drawPath(drawPath);
+    }
     for (int i=0;i<3;i++)
     {
         QRect rect = m_TypeList.at(i);

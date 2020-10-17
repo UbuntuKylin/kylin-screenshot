@@ -20,7 +20,8 @@ unix:!macx {
     QT  += dbus
 }
 
-CONFIG += c++11 link_pkgconfig
+CONFIG += c++11 link_pkgconfig 
+PKGCONFIG += gsettings-qt
 QMAKE_CXXFLAGS += -std=c++0x
 
 #CONFIG += packaging   # Enables "make install" for packaging paths

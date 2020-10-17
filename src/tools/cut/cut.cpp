@@ -28,7 +28,7 @@ bool Cut::closeOnButtonPressed() const
      return false;
 }
 
-QIcon Cut::icon(const QColor &background, bool inEditor) const
+QIcon Cut::icon(const QColor &background, bool inEditor , const CaptureContext &context) const
 {
     Q_UNUSED(background);
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "cut.svg") :

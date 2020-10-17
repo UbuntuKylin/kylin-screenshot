@@ -1422,7 +1422,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QPlatformTheme</name>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">取消</translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>

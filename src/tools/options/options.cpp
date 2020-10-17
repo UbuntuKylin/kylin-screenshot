@@ -27,7 +27,7 @@ bool Options::closeOnButtonPressed() const
      return false;
 }
 
-QIcon Options::icon(const QColor &background, bool inEditor) const
+QIcon Options::icon(const QColor &background, bool inEditor, const CaptureContext &context) const
 {
     Q_UNUSED(background);
    // return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :

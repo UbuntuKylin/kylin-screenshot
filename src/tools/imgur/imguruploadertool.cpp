@@ -27,7 +27,7 @@ bool ImgurUploaderTool::closeOnButtonPressed() const {
     return true;
 }
 
-QIcon ImgurUploaderTool::icon(const QColor &background, bool inEditor) const {
+QIcon ImgurUploaderTool::icon(const QColor &background, bool inEditor, const CaptureContext &context ) const {
    //Q_UNUSED(inEditor);
    // return QIcon(iconPath(background) + "cloud-upload.svg");
     Q_UNUSED(background);

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="18px" viewBox="0 0 34 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>删除线</title>
+    <defs>
+        <path d="M2,0 L34,0 L34,0 L34,18 L2,18 C0.8954305,18 1.3527075e-16,17.1045695 0,16 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="path-1"></path>
+        <filter x="-1.5%" y="-2.8%" width="102.9%" height="105.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="-1" dy="0" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="截图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="截图&amp;录屏-10月版本（无录屏）深色模式" transform="translate(-153.000000, -501.000000)">
+            <g id="字体副操作栏" transform="translate(145.000000, 457.000000)">
+                <g id="删除线" transform="translate(8.000000, 44.000000)">
+                    <g id="选中" opacity="0.2">
+                        <g>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        </g>
+                    </g>
+                    <g id="编组" opacity="0.780575707" transform="translate(11.000000, 3.000000)" fill="#FFFFFF">
+                        <path d="M7,8 L7,12 L5,12 L5,8 L7,8 Z M11.5,6 C11.7761424,6 12,6.22385763 12,6.5 C12,6.77614237 11.7761424,7 11.5,7 L0.5,7 C0.223857625,7 3.38176876e-17,6.77614237 0,6.5 C-3.38176876e-17,6.22385763 0.223857625,6 0.5,6 L11.5,6 Z M11,0 L11,2 L7,2 L7,5 L5,5 L5,2 L1,2 L1,0 L11,0 Z" id="形状结合"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

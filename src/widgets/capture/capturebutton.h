@@ -22,6 +22,7 @@
 #include <QVector>
 #include <QLabel>
 #include <QHBoxLayout>
+#include "src/tools/capturecontext.h"
 
 class QWidget;
 class QPropertyAnimation;
@@ -50,6 +51,7 @@ public:
         TYPE_CLOSE,
         TYPE_COPY,
         TYPE_SAVE,
+        TYPE_SAVEAS,
         TYPE_PIN,
     };
 
@@ -81,7 +83,7 @@ protected:
     static QVector<ButtonType> iterableButtonTypes;
 
     CaptureTool *m_tool;
-
+    CaptureContext m_context;
 signals:
     void pressedButton(CaptureButton *);
 

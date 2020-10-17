@@ -28,7 +28,7 @@ bool LuPing::closeOnButtonPressed() const
      return false;
 }
 
-QIcon LuPing:: icon(const QColor &background, bool inEditor) const
+QIcon LuPing:: icon(const QColor &background, bool inEditor, const CaptureContext &context) const
 {
     Q_UNUSED(background);
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "luping_icon.svg") :

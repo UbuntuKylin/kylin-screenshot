@@ -11,6 +11,7 @@ HEADERS += \
     $$PWD/tools/cut/cut.h \
     $$PWD/tools/luping/luping.h \
     $$PWD/tools/options/options.h \
+    $$PWD/tools/save/saveastool.h \
     $$PWD/tools/screencap/screencap.h \
     $$PWD/tools/screencapexit/screencapexit.h \
     $$PWD/tools/screencapoption/screencapoption.h \
@@ -31,6 +32,7 @@ SOURCES += \
     $$PWD/tools/cut/cut.cpp \
     $$PWD/tools/luping/luping.cpp \
     $$PWD/tools/options/options.cpp \
+    $$PWD/tools/save/saveastool.cpp \
     $$PWD/tools/screencap/screencap.cpp \
     $$PWD/tools/screencapexit/screencapexit.cpp \
     $$PWD/tools/screencapoption/screencapoption.cpp \

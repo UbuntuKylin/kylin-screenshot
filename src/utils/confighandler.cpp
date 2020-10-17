@@ -52,6 +52,7 @@ QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
                << CaptureButton:: TYPE_CLOSE
                << CaptureButton:: TYPE_COPY
                << CaptureButton:: TYPE_SAVE
+               << CaptureButton:: TYPE_SAVEAS
                << CaptureButton:: TYPE_PIN;
     }
 

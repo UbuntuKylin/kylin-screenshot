@@ -21,7 +21,6 @@
 #include "src/utils/pathinfo.h"
 #include <QIcon>
 #include <QPainter>
-
 class CaptureTool : public QObject {
     Q_OBJECT
 
@@ -86,7 +85,7 @@ public:
     // inEditor is true when the icon is requested inside the editor
     // and false otherwise.
     virtual QIcon icon(const QColor &background,
-                       bool inEditor) const = 0;
+                       bool inEditor,const CaptureContext &context) const = 0;
     // Name displayed for the tool, this could be translated with tr()
     virtual QString name() const = 0;
     // Codename for the tool, this hsouldn't change as it is used as ID

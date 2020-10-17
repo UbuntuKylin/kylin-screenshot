@@ -37,6 +37,7 @@
 #include "save_location2.h"
 #include "font_options.h"
 #include "font_options2.h"
+//#include <QGSettings/qgsettings.h>
 
 class QPaintEvent;
 class QResizeEvent;
@@ -67,10 +68,12 @@ public:
     void hide_window();
     void show_window();
 
+    QPushButton *SaveAs_btn;
 public slots:
     void deleteToolwidgetOrClose();
     void ClickedSavedir();
     void ClickedSavedir2();
+    void ClickedSaveAsFile();
     void ClickedSaveType(int i);
     void ClickedSaveType2(int i);
 signals:
@@ -153,6 +156,7 @@ protected:
     QPixmap pixmap2;
     QPixmap crosspixmap;
     double w,h;
+   // QGSettings  *style_settings;
 private:
     void initContext(const QString &savePath, bool fullscreen);
     void initPanel();

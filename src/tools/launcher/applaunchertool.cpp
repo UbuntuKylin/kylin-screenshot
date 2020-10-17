@@ -26,7 +26,7 @@ bool AppLauncher::closeOnButtonPressed() const {
     return true;
 }
 
-QIcon AppLauncher::icon(const QColor &background, bool inEditor) const {
+QIcon AppLauncher::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "open_with.svg");
     Q_UNUSED(background);

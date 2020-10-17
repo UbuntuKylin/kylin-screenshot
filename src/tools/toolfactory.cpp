@@ -38,7 +38,7 @@
 #include "cut/cut.h"
 #include "luping/luping.h"
 #include "options/options.h"
-
+#include "save/saveastool.h"
 ToolFactory::ToolFactory(QObject *parent) : QObject(parent) {
 
 }
@@ -101,6 +101,9 @@ CaptureTool* ToolFactory::CreateTool(
         break;
     case CaptureButton::TYPE_PIN:
         tool = new PinTool(parent);
+        break;
+    case CaptureButton::TYPE_SAVEAS:
+        tool = new SaveAsTool(parent);
         break;
 
     default:

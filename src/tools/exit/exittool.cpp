@@ -26,12 +26,12 @@ bool ExitTool::closeOnButtonPressed() const {
     return true;
 }
 
-QIcon ExitTool::icon(const QColor &background, bool inEditor) const {
+QIcon ExitTool::icon(const QColor &background, bool inEditor,const CaptureContext &context ) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "close.svg");
     Q_UNUSED(background);
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "close.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "close.svg");
+                       QIcon(QStringLiteral(":/img/material/white/") + "close.svg");
 }
 QString ExitTool::name() const {
     return tr("Exit");
