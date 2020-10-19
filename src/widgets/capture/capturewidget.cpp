@@ -141,7 +141,6 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     save_location2 = new Save_Location2(this);
     font_options = new  Font_Options(this);
     font_options2 = new Font_Options2(this);
-    //style_settings = new QGSettings("org.ukui.style");
     screenCap = new ScreenRecorder();
     screenCap->hide();
 
@@ -234,7 +233,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     SaveAs_btn = new  QPushButton(this);
     SaveAs_btn->setFixedSize(100,37);
     SaveAs_btn->hide();
-    SaveAs_btn->setText("另存为....");
+    SaveAs_btn->setText(("save as ...."));
     connect(SaveAs_btn,SIGNAL(pressed()),this,SLOT(ClickedSaveAsFile()));
 }
 
@@ -390,16 +389,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
                              GlobalValues::buttonBaseSize()*19-10,GlobalValues::buttonBaseSize()*1.1);
                 painter.drawRoundRect(rr,8,8);
-            if(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
-                painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3,
-                                    m_selection->geometry().intersected(rect()).y(),
-                                    GlobalValues::buttonBaseSize(),
-                                    GlobalValues::buttonBaseSize(),
-                                    GlobalValues::buttonBaseSize()/2,
-                                    GlobalValues::buttonBaseSize()/2);
-             else
-                painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()-GlobalValues::buttonBaseSize(),
-                                    m_selection->geometry().intersected(rect()).y(),
+                painter.drawRoundedRect(vectorButtons.last()->pos().x(),
+                                    vectorButtons.last()->pos().y(),
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize()/2,
@@ -436,16 +427,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
                              GlobalValues::buttonBaseSize()*19-10,GlobalValues::buttonBaseSize()*1.1);
                 painter.drawRoundRect(rr,8,8);
-            if(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
-                painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3,
-                                    m_selection->geometry().intersected(rect()).y(),
-                                    GlobalValues::buttonBaseSize(),
-                                    GlobalValues::buttonBaseSize(),
-                                    GlobalValues::buttonBaseSize()/2,
-                                    GlobalValues::buttonBaseSize()/2);
-             else
-                painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()-GlobalValues::buttonBaseSize(),
-                                    m_selection->geometry().intersected(rect()).y(),
+                painter.drawRoundedRect(vectorButtons.last()->pos().x(),
+                                    vectorButtons.last()->pos().y(),
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize()/2,
@@ -950,14 +933,28 @@ void CaptureWidget::setState(CaptureButton *b) {
             }
             else if (b->tool()->name() == "saveas")
             {
-                save_location2->hide();
-                save_location->hide();
-                font_color->hide();
-                font_color2->hide();
-                font_color_point->setX(b->x()-10);
-                font_color_point->setY(b->y()+40);
-                SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                SaveAs_btn->show();
+                if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
+                {
+                    save_location2->hide();
+                    save_location->hide();
+                    font_color->hide();
+                    font_color2->hide();
+                    font_color_point->setX(b->x()-40);
+                    font_color_point->setY(b->y()+40);
+                    SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+                    SaveAs_btn->show();
+                }
+                else
+                {
+                    save_location2->hide();
+                    save_location->hide();
+                    font_color->hide();
+                    font_color2->hide();
+                    font_color_point->setX(b->x()-40);
+                    font_color_point->setY(b->y()-37);
+                    SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+                    SaveAs_btn->show();
+                }
             }
          }
         else {
@@ -1048,14 +1045,30 @@ void CaptureWidget::setState(CaptureButton *b) {
             }
             else if (b->tool()->name() == "saveas")
             {
-                save_location2->hide();
-                save_location->hide();
-                font_color->hide();
-                font_color2->hide();
-                font_color_point->setX(b->x()-10);
-                font_color_point->setY(b->y()+40);
-                SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                SaveAs_btn->show();
+                if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
+                {
+                    save_location2->hide();
+                    save_location->hide();
+                    font_color->hide();
+                    font_color2->hide();
+                    font_color_point->setX(b->x()-40);
+                    font_color_point->setY(b->y()+40);
+                    SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+                    SaveAs_btn->show();
+                    setCursor(Qt::ArrowCursor);
+                }
+                else
+                {
+                    save_location2->hide();
+                    save_location->hide();
+                    font_color->hide();
+                    font_color2->hide();
+                    font_color_point->setX(b->x()-40);
+                    font_color_point->setY(b->y()-37);
+                    SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+                    SaveAs_btn->show();
+                    setCursor(Qt::ArrowCursor);
+                }
             }
         }
         processTool(b->tool());
@@ -1172,14 +1185,30 @@ void CaptureWidget::setState(CaptureButton *b) {
                     }
                     else if (b->tool()->name() == "saveas")
                     {
-                        save_location2->hide();
-                        save_location->hide();
-                        font_color->hide();
-                        font_color2->hide();
-                        font_color_point->setX(b->x()-10);
-                        font_color_point->setY(b->y()+40);
-                        SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                        SaveAs_btn->show();
+                        if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
+                        {
+                            save_location2->hide();
+                            save_location->hide();
+                            font_color->hide();
+                            font_color2->hide();
+                            font_color_point->setX(b->x()-40);
+                            font_color_point->setY(b->y()+40);
+                            SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+                            SaveAs_btn->show();
+                            setCursor(Qt::ArrowCursor);
+                        }
+                        else
+                        {
+                            save_location2->hide();
+                            save_location->hide();
+                            font_color->hide();
+                            font_color2->hide();
+                            font_color_point->setX(b->x()-40);
+                            font_color_point->setY(b->y()-37);
+                            SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+                            SaveAs_btn->show();
+                            setCursor(Qt::ArrowCursor);
+                        }
                     }
                  }
                 else {
@@ -1273,14 +1302,30 @@ void CaptureWidget::setState(CaptureButton *b) {
                     }
                     else if (b->tool()->name() == "saveas")
                     {
-                        save_location2->hide();
-                        save_location->hide();
-                        font_color->hide();
-                        font_color2->hide();
-                        font_color_point->setX(b->x()-10);
-                        font_color_point->setY(b->y()+40);
-                        SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                        SaveAs_btn->show();
+                        if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
+                        {
+                            save_location2->hide();
+                            save_location->hide();
+                            font_color->hide();
+                            font_color2->hide();
+                            font_color_point->setX(b->x()-40);
+                            font_color_point->setY(b->y()+40);
+                            SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+                            SaveAs_btn->show();
+                            setCursor(Qt::ArrowCursor);
+                        }
+                        else
+                        {
+                            save_location2->hide();
+                            save_location->hide();
+                            font_color->hide();
+                            font_color2->hide();
+                            font_color_point->setX(b->x()-40);
+                            font_color_point->setY(b->y()-37);
+                            SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+                            SaveAs_btn->show();
+                            setCursor(Qt::ArrowCursor);
+                        }
                     }
                 }
                  }
