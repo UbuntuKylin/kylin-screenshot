@@ -33,7 +33,7 @@
 
 Save_Location2::Save_Location2(QWidget *parent)
     :  QWidget(parent)
-    , m_startx(13)
+    , m_startx(8)
     , radius(5)
     , m_triangleWidth(TRIANGLE_WIDTH)
     , m_triangleHeight(TRIANGLE_HEIGHT)
@@ -62,22 +62,33 @@ void Save_Location2::setStartPos(double startX)
 }
 void Save_Location2::setCenterWidget(QWidget *widget)
 {
+    QFont ft;
+    ft.setPointSize(12);
     savedir = new QLabel("存储位置",this);
-    savedir->move(13,21);
+    savedir->setFont(ft);
+    savedir->move(8,16);
     SaveDir = new  QPushButton(this);
     SaveDir->resize(118,25);
-    SaveDir->move(13,50);
+    SaveDir->move(8,45);
     SaveDir->setStyleSheet("QPushButton{font-family:'宋体';font-size:100px;color:rgb(0,0,0,255);");
+    ft.setPointSize(11);
+    SaveDir->setFont(ft);
+    ft.setPointSize(12);
     savetype = new QLabel("存储格式",this);
+    savetype->setFont(ft);
     QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
     SaveDir->setText(a.at(0));
-    savetype->move(13,82);
+    savetype->move(8,82);
+    ft.setPointSize(11);
     label1 = new  QLabel("jpg",this);
-    label1->move(24,100);
+    label1->move(19,100);
+    label1->setFont(ft);
     label2 = new  QLabel("png",this);
-    label2->move(64,100);
+    label2->move(59,100);
+    label2->setFont(ft);
     label3 = new  QLabel("bmp",this);
-    label3->move(104,100);
+    label3->move(99,100);
+    label3->setFont(ft);
     setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH);
 }
 void Save_Location2::setTriangleInfo(double width, double height)

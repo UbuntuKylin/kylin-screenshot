@@ -230,8 +230,11 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     connect(&m_undoStack, &QUndoStack::indexChanged,
             this, [this](int){ this->update(); });
     initPanel();
+    QFont ft;
+    ft.setPointSize(10);
     SaveAs_btn = new  QPushButton(this);
     SaveAs_btn->setFixedSize(100,37);
+    SaveAs_btn->setFont(ft);
     SaveAs_btn->hide();
     SaveAs_btn->setText(("save as ...."));
     connect(SaveAs_btn,SIGNAL(pressed()),this,SLOT(ClickedSaveAsFile()));
@@ -346,7 +349,6 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                }
                update();
            }
-
     }
     QColor overlayColor(0, 0, 0, m_opacity);
     painter.setBrush(overlayColor);

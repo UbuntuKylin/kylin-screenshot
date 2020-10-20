@@ -61,18 +61,29 @@ void Save_Location::setStartPos(double startX)
 }
 void Save_Location::setCenterWidget(QWidget *widget)
 {
+    QFont ft;
+    ft.setPointSize(12);
     savedir = new QLabel("存储位置",this);
+    savedir->setFont(ft);
     savedir->move(13,21);
     SaveDir = new  QPushButton(this);
     SaveDir->resize(118,25);
     SaveDir->move(13,50);
+    ft.setPointSize(11);
+    SaveDir->setFont(ft);
+    ft.setPointSize(12);
     savetype = new QLabel("存储格式",this);
     savetype->move(13,82);
+    savetype->setFont(ft);
+    ft.setPointSize(11);
     label1 = new  QLabel("jpg",this);
+    label1->setFont(ft);
     label1->move(24,100);
     label2 = new  QLabel("png",this);
+    label2->setFont(ft);
     label2->move(64,100);
     label3 = new  QLabel("bmp",this);
+    label3->setFont(ft);
     label3->move(104,100);
     setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH);
 }
