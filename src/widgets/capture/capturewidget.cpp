@@ -362,7 +362,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
     painter.setClipRegion(grey);
     painter.drawRect(-1, -1, rect().width() + 1, rect().height() + 1);
     painter.setClipRect(rect());
-
+    QFont ft;
+    ft.setPointSize(10);
     if (m_selection->isVisible()) {
         // paint handlers
         painter.setPen(m_uiColor);
@@ -373,6 +374,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         painter.setBrush(QColor(195,195,195));
         painter.drawRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,82,24);
         painter.setPen(Qt::black);
+        painter.setFont(ft);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
                          .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
         }
@@ -380,6 +382,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             painter.setBrush(QColor(0,0,0));
             painter.drawRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,82,24);
             painter.setPen(Qt::white);
+            painter.setFont(ft);
             painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
                              .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
         }
