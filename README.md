@@ -44,6 +44,7 @@ You will need the following packages to compile kylin-screenshot:
 -               libx11-dev,
 -               libxinerama1,
 -               libxinerama-dev,
+-		libgsettings-qt-dev,
 You can Build and Install by apt command
 ```shell
 sudo mk-build-deps -i kylin-screenshot/debian/control
