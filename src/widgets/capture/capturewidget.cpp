@@ -751,7 +751,7 @@ void CaptureWidget::keyReleaseEvent(QKeyEvent *e) {
 
 void CaptureWidget::wheelEvent(QWheelEvent *e) {
     m_context.thickness += e->delta() / 120;
-    m_context.thickness = qBound(0, m_context.thickness, 100);
+    m_context.thickness = qBound(0, m_context.thickness, 99);
     QPoint topLeft = qApp->desktop()->screenGeometry(
                 qApp->desktop()->screenNumber(QCursor::pos())).topLeft();
     int offset = m_notifierBox->width() / 4;
@@ -761,6 +761,10 @@ void CaptureWidget::wheelEvent(QWheelEvent *e) {
         update();
     }
     emit thicknessChanged(m_context.thickness);
+    font_options_defult();
+    font_options2_defult();
+    fontsize_color_chose_default();
+    fontsize_color_chose2_default();
 }
 
 void CaptureWidget::resizeEvent(QResizeEvent *e) {
