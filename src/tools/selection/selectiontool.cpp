@@ -33,7 +33,7 @@ QIcon SelectionTool::icon(const QColor &background, bool inEditor, const Capture
    // Q_UNUSED(inEditor);
    // return QIcon(iconPath(background) + "square-outline.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "square.svg");
     }

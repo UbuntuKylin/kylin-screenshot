@@ -110,7 +110,7 @@ void Save_Location2::paintEvent(QPaintEvent *event)
     drawPath.addRoundRect(QRect(0 , 0 ,width()-SHADOW_WIDTH *2,height()- m_triangleWidth - SHADOW_WIDTH),
                                         BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)|| (context.style_name.compare("ukui-light")==0)){
         painter.setBrush(QColor(225,225,225,180));
         painter.drawPath(drawPath);
     }

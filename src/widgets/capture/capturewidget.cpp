@@ -370,7 +370,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         painter.setRenderHint(QPainter::Antialiasing);
         painter.setOpacity(0.5);
         // draw capture size
-        if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0)){
+        if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
         painter.setBrush(QColor(195,195,195));
         painter.drawRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,82,24);
         painter.setPen(Qt::black);
@@ -387,7 +387,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                              .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
         }
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
-            if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0)){
+            if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
                 painter.setBrush(QColor(200,200,200));
                 painter.setOpacity(0.66);
                 //rect

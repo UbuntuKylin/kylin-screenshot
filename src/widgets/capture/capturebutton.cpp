@@ -48,8 +48,8 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         label2->setAlignment( Qt::AlignCenter|Qt::AlignHCenter);
         setStyleSheet("QPushButton{font-family:'宋体';font-size:20px;color:rgb(0,0,0,255);}");
         label->setFont(font);
-        label->setText(tr("Opptions"));
-        if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0)){
+        label->setText(tr("Option"));
+        if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0)|| (m_context.style_name.compare("ukui-light")==0)){
             label2->setPixmap(QPixmap(QStringLiteral(":/img/material/white/down.svg")));
         }
         else if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){

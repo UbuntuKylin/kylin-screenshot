@@ -79,7 +79,7 @@ QIcon ArrowTool::icon(const QColor &background, bool inEditor, const CaptureCont
     //Q_UNUSED(inEditor);
    // return QIcon(iconPath(background) + "arrow-bottom-left.svg");
     Q_UNUSED(background);
-     if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+     if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
          return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "arrow-bottom-left.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "arrow-bottom-left.svg");
      }

@@ -97,7 +97,7 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
                                 width()-SHADOW_WIDTH *2 ,height() -SHADOW_WIDTH *2 -m_triangleHeight),
                          BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
         painter.setBrush(QColor(225,225,225,180));
         painter.drawPath(drawPath);
         QRect rect = m_colorAreaList.at(12);

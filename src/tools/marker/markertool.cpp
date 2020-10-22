@@ -32,7 +32,7 @@ QIcon MarkerTool::icon(const QColor &background, bool inEditor, const CaptureCon
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "marker.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)){
+    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "marker.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "marker.svg");
     }
