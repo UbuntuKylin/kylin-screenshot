@@ -236,7 +236,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     SaveAs_btn->setFixedSize(100,37);
     SaveAs_btn->setFont(ft);
     SaveAs_btn->hide();
-    SaveAs_btn->setText(("save as ...."));
+    SaveAs_btn->setText(tr("save as"));
     connect(SaveAs_btn,SIGNAL(pressed()),this,SLOT(ClickedSaveAsFile()));
 }
 

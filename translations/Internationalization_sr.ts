@@ -51,12 +51,12 @@
 <context>
     <name>ArrowTool</name>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="87"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="92"/>
         <source>Arrow</source>
         <translation>Стрелица</translation>
     </message>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="95"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="100"/>
         <source>Set the Arrow as the paint tool</source>
         <translation>Избор цртања стрелице</translation>
     </message>
@@ -68,14 +68,27 @@
         <translation type="vanished">Замућење</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="37"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="43"/>
         <source>blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="45"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="51"/>
         <source>Set Blur as the paint tool</source>
         <translation>Избор цртања замућене области</translation>
+    </message>
+</context>
+<context>
+    <name>CaptureButton</name>
+    <message>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="51"/>
+        <source>Opption</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="74"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -93,11 +106,6 @@
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="68"/>
         <source>Full Screen (All Monitors)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="75"/>
-        <source>No Delay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -129,12 +137,20 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="86"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="90"/>
         <source>Unable to capture screen</source>
         <translation>Нисам успео да снимим екран</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="299"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="239"/>
+        <source>save as</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="328"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="334"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="341"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="346"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -151,26 +167,21 @@ Press Space to open the side panel.</source>
 Притисните размак на тастатури за приказ помоћног панела.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="334"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="378"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="386"/>
         <source>%1 * %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1468"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1491"/>
-        <source>Open Directory</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="37"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="43"/>
         <source>Circle</source>
         <translation>Круг</translation>
     </message>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="45"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="51"/>
         <source>Set the Circle as the paint tool</source>
         <translation>Избор цртања круга</translation>
     </message>
@@ -226,7 +237,7 @@ Press Space to open the side panel.</source>
         <translation>&amp;Излаз</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="204"/>
+        <location filename="../src/core/controller.cpp" line="206"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -234,12 +245,12 @@ Press Space to open the side panel.</source>
 <context>
     <name>CopyTool</name>
     <message>
-        <location filename="../src/tools/copy/copytool.cpp" line="39"/>
+        <location filename="../src/tools/copy/copytool.cpp" line="44"/>
         <source>Copy</source>
         <translation>Запамти</translation>
     </message>
     <message>
-        <location filename="../src/tools/copy/copytool.cpp" line="47"/>
+        <location filename="../src/tools/copy/copytool.cpp" line="52"/>
         <source>Copy the selection into the clipboard</source>
         <translation>Копира избор у привремену оставу</translation>
     </message>
@@ -329,12 +340,12 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="93"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="99"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Прецртано</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="104"/>
         <source>Underline</source>
         <translation type="unfinished">Подвучено</translation>
     </message>
@@ -344,7 +355,7 @@ Press Space to open the side panel.</source>
         <translation type="unfinished">Задебљано</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="114"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="112"/>
         <source>Italic</source>
         <translation type="unfinished">Накошено</translation>
     </message>
@@ -352,22 +363,22 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="108"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="129"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Прецртано</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="109"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="130"/>
         <source>Underline</source>
         <translation type="unfinished">Подвучено</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="110"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="131"/>
         <source>Bold</source>
         <translation type="unfinished">Задебљано</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="111"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="132"/>
         <source>Italic</source>
         <translation type="unfinished">Накошено</translation>
     </message>
@@ -555,14 +566,8 @@ Press Space to open the side panel.</source>
         <translation>О програму</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="62"/>
-        <source>SPACEBAR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="63"/>
         <source>Right Click</source>
-        <translation>Десни клик</translation>
+        <translation type="vanished">Десни клик</translation>
     </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="64"/>
@@ -600,14 +605,8 @@ Press Space to open the side panel.</source>
         <translation>Поништи последње измене</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="74"/>
-        <source>Toggle visibility of sidebar with options of the selected tool</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="75"/>
         <source>Show color picker</source>
-        <translation>Прикажи избор боје</translation>
+        <translation type="vanished">Прикажи избор боје</translation>
     </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="76"/>
@@ -648,12 +647,12 @@ Press Space to open the side panel.</source>
 <context>
     <name>LineTool</name>
     <message>
-        <location filename="../src/tools/line/linetool.cpp" line="40"/>
+        <location filename="../src/tools/line/linetool.cpp" line="46"/>
         <source>Line</source>
         <translation>Линија</translation>
     </message>
     <message>
-        <location filename="../src/tools/line/linetool.cpp" line="48"/>
+        <location filename="../src/tools/line/linetool.cpp" line="54"/>
         <source>Set the Line as the paint tool</source>
         <translation>Избор цртања линије</translation>
     </message>
@@ -1297,12 +1296,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>MarkerTool</name>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="39"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="45"/>
         <source>Marker</source>
         <translation>Маркер</translation>
     </message>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="47"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="53"/>
         <source>Set the Marker as the paint tool</source>
         <translation>Избор цртања маркером</translation>
     </message>
@@ -1336,12 +1335,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PencilTool</name>
     <message>
-        <location filename="../src/tools/pencil/penciltool.cpp" line="33"/>
+        <location filename="../src/tools/pencil/penciltool.cpp" line="39"/>
         <source>Pencil</source>
         <translation>Оловка</translation>
     </message>
     <message>
-        <location filename="../src/tools/pencil/penciltool.cpp" line="41"/>
+        <location filename="../src/tools/pencil/penciltool.cpp" line="47"/>
         <source>Set the Pencil as the paint tool</source>
         <translation>Избор цртања оловком</translation>
     </message>
@@ -1349,12 +1348,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PinTool</name>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="36"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="42"/>
         <source>Pin Tool</source>
         <translation>Закачка</translation>
     </message>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="44"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="50"/>
         <source>Pin image on the desktop</source>
         <translation>Закачи слику за радну површину</translation>
     </message>
@@ -1363,6 +1362,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1680"/>
         <source>Save Error</source>
         <translation>Грешка приликом упусивања</translation>
     </message>
@@ -1370,6 +1370,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1674"/>
         <source>Capture saved as </source>
         <translation>Сачувај снимак као </translation>
     </message>
@@ -1382,15 +1383,16 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1677"/>
         <source>Error trying to save as </source>
         <translation>Грешка приликом уписивања као </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="80"/>
-        <location filename="../src/main.cpp" line="230"/>
-        <location filename="../src/main.cpp" line="379"/>
+        <location filename="../src/main.cpp" line="97"/>
+        <location filename="../src/main.cpp" line="254"/>
         <location filename="../src/main.cpp" line="403"/>
-        <location filename="../src/main.cpp" line="432"/>
+        <location filename="../src/main.cpp" line="427"/>
+        <location filename="../src/main.cpp" line="456"/>
         <source>Unable to connect via DBus</source>
         <translation>Нисам успео да се повежем кроз DBus</translation>
     </message>
@@ -1413,12 +1415,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>RectangleTool</name>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="37"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="45"/>
         <source>Rectangle</source>
         <translation>Правоугаоник</translation>
     </message>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="45"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="53"/>
         <source>Set the Rectangle as the paint tool</source>
         <translation>Избор цртања обојеног правоугаоника</translation>
     </message>
@@ -1437,17 +1439,60 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>SaveAsTool</name>
+    <message>
+        <location filename="../src/tools/save/saveastool.cpp" line="41"/>
+        <source>saveas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tools/save/saveastool.cpp" line="49"/>
+        <source>Save the capture.....</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SaveTool</name>
     <message>
-        <location filename="../src/tools/save/savetool.cpp" line="39"/>
         <source>Save</source>
         <translatorcomment>Сачувај</translatorcomment>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
+    </message>
+    <message>
+        <location filename="../src/tools/save/savetool.cpp" line="39"/>
+        <source>save</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/tools/save/savetool.cpp" line="47"/>
         <source>Save the capture</source>
         <translation>Сачувај снимак</translation>
+    </message>
+</context>
+<context>
+    <name>Save_Location</name>
+    <message>
+        <location filename="../src/widgets/capture/save_location.cpp" line="66"/>
+        <source>save location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/save_location.cpp" line="75"/>
+        <source>save type</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Save_Location2</name>
+    <message>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="67"/>
+        <source>save location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="77"/>
+        <source>save type</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1762,12 +1807,12 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="41"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="46"/>
         <source>Rectangular Selection</source>
         <translation>Правоугаони оквир</translation>
     </message>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="49"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="54"/>
         <source>Set Selection as the paint tool</source>
         <translation>Избор цртања правоугаоног оквира</translation>
     </message>
@@ -1977,12 +2022,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">Текст</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="53"/>
+        <location filename="../src/tools/text/texttool.cpp" line="59"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="61"/>
+        <location filename="../src/tools/text/texttool.cpp" line="67"/>
         <source>Add text to your capture</source>
         <translation>Додаје текст на снимак</translation>
     </message>
@@ -2032,12 +2077,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">Поништи</translation>
     </message>
     <message>
-        <location filename="../src/tools/undo/undotool.cpp" line="38"/>
+        <location filename="../src/tools/undo/undotool.cpp" line="43"/>
         <source>undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/undo/undotool.cpp" line="46"/>
+        <location filename="../src/tools/undo/undotool.cpp" line="51"/>
         <source>Undo the last modification</source>
         <translation>Поништи последњу измену</translation>
     </message>

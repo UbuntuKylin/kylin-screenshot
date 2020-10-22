@@ -48,7 +48,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         label2->setAlignment( Qt::AlignCenter|Qt::AlignHCenter);
         setStyleSheet("QPushButton{font-family:'宋体';font-size:20px;color:rgb(0,0,0,255);}");
         label->setFont(font);
-        label->setText("选项");
+        label->setText(tr("Opptions"));
         if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0)){
             label2->setPixmap(QPixmap(QStringLiteral(":/img/material/white/down.svg")));
         }
@@ -71,7 +71,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
             //setStyleSheet(styleSheet());
             //font.setStyle()
             setFont(font);
-            setText("保存");
+            setText(tr("Save"));
         }       
     }
 }

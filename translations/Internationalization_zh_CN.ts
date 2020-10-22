@@ -51,7 +51,7 @@
 <context>
     <name>ArrowTool</name>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="+87"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="+92"/>
         <source>Arrow</source>
         <translation>箭头</translation>
     </message>
@@ -68,7 +68,7 @@
         <translation type="vanished">模糊</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="+37"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="+43"/>
         <source>blur</source>
         <translation type="unfinished"></translation>
     </message>
@@ -76,6 +76,21 @@
         <location line="+8"/>
         <source>Set Blur as the paint tool</source>
         <translation>选择模糊作为绘画工具</translation>
+    </message>
+</context>
+<context>
+    <name>CaptureButton</name>
+    <message>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="+51"/>
+        <source>Opption</source>
+        <translatorcomment>选项</translatorcomment>
+        <translation>选项</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Save</source>
+        <translatorcomment>保存</translatorcomment>
+        <translation>保存</translation>
     </message>
 </context>
 <context>
@@ -96,12 +111,11 @@
         <translation>全屏（所有显示器）</translation>
     </message>
     <message>
-        <location line="+7"/>
         <source>No Delay</source>
-        <translation>无延迟</translation>
+        <translation type="vanished">无延迟</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+14"/>
         <source> second</source>
         <translation> 秒</translation>
     </message>
@@ -129,13 +143,27 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+86"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+90"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+213"/>
+        <location line="+149"/>
+        <source>save as</source>
+        <translatorcomment>另存为</translatorcomment>
+        <translation>另存为</translation>
+    </message>
+    <message>
+        <source>save as ....</source>
+        <translatorcomment>另存为....</translatorcomment>
+        <translation type="obsolete">另存为....</translation>
+    </message>
+    <message>
+        <location line="+89"/>
+        <location line="+6"/>
+        <location line="+7"/>
+        <location line="+5"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -152,21 +180,20 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+32"/>
+        <location line="+8"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1134"/>
-        <location line="+23"/>
         <source>Open Directory</source>
-        <translation>选择目录</translation>
+        <translation type="vanished">选择目录</translation>
     </message>
 </context>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="+37"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="+43"/>
         <source>Circle</source>
         <translation>圆环</translation>
     </message>
@@ -227,7 +254,7 @@ Press Space to open the side panel.</source>
         <translation>退出(&amp;Q)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+16"/>
         <source>Kylin-Screenshot</source>
         <translation>麒麟截图</translation>
     </message>
@@ -235,7 +262,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>CopyTool</name>
     <message>
-        <location filename="../src/tools/copy/copytool.cpp" line="+39"/>
+        <location filename="../src/tools/copy/copytool.cpp" line="+44"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
@@ -337,22 +364,22 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+93"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+99"/>
         <source>StrikeOut</source>
         <translation type="unfinished">删除线</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+5"/>
         <source>Underline</source>
         <translation type="unfinished">下划线</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+4"/>
         <source>Bold</source>
         <translation type="unfinished">粗体</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+4"/>
         <source>Italic</source>
         <translation type="unfinished">斜体</translation>
     </message>
@@ -360,7 +387,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+108"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+129"/>
         <source>StrikeOut</source>
         <translation type="unfinished">删除线</translation>
     </message>
@@ -563,17 +590,15 @@ Press Space to open the side panel.</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location line="+24"/>
         <source>SPACEBAR</source>
-        <translation>空格</translation>
+        <translation type="vanished">空格</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Right Click</source>
-        <translation>右键</translation>
+        <translation type="vanished">右键</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+26"/>
         <source>Mouse Wheel</source>
         <translation>鼠标滑轮</translation>
     </message>
@@ -608,17 +633,15 @@ Press Space to open the side panel.</source>
         <translation>撤消上次修改</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Toggle visibility of sidebar with options of the selected tool</source>
-        <translation>切换侧边栏可见性</translation>
+        <translation type="vanished">切换侧边栏可见性</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Show color picker</source>
-        <translation>显示颜色选择器</translation>
+        <translation type="vanished">显示颜色选择器</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Change the tool&apos;s thickness</source>
         <translation>改变工具的厚度</translation>
     </message>
@@ -656,7 +679,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>LineTool</name>
     <message>
-        <location filename="../src/tools/line/linetool.cpp" line="+40"/>
+        <location filename="../src/tools/line/linetool.cpp" line="+46"/>
         <source>Line</source>
         <translation>直线</translation>
     </message>
@@ -1305,7 +1328,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>MarkerTool</name>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="+39"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="+45"/>
         <source>Marker</source>
         <translation>标记</translation>
     </message>
@@ -1344,7 +1367,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PencilTool</name>
     <message>
-        <location filename="../src/tools/pencil/penciltool.cpp" line="+33"/>
+        <location filename="../src/tools/pencil/penciltool.cpp" line="+39"/>
         <source>Pencil</source>
         <translation>铅笔</translation>
     </message>
@@ -1357,7 +1380,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PinTool</name>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="+36"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="+42"/>
         <source>Pin Tool</source>
         <translation>贴图工具</translation>
     </message>
@@ -1371,6 +1394,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+109"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1294"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1378,6 +1402,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location line="-62"/>
         <location line="+20"/>
         <location line="+36"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="-6"/>
         <source>Capture saved as </source>
         <translation>捕获已保存为 </translation>
     </message>
@@ -1390,12 +1415,13 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location line="+17"/>
         <location line="+20"/>
         <location line="+37"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+3"/>
         <source>Error trying to save as </source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+80"/>
-        <location line="+150"/>
+        <location filename="../src/main.cpp" line="+97"/>
+        <location line="+157"/>
         <location line="+149"/>
         <location line="+24"/>
         <location line="+29"/>
@@ -1422,13 +1448,13 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QPlatformTheme</name>
     <message>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="vanished">取消</translation>
     </message>
 </context>
 <context>
     <name>RectangleTool</name>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="+37"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="+45"/>
         <source>Rectangle</source>
         <translation>实心矩形</translation>
     </message>
@@ -1452,16 +1478,63 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>SaveAsTool</name>
+    <message>
+        <location filename="../src/tools/save/saveastool.cpp" line="+41"/>
+        <source>saveas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Save the capture.....</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SaveTool</name>
     <message>
-        <location filename="../src/tools/save/savetool.cpp" line="+39"/>
         <source>Save</source>
-        <translation>保存</translation>
+        <translation type="vanished">保存</translation>
+    </message>
+    <message>
+        <location filename="../src/tools/save/savetool.cpp" line="+39"/>
+        <source>save</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Save the capture</source>
         <translation>保存捕获</translation>
+    </message>
+</context>
+<context>
+    <name>Save_Location</name>
+    <message>
+        <location filename="../src/widgets/capture/save_location.cpp" line="+66"/>
+        <source>save location</source>
+        <translatorcomment>存储位置</translatorcomment>
+        <translation>存储位置</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>save type</source>
+        <translatorcomment>存储格式</translatorcomment>
+        <translation>存储格式</translation>
+    </message>
+</context>
+<context>
+    <name>Save_Location2</name>
+    <message>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="+67"/>
+        <source>save location</source>
+        <translatorcomment>存储位置</translatorcomment>
+        <translation>存储位置</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>save type</source>
+        <translatorcomment>存储格式</translatorcomment>
+        <translation>存储格式</translation>
     </message>
 </context>
 <context>
@@ -1776,7 +1849,7 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="+41"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="+46"/>
         <source>Rectangular Selection</source>
         <translation>矩形选择</translation>
     </message>
@@ -1991,7 +2064,7 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">文本</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="+53"/>
+        <location filename="../src/tools/text/texttool.cpp" line="+59"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2046,7 +2119,7 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">撤消</translation>
     </message>
     <message>
-        <location filename="../src/tools/undo/undotool.cpp" line="+38"/>
+        <location filename="../src/tools/undo/undotool.cpp" line="+43"/>
         <source>undo</source>
         <translation type="unfinished"></translation>
     </message>

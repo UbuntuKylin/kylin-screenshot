@@ -51,12 +51,12 @@
 <context>
     <name>ArrowTool</name>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="87"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="92"/>
         <source>Arrow</source>
         <translation>Flecha</translation>
     </message>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="95"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="100"/>
         <source>Set the Arrow as the paint tool</source>
         <translation>Usa a Flecha como ferramenta de desenho</translation>
     </message>
@@ -68,14 +68,27 @@
         <translation type="vanished">Desfoque</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="37"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="43"/>
         <source>blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="45"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="51"/>
         <source>Set Blur as the paint tool</source>
         <translation>Usa o Desfoque como ferramenta de desenho</translation>
+    </message>
+</context>
+<context>
+    <name>CaptureButton</name>
+    <message>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="51"/>
+        <source>Opption</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="74"/>
+        <source>Save</source>
+        <translation type="unfinished">Salvar</translation>
     </message>
 </context>
 <context>
@@ -93,11 +106,6 @@
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="68"/>
         <source>Full Screen (All Monitors)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="75"/>
-        <source>No Delay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -129,12 +137,20 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="86"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="90"/>
         <source>Unable to capture screen</source>
         <translation>Não foi possível capturar a tela</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="299"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="239"/>
+        <source>save as</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="328"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="334"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="341"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="346"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -151,26 +167,21 @@ Use a roda do mouse para aumentar a grossura do pincel.
 Pressione espaço abrir o painel lateral.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="334"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="378"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="386"/>
         <source>%1 * %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1468"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1491"/>
-        <source>Open Directory</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="37"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="43"/>
         <source>Circle</source>
         <translation>Círculo</translation>
     </message>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="45"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="51"/>
         <source>Set the Circle as the paint tool</source>
         <translation>Usa o Círculo como ferramenta de desenho</translation>
     </message>
@@ -226,7 +237,7 @@ Pressione espaço abrir o painel lateral.</translation>
         <translation>&amp;Sair</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="204"/>
+        <location filename="../src/core/controller.cpp" line="206"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -234,12 +245,12 @@ Pressione espaço abrir o painel lateral.</translation>
 <context>
     <name>CopyTool</name>
     <message>
-        <location filename="../src/tools/copy/copytool.cpp" line="39"/>
+        <location filename="../src/tools/copy/copytool.cpp" line="44"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../src/tools/copy/copytool.cpp" line="47"/>
+        <location filename="../src/tools/copy/copytool.cpp" line="52"/>
         <source>Copy the selection into the clipboard</source>
         <translation>Copia a seleção para o clipboard</translation>
     </message>
@@ -329,12 +340,12 @@ Pressione espaço abrir o painel lateral.</translation>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="93"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="99"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Sobrescrito</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="104"/>
         <source>Underline</source>
         <translation type="unfinished">Sublinhado</translation>
     </message>
@@ -344,7 +355,7 @@ Pressione espaço abrir o painel lateral.</translation>
         <translation type="unfinished">Negrito</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="114"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="112"/>
         <source>Italic</source>
         <translation type="unfinished">Itálico</translation>
     </message>
@@ -352,22 +363,22 @@ Pressione espaço abrir o painel lateral.</translation>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="108"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="129"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Sobrescrito</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="109"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="130"/>
         <source>Underline</source>
         <translation type="unfinished">Sublinhado</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="110"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="131"/>
         <source>Bold</source>
         <translation type="unfinished">Negrito</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="111"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="132"/>
         <source>Italic</source>
         <translation type="unfinished">Itálico</translation>
     </message>
@@ -555,14 +566,8 @@ Pressione espaço abrir o painel lateral.</translation>
         <translation>Sobre</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="62"/>
-        <source>SPACEBAR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="63"/>
         <source>Right Click</source>
-        <translation>Botão Direito</translation>
+        <translation type="vanished">Botão Direito</translation>
     </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="64"/>
@@ -600,14 +605,8 @@ Pressione espaço abrir o painel lateral.</translation>
         <translation>Desfazer última modificação</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="74"/>
-        <source>Toggle visibility of sidebar with options of the selected tool</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="75"/>
         <source>Show color picker</source>
-        <translation>Mostra seletor de cores</translation>
+        <translation type="vanished">Mostra seletor de cores</translation>
     </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="76"/>
@@ -648,12 +647,12 @@ Pressione espaço abrir o painel lateral.</translation>
 <context>
     <name>LineTool</name>
     <message>
-        <location filename="../src/tools/line/linetool.cpp" line="40"/>
+        <location filename="../src/tools/line/linetool.cpp" line="46"/>
         <source>Line</source>
         <translation>Linha</translation>
     </message>
     <message>
-        <location filename="../src/tools/line/linetool.cpp" line="48"/>
+        <location filename="../src/tools/line/linetool.cpp" line="54"/>
         <source>Set the Line as the paint tool</source>
         <translation>Usa a Linha como ferramenta de desenho</translation>
     </message>
@@ -1297,12 +1296,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>MarkerTool</name>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="39"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="45"/>
         <source>Marker</source>
         <translation>Marcador</translation>
     </message>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="47"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="53"/>
         <source>Set the Marker as the paint tool</source>
         <translation>Usa o marcador como ferramenta de desenho</translation>
     </message>
@@ -1336,12 +1335,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PencilTool</name>
     <message>
-        <location filename="../src/tools/pencil/penciltool.cpp" line="33"/>
+        <location filename="../src/tools/pencil/penciltool.cpp" line="39"/>
         <source>Pencil</source>
         <translation>Pincel</translation>
     </message>
     <message>
-        <location filename="../src/tools/pencil/penciltool.cpp" line="41"/>
+        <location filename="../src/tools/pencil/penciltool.cpp" line="47"/>
         <source>Set the Pencil as the paint tool</source>
         <translation>Usa o Lápis como ferramenta de desenho</translation>
     </message>
@@ -1349,12 +1348,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PinTool</name>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="36"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="42"/>
         <source>Pin Tool</source>
         <translation>Ferramenta de Pin</translation>
     </message>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="44"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="50"/>
         <source>Pin image on the desktop</source>
         <translation>Pinnar imagem no desktop</translation>
     </message>
@@ -1363,6 +1362,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1680"/>
         <source>Save Error</source>
         <translation>Salvar erro</translation>
     </message>
@@ -1370,6 +1370,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1674"/>
         <source>Capture saved as </source>
         <translation>Captura salva como </translation>
     </message>
@@ -1382,15 +1383,16 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1677"/>
         <source>Error trying to save as </source>
         <translation>Erro tentando salvar como </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="80"/>
-        <location filename="../src/main.cpp" line="230"/>
-        <location filename="../src/main.cpp" line="379"/>
+        <location filename="../src/main.cpp" line="97"/>
+        <location filename="../src/main.cpp" line="254"/>
         <location filename="../src/main.cpp" line="403"/>
-        <location filename="../src/main.cpp" line="432"/>
+        <location filename="../src/main.cpp" line="427"/>
+        <location filename="../src/main.cpp" line="456"/>
         <source>Unable to connect via DBus</source>
         <translation>Não foi possível conectar via DBus</translation>
     </message>
@@ -1413,12 +1415,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>RectangleTool</name>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="37"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="45"/>
         <source>Rectangle</source>
         <translation>Retângulo</translation>
     </message>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="45"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="53"/>
         <source>Set the Rectangle as the paint tool</source>
         <translation>Seta o Retângulo como ferramenta de desenho</translation>
     </message>
@@ -1437,16 +1439,59 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>SaveAsTool</name>
+    <message>
+        <location filename="../src/tools/save/saveastool.cpp" line="41"/>
+        <source>saveas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tools/save/saveastool.cpp" line="49"/>
+        <source>Save the capture.....</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SaveTool</name>
     <message>
-        <location filename="../src/tools/save/savetool.cpp" line="39"/>
         <source>Save</source>
-        <translation>Salvar</translation>
+        <translation type="vanished">Salvar</translation>
+    </message>
+    <message>
+        <location filename="../src/tools/save/savetool.cpp" line="39"/>
+        <source>save</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/tools/save/savetool.cpp" line="47"/>
         <source>Save the capture</source>
         <translation>Salva a captura</translation>
+    </message>
+</context>
+<context>
+    <name>Save_Location</name>
+    <message>
+        <location filename="../src/widgets/capture/save_location.cpp" line="66"/>
+        <source>save location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/save_location.cpp" line="75"/>
+        <source>save type</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Save_Location2</name>
+    <message>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="67"/>
+        <source>save location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="77"/>
+        <source>save type</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1761,12 +1806,12 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="41"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="46"/>
         <source>Rectangular Selection</source>
         <translation>Seleção Retangular</translation>
     </message>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="49"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="54"/>
         <source>Set Selection as the paint tool</source>
         <translation>Estabelece o Selecionador como ferramenta de desenho</translation>
     </message>
@@ -1976,12 +2021,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">Texto</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="53"/>
+        <location filename="../src/tools/text/texttool.cpp" line="59"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="61"/>
+        <location filename="../src/tools/text/texttool.cpp" line="67"/>
         <source>Add text to your capture</source>
         <translation>Adicionar texto à captura</translation>
     </message>
@@ -2031,12 +2076,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">Desfazer</translation>
     </message>
     <message>
-        <location filename="../src/tools/undo/undotool.cpp" line="38"/>
+        <location filename="../src/tools/undo/undotool.cpp" line="43"/>
         <source>undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/undo/undotool.cpp" line="46"/>
+        <location filename="../src/tools/undo/undotool.cpp" line="51"/>
         <source>Undo the last modification</source>
         <translation>Desfaz a última modificação</translation>
     </message>
