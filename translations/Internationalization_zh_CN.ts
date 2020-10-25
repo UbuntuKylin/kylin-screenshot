@@ -366,22 +366,26 @@ Press Space to open the side panel.</source>
     <message>
         <location filename="../src/widgets/capture/font_options.cpp" line="+99"/>
         <source>StrikeOut</source>
-        <translation type="unfinished">删除线</translation>
+        <translatorcomment>删除线</translatorcomment>
+        <translation>删除线</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Underline</source>
-        <translation type="unfinished">下划线</translation>
+        <translatorcomment>下划线</translatorcomment>
+        <translation>下划线</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Bold</source>
-        <translation type="unfinished">粗体</translation>
+        <translatorcomment>粗体</translatorcomment>
+        <translation>粗体</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Italic</source>
-        <translation type="unfinished">斜体</translation>
+        <translatorcomment>斜体</translatorcomment>
+        <translation>斜体</translation>
     </message>
 </context>
 <context>
@@ -389,22 +393,26 @@ Press Space to open the side panel.</source>
     <message>
         <location filename="../src/widgets/capture/font_options2.cpp" line="+129"/>
         <source>StrikeOut</source>
-        <translation type="unfinished">删除线</translation>
+        <translatorcomment>删除线</translatorcomment>
+        <translation>删除线</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Underline</source>
-        <translation type="unfinished">下划线</translation>
+        <translatorcomment>下划线</translatorcomment>
+        <translation>下划线</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Bold</source>
-        <translation type="unfinished">粗体</translation>
+        <translatorcomment>粗体</translatorcomment>
+        <translation>粗体</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Italic</source>
-        <translation type="unfinished">斜体</translation>
+        <translatorcomment>斜体</translatorcomment>
+        <translation>斜体</translation>
     </message>
 </context>
 <context>
@@ -1420,13 +1428,25 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+97"/>
+        <location filename="../src/main.cpp" line="+88"/>
+        <source>kylin-screenshot</source>
+        <translatorcomment>麒麟截图</translatorcomment>
+        <translation>麒麟截图</translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <location line="+157"/>
         <location line="+149"/>
         <location line="+24"/>
         <location line="+29"/>
         <source>Unable to connect via DBus</source>
         <translation>无法通过DBus进行连接</translation>
+    </message>
+    <message>
+        <location line="-336"/>
+        <source>Kylin-Screenshot</source>
+        <translatorcomment>麒麟截图</translatorcomment>
+        <translation>麒麟截图</translation>
     </message>
     <message>
         <location filename="../src/tools/launcher/openwithprogram.cpp" line="+38"/>
@@ -1441,7 +1461,8 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/imgur/imguruploader.cpp" line="-99"/>
         <source>URL copied to clipboard.</source>
-        <translation type="unfinished">复制链接到剪贴板。</translation>
+        <translatorcomment>复制链接到剪贴板。</translatorcomment>
+        <translation>复制链接到剪贴板。</translation>
     </message>
 </context>
 <context>
@@ -1454,7 +1475,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>RectangleTool</name>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="+45"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="+43"/>
         <source>Rectangle</source>
         <translation>实心矩形</translation>
     </message>
@@ -1487,7 +1508,8 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location line="+8"/>
         <source>Save the capture.....</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>另存为....</translatorcomment>
+        <translation>另存为....</translation>
     </message>
 </context>
 <context>

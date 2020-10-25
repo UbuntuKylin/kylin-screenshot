@@ -82,7 +82,7 @@
     <name>CaptureButton</name>
     <message>
         <location filename="../src/widgets/capture/capturebutton.cpp" line="51"/>
-        <source>Opption</source>
+        <source>Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1392,6 +1392,11 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>Ошибка при попытке сохранить как </translation>
     </message>
     <message>
+        <location filename="../src/main.cpp" line="88"/>
+        <source>kylin-screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/main.cpp" line="97"/>
         <location filename="../src/main.cpp" line="254"/>
         <location filename="../src/main.cpp" line="403"/>
@@ -1399,6 +1404,11 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/main.cpp" line="456"/>
         <source>Unable to connect via DBus</source>
         <translation>Не удалось подключиться через DBus</translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="120"/>
+        <source>Kylin-Screenshot</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/tools/launcher/openwithprogram.cpp" line="38"/>
@@ -1419,12 +1429,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>RectangleTool</name>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="45"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="43"/>
         <source>Rectangle</source>
         <translation>Прямоугольник</translation>
     </message>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="53"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="51"/>
         <source>Set the Rectangle as the paint tool</source>
         <translation>Выбрать Прямоугольник инструментом для рисования</translation>
     </message>

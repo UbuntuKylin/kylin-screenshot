@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
         app.installTranslator(&translator);
         app.installTranslator(&qtTranslator);
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
-        app.setApplicationName(QStringLiteral("kylin-screenshot"));
+        app.setApplicationName(QObject::tr("kylin-screenshot"));
         app.setOrganizationName(QStringLiteral("Dharkael"));
 
         auto c = Controller::getInstance();
@@ -117,7 +117,7 @@ int main(int argc, char *argv[]) {
      * CLI parsing  |
      * ------------*/
     QCoreApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral("Kylin-Screenshot"));
+    app.setApplicationName(QObject::tr("Kylin-Screenshot"));
     app.setOrganizationName(QStringLiteral("Dharkael"));
     app.setApplicationVersion(qApp->applicationVersion());
     CommandLineParser parser;
