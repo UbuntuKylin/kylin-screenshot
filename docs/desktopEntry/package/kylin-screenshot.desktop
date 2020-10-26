@@ -27,26 +27,4 @@ Terminal=false
 Type=Application
 Categories=Graphics;
 StartupNotify=false
-Actions=Configure;Capture;
 
-[Desktop Action Configure]
-Name=Configure
-Name[zh_CN]=配置
-Name[pl]=Konfiguruj
-Name[fr]=Configurer
-Name[ja]=設定
-Name[ru]=Настройки
-Name[sr]=Подешавања
-Name[uk]=Налаштувати
-Exec=kylin-screenshot config
-
-[Desktop Action Capture]
-Name=Take screenshot
-Name[zh_CN]=进行截图
-Name[pl]=Zrzut ekranu
-Name[fr]=Prendre une capture d'écran
-Name[ja]=スクリーンショットを撮る
-Name[ru]=Сделать скриншот
-Name[sr]=Сними екран
-Name[uk]=Зробити знімок
-Exec=kylin-screenshot gui --delay 500
