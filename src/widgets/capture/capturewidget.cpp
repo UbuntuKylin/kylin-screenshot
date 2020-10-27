@@ -1,4 +1,4 @@
-﻿/* Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
+/* Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
 *             2020 KylinSoft Co., Ltd.
 * This file is part of Kylin-Screenshot.
  * This program is free software: you can redistribute it and/or modify
@@ -71,7 +71,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
             this, &CaptureWidget::childEnter);
     connect(m_eventFilter, &HoverEventFilter::hoverOut,
             this, &CaptureWidget::childLeave);
-    setAttribute(Qt::WA_DeleteOnClose);
+    setAttribute(Qt::WA_AlwaysShowToolTips);
     m_showInitialMsg = m_config.showHelpValue();
     m_opacity = m_config.contrastOpacityValue();
     setMouseTracking(true);
@@ -1688,7 +1688,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      void CaptureWidget::ClickedSavedir()
      {
          hide_window();
-         QFileDialog fileDialog(this, Qt::CustomizeWindowHint);
+         QFileDialog fileDialog(nullptr, Qt::CustomizeWindowHint);
          fileDialog.setDirectory (m_context.savePath);
          fileDialog.setAcceptMode (QFileDialog::AcceptOpen);
          fileDialog.setFileMode (QFileDialog::DirectoryOnly);
@@ -1708,7 +1708,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      void CaptureWidget::ClickedSavedir2()
      {
          hide_window();
-         QFileDialog fileDialog(this, Qt::CustomizeWindowHint);
+         QFileDialog fileDialog(nullptr, Qt::CustomizeWindowHint);
          fileDialog.setDirectory (m_context.savePath);
          fileDialog.setAcceptMode (QFileDialog::AcceptOpen);
          fileDialog.setFileMode (QFileDialog::DirectoryOnly);
@@ -1874,17 +1874,13 @@ void CaptureWidget::setState(CaptureButton *b) {
      }
      void CaptureWidget::hide_window()
          {
-             setWindowFlags(Qt::BypassWindowManagerHint
-                         | Qt::FramelessWindowHint
-                         | Qt::Tool);
-            this->hide();
+             hide();
          }
          void CaptureWidget::show_window()
          {
-             setWindowFlags(Qt::BypassWindowManagerHint
-                            | Qt::WindowStaysOnTopHint
-                            | Qt::FramelessWindowHint
-                            | Qt::Tool);
-             this->show();
-
+             show();
+             if(!isActiveWindow()) //判断是否是活动窗口
+             {
+                 activateWindow(); //设置成活动窗口
+             }
          }
