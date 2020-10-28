@@ -151,6 +151,8 @@ void Controller::startScreenGrab(const uint id, const int screenNumber) {
 void Controller::openConfigWindow() {
     if (!m_configWindow) {
         m_configWindow = new ConfigWindow();
+        m_configWindow->move(((qApp->desktop()->screenGeometry().width()-m_configWindow->width())/2),
+                             ((qApp->desktop()->screenGeometry().height()-m_configWindow->height())/2));
         m_configWindow->show();
     }
 }
@@ -164,6 +166,8 @@ void Controller::openInfoWindow() {
 
 void Controller::openLauncherWindow() {
     CaptureLauncher *w = new CaptureLauncher();
+    w->move(((qApp->desktop()->screenGeometry().width()-w->width())/2),
+            ((qApp->desktop()->screenGeometry().height()-w->height())/2));
     w->show();
 }
 
