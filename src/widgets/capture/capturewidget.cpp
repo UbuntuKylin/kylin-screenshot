@@ -71,7 +71,8 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
             this, &CaptureWidget::childEnter);
     connect(m_eventFilter, &HoverEventFilter::hoverOut,
             this, &CaptureWidget::childLeave);
-    setAttribute(Qt::WA_AlwaysShowToolTips);
+    setAttribute(Qt::WA_AlwaysShowToolTips );
+    setAttribute(Qt::WA_DeleteOnClose);
     m_showInitialMsg = m_config.showHelpValue();
     m_opacity = m_config.contrastOpacityValue();
     setMouseTracking(true);
@@ -1699,6 +1700,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                  fileDialog.hide();
                  qDebug()<<"select dir:"<<file;
                  save_location->SaveDir->setText(file);
+                 save_location->SaveDir->setToolTip(file);
                  m_context.savePath = file;
                  save_location->update();
          }
@@ -1719,6 +1721,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                  fileDialog.hide();
                  qDebug()<<"select dir:"<<file;
                  save_location2->SaveDir->setText(file);
+                 save_location2->SaveDir->setToolTip(file);
                  m_context.savePath = file;
                  save_location2->update();
          }
@@ -1878,9 +1881,13 @@ void CaptureWidget::setState(CaptureButton *b) {
          }
          void CaptureWidget::show_window()
          {
-             show();
+         this->show();
              if(!isActiveWindow()) //判断是否是活动窗口
              {
                  activateWindow(); //设置成活动窗口
              }
+	 setWindowFlags(Qt::BypassWindowManagerHint
+                       | Qt::WindowStaysOnTopHint
+                       | Qt::FramelessWindowHint
+                       | Qt::Tool);
          }
