@@ -148,9 +148,14 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.right()+m_buttonExtendedSize*9,
                                    m_selection.center().y());
+            QPoint end2 = QPoint(m_selection.right()+m_buttonExtendedSize*9,
+                                m_selection.bottom() + m_separator*2);
+            if(!m_screenRegions.contains(end2))
+            {
+                center.setY(QApplication::desktop()->height()-m_buttonExtendedSize);
+            }
             qDebug()<<"qqqq"<<elemIndicator;
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
-            //QVector<QPoint> positions = verticalPoints(center, addCounter, false);
             moveButtonsToPoints(positions, elemIndicator);
         }
         // Add buttons at the top of the seletion
@@ -183,6 +188,12 @@ void ButtonHandler::updatePosition(const QRect &selection) {
 
             QPoint center = QPoint(m_selection.left()-m_buttonExtendedSize*9,
                                    m_selection.center().y());
+            QPoint end2 = QPoint(m_selection.left()-m_buttonExtendedSize*9,
+                                m_selection.bottom() + m_separator*2);
+            if(!m_screenRegions.contains(end2))
+            {
+                center.setY(QApplication::desktop()->height()-m_buttonExtendedSize);
+            }
             qDebug()<<"qqqqqq"<<elemIndicator;
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             //QVector<QPoint> positions = verticalPoints(center, addCounter, true);
@@ -391,9 +402,19 @@ void ButtonHandler::moveButtonsToPoints(
     else if (index == 14)
     {
 	     if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
-            button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+         {
+            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
+                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
+            else
+                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+         }
 	     else
-            button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
+         {
+            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
+                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
+            else
+                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
+         }
         }
         else
         button->move(p);
