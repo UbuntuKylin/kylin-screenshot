@@ -52,6 +52,9 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QMessageBox>
+#include <QGraphicsBlurEffect>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
 // CaptureWidget is the main component used to capture the screen. It scontains an
 // are of selection with its respective buttons.
 #include "src/widgets/screenrecorder.h"
@@ -394,6 +397,25 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 //rect
                 QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
                              GlobalValues::buttonBaseSize()*19-10,GlobalValues::buttonBaseSize()*1.1);
+                QPixmap p = m_context.origScreenshot.copy(rr);
+                auto pixelRatio = p.devicePixelRatio();
+
+                QRect selection = QRect(rr.topLeft(), rr.bottomRight()).normalized();
+                QRect selectionScaled = QRect(rr.topLeft()* pixelRatio, rr.bottomRight()* pixelRatio).normalized();
+
+                QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+                blur->setBlurRadius(10);
+                QGraphicsPixmapItem *item = new QGraphicsPixmapItem (
+                                          p.copy(selectionScaled));
+                item->setGraphicsEffect(blur);
+
+                QGraphicsScene scene;
+                scene.addItem(item);
+
+                scene.render(&painter, selection, QRectF());
+                blur->setBlurRadius(12);
+                scene.render(&painter, selection, QRectF());
+                scene.render(&painter, selection, QRectF());
                 painter.drawRoundRect(rr,8,8);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
@@ -404,19 +426,6 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 
                 QPainterPath path;
                 QColor color(92,93,95,50);
-                int arr[5] = {20,15,10,10,5};
-                for(int i=0; i<5; i++)
-                {
-                    painter.setOpacity(0.1);
-                    QPainterPath path;
-                    if(i == 1)
-                        path.addRect(rr.x(), rr.y(), rr.width(), rr.height());
-                    else
-                        path.addRoundedRect(rr.x()-i, rr.y()-i, rr.width()+i*2,rr.height()+i*2,8,8);
-                    color.setAlpha(arr[i]);
-                    painter.setPen(color);
-                    painter.drawPath(path);
-                }
                 painter.setOpacity(0.8);
                 QColor rectColor2(QColor(0,98,240));
                 painter.setBrush(rectColor2);
@@ -432,6 +441,25 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.setOpacity(0.66);
                 QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
                              GlobalValues::buttonBaseSize()*19-10,GlobalValues::buttonBaseSize()*1.1);
+                QPixmap p = m_context.origScreenshot.copy(rr);
+                auto pixelRatio = p.devicePixelRatio();
+
+                QRect selection = QRect(rr.topLeft(), rr.bottomRight()).normalized();
+                QRect selectionScaled = QRect(rr.topLeft()* pixelRatio, rr.bottomRight()* pixelRatio).normalized();
+
+                QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+                blur->setBlurRadius(10);
+                QGraphicsPixmapItem *item = new QGraphicsPixmapItem (
+                                          p.copy(selectionScaled));
+                item->setGraphicsEffect(blur);
+
+                QGraphicsScene scene;
+                scene.addItem(item);
+
+                scene.render(&painter, selection, QRectF());
+                blur->setBlurRadius(12);
+                scene.render(&painter, selection, QRectF());
+                scene.render(&painter, selection, QRectF());
                 painter.drawRoundRect(rr,8,8);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
