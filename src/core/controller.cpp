@@ -177,7 +177,7 @@ void Controller::enableTrayIcon() {
     }
     ConfigHandler().setDisabledTrayIcon(false);
     //Start the screenshot from the start menu and add a delay by zhanghanhuan
-    doLater(400, this, [this](){ this->startVisualCapture(); });
+    //doLater(400, this, [this](){ this->startVisualCapture(); });
     QAction *captureAction = new QAction(tr("&Take Screenshot"), this);
     connect(captureAction, &QAction::triggered, this, [this](){
         // Wait 400 ms to hide the QMenu

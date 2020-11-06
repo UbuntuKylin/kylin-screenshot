@@ -46,17 +46,6 @@
 
 int main(int argc, char *argv[]) {
 
-    QFile file(PIDFILE);
-    if (file.exists()) {
-        if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
-            return 1;
-        QTextStream in(&file);
-        QString line = in.readLine();
-        if (!line.isEmpty()) {
-            kill(line.toInt(), SIGTERM);
-        }
-    }
-
     // required for the button serialization
     // TODO: change to QVector in v1.0
     qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
@@ -103,12 +92,13 @@ int main(int argc, char *argv[]) {
         // or the dbus signal gets blocked until we end the exports.
         c->enableExports();
         QFile pidFile(PIDFILE);
+        /*
         if (!pidFile.open(QIODevice::ReadWrite | QIODevice::Text))
             return 1;
         char pid[1024] = {0};
         sprintf(pid, "%d", getpid());
         pidFile.write(pid);
-        pidFile.close();
+        pidFile.close();*/
         return app.exec();
     }
 
@@ -288,6 +278,11 @@ int main(int argc, char *argv[]) {
         bool toClipboard = parser.isSet(clipboardOption);
         bool isRaw = parser.isSet(rawImageOption);
         // Not a valid command
+        if(pathValue.isEmpty())
+        {
+            QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+            pathValue= a.at(0);
+        }
         if (!isRaw && !toClipboard && pathValue.isEmpty()) {
             QTextStream out(stdout);
             out << "Invalid format, set where to save the content with one of "
@@ -337,7 +332,12 @@ int main(int argc, char *argv[]) {
         bool toClipboard = parser.isSet(clipboardOption);
         bool isRaw = parser.isSet(rawImageOption);
         // Not a valid command
-        if (!isRaw && !toClipboard && pathValue.isEmpty()) {
+        if(pathValue.isEmpty())
+        {
+            QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+            pathValue= a.at(0);
+        }
+        if (!isRaw && !toClipboard) {
             QTextStream out(stdout);
             out << "Invalid format, set where to save the content with one of "
                 << "the following flags:\n "
