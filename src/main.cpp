@@ -34,6 +34,7 @@
 #include <sys/types.h>
 #include <signal.h>
 #include "src/common/CommandLineOptions.h"
+#include <X11/Xlib.h>
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
 #include "src/core/flameshotdbusadapter.h"
@@ -41,13 +42,32 @@
 #include <QDBusMessage>
 #include <QDBusConnection>
 #endif
+/*
+int getScreenWidth()
+{
+    Display *disp = XOpenDisplay(NULL);
+    Screen *scrn = DefaultScreenOfDisplay(disp);
+    if (NULL == scrn) {
+        return 0;
+    }
+    int width = scrn->width;
 
-#define PIDFILE		"/tmp/screenshot.pid"
-
+    if (NULL != disp) {
+        XCloseDisplay(disp);
+    }
+    return width;
+}
+*/
 int main(int argc, char *argv[]) {
 
     // required for the button serialization
     // TODO: change to QVector in v1.0
+    /*if (getScreenWidth() > 2560) {
+            #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+                    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+                    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+            #endif
+    }*/
     qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
     qApp->setApplicationVersion(static_cast<QString>(APP_VERSION));
 
@@ -91,14 +111,6 @@ int main(int argc, char *argv[]) {
         // Exporting captures must be connected after the dbus interface
         // or the dbus signal gets blocked until we end the exports.
         c->enableExports();
-        QFile pidFile(PIDFILE);
-        /*
-        if (!pidFile.open(QIODevice::ReadWrite | QIODevice::Text))
-            return 1;
-        char pid[1024] = {0};
-        sprintf(pid, "%d", getpid());
-        pidFile.write(pid);
-        pidFile.close();*/
         return app.exec();
     }
 
@@ -114,7 +126,7 @@ int main(int argc, char *argv[]) {
     // Add description
     parser.setDescription(
                 QStringLiteral("Powerful yet simple to use screenshot software."));
-    parser.setGeneralErrorMessage(QStringLiteral("See 'Kylin-Screenshot --help'."));
+    parser.setGeneralErrorMessage(QStringLiteral("See 'kylin-screenshot --help'."));
     // Arguments
     CommandArgument fullArgument(QStringLiteral("full"), QStringLiteral("Capture the entire desktop."));
     CommandArgument launcherArgument(QStringLiteral("launcher"), QStringLiteral("Open the capture launcher."));
@@ -337,7 +349,7 @@ int main(int argc, char *argv[]) {
             QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
             pathValue= a.at(0);
         }
-        if (!isRaw && !toClipboard) {
+        if (!isRaw && !toClipboard && pathValue.isEmpty()) {
             QTextStream out(stdout);
             out << "Invalid format, set where to save the content with one of "
                 << "the following flags:\n "

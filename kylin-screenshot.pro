@@ -14,7 +14,7 @@ isEmpty(TAG_VERSION){
 }
 DEFINES += APP_VERSION=\\\"$$TAG_VERSION\\\"
 
-QT  += core gui widgets network svg x11extras
+QT  += core gui widgets network svg x11extras KWindowSystem
 
 unix:!macx {
     QT  += dbus

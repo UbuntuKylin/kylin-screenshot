@@ -23,7 +23,7 @@
 #include <QGuiApplication>
 #include <QApplication>
 #include <QDesktopWidget>
-
+#include <KF5/KWindowSystem/KWindowSystem>
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
 #include <QDBusInterface>
 #include <QDBusReply>
@@ -118,8 +118,11 @@ QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok) {
             geometry.moveTo(geometry.topLeft() - topLeft);
             p = p.copy(geometry);
         }
-    } else {
-        p = QApplication::desktop()->screen(screenNumber)->grab();
+    }
+    else {
+        QList<WId> windows = KWindowSystem::windows();
+        QScreen* screen = QApplication::screens().at(0);
+        p =screen->grabWindow(KWindowSystem::activeWindow());
         ok = true;
     }
     return p;
