@@ -128,11 +128,11 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             if(!m_screenRegions.contains(QPoint(m_selection.center().x()-m_buttonExtendedSize*8,m_selection.bottom() + m_separator)))
             {
 
-                center.setX(m_buttonExtendedSize*9-2);
+                center.setX(m_buttonExtendedSize*8+16);
             }
             if(!m_screenRegions.contains(end2))
             {
-                center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*9+2);
+                center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*9);
             }
             if (addCounter > buttonsPerRow) {
                 adjustHorizontalCenter(center);
@@ -168,11 +168,11 @@ void ButtonHandler::updatePosition(const QRect &selection) {
                                 m_selection.bottom() + m_separator);
             if(m_selection.center().x()- m_buttonExtendedSize*8< 0)
             {
-                center.setX(m_buttonExtendedSize*9-2);
+                center.setX(m_buttonExtendedSize*8+16);
             }
             if(!m_screenRegions.contains(end2))
             {
-                 center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*9+2);
+                 center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*9);
             }
             if (addCounter == 1 + buttonsPerRow) {
                 adjustHorizontalCenter(center);
@@ -273,7 +273,7 @@ QRect ButtonHandler::intersectWithAreas(const QRect &rect) {
 }
 
 void ButtonHandler::init() {
-    m_separator = GlobalValues::buttonBaseSize() / 4;
+    m_separator = GlobalValues::buttonBaseSize() / 2;
 }
 
 void ButtonHandler::resetRegionTrack() {
@@ -367,54 +367,39 @@ void ButtonHandler::moveButtonsToPoints(
 {
     for (const QPoint &p: points) {
         auto button = m_vectorButtons[index];
-	if (index == 2)
+        if(index >= 8)
         {
-            button->move(p.x()-GlobalValues::buttonBaseSize()/8,p.y());
-        }
-	else if (index == 3)
-        {
-            button->move(p.x()-GlobalValues::buttonBaseSize()/8-2,p.y());
-        }
-        else if (index == 4)
-        {
-            button->move(p.x()-GlobalValues::buttonBaseSize()/4-1,p.y());
-        }
-        else if (index == 5 || index == 6 || index == 7)
-        {
-            button->move(p.x()-GlobalValues::buttonBaseSize()/2,p.y());
-        }
-	else if (index == 10 )
-        {
-            button->move(p.x()+GlobalValues::buttonBaseSize()/8*10,p.y());
-        }
-       else if(index == 11)
-       {
-            button->move(p.x()+GlobalValues::buttonBaseSize(),p.y());
-       }
-	else  if (index == 12)
-	{
-            button->move(p.x()+GlobalValues::buttonBaseSize()/2*3,p.y());
-	}
-    else  if (index == 13)
-    {
-            button->move(p.x()+GlobalValues::buttonBaseSize(),p.y());
-    }
-    else if (index == 14)
-    {
-	     if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
-         {
-            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
-                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
-            else
-                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
-         }
-	     else
-         {
-            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
-                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
-            else
-                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
-         }
+          button->move(p.x()+29,p.y());
+          if(index >= 10)
+          {
+              button->move(p.x()+84,p.y());
+              if(index == 12 )
+              {
+                  button->move(p.x()+106,p.y());
+              }
+              else if(index == 13)
+              {
+                  button->move(p.x()+106,p.y());
+              }
+              else if(index == 14)
+              {
+                  if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
+                         {
+                            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
+                                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
+                            else
+                                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+                         }
+                         else
+                         {
+                            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
+                                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
+                            else
+                                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
+                         }
+              }
+
+          }
         }
         else
         button->move(p);
@@ -438,7 +423,7 @@ void ButtonHandler::setButtons(const QVector<CaptureButton *> v) {
     for (CaptureButton *b: m_vectorButtons)
         delete(b);
     m_vectorButtons = v;
-    m_buttonBaseSize = GlobalValues::buttonBaseSize();
+    m_buttonBaseSize = GlobalValues::buttonBaseSize()*6/10;
     m_buttonExtendedSize = m_buttonBaseSize + m_separator;
 }
 

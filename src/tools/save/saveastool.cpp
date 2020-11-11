@@ -35,7 +35,7 @@ QIcon SaveAsTool::icon(const QColor &background, bool inEditor , const CaptureCo
     Q_UNUSED(background);
    // return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-save.svg") :
      //                 QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");
-    return  QIcon(QStringLiteral(":/img/material/dark-theme/down.png"));
+    return  QIcon(QStringLiteral(":/img/material/white/down_1.png"));
 }
 QString SaveAsTool::name() const {
     return tr("saveas");

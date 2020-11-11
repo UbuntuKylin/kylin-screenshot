@@ -237,9 +237,10 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     QFont ft;
     ft.setPointSize(10);
     SaveAs_btn = new  QPushButton(this);
-    SaveAs_btn->setFixedSize(100,37);
+    SaveAs_btn->setFixedSize(90,30);
     SaveAs_btn->setFont(ft);
     SaveAs_btn->hide();
+    SaveAs_btn->setStyleSheet("QPushButton{background-color:rgb(0,98,240)}");
     SaveAs_btn->setText(tr("save as"));
     connect(SaveAs_btn,SIGNAL(pressed()),this,SLOT(ClickedSaveAsFile()));
 }
@@ -376,7 +377,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         // draw capture size
         if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
         painter.setBrush(QColor(195,195,195));
-        painter.drawRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,82,24);
+        painter.drawRoundRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,
+                              82,24,4,4);
         painter.setPen(Qt::black);
         painter.setFont(ft);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
@@ -384,7 +386,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         }
         else if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
             painter.setBrush(QColor(0,0,0));
-            painter.drawRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,82,24);
+            painter.drawRoundRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,
+                                  82,24,4,4);
             painter.setPen(Qt::white);
             painter.setFont(ft);
             painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
@@ -395,13 +398,13 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.setBrush(QColor(200,200,200));
                 painter.setOpacity(0.66);
                 //rect
-                QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
-                             GlobalValues::buttonBaseSize()*19-10,GlobalValues::buttonBaseSize()*1.1);
+                QRect rr = QRect(vectorButtons.first()->pos().x()-15,vectorButtons.first()->pos().y(),
+                             735,44);
                 QPixmap p = m_context.origScreenshot.copy(rr);
                 auto pixelRatio = p.devicePixelRatio();
 
                 QRect selection = QRect(rr.topLeft(), rr.bottomRight()).normalized();
-                QRect selectionScaled = QRect(rr.topLeft()* pixelRatio, rr.bottomRight()* pixelRatio).normalized();
+                QRect selectionScaled = QRect((rr.topLeft()+QPoint(8,0))* pixelRatio, (rr.bottomRight()-QPoint(8,0))* pixelRatio).normalized();
 
                 QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
                 blur->setBlurRadius(10);
@@ -429,23 +432,25 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.setOpacity(0.8);
                 QColor rectColor2(QColor(0,98,240));
                 painter.setBrush(rectColor2);
-                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,GlobalValues::buttonBaseSize()*2, GlobalValues::buttonBaseSize()/4*3,20,20);
+                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
                 painter.setBrush(QColor(0,0,0,100));
                 //两个分隔符
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*9+GlobalValues::buttonBaseSize()/2,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1, GlobalValues::buttonBaseSize()/2);
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13+3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1,GlobalValues::buttonBaseSize()/2);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+36,vectorButtons.first()->pos().y()+14, 1, 16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+19,vectorButtons.first()->pos().y()+14, 1,16);
+                painter.setBrush(QColor(255,255,255));
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setOpacity(0.5);
             }
             else if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
                 painter.setBrush(QColor(0,0,0));
                 painter.setOpacity(0.66);
-                QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
-                             GlobalValues::buttonBaseSize()*19-10,GlobalValues::buttonBaseSize()*1.1);
+                QRect rr = QRect(vectorButtons.first()->pos().x()-15,vectorButtons.first()->pos().y(),
+                             735,44);
                 QPixmap p = m_context.origScreenshot.copy(rr);
                 auto pixelRatio = p.devicePixelRatio();
 
                 QRect selection = QRect(rr.topLeft(), rr.bottomRight()).normalized();
-                QRect selectionScaled = QRect(rr.topLeft()* pixelRatio, rr.bottomRight()* pixelRatio).normalized();
+                QRect selectionScaled = QRect((rr.topLeft()+QPoint(8,0))* pixelRatio, (rr.bottomRight()-QPoint(8,0))* pixelRatio).normalized();
 
                 QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
                 blur->setBlurRadius(10);
@@ -470,27 +475,15 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 
                 QPainterPath path;
                 QColor color(92,93,95,50);
-                int arr[5] = {20,15,10,10,5};
-                for(int i=0; i<5; i++)
-                {
-                    painter.setOpacity(0.1);
-                    QPainterPath path;
-                    if(i == 1)
-                        path.addRect(rr.x(), rr.y(), rr.width(), rr.height());
-                    else
-                        path.addRoundedRect(rr.x()-i, rr.y()-i, rr.width()+i*2,rr.height()+i*2,8,8);
-                    color.setAlpha(arr[i]);
-                    painter.setPen(color);
-                    painter.drawPath(path);
-                }
                 painter.setOpacity(0.8);
                 QColor rectColor2(QColor(0,98,240));
                 painter.setBrush(rectColor2);
-                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,GlobalValues::buttonBaseSize()*2, GlobalValues::buttonBaseSize()/4*3,20,20);
+                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
                 painter.setBrush(QColor(0,0,0,100));
                 //两个分隔符
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*9+GlobalValues::buttonBaseSize()/2,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1, GlobalValues::buttonBaseSize()/2);
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13+3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1,GlobalValues::buttonBaseSize()/2);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+36,vectorButtons.first()->pos().y()+14, 1, 16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+19,vectorButtons.first()->pos().y()+14, 1,16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setOpacity(0.5);
             }
         }
@@ -977,7 +970,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     save_location->hide();
                     font_color->hide();
                     font_color2->hide();
-                    font_color_point->setX(b->x()-40);
+                    font_color_point->setX(b->x()-63);
                     font_color_point->setY(b->y()+40);
                     SaveAs_btn->move(font_color_point->x(),font_color_point->y());
                     SaveAs_btn->show();
@@ -988,7 +981,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     save_location->hide();
                     font_color->hide();
                     font_color2->hide();
-                    font_color_point->setX(b->x()-40);
+                    font_color_point->setX(b->x()-63);
                     font_color_point->setY(b->y()-37);
                     SaveAs_btn->move(font_color_point->x(),font_color_point->y());
                     SaveAs_btn->show();
@@ -1089,7 +1082,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     save_location->hide();
                     font_color->hide();
                     font_color2->hide();
-                    font_color_point->setX(b->x()-40);
+                    font_color_point->setX(b->x()-63);
                     font_color_point->setY(b->y()+40);
                     SaveAs_btn->move(font_color_point->x(),font_color_point->y());
                     SaveAs_btn->show();
@@ -1101,7 +1094,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     save_location->hide();
                     font_color->hide();
                     font_color2->hide();
-                    font_color_point->setX(b->x()-40);
+                    font_color_point->setX(b->x()-63);
                     font_color_point->setY(b->y()-37);
                     SaveAs_btn->move(font_color_point->x(),font_color_point->y());
                     SaveAs_btn->show();
@@ -1229,7 +1222,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             save_location->hide();
                             font_color->hide();
                             font_color2->hide();
-                            font_color_point->setX(b->x()-40);
+                            font_color_point->setX(b->x()-63);
                             font_color_point->setY(b->y()+40);
                             SaveAs_btn->move(font_color_point->x(),font_color_point->y());
                             SaveAs_btn->show();
@@ -1241,7 +1234,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             save_location->hide();
                             font_color->hide();
                             font_color2->hide();
-                            font_color_point->setX(b->x()-40);
+                            font_color_point->setX(b->x()-63);
                             font_color_point->setY(b->y()-37);
                             SaveAs_btn->move(font_color_point->x(),font_color_point->y());
                             SaveAs_btn->show();
@@ -1346,7 +1339,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             save_location->hide();
                             font_color->hide();
                             font_color2->hide();
-                            font_color_point->setX(b->x()-40);
+                            font_color_point->setX(b->x()-63);
                             font_color_point->setY(b->y()+40);
                             SaveAs_btn->move(font_color_point->x(),font_color_point->y());
                             SaveAs_btn->show();
@@ -1358,7 +1351,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             save_location->hide();
                             font_color->hide();
                             font_color2->hide();
-                            font_color_point->setX(b->x()-40);
+                            font_color_point->setX(b->x()-63);
                             font_color_point->setY(b->y()-37);
                             SaveAs_btn->move(font_color_point->x(),font_color_point->y());
                             SaveAs_btn->show();

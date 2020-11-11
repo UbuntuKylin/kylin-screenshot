@@ -19,5 +19,5 @@
 #include <QApplication>
 
 int GlobalValues::buttonBaseSize() {
-    return 39;
+    return 40;
 }
