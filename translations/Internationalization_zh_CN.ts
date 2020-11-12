@@ -700,7 +700,7 @@ Press Space to open the side panel.</source>
     <message>
         <location line="+8"/>
         <source>Set the Line as the paint tool</source>
-        <translation>将直线线设置为绘画工具</translation>
+        <translation>将直线设置为绘画工具</translation>
     </message>
 </context>
 <context>
