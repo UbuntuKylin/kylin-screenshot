@@ -1,0 +1,10 @@
+<schemalist>
+    <schema id="org.ukui.screenshot" path="/org/ukui/screenshot/" gettext-domain="screenshot">
+        <key type="s" name="screenshot">
+            <default>"true"</default>
+            <summary>Enable to use kylin-screenshot</summary>
+            <description>Whether enable to use kylin-screenshot</description>
+        </key>
+    </schema>
+</schemalist>
+

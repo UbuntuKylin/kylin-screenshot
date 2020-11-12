@@ -81,12 +81,12 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="51"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="52"/>
         <source>Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="74"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="76"/>
         <source>Save</source>
         <translation type="unfinished">保存</translation>
     </message>
@@ -137,20 +137,20 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="90"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="94"/>
         <source>Unable to capture screen</source>
         <translation>画面をキャプチャーできません</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="239"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="244"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="328"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="334"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="341"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="333"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="339"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="346"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="351"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -167,8 +167,8 @@ Enter を押すと画面をキャプチャー。
 スペースを押すとサイドパネルを開く。</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="378"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="386"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="384"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="393"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -212,33 +212,38 @@ Enter を押すと画面をキャプチャー。
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="176"/>
+        <location filename="../src/core/controller.cpp" line="216"/>
         <source>&amp;Take Screenshot</source>
         <translation>スクリーンショットを撮る(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="181"/>
+        <location filename="../src/core/controller.cpp" line="221"/>
         <source>&amp;Open Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="184"/>
+        <location filename="../src/core/controller.cpp" line="224"/>
         <source>&amp;Configuration</source>
         <translation>設定(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="187"/>
+        <location filename="../src/core/controller.cpp" line="227"/>
         <source>&amp;Information</source>
         <translation>情報(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="190"/>
+        <location filename="../src/core/controller.cpp" line="230"/>
         <source>&amp;Quit</source>
         <translation>終了(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="206"/>
+        <location filename="../src/core/controller.cpp" line="246"/>
         <source>Kylin-Screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/core/controller.cpp" line="333"/>
+        <source>Unable to use kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1362,7 +1367,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1680"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1702"/>
         <source>Save Error</source>
         <translation>保存エラー</translation>
     </message>
@@ -1370,7 +1375,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1674"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1696"/>
         <source>Capture saved as </source>
         <translation>キャプチャーを保存しました: </translation>
     </message>
@@ -1383,26 +1388,26 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1677"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1699"/>
         <source>Error trying to save as </source>
         <translation>保存時にエラーが発生しました: </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="88"/>
+        <location filename="../src/main.cpp" line="97"/>
         <source>kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="97"/>
-        <location filename="../src/main.cpp" line="254"/>
-        <location filename="../src/main.cpp" line="403"/>
-        <location filename="../src/main.cpp" line="427"/>
-        <location filename="../src/main.cpp" line="456"/>
+        <location filename="../src/main.cpp" line="106"/>
+        <location filename="../src/main.cpp" line="256"/>
+        <location filename="../src/main.cpp" line="415"/>
+        <location filename="../src/main.cpp" line="439"/>
+        <location filename="../src/main.cpp" line="468"/>
         <source>Unable to connect via DBus</source>
         <translation>DBus に接続できません</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="120"/>
+        <location filename="../src/main.cpp" line="122"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>

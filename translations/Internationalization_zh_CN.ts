@@ -81,13 +81,13 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="+51"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="+52"/>
         <source>Option</source>
         <translatorcomment>选项</translatorcomment>
         <translation>选项</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+24"/>
         <source>Save</source>
         <translatorcomment>保存</translatorcomment>
         <translation>保存</translation>
@@ -143,13 +143,13 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+90"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+94"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+149"/>
+        <location line="+150"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -180,8 +180,8 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="+32"/>
-        <location line="+8"/>
+        <location line="+33"/>
+        <location line="+9"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -229,7 +229,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="+176"/>
+        <location filename="../src/core/controller.cpp" line="+216"/>
         <source>&amp;Take Screenshot</source>
         <translation>进行截图(&amp;T)</translation>
     </message>
@@ -257,6 +257,12 @@ Press Space to open the side panel.</source>
         <location line="+16"/>
         <source>Kylin-Screenshot</source>
         <translation>麒麟截图</translation>
+    </message>
+    <message>
+        <location line="+87"/>
+        <source>Unable to use kylin-screenshot</source>
+        <translatorcomment>麒麟截图已禁用</translatorcomment>
+        <translation type="unfinished">麒麟截图已禁用</translation>
     </message>
 </context>
 <context>
@@ -1402,7 +1408,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1294"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1309"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1428,22 +1434,22 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+88"/>
+        <location filename="../src/main.cpp" line="+97"/>
         <source>kylin-screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location line="+157"/>
-        <location line="+149"/>
+        <location line="+150"/>
+        <location line="+159"/>
         <location line="+24"/>
         <location line="+29"/>
         <source>Unable to connect via DBus</source>
         <translation>无法通过DBus进行连接</translation>
     </message>
     <message>
-        <location line="-336"/>
+        <location line="-346"/>
         <source>Kylin-Screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>

@@ -334,6 +334,9 @@ unix:!macx {
     dbus.path = $${PREFIX}/share/dbus-1/interfaces/
     dbus.files = dbus/org.dharkael.kylinscreenshot.xml
 
+    gsettings.path = $${PREFIX}/share/glib-2.0/schemas/
+    gsettings.files =  gsettings/org.ukui.screenshot.gschema.xml
+
     icon.path = $${PREFIX}/share/icons/hicolor/
     icon.files = img/hicolor/*
 
@@ -358,6 +361,7 @@ unix:!macx {
         icon \
         desktopentry \
         qmfile \
+	gsettings \
         servicedbus \
         dbus \
         completion \

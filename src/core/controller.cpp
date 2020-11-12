@@ -30,7 +30,8 @@
 #include <QAction>
 #include <QMenu>
 #include <QDesktopWidget>
-
+#include <QGSettings/qgsettings.h>
+#include "src/utils/systemnotification.h"
 #ifdef Q_OS_WIN
 #include "src/core/globalshortcutfilter.h"
 #endif
@@ -77,23 +78,43 @@ void Controller::requestCapture(const CaptureRequest &request) {
     uint id = request.id();
     m_requestMap.insert(id, request);
 
+    QGSettings *screen= new QGSettings("org.ukui.screenshot");
+    QString screenshot = screen->get("screenshot").toString();
     switch (request.captureMode()) {
     case CaptureRequest::FULLSCREEN_MODE:
-        doLater(request.delay(), this, [this, id](){
-            this->startFullscreenCapture(id);
-        });
+        if (screenshot.compare("true")==0){
+            doLater(request.delay(), this, [this, id](){
+                this->startFullscreenCapture(id);
+            });
+        }
+        else
+        {
+            disableScreenCut();
+        }
         break;
     case CaptureRequest::SCREEN_MODE: {
-        int &&number = request.data().toInt();
-        doLater(request.delay(), this, [this, id, number](){
+        if (screenshot.compare("true")==0){
+            int &&number = request.data().toInt();
+            doLater(request.delay(), this, [this, id, number](){
             this->startScreenGrab(id, number);
-        });
+            });
+        }
+        else
+        {
+            disableScreenCut();
+        }
         break;
     } case CaptureRequest::GRAPHICAL_MODE: {
-        QString &&path = request.path();
-        doLater(request.delay(), this, [this, id, path](){
-            this->startVisualCapture(id, path);
-        });
+        if (screenshot.compare("true")==0){
+            QString &&path = request.path();
+            doLater(request.delay(), this, [this, id, path](){
+                this->startVisualCapture(id, path);
+            });
+        }
+        else
+        {
+            disableScreenCut();
+        }
         break;
     } default:
         emit captureFailed(id);
@@ -103,27 +124,41 @@ void Controller::requestCapture(const CaptureRequest &request) {
 
 // creation of a new capture in GUI mode
 void Controller::startVisualCapture(const uint id, const QString &forcedSavePath) {
+    QGSettings *screen= new QGSettings("org.ukui.screenshot");
+    QString screenshot = screen->get("screenshot").toString();
     if (!m_captureWindow) {
-        QWidget *modalWidget = nullptr;
-        do {
-            modalWidget = qApp->activeModalWidget();
-            if (modalWidget) {
-                modalWidget->close();
-                modalWidget->deleteLater();
-            }
-        } while (modalWidget);
+        if (screenshot.compare("true")==0){
+            QWidget *modalWidget = nullptr;
+            do {
+                modalWidget = qApp->activeModalWidget();
+                if (modalWidget) {
+                    modalWidget->close();
+                    modalWidget->deleteLater();
+                }
+            } while (modalWidget);
 
-        m_captureWindow = new CaptureWidget(id, forcedSavePath);
+            m_captureWindow = new CaptureWidget(id, forcedSavePath);
         //m_captureWindow = new CaptureWidget(id, forcedSavePath, false); // debug
-        connect(m_captureWindow, &CaptureWidget::captureFailed,
+            connect(m_captureWindow, &CaptureWidget::captureFailed,
                 this, &Controller::captureFailed);
-        connect(m_captureWindow, &CaptureWidget::captureTaken,
+            connect(m_captureWindow, &CaptureWidget::captureTaken,
                 this, &Controller::captureTaken);
+        }
+        else
+        {
+            disconnect(m_captureWindow, &CaptureWidget::captureFailed,
+                this, &Controller::captureFailed);
+            disconnect(m_captureWindow, &CaptureWidget::captureTaken,
+                this, &Controller::captureTaken);
+            disableScreenCut();
+        }
 
 #ifdef Q_OS_WIN
         m_captureWindow->show();
 #else
-        m_captureWindow->showFullScreen();
+        if (screenshot.compare("true")==0){
+            m_captureWindow->showFullScreen();
+        }
         //m_captureWindow->show(); // Debug
 #endif
     } else {
@@ -291,4 +326,9 @@ void Controller::doLater(int msec, QObject *receiver, lambda func)  {
                      [timer, func](){ func(); timer->deleteLater(); });
     timer->setInterval(msec);
     timer->start();
+}
+
+void Controller::disableScreenCut()
+{
+    SystemNotification().sendMessage(tr("Unable to use kylin-screenshot"));
 }

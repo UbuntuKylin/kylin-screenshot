@@ -41,7 +41,7 @@ public:
     void operator =(const Controller&) = delete;
 
     void enableExports();
-
+    void disableScreenCut();
 signals:
     void captureTaken(uint id, QPixmap p);
     void captureFailed(uint id);
