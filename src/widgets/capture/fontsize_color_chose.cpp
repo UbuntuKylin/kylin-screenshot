@@ -24,8 +24,8 @@
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
-#define TRIANGLE_WIDTH 10    //小三角的宽度
-#define TRIANGLE_HEIGHT 5  //小三角的高度
+#define TRIANGLE_WIDTH 20    //小三角的宽度
+#define TRIANGLE_HEIGHT 10  //小三角的高度
 #define BORDER_RADIUS 10       //窗口边角弧度
 
 FontSize_Color_Chose::FontSize_Color_Chose(QWidget *parent)
@@ -47,31 +47,31 @@ FontSize_Color_Chose::FontSize_Color_Chose(QWidget *parent)
     shadowEffect->setBlurRadius(BORDER_RADIUS);
     this->setGraphicsEffect(shadowEffect);
     this->setMouseTracking(true);
-    Start_x = 13;
-    Start_y = 47;
+    Start_x = 10;
+    Start_y = 37;
     for (int i =0;i<4;i++)
     {
        m_colorAreaList.append(QRect(Start_x,Start_y,radius*2, radius*2));
        Start_x += radius*2;
        Start_x+= 10;
-       Start_y -= 2;
-       radius +=2;
+       Start_y -= (i+1);
+       radius += (i+1);
     }
-     Start_x =94;
-     Start_y = 31.5;
+     Start_x = 91;
+     Start_y = 22;
     for (int i=4;i<8;i++)
     {
         m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
          Start_x += 24;
     }
-    Start_x  = 94;
-    Start_y = 51;
+    Start_x  = 91;
+    Start_y = 46;
     for (int i=8;i<12;i++)
     {
          m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
          Start_x += 24;
     }
-    m_colorAreaList.append(QRect(11,45,7,7));
+    m_colorAreaList.append(QRect(8,35,7,7));
 }
 void FontSize_Color_Chose::setStartPos(double startX)
 {
@@ -79,8 +79,8 @@ void FontSize_Color_Chose::setStartPos(double startX)
 }
 void FontSize_Color_Chose::setTriangleInfo(double width, double height)
 {
-    m_triangleWidth = width;
-    m_triangleHeight = height;
+    m_triangleWidth = 20;
+    m_triangleHeight = 10;
 }
 void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
 {
@@ -89,12 +89,11 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
     painter.setPen(Qt::NoPen);
     //
     QPolygon trianglePolygon;
-    trianglePolygon << QPoint(m_startx, m_triangleWidth + SHADOW_WIDTH);
+    trianglePolygon << QPoint(m_startx, m_triangleHeight+ SHADOW_WIDTH);
     trianglePolygon << QPoint(m_startx+m_triangleWidth/2,SHADOW_WIDTH);
     trianglePolygon << QPoint(m_startx + m_triangleWidth,m_triangleHeight + SHADOW_WIDTH);
     QPainterPath drawPath;
-    drawPath.addRoundRect(QRect(SHADOW_WIDTH , m_triangleHeight + SHADOW_WIDTH ,
-                                width()-SHADOW_WIDTH *2 ,height() -SHADOW_WIDTH *2 -m_triangleHeight),
+    drawPath.addRoundRect(QRect(SHADOW_WIDTH , m_triangleHeight + SHADOW_WIDTH ,width()- SHADOW_WIDTH,height()- m_triangleHeight-SHADOW_WIDTH),
                          BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
     if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
@@ -119,16 +118,20 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
     {
         QRect rect = m_colorAreaList.at(i);
         if (color_rect == rect){
-        Rect_h = rect.height()+4;
-        Rect_w = rect.width() +4;
-        painter.setBrush(QColor(255,255,255));
-        painter.drawEllipse(QRect(rect.x()-2,rect.y()-2,Rect_h,Rect_w));
+            Rect_h = rect.height()+4;
+            Rect_w = rect.width() +4;
+            painter.setBrush(QColor(255,255,255));
+            painter.drawEllipse(QRect(rect.x()-2,rect.y()-2,Rect_h,Rect_w));
+            painter.setBrush(QColor(0,0,0));
+            painter.drawEllipse(rect);
         }
-        painter.setBrush(QColor(25,25,25));
-        painter.drawEllipse(rect);
+        else{
+            painter.setBrush(QColor(78,78,78));
+            painter.drawEllipse(rect);
+        }
     }
     painter.setBrush(QColor(25,25,25));
-    painter.drawRect(85,36,1,17);
+    painter.drawRect(80,31,1,17);
     for (int i =4;i<12;i++)
     {
         QRect rect = m_colorAreaList.at(i);
@@ -153,7 +156,6 @@ void FontSize_Color_Chose::mousePressEvent(QMouseEvent *e) {
             update();
             break;
          }
-
         }
         else if (m_colorAreaList.at(i).contains(e->pos())) {
            color_rect = m_colorAreaList.at(i);

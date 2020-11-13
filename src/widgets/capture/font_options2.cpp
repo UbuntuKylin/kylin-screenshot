@@ -27,8 +27,8 @@
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
-#define TRIANGLE_WIDTH  10    //小三角的宽度
-#define TRIANGLE_HEIGHT 5    //小三角的高度
+#define TRIANGLE_WIDTH  20    //小三角的宽度
+#define TRIANGLE_HEIGHT 10    //小三角的高度
 #define BORDER_RADIUS 10       //窗口边角弧度
 Font_Options2::Font_Options2(QWidget *parent)
     : QWidget(parent)
@@ -53,15 +53,15 @@ Font_Options2::Font_Options2(QWidget *parent)
     shadowEffect->setBlurRadius(BORDER_RADIUS);
     this->setGraphicsEffect(shadowEffect);
     this->setMouseTracking(true);
-    Start_x  = 160;
-    Start_y = 18;
+    Start_x  = 161;
+    Start_y = 20;
      for (int i=0;i<4;i++)
      {
           m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
           Start_x += 24;
      }
-     Start_x  = 160;
-     Start_y = 37;
+     Start_x  = 161;
+     Start_y = 41;
      for (int i=4;i<8;i++)
      {
           m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
@@ -81,27 +81,22 @@ void Font_Options2::setTriangleInfo(double width, double height)
 }
 void Font_Options2::setCenterWidget(QWidget *widget)
 {
-    Start_x  = 11;
-    Start_y = 12;
     Font_type = new  QFontComboBox(this);
     Font_type->setCurrentFont(QFont("华文黑体"));
-    Font_type->move(Start_x,Start_y);
+    Font_type->setGeometry(12,16,90,18);
     Font_type->setStyleSheet("font:10px;");
     Font_size = new  QSpinBox(this);
-    Font_type->setFixedSize(90,18);
-    Font_size->setFixedSize(36,18);
+    Font_size->setGeometry(107,16,36,18);
     Font_size->setStyleSheet("font:10px;");
     Font_size->setValue(2);
-    Start_x  = 106;
-    Start_y = 12;
-    Font_size->move(Start_x,Start_y);
     delete_btn = new QPushButton(this);
-    delete_btn->move(11,37);
+    delete_btn->setGeometry(12,41,32,18);
     Underline_btn= new QPushButton(this);
-    Underline_btn->move(43,37);
+    Underline_btn->setGeometry(46,41,33,18);
     bold_btn = new QPushButton(this);
-    bold_btn->move(75,37);
+    bold_btn->setGeometry(79,41,32,18);
     Italic_btn = new QPushButton(this);
+    Italic_btn->setGeometry(111,41,32,18);
     if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0))
     {
         delete_btn->setStyleSheet("QPushButton{border-image:url"
@@ -125,15 +120,10 @@ void Font_Options2::setCenterWidget(QWidget *widget)
         Italic_btn->setStyleSheet("QPushButton{border-image:url"
                               "(:/img/material/dark-theme/italic.png)}");
     }
-    Italic_btn->move(107,37);
     delete_btn->setToolTip(tr("StrikeOut"));
     Underline_btn->setToolTip(tr("Underline"));
     bold_btn->setToolTip(tr("Bold"));
     Italic_btn->setToolTip(tr("Italic"));
-    delete_btn->setFixedSize(32,18);
-    Underline_btn->setFixedSize(32,18);
-    bold_btn->setFixedSize(32,18);
-    Italic_btn->setFixedSize(32,18);
     connect(Font_size,SIGNAL(valueChanged(int)),
             this,SLOT(font_size_change(int)));
     connect(Font_type,SIGNAL(currentFontChanged(QFont)),
@@ -155,14 +145,14 @@ void Font_Options2::paintEvent(QPaintEvent *event)
     painter.setPen(Qt::NoPen);
     //
     QPolygon trianglePolygon;
-    trianglePolygon << QPoint(m_startx,height()- m_triangleWidth - SHADOW_WIDTH);
-    trianglePolygon << QPoint(m_startx+m_triangleWidth/2,height()-SHADOW_WIDTH);
-    trianglePolygon << QPoint(m_startx + m_triangleWidth,height()-m_triangleHeight - SHADOW_WIDTH);
+    trianglePolygon << QPoint(m_startx,height()- m_triangleHeight);
+    trianglePolygon << QPoint(m_startx+m_triangleWidth/2,height());
+    trianglePolygon << QPoint(m_startx + m_triangleWidth,height()-m_triangleHeight);
     QPainterPath drawPath;
     /*drawPath.addRoundRect(QRect(SHADOW_WIDTH , m_triangleHeight + SHADOW_WIDTH ,
                                 width()-SHADOW_WIDTH *2 ,height() -SHADOW_WIDTH *2 -m_triangleHeight),
                          BORDER_RADIUS,BORDER_RADIUS);*/
-    drawPath.addRoundRect(QRect(0 , 0 ,width()-SHADOW_WIDTH *2,height()- m_triangleWidth - SHADOW_WIDTH),
+    drawPath.addRoundRect(QRect(SHADOW_WIDTH,SHADOW_WIDTH,width()-SHADOW_WIDTH *2,height()- m_triangleHeight - SHADOW_WIDTH),
                                            BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
     if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
@@ -174,7 +164,7 @@ void Font_Options2::paintEvent(QPaintEvent *event)
         painter.drawPath(drawPath);
     }
     painter.setBrush(QColor(25,25,25));
-    painter.drawRect(148,23,1,20);
+    painter.drawRect(150,30,1,14);
     for (int i =0;i<8;i++)
     {
         QRect rect = m_colorAreaList.at(i);

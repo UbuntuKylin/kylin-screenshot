@@ -23,8 +23,8 @@
 #include <QGraphicsDropShadowEffect>
 #include <QMouseEvent>
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
-#define TRIANGLE_WIDTH 10    //小三角的宽度
-#define TRIANGLE_HEIGHT 5    //小三角的高度
+#define TRIANGLE_WIDTH 20    //小三角的宽度
+#define TRIANGLE_HEIGHT 10    //小三角的高度
 #define BORDER_RADIUS 10       //窗口边角弧度
 FontSize_Color_Chose2::FontSize_Color_Chose2(QWidget *parent)
     : QWidget(parent)
@@ -45,31 +45,31 @@ FontSize_Color_Chose2::FontSize_Color_Chose2(QWidget *parent)
     shadowEffect->setBlurRadius(BORDER_RADIUS);
     this->setGraphicsEffect(shadowEffect);
     this->setMouseTracking(true);
-    Start_x = 7;
-    Start_y = 32;
+    Start_x = 10;
+    Start_y = 23;
     for (int i =0;i<4;i++)
     {
        m_colorAreaList.append(QRect(Start_x,Start_y,radius*2, radius*2));
        Start_x += radius*2;
        Start_x+= 10;
-       Start_y -= 2;
-       radius +=2;
+       Start_y -= (i+1);
+       radius += (i+1);
     }
-     Start_x =88;
-     Start_y =16.5;
+     Start_x = 91;
+     Start_y = 8;
     for (int i=4;i<8;i++)
     {
         m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
         Start_x += 24;
     }
-    Start_x  = 88;
-    Start_y = 36;
+    Start_x  = 91;
+    Start_y = 27;
     for (int i=8;i<12;i++)
     {
          m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
          Start_x += 24;
     }
-    m_colorAreaList.append(QRect(5,30,7,7));
+    m_colorAreaList.append(QRect(8,21,7,7));
 }
 void FontSize_Color_Chose2::setStartPos(double startX)
 {
@@ -87,11 +87,11 @@ void FontSize_Color_Chose2::paintEvent(QPaintEvent *event)
     painter.setPen(Qt::NoPen);
     //
     QPolygon trianglePolygon;
-    trianglePolygon << QPoint(m_startx,height()- m_triangleWidth - SHADOW_WIDTH);
-    trianglePolygon << QPoint(m_startx+m_triangleWidth/2,height()-SHADOW_WIDTH);
-    trianglePolygon << QPoint(m_startx + m_triangleWidth,height()-m_triangleHeight-SHADOW_WIDTH);
+    trianglePolygon << QPoint(m_startx,height()- m_triangleHeight);
+    trianglePolygon << QPoint(m_startx+m_triangleWidth/2,height());
+    trianglePolygon << QPoint(m_startx + m_triangleWidth,height()-m_triangleHeight);
     QPainterPath drawPath;
-    drawPath.addRoundRect(QRect(0 , 0 ,width()-SHADOW_WIDTH *2,height()- m_triangleWidth - SHADOW_WIDTH),
+    drawPath.addRoundRect(QRect(0 , 0 ,width(),height()- m_triangleHeight),
                                         BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);
     if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
@@ -120,12 +120,16 @@ void FontSize_Color_Chose2::paintEvent(QPaintEvent *event)
             Rect_w = rect.width() +4;
             painter.setBrush(QColor(255,255,255));
             painter.drawEllipse(QRect(rect.x()-2,rect.y()-2,Rect_h,Rect_w));
+            painter.setBrush(QColor(0,0,0));
+            painter.drawEllipse(rect);
         }
-        painter.setBrush(QColor(25,25,25));
-        painter.drawEllipse(rect);
+        else{
+            painter.setBrush(QColor(78,78,78));
+            painter.drawEllipse(rect);
+        }
     }
     painter.setBrush(QColor(25,25,25));
-    painter.drawRect(81,21,1,17);
+    painter.drawRect(80,17,1,14);
     for (int i =4;i<12;i++)
     {
         QRect rect = m_colorAreaList.at(i);

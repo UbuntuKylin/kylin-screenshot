@@ -26,13 +26,13 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
-#define TRIANGLE_WIDTH 10    //小三角的宽度
-#define TRIANGLE_HEIGHT 5    //小三角的高度
+#define TRIANGLE_WIDTH 20    //小三角的宽度
+#define TRIANGLE_HEIGHT 10    //小三角的高度
 #define BORDER_RADIUS 10       //窗口边角弧度
 
 Save_Location::Save_Location(QWidget *parent)
     : QWidget(parent)
-    , m_startx(13)
+    , m_startx(15)
     , radius(5)
     , m_triangleWidth(TRIANGLE_WIDTH)
     , m_triangleHeight(TRIANGLE_HEIGHT)
@@ -49,11 +49,9 @@ Save_Location::Save_Location(QWidget *parent)
     shadowEffect->setBlurRadius(BORDER_RADIUS);
     this->setGraphicsEffect(shadowEffect);
     this->setMouseTracking(true);
-    for (int i =0;i<3;i++)
-    {
-       m_TypeList.append(QRect(m_startx,107,radius*2, radius*2));
-       m_startx += 40;
-    }
+    m_TypeList.append(QRect(m_startx,109,radius*2, radius*2));
+    m_TypeList.append(QRect(m_startx+39,109,radius*2, radius*2));
+    m_TypeList.append(QRect(m_startx+80,109,radius*2, radius*2));
 }
 void Save_Location::setStartPos(double startX)
 {
@@ -61,30 +59,34 @@ void Save_Location::setStartPos(double startX)
 }
 void Save_Location::setCenterWidget(QWidget *widget)
 {
-    QFont ft;
-    ft.setPointSize(12);
+    QFont ft ("SourceHanSansCN", 9);
     savedir = new QLabel(tr("save location"),this);
     savedir->setFont(ft);
-    savedir->move(13,21);
+    savedir->setGeometry(14,28,48,12);
+    //savedir->move(13,21);
     SaveDir = new  QPushButton(this);
-    SaveDir->resize(118,25);
-    SaveDir->move(13,50);
-    ft.setPointSize(11);
+    SaveDir->setGeometry(14,46,118,20);
+    //SaveDir->move(13,50);
+    ft.setPointSize(9);
     SaveDir->setFont(ft);
-    ft.setPointSize(12);
+    ft.setPointSize(9);
     savetype = new QLabel(tr("save type"),this);
-    savetype->move(13,82);
+    savetype->setGeometry(14,84,48,12);
+    //savetype->move(13,82);
     savetype->setFont(ft);
-    ft.setPointSize(11);
+    ft.setPointSize(9);
     label1 = new  QLabel("jpg",this);
     label1->setFont(ft);
-    label1->move(24,100);
+    label1->setGeometry(27,106,17,18);
+    //label1->move(24,100);
     label2 = new  QLabel("png",this);
     label2->setFont(ft);
-    label2->move(64,100);
+    label2->setGeometry(66,106,23,18);
+    //label2->move(64,100);
     label3 = new  QLabel("bmp",this);
     label3->setFont(ft);
-    label3->move(104,100);
+    label3->setGeometry(108,106,26,15);
+    //label3->move(104,100);
     setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH);
 }
 void Save_Location::setTriangleInfo(double width,double height)
@@ -99,12 +101,12 @@ void Save_Location::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.setPen(Qt::NoPen);
     QPolygon trianglePolygon;
-    trianglePolygon << QPoint(m_startx, m_triangleWidth + SHADOW_WIDTH);
+    trianglePolygon << QPoint(m_startx, m_triangleHeight + SHADOW_WIDTH);
     trianglePolygon << QPoint(m_startx+m_triangleWidth/2,SHADOW_WIDTH);
     trianglePolygon << QPoint(m_startx + m_triangleWidth,m_triangleHeight + SHADOW_WIDTH);
 
     QPainterPath drawPath;
-    drawPath.addRoundRect(QRect(SHADOW_WIDTH , m_triangleHeight + SHADOW_WIDTH ,
+    drawPath.addRoundRect(QRect(SHADOW_WIDTH, m_triangleHeight+ SHADOW_WIDTH,
                                 width()-SHADOW_WIDTH *2 ,height() -SHADOW_WIDTH *2 -m_triangleHeight),
                          BORDER_RADIUS,BORDER_RADIUS);
     drawPath.addPolygon(trianglePolygon);

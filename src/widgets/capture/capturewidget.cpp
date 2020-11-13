@@ -193,31 +193,34 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
 
     m_colorPicker->hide();
     font_color->setStartPos(95);
-    font_color->setTriangleInfo(10, 10);
-    font_color->setFixedSize(QSize(190, 75));
+    font_color->setTriangleInfo(20, 10);
+    font_color->setFixedSize(QSize(187, 67));
 
     font_color2->setStartPos(95);
-    font_color2->setTriangleInfo(10, 10);
-    font_color2->setFixedSize(QSize(190, 75));
+    font_color2->setTriangleInfo(20, 10);
+    font_color2->setFixedSize(QSize(187, 62));
+
     save_location->setStartPos(72);
-    save_location->setTriangleInfo(10, 10);
-    save_location->setFixedSize(QSize(144, 150));
+    save_location->setTriangleInfo(20, 10);
+    save_location->setFixedSize(QSize(151, 143));
     save_location->setCenterWidget();
 
     save_location2->setStartPos(72);
-    save_location2->setTriangleInfo(10, 10);
-    save_location2->setFixedSize(QSize(144, 150));
+    save_location2->setTriangleInfo(20, 10);
+    save_location2->setFixedSize(QSize(151, 135));
     save_location2->setCenterWidget();
 
     font_options->setStartPos(130);
-    font_options->setTriangleInfo(10, 10);
-    font_options->setFixedSize(QSize(260, 75));
+    font_options->setTriangleInfo(20, 10);
+    font_options->setFixedSize(QSize(261, 90));
     font_options->setCenterWidget();
     font_options->Font_size->setValue(m_context.thickness);
+
     font_options2->setStartPos(130);
-    font_options2->setTriangleInfo(10, 10);
-    font_options2->setFixedSize(QSize(260, 75));
+    font_options2->setTriangleInfo(20, 10);
+    font_options2->setFixedSize(QSize(261, 80));
     font_options2->setCenterWidget();
+
     font_color->hide();
     font_color2->hide();
     m_context.saveType =".png";
