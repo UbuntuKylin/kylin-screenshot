@@ -165,7 +165,12 @@ void FontSize_Color_Chose2::mousePressEvent(QMouseEvent *e) {
     for (int i = 4; i < 12; i++) {
         if (m_colorAreaList.at(i).contains(e->pos())) {
            color = m_colorList.at(i-4);
-           emit colorSelected2(color);
+           if (i == 11)
+           {
+               emit colorSelected2(QColor(225,225,225));
+           }
+           else
+                emit colorSelected2(color);
            update();
            break;
          }
