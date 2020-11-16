@@ -322,42 +322,40 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         m_activeButton->tool()->paintMousePreview(painter, m_context);
         painter.restore();
     }
-    else
-    {
-        if (m_context.mousePos.x()< m_selection->x()||m_context.mousePos.x()>m_selection->x()+m_selection->width()
-                ||m_context.mousePos.y()+m_selection->height()+m_buttonHandler->size()+200< m_selection->y()
-                ||m_context.mousePos.y()>m_selection->y()+m_selection->height()+m_buttonHandler->size()+200)
+    if (m_context.mousePos.x() >= 0 && m_context.mousePos.x()-144 <= qApp->desktop()->screenGeometry().width()
+            && m_context.mousePos.y() >= 0 &&m_context.mousePos.y()-144 <= qApp->desktop()->screenGeometry().height())
            {
-               painter.setOpacity(0.5);
-               if(m_context.mousePos.y()+144>=qApp->desktop()->screenGeometry().height())
-               {
-                      if(m_context.mousePos.x()+144<=qApp->desktop()->screenGeometry().width()){
-                            painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()-144,crosspixmap);
-                            painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()-24,tr("%1 , %2")
-                                 .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
-                      }
-                      else
-                      {
-                              painter.drawPixmap(m_context.mousePos.x()-144,m_context.mousePos.y()-144,crosspixmap);
-                              painter.drawText(m_context.mousePos.x()-144,m_context.mousePos.y()-24,tr("%1 , %2")
-                                 .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
-                      }
-               }
-               else{
-                       if(m_context.mousePos.x()+144>=qApp->desktop()->screenGeometry().width()){
-                            painter.drawPixmap(m_context.mousePos.x()-144,m_context.mousePos.y()+10,crosspixmap);
-                            painter.drawText(m_context.mousePos.x()-144,m_context.mousePos.y()+130,tr("%1 , %2")
-                                 .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
-                      }
-                       else{
-                            painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,crosspixmap);
-                            painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
-                                 .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
-                       }
+               if (!m_selection->isVisible()) {
+                   painter.setOpacity(0.5);
+                   if(m_context.mousePos.y()+144>=qApp->desktop()->screenGeometry().height())
+                   {
+                          if(m_context.mousePos.x()+144<=qApp->desktop()->screenGeometry().width()){
+                                painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()-144,crosspixmap);
+                                painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()-24,tr("%1 , %2")
+                                     .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+                          }
+                          else
+                          {
+                                  painter.drawPixmap(m_context.mousePos.x()-144,m_context.mousePos.y()-144,crosspixmap);
+                                  painter.drawText(m_context.mousePos.x()-144,m_context.mousePos.y()-24,tr("%1 , %2")
+                                     .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+                          }
+                   }
+                   else{
+                           if(m_context.mousePos.x()+144>=qApp->desktop()->screenGeometry().width()){
+                                painter.drawPixmap(m_context.mousePos.x()-144,m_context.mousePos.y()+10,crosspixmap);
+                                painter.drawText(m_context.mousePos.x()-144,m_context.mousePos.y()+130,tr("%1 , %2")
+                                     .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+                          }
+                           else{
+                                painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,crosspixmap);
+                                painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
+                                     .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+                           }
+                   }
                }
                update();
-           }
-    }
+            }
     QColor overlayColor(0, 0, 0, m_opacity);
     painter.setBrush(overlayColor);
     QRect r;
