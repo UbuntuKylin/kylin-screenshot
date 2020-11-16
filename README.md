@@ -44,8 +44,8 @@ You will need the following packages to compile kylin-screenshot:
 -               libx11-dev,
 -               libxinerama1,
 -               libxinerama-dev,
--		libgsettings-qt-dev,
--		libkf5windowsystem5
+-               libgsettings-qt-dev,
+-               libkf5windowsystem5
 -               libkf5windowsystem-dev,
 You can Build and Install by apt command
 ```shell
