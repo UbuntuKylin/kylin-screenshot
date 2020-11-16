@@ -87,9 +87,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
     ensureSelectionMinimunSize();
     // Indicates the actual button to be moved
     int elemIndicator = 0;
-
     while (elemIndicator < vecLength) {
-
         // Add them inside the area when there is no more space
         if (m_allSidesBlocked) {
             m_selection = selection;
@@ -127,7 +125,6 @@ void ButtonHandler::updatePosition(const QRect &selection) {
                                 m_selection.bottom() + m_separator);
             if(!m_screenRegions.contains(QPoint(m_selection.center().x()-m_buttonExtendedSize*8,m_selection.bottom() + m_separator)))
             {
-
                 center.setX(m_buttonExtendedSize*8+16);
             }
             if(!m_screenRegions.contains(end2))
@@ -138,7 +135,6 @@ void ButtonHandler::updatePosition(const QRect &selection) {
                 adjustHorizontalCenter(center);
             }
             // ElemIndicator, elemsAtCorners
-            qDebug()<<"qqq"<<elemIndicator;
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }
@@ -148,13 +144,21 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.right()+m_buttonExtendedSize*9,
                                    m_selection.center().y());
-            QPoint end2 = QPoint(m_selection.right()+m_buttonExtendedSize*9,
-                                m_selection.bottom() + m_separator*2);
+            QPoint end2 = QPoint(center.x(),
+                                m_selection.top()+m_selection.width()/2+m_separator*2);
+            QPoint end = QPoint(center.x()+m_buttonExtendedSize*9,
+                                center.y());
             if(!m_screenRegions.contains(end2))
             {
                 center.setY(QApplication::desktop()->height()-m_buttonExtendedSize);
             }
-            qDebug()<<"qqqq"<<elemIndicator;
+            if(!m_screenRegions.contains(end))
+            {
+                center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*9);
+            }
+            if (addCounter == buttonsPerRow) {
+                adjustHorizontalCenter(center);
+            }
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }
@@ -174,10 +178,9 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             {
                  center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*9);
             }
-            if (addCounter == 1 + buttonsPerRow) {
+            if (addCounter == buttonsPerRow) {
                 adjustHorizontalCenter(center);
             }
-            qDebug()<<"qqqqq"<<elemIndicator;
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }
@@ -188,13 +191,21 @@ void ButtonHandler::updatePosition(const QRect &selection) {
 
             QPoint center = QPoint(m_selection.left()-m_buttonExtendedSize*9,
                                    m_selection.center().y());
-            QPoint end2 = QPoint(m_selection.left()-m_buttonExtendedSize*9,
-                                m_selection.bottom() + m_separator*2);
+            QPoint end2 = QPoint(center.x(),
+                                m_selection.top() +m_selection.width()/2+m_separator*2);
+            QPoint end = QPoint(center.x()-m_buttonExtendedSize*9,
+                                 center.y());
             if(!m_screenRegions.contains(end2))
             {
                 center.setY(QApplication::desktop()->height()-m_buttonExtendedSize);
             }
-            qDebug()<<"qqqqqq"<<elemIndicator;
+            if(!m_screenRegions.contains(end))
+            {
+                center.setX(368);
+            }
+            if (addCounter == buttonsPerRow) {
+                adjustHorizontalCenter(center);
+            }
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             //QVector<QPoint> positions = verticalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
@@ -282,7 +293,7 @@ void ButtonHandler::resetRegionTrack() {
 
 void ButtonHandler::updateBlockedSides() {
     const int EXTENSION = m_separator * 2 + m_buttonBaseSize;
-    const int EXTENSIONS = m_separator * 2 + m_buttonBaseSize * 20;
+    const int EXTENSIONS = 735;
     // Right  （右下   右上）
     QPoint pointA(m_selection.right() + EXTENSIONS,
                 m_selection.bottom());
