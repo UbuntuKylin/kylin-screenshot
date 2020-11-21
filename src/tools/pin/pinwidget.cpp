@@ -26,6 +26,7 @@
 PinWidget::PinWidget(const QPixmap &pixmap, QWidget *parent) :
     QWidget(parent), m_pixmap(pixmap)
 {
+    setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
     setWindowFlags(Qt::WindowStaysOnTopHint
                    | Qt::FramelessWindowHint);
     //set the bottom widget background transparent

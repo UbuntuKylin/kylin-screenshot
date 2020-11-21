@@ -42,7 +42,7 @@
 #include <QDBusMessage>
 #include <QDBusConnection>
 #endif
-/*
+
 int getScreenWidth()
 {
     Display *disp = XOpenDisplay(NULL);
@@ -57,17 +57,16 @@ int getScreenWidth()
     }
     return width;
 }
-*/
 int main(int argc, char *argv[]) {
 
     // required for the button serialization
     // TODO: change to QVector in v1.0
-    /*if (getScreenWidth() > 2560) {
+    if (getScreenWidth() > 2560) {
             #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
                     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
                     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
             #endif
-    }*/
+    }
     qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
     qApp->setApplicationVersion(static_cast<QString>(APP_VERSION));
 
