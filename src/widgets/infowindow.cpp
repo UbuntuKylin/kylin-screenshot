@@ -131,7 +131,8 @@ void InfoWindow::initLabels() {
     QLabel *versionTitleLabel = new QLabel(tr("<u><b>Version</b></u>"), this);
     versionTitleLabel->setAlignment(Qt::AlignHCenter);
     m_layout->addWidget(versionTitleLabel);
-    QString versionMsg = "Kylin-ScreenShot " + QStringLiteral(APP_VERSION) + "\nCompiled with Qt "
+    QString versionMsg = tr("Kylin-ScreenShot") + "v1.0.0" + "\n" +
+            tr("Compiled with Qt")
             + QT_VERSION_STR;
     QLabel *versionLabel = new QLabel(versionMsg, this);
     versionLabel->setAlignment(Qt::AlignHCenter);

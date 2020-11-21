@@ -96,7 +96,7 @@
 <context>
     <name>CaptureLauncher</name>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="+62"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="+63"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
         <translation>&lt;b&gt;捕获模式&lt;/b&gt;</translation>
     </message>
@@ -149,7 +149,7 @@
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+150"/>
+        <location line="+153"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -160,7 +160,7 @@
         <translation type="obsolete">另存为....</translation>
     </message>
     <message>
-        <location line="+89"/>
+        <location line="+87"/>
         <location line="+6"/>
         <location line="+7"/>
         <location line="+5"/>
@@ -370,13 +370,13 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+99"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+93"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
         <source>Underline</source>
         <translatorcomment>下划线</translatorcomment>
         <translation>下划线</translation>
@@ -388,7 +388,7 @@ Press Space to open the side panel.</source>
         <translation>粗体</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>Italic</source>
         <translatorcomment>斜体</translatorcomment>
         <translation>斜体</translation>
@@ -397,7 +397,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+129"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+123"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -680,12 +680,24 @@ Press Space to open the side panel.</source>
         <translation>&lt;u&gt;&lt;b&gt;版本&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+3"/>
+        <source>Kylin-ScreenShot</source>
+        <translatorcomment>麒麟截图</translatorcomment>
+        <translation>麒麟截图</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Compiled with Qt</source>
+        <translatorcomment>Qt编译版本</translatorcomment>
+        <translation>Qt编译版本</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>&lt;u&gt;&lt;b&gt;Shortcuts&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;快捷键&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location line="-60"/>
+        <location line="-61"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>屏幕捕捉模式中的可用快捷键。</translation>
     </message>
@@ -1434,7 +1446,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+97"/>
+        <location filename="../src/main.cpp" line="+96"/>
         <source>kylin-screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>
@@ -1538,13 +1550,13 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location</name>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="+66"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="+63"/>
         <source>save location</source>
         <translatorcomment>存储位置</translatorcomment>
         <translation>存储位置</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>save type</source>
         <translatorcomment>存储格式</translatorcomment>
         <translation>存储格式</translation>
@@ -1553,7 +1565,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location2</name>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="+67"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="+64"/>
         <source>save location</source>
         <translatorcomment>存储位置</translatorcomment>
         <translation>存储位置</translation>
@@ -2092,7 +2104,7 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">文本</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="+59"/>
+        <location filename="../src/tools/text/texttool.cpp" line="+58"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>

@@ -94,42 +94,42 @@
 <context>
     <name>CaptureLauncher</name>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="62"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="63"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="67"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="68"/>
         <source>Rectangular Region</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="68"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="69"/>
         <source>Full Screen (All Monitors)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="82"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="83"/>
         <source> second</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="82"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="83"/>
         <source> seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="86"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="87"/>
         <source>Take new screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="93"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="94"/>
         <source>Area:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="94"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="95"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -142,15 +142,15 @@
         <translation>Не удалось захватить экран</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="244"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="247"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="333"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="339"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="346"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="351"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="334"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="340"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="347"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="352"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -167,8 +167,8 @@ Press Space to open the side panel.</source>
 Нажмите Пробел чтобы открыть боковую панель.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="384"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="393"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="385"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="394"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -345,22 +345,22 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="99"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="93"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Зачеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="104"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="96"/>
         <source>Underline</source>
         <translation type="unfinished">Подчеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="108"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="100"/>
         <source>Bold</source>
         <translation type="unfinished">Полужирный</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="112"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
         <source>Italic</source>
         <translation type="unfinished">Курсив</translation>
     </message>
@@ -368,22 +368,22 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="129"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="123"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Зачеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="130"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="124"/>
         <source>Underline</source>
         <translation type="unfinished">Подчеркнутый</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="131"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="125"/>
         <source>Bold</source>
         <translation type="unfinished">Полужирный</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="132"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="126"/>
         <source>Italic</source>
         <translation type="unfinished">Курсив</translation>
     </message>
@@ -648,7 +648,17 @@ Press Space to open the side panel.</source>
         <translation>&lt;u&gt;&lt;b&gt;Версия&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="141"/>
+        <location filename="../src/widgets/infowindow.cpp" line="134"/>
+        <source>Kylin-ScreenShot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/infowindow.cpp" line="135"/>
+        <source>Compiled with Qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/infowindow.cpp" line="142"/>
         <source>&lt;u&gt;&lt;b&gt;Shortcuts&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;Горячие клавиши&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
@@ -1371,7 +1381,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1702"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1703"/>
         <source>Save Error</source>
         <translation>Ошибка сохранения</translation>
     </message>
@@ -1379,7 +1389,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1696"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1697"/>
         <source>Capture saved as </source>
         <translation>Снимок сохранён как </translation>
     </message>
@@ -1392,26 +1402,26 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1699"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1700"/>
         <source>Error trying to save as </source>
         <translation>Ошибка при попытке сохранить как </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="97"/>
+        <location filename="../src/main.cpp" line="96"/>
         <source>kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="106"/>
-        <location filename="../src/main.cpp" line="256"/>
-        <location filename="../src/main.cpp" line="415"/>
-        <location filename="../src/main.cpp" line="439"/>
-        <location filename="../src/main.cpp" line="468"/>
+        <location filename="../src/main.cpp" line="105"/>
+        <location filename="../src/main.cpp" line="255"/>
+        <location filename="../src/main.cpp" line="414"/>
+        <location filename="../src/main.cpp" line="438"/>
+        <location filename="../src/main.cpp" line="467"/>
         <source>Unable to connect via DBus</source>
         <translation>Не удалось подключиться через DBus</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="122"/>
+        <location filename="../src/main.cpp" line="121"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1490,12 +1500,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location</name>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="66"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="63"/>
         <source>save location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="75"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="73"/>
         <source>save type</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1503,12 +1513,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location2</name>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="67"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="64"/>
         <source>save location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="77"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="74"/>
         <source>save type</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2040,12 +2050,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">Текст</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="59"/>
+        <location filename="../src/tools/text/texttool.cpp" line="58"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="67"/>
+        <location filename="../src/tools/text/texttool.cpp" line="66"/>
         <source>Add text to your capture</source>
         <translation>Добавить текст на снимок</translation>
     </message>
