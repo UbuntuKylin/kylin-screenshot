@@ -397,15 +397,17 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
             if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
                 painter.setBrush(QColor(200,200,200));
-                painter.setOpacity(0.66);
+                painter.setPen(QColor(200,200,200));
                 //rect
                 QRect rr = QRect(vectorButtons.first()->pos().x()-15,vectorButtons.first()->pos().y(),
                              735,44);
-                QPixmap p = m_context.origScreenshot.copy(rr);
+                QRect r1 = rr.adjusted(1,1,-1,-1);
+                painter.setOpacity(0);
+                QPixmap p = m_context.origScreenshot.copy(r1);
                 auto pixelRatio = p.devicePixelRatio();
 
-                QRect selection = QRect(rr.topLeft(), rr.bottomRight()).normalized();
-                QRect selectionScaled = QRect((rr.topLeft()+QPoint(8,0))* pixelRatio, (rr.bottomRight()-QPoint(8,0))* pixelRatio).normalized();
+                QRect selection = QRect(r1.topLeft(), r1.bottomRight()).normalized();
+                QRect selectionScaled = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
 
                 QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
                 blur->setBlurRadius(10);
@@ -415,12 +417,12 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 
                 QGraphicsScene scene;
                 scene.addItem(item);
-
                 scene.render(&painter, selection, QRectF());
-                blur->setBlurRadius(12);
+                blur->setBlurRadius(10);
                 scene.render(&painter, selection, QRectF());
-                scene.render(&painter, selection, QRectF());
-                painter.drawRoundRect(rr,8,8);
+                //scene.render(&painter, selection, QRectF());
+                painter.setOpacity(0.66);
+                painter.drawRoundRect(rr,6,6);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
                                     GlobalValues::buttonBaseSize(),
@@ -434,24 +436,28 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 QColor rectColor2(QColor(0,98,240));
                 painter.setBrush(rectColor2);
                 painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
-                painter.setBrush(QColor(0,0,0,100));
                 //两个分隔符
+                painter.setBrush(QColor(0,0,0,100));
+                painter.setPen(QColor(0,0,0,100));
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+36,vectorButtons.first()->pos().y()+14, 1, 16);
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+19,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setBrush(QColor(255,255,255));
+                painter.setPen(QColor(255,255,255));
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setOpacity(0.5);
             }
             else if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
                 painter.setBrush(QColor(0,0,0));
+                painter.setPen(QColor(0,0,0));
                 painter.setOpacity(0.66);
                 QRect rr = QRect(vectorButtons.first()->pos().x()-15,vectorButtons.first()->pos().y(),
                              735,44);
-                QPixmap p = m_context.origScreenshot.copy(rr);
+                QRect r1 = rr.adjusted(2,2,-2,-2);
+                QPixmap p = m_context.origScreenshot.copy(r1);
                 auto pixelRatio = p.devicePixelRatio();
 
-                QRect selection = QRect(rr.topLeft(), rr.bottomRight()).normalized();
-                QRect selectionScaled = QRect((rr.topLeft()+QPoint(8,0))* pixelRatio, (rr.bottomRight()-QPoint(8,0))* pixelRatio).normalized();
+                QRect selection = QRect(r1.topLeft(), r1.bottomRight()).normalized();
+                QRect selectionScaled = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
 
                 QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
                 blur->setBlurRadius(10);
@@ -466,7 +472,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 blur->setBlurRadius(12);
                 scene.render(&painter, selection, QRectF());
                 scene.render(&painter, selection, QRectF());
-                painter.drawRoundRect(rr,8,8);
+                painter.drawRoundRect(rr,6,6);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
                                     GlobalValues::buttonBaseSize(),
@@ -480,8 +486,10 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 QColor rectColor2(QColor(0,98,240));
                 painter.setBrush(rectColor2);
                 painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
-                painter.setBrush(QColor(0,0,0,100));
+
                 //两个分隔符
+                painter.setBrush(QColor(0,0,0,100));
+                painter.setPen(QColor(0,0,0,100));
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+36,vectorButtons.first()->pos().y()+14, 1, 16);
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+19,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
