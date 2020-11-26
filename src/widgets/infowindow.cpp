@@ -34,6 +34,8 @@
 
 InfoWindow::InfoWindow(QWidget *parent) : QWidget(parent) {
     setAttribute(Qt::WA_DeleteOnClose);
+    //fixed when windows maxed the layout's problem
+    this->setFixedSize(600, 500);
     setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
     setWindowTitle(tr("About"));
 
@@ -109,8 +111,6 @@ void InfoWindow::initInfoTable() {
     // adjust size
     table->resizeColumnsToContents();
     table->resizeRowsToContents();
-    table->setMinimumWidth(400);
-    table->setMaximumWidth(600);
 
     table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     table->horizontalHeader()->setSizePolicy(QSizePolicy::Expanding,
