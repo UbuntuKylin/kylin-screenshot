@@ -41,6 +41,7 @@ Font_Options::Font_Options(QWidget *parent)
     ,bold(false)
     ,italic(false)
 {
+
     context.style_settings = new QGSettings("org.ukui.style");
     context.style_name = context.style_settings->get("style-name").toString();
     setCursor(Qt::ArrowCursor);
@@ -82,8 +83,9 @@ void Font_Options::setTriangleInfo(double width, double height)
 void Font_Options::setCenterWidget(QWidget *widget)
 {
     Font_type = new  QFontComboBox(this);
+    //Font_type->setMaxVisibleItems(400);
     Font_type->setCurrentFont(QFont("华文黑体"));
-    Font_type->setStyleSheet("font:10px;");
+    Font_type->setStyleSheet("font:8px;");
     Font_type->setGeometry(12,26,90,18);
     Font_size = new  QSpinBox(this);
     Font_size->setStyleSheet("font:10px;");

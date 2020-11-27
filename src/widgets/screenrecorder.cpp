@@ -1047,10 +1047,8 @@ void ScreenRecorder::StopOutput(bool final) {
 void ScreenRecorder::UpdateRecordButton()
 {	if(m_output_started) {
        // m_pushbutton_record->setIcon(g_icon_pause);
-        qDebug()<<"11111111111";
         m_pushbutton_start->setText(tr("Pause recording"));
     } else {
-        qDebug()<<"222222222222";
         //m_pushbutton_record->setIcon(g_icon_record);
         m_pushbutton_start->setText(tr("Start recording"));
     }

@@ -879,7 +879,6 @@ void CaptureWidget::setState(CaptureButton *b) {
             font_color->hide();
             font_color2->hide();
             pushToolToStack();
-            qDebug()<<"111111111";
         }
     }
     if (m_activeButton != b) {
@@ -896,7 +895,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                     save_location->move(font_color_point->x(),font_color_point->y());
                     save_location->show();
                     connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                    qDebug()<<"qqqqqqqq";
                 }
                 else
                 {
@@ -907,7 +905,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                     save_location2->move(font_color_point->x(),font_color_point->y());
                     save_location2->show();
                     connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
-                    qDebug()<<"qqqqqqqq";
                 }
             }
             else if(b->tool()->name()=="text")
@@ -1009,7 +1006,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                     save_location2->move(font_color_point->x(),font_color_point->y());
                     save_location2->show();
                     connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
-                    qDebug()<<"qqqqqqqq";
                 }
                else
                 {
@@ -1020,7 +1016,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                     save_location->move(font_color_point->x(),font_color_point->y());
                     save_location->show();
                     connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                    qDebug()<<"qqqqqqqq";
                  }
             }
             else if(b->tool()->name()=="text")
@@ -1049,7 +1044,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_options_defult();
                     font_options->show();
                     connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                    qDebug()<<"aaaaaaaaaaaaa2222";
                 }
             }
             else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "saveas"
@@ -1148,7 +1142,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                             save_location->move(font_color_point->x(),font_color_point->y());
                             save_location->show();
                             connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                            qDebug()<<"qqqqqqqq";
                         }
                         else
                         {
@@ -1159,7 +1152,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                             save_location2->move(font_color_point->x(),font_color_point->y());
                             save_location2->show();
                             connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
-                            qDebug()<<"qqqqqqqq";
                         }
                     }
                     else if(b->tool()->name()=="text")
@@ -1187,7 +1179,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_options2->move(font_color_point->x(),font_color_point->y());
                             font_options2_defult();
                             font_options2->show();
-                            qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
                     else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "saveas"
@@ -1263,7 +1254,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                             save_location2->move(font_color_point->x(),font_color_point->y());
                             save_location2->show();
                             connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
-                            qDebug()<<"qqqqqqqq";
                         }
                        else
                         {
@@ -1274,7 +1264,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                             save_location->move(font_color_point->x(),font_color_point->y());
                             save_location->show();
                             connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                            qDebug()<<"qqqqqqqq";
                          }
                     }
                     else if(b->tool()->name()=="text")
@@ -1291,7 +1280,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_options2_defult();
                             font_options2->show();
 
-                            qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                         else
                         {
@@ -1305,7 +1293,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_options2_defult();
                             font_options->show();
                             //connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                            qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
 
