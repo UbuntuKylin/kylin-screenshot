@@ -330,8 +330,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                    if(m_context.mousePos.y()+144>=qApp->desktop()->screenGeometry().height())
                    {
                           if(m_context.mousePos.x()+144<=qApp->desktop()->screenGeometry().width()){
-                                painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()-144,crosspixmap);
-                                painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()-24,tr("%1 , %2")
+                                painter.drawPixmap(m_context.mousePos.x()+25,m_context.mousePos.y()-129,crosspixmap);
+                                painter.drawText(m_context.mousePos.x()+25,m_context.mousePos.y()-9,tr("%1 , %2")
                                      .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
                           }
                           else
@@ -348,8 +348,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                                      .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
                           }
                            else{
-                                painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,crosspixmap);
-                                painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
+                                painter.drawPixmap(m_context.mousePos.x()+25,m_context.mousePos.y()+25,crosspixmap);
+                                painter.drawText(m_context.mousePos.x()+25,m_context.mousePos.y()+145,tr("%1 , %2")
                                      .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
                            }
                    }
@@ -559,7 +559,8 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     m_context.mousePos = e->pos();
     w = 26;
     h = 26;
-    mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
+   //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
+    mypixmap = mypixmap.grabWidget(this,e->pos().x(),e->pos().y(),w,h);
     QImage crosstmp=mypixmap.toImage();
     QRgb value = qRgb(0,0,255);
     for(int i=0;i<w;i++)
