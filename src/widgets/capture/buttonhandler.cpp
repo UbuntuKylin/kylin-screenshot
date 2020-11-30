@@ -381,12 +381,14 @@ void ButtonHandler::moveButtonsToPoints(
         if(index >= 8)
         {
           button->move(p.x()+29,p.y());
+          if(index == 9)
+              button->move(p.x()+19,p.y());
           if(index >= 10)
           {
               button->move(p.x()+84,p.y());
               if(index == 12 )
               {
-                  button->move(p.x()+106,p.y());
+                  button->move(p.x()+108,p.y());
               }
               else if(index == 13)
               {

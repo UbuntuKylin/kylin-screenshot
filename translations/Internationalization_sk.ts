@@ -81,12 +81,12 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="52"/>
-        <source>Option</source>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="53"/>
+        <source>option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="76"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="78"/>
         <source>Save</source>
         <translation type="unfinished">Uložiť</translation>
     </message>
@@ -349,22 +349,22 @@ Stlačte medzerník pre otvorenie postranného panelu.</translation>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="93"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="95"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Preškrtnuté</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="96"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="98"/>
         <source>Underline</source>
         <translation type="unfinished">Podčiarknuté</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="100"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
         <source>Bold</source>
         <translation type="unfinished">Tučné</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="104"/>
         <source>Italic</source>
         <translation type="unfinished">Kurzíva</translation>
     </message>
@@ -570,7 +570,7 @@ Stlačte medzerník pre otvorenie postranného panelu.</translation>
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="38"/>
+        <location filename="../src/widgets/infowindow.cpp" line="40"/>
         <source>About</source>
         <translation>O programe</translation>
     </message>
@@ -583,37 +583,37 @@ Stlačte medzerník pre otvorenie postranného panelu.</translation>
         <translation type="vanished">Kliknutie pravým tlačidlom</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="64"/>
+        <location filename="../src/widgets/infowindow.cpp" line="66"/>
         <source>Mouse Wheel</source>
         <translation>Kolečko myši</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="68"/>
+        <location filename="../src/widgets/infowindow.cpp" line="70"/>
         <source>Move selection 1px</source>
         <translation>Presunúť výber o 1 px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="69"/>
+        <location filename="../src/widgets/infowindow.cpp" line="71"/>
         <source>Resize selection 1px</source>
         <translation>Zmeniť rozmery výberu o 1 px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="70"/>
+        <location filename="../src/widgets/infowindow.cpp" line="72"/>
         <source>Quit capture</source>
         <translation>Ukončiť zachytávanie obrazovky</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="71"/>
+        <location filename="../src/widgets/infowindow.cpp" line="73"/>
         <source>Copy to clipboard</source>
         <translation>Kopírovať do schránky</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="72"/>
+        <location filename="../src/widgets/infowindow.cpp" line="74"/>
         <source>Save selection as a file</source>
         <translation>Zapísať výber do súboru</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="73"/>
+        <location filename="../src/widgets/infowindow.cpp" line="75"/>
         <source>Undo the last modification</source>
         <translation>Vrátiť poslednú úpravu</translation>
     </message>
@@ -626,22 +626,22 @@ Stlačte medzerník pre otvorenie postranného panelu.</translation>
         <translation type="vanished">Zobraziť dialóg na výber farby</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="76"/>
+        <location filename="../src/widgets/infowindow.cpp" line="78"/>
         <source>Change the tool&apos;s thickness</source>
         <translation>Zmena hrúbky nástroja</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="81"/>
+        <location filename="../src/widgets/infowindow.cpp" line="83"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>Dostupné klávesové skratky v režime zachytávania obrazovky.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="92"/>
+        <location filename="../src/widgets/infowindow.cpp" line="94"/>
         <source>Key</source>
         <translation>Kláves</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="92"/>
+        <location filename="../src/widgets/infowindow.cpp" line="94"/>
         <source>Description</source>
         <translation>Popis</translation>
     </message>
@@ -1425,7 +1425,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1697"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1693"/>
         <source>Capture saved as </source>
         <translation>Snímka uložená ako </translation>
     </message>
@@ -1433,13 +1433,13 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1700"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1696"/>
         <source>Error trying to save as </source>
         <translation>Chyba pri ukladaní do </translation>
     </message>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1703"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1699"/>
         <source>Save Error</source>
         <translation>Chyba pri ukladaní</translation>
     </message>
@@ -1787,7 +1787,7 @@ Note that not all codecs are supported by all containers, and that not all media
     </message>
     <message>
         <location filename="../src/widgets/screenrecorder.cpp" line="647"/>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1051"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1050"/>
         <source>Pause recording</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1817,12 +1817,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1055"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1053"/>
         <source>Start recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1069"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1067"/>
         <source>Encoding remaining data ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2058,12 +2058,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">Text</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="58"/>
+        <location filename="../src/tools/text/texttool.cpp" line="59"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="66"/>
+        <location filename="../src/tools/text/texttool.cpp" line="67"/>
         <source>Add text to your capture</source>
         <translation>Pridať text do snímky</translation>
     </message>

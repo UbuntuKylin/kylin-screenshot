@@ -439,8 +439,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 //两个分隔符
                 painter.setBrush(QColor(0,0,0,100));
                 painter.setPen(QColor(0,0,0,100));
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+36,vectorButtons.first()->pos().y()+14, 1, 16);
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+19,vectorButtons.first()->pos().y()+14, 1,16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,vectorButtons.first()->pos().y()+14, 1, 16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setBrush(QColor(255,255,255));
                 painter.setPen(QColor(255,255,255));
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
@@ -490,8 +490,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 //两个分隔符
                 painter.setBrush(QColor(0,0,0,100));
                 painter.setPen(QColor(0,0,0,100));
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+36,vectorButtons.first()->pos().y()+14, 1, 16);
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+19,vectorButtons.first()->pos().y()+14, 1,16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,vectorButtons.first()->pos().y()+14, 1, 16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setOpacity(0.5);
             }

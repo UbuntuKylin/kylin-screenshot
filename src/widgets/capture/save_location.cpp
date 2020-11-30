@@ -62,7 +62,7 @@ void Save_Location::setCenterWidget(QWidget *widget)
     QFont ft ("SourceHanSansCN", 9);
     savedir = new QLabel(tr("save location"),this);
     savedir->setFont(ft);
-    savedir->setGeometry(14,28,48,12);
+    savedir->setGeometry(14,28,80,12);
     //savedir->move(13,21);
     SaveDir = new  QPushButton(this);
     SaveDir->setGeometry(14,46,118,20);
@@ -71,7 +71,7 @@ void Save_Location::setCenterWidget(QWidget *widget)
     SaveDir->setFont(ft);
     ft.setPointSize(9);
     savetype = new QLabel(tr("save type"),this);
-    savetype->setGeometry(14,84,48,12);
+    savetype->setGeometry(14,84,80,12);
     //savetype->move(13,82);
     savetype->setFont(ft);
     ft.setPointSize(9);

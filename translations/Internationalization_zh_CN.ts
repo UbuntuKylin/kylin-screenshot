@@ -81,13 +81,18 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="+52"/>
         <source>Option</source>
+        <translatorcomment>选项</translatorcomment>
+        <translation type="vanished">选项</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="+53"/>
+        <source>option</source>
         <translatorcomment>选项</translatorcomment>
         <translation>选项</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+25"/>
         <source>Save</source>
         <translatorcomment>保存</translatorcomment>
         <translation>保存</translation>
@@ -370,7 +375,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+93"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+95"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -599,7 +604,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="+38"/>
+        <location filename="../src/widgets/infowindow.cpp" line="+40"/>
         <source>About</source>
         <translation>信息</translation>
     </message>
@@ -670,7 +675,7 @@ Press Space to open the side panel.</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+29"/>
         <source>&lt;u&gt;&lt;b&gt;License&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;许可证&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
@@ -697,7 +702,7 @@ Press Space to open the side panel.</source>
         <translation>&lt;u&gt;&lt;b&gt;快捷键&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location line="-61"/>
+        <location line="-59"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>屏幕捕捉模式中的可用快捷键。</translation>
     </message>
@@ -1420,7 +1425,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1309"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1305"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1833,12 +1838,12 @@ Note that not all codecs are supported by all containers, and that not all media
     </message>
     <message>
         <location line="+2"/>
-        <location line="+404"/>
+        <location line="+403"/>
         <source>Pause recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-385"/>
+        <location line="-384"/>
         <source>Started output.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1863,7 +1868,7 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+20"/>
         <source>Start recording</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2104,7 +2109,7 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">文本</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="+58"/>
+        <location filename="../src/tools/text/texttool.cpp" line="+59"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>

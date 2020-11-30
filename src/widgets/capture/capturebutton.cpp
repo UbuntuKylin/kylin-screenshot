@@ -38,19 +38,20 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     initButton();
     setCursor(Qt::ArrowCursor);
     updateIcon();
-    QFont font ( "Noto Sans CJK Regular", 12, 20);
+    QFont font ( "Noto Sans CJK Regular", 11, 25);
     if (t == TYPE_OPTION)
     {
         label = new  QLabel(this);
         label2 = new  QLabel(this);
         //layout = new  QHBoxLayout(this);
-        label->setAlignment( Qt::AlignCenter);
-        label->setGeometry(0,10,32,24);
+        //label->setAlignment( Qt::AlignCenter);
+        label->setAlignment(Qt::AlignRight);
+        label->setGeometry(0,10,47,24);
         label2->setAlignment( Qt::AlignCenter|Qt::AlignHCenter);
-        setStyleSheet("QPushButton{font-family:'Noto Sans CJK SC Regular';font-size:16px;color:rgb(0,0,0,255);}");
+        //setStyleSheet("QPushButton{font-family:'Noto Sans CJK SC Regular';font-size:16px;color:rgb(0,0,0,255);}");
         label->setFont(font);
-        label->setText(tr("Option"));
-        label2->setGeometry(33,13,20,20);
+        label->setText(tr("option"));
+        label2->setGeometry(47,13,20,20);
         if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0)|| (m_context.style_name.compare("ukui-light")==0)){
             label2->setPixmap(QPixmap(QStringLiteral(":/img/material/white/down.svg")));
         }
@@ -59,20 +60,19 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         }
         //layout->addWidget(label);
         //layout->addWidget(label2);
+
         this->setFixedSize(GlobalValues::buttonBaseSize()*2,GlobalValues::buttonBaseSize());
         QFont f = this->font();
         f.setBold(true);
-        //setFlat(false);
     }
     else
     {
         if (t == TYPE_SAVE)
         {
-            setStyleSheet("QPushButton{font-family:'Noto Sans CJK SC Regular';font-size:16px;color:rgb(255,255,255,255);}");
-            setFlat(false);
-            //setStyleSheet(styleSheet());
-            //font.setStyle()
             setFont(font);
+            //setStyleSheet("QPushButton{font-family:'Noto Sans CJK SC Regular';font-size:16px;color:rgb(255,255,255,255);}");
+            //setFlat(true);
+            setStyleSheet("color:white");
             setText(tr("Save"));
         }       
     }
@@ -86,8 +86,8 @@ void CaptureButton::initButton() {
 
     if (m_tool->name() =="Options")
     {
-        resize(GlobalValues::buttonBaseSize()*2, GlobalValues::buttonBaseSize());
-        setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()*2+4,
+        resize(GlobalValues::buttonBaseSize()*2+12, GlobalValues::buttonBaseSize());
+        setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()*2+16,
                               GlobalValues::buttonBaseSize()*2+4),
                         QRegion::Rectangle));
     }

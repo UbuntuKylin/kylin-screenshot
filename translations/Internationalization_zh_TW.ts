@@ -81,12 +81,12 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="52"/>
-        <source>Option</source>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="53"/>
+        <source>option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="76"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="78"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -333,22 +333,22 @@
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="93"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="95"/>
         <source>StrikeOut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="96"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="98"/>
         <source>Underline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="100"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
         <source>Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="104"/>
         <source>Italic</source>
         <translation type="unfinished"></translation>
     </message>
@@ -554,7 +554,7 @@
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="38"/>
+        <location filename="../src/widgets/infowindow.cpp" line="40"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
@@ -563,37 +563,37 @@
         <translation type="vanished">右鍵</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="64"/>
+        <location filename="../src/widgets/infowindow.cpp" line="66"/>
         <source>Mouse Wheel</source>
         <translation>滑鼠滑輪</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="68"/>
+        <location filename="../src/widgets/infowindow.cpp" line="70"/>
         <source>Move selection 1px</source>
         <translation>移動 1px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="69"/>
+        <location filename="../src/widgets/infowindow.cpp" line="71"/>
         <source>Resize selection 1px</source>
         <translation>調整大小 1px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="70"/>
+        <location filename="../src/widgets/infowindow.cpp" line="72"/>
         <source>Quit capture</source>
         <translation>結束擷取</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="71"/>
+        <location filename="../src/widgets/infowindow.cpp" line="73"/>
         <source>Copy to clipboard</source>
         <translation>複製到剪貼簿</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="72"/>
+        <location filename="../src/widgets/infowindow.cpp" line="74"/>
         <source>Save selection as a file</source>
         <translation>將選擇範圍另存新檔</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="73"/>
+        <location filename="../src/widgets/infowindow.cpp" line="75"/>
         <source>Undo the last modification</source>
         <translation>復原上次修改</translation>
     </message>
@@ -602,17 +602,17 @@
         <translation type="vanished">顯示顏色選擇器</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="76"/>
+        <location filename="../src/widgets/infowindow.cpp" line="78"/>
         <source>Change the tool&apos;s thickness</source>
         <translation>改變工具的寬度</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="92"/>
+        <location filename="../src/widgets/infowindow.cpp" line="94"/>
         <source>Key</source>
         <translation>鍵</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="92"/>
+        <location filename="../src/widgets/infowindow.cpp" line="94"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
@@ -642,7 +642,7 @@
         <translation>&lt;u&gt;&lt;b&gt;快速鍵&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="81"/>
+        <location filename="../src/widgets/infowindow.cpp" line="83"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>螢幕擷取模式中的可用快速鍵</translation>
     </message>
@@ -1365,7 +1365,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1703"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1699"/>
         <source>Save Error</source>
         <translation>存檔錯誤</translation>
     </message>
@@ -1373,7 +1373,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1697"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1693"/>
         <source>Capture saved as </source>
         <translation>截圖已另存為 </translation>
     </message>
@@ -1386,7 +1386,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1700"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1696"/>
         <source>Error trying to save as </source>
         <translation>嘗試另存新檔時發生錯誤 </translation>
     </message>
@@ -1763,7 +1763,7 @@ Note that not all codecs are supported by all containers, and that not all media
     </message>
     <message>
         <location filename="../src/widgets/screenrecorder.cpp" line="647"/>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1051"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1050"/>
         <source>Pause recording</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1793,12 +1793,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1055"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1053"/>
         <source>Start recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1069"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1067"/>
         <source>Encoding remaining data ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2030,12 +2030,12 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>TextTool</name>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="58"/>
+        <location filename="../src/tools/text/texttool.cpp" line="59"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="66"/>
+        <location filename="../src/tools/text/texttool.cpp" line="67"/>
         <source>Add text to your capture</source>
         <translation type="unfinished"></translation>
     </message>

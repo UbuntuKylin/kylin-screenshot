@@ -81,12 +81,12 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="52"/>
-        <source>Option</source>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="53"/>
+        <source>option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="76"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="78"/>
         <source>Save</source>
         <translation type="unfinished">Zapisz</translation>
     </message>
@@ -344,22 +344,22 @@ Spacja, aby pokazać panel boczny.</translation>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="93"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="95"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Przekreślenie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="96"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="98"/>
         <source>Underline</source>
         <translation type="unfinished">Podkreślenie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="100"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
         <source>Bold</source>
         <translation type="unfinished">Pogrubienie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="104"/>
         <source>Italic</source>
         <translation type="unfinished">Kursywa</translation>
     </message>
@@ -565,7 +565,7 @@ Spacja, aby pokazać panel boczny.</translation>
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="38"/>
+        <location filename="../src/widgets/infowindow.cpp" line="40"/>
         <source>About</source>
         <translation>O programie</translation>
     </message>
@@ -574,37 +574,37 @@ Spacja, aby pokazać panel boczny.</translation>
         <translation type="vanished">Prawy klik</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="64"/>
+        <location filename="../src/widgets/infowindow.cpp" line="66"/>
         <source>Mouse Wheel</source>
         <translation>Kółko myszy</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="68"/>
+        <location filename="../src/widgets/infowindow.cpp" line="70"/>
         <source>Move selection 1px</source>
         <translation>Przesuń zaznaczenie o 1px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="69"/>
+        <location filename="../src/widgets/infowindow.cpp" line="71"/>
         <source>Resize selection 1px</source>
         <translation>Zmień rozmiar zaznaczenia o 1px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="70"/>
+        <location filename="../src/widgets/infowindow.cpp" line="72"/>
         <source>Quit capture</source>
         <translation>Zakończ przechwytywanie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="71"/>
+        <location filename="../src/widgets/infowindow.cpp" line="73"/>
         <source>Copy to clipboard</source>
         <translation>Kopiuj do schowka</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="72"/>
+        <location filename="../src/widgets/infowindow.cpp" line="74"/>
         <source>Save selection as a file</source>
         <translation>Zapisz zaznaczenie jako plik</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="73"/>
+        <location filename="../src/widgets/infowindow.cpp" line="75"/>
         <source>Undo the last modification</source>
         <translation>Cofnij ostatnią modyfikację</translation>
     </message>
@@ -613,22 +613,22 @@ Spacja, aby pokazać panel boczny.</translation>
         <translation type="vanished">Pokaż próbnik kolorów</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="76"/>
+        <location filename="../src/widgets/infowindow.cpp" line="78"/>
         <source>Change the tool&apos;s thickness</source>
         <translation>Zmień grubość narzędzia</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="81"/>
+        <location filename="../src/widgets/infowindow.cpp" line="83"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>Dostępne skróty w trybie przechwytywania obrazu.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="92"/>
+        <location filename="../src/widgets/infowindow.cpp" line="94"/>
         <source>Key</source>
         <translation>Klawisz</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="92"/>
+        <location filename="../src/widgets/infowindow.cpp" line="94"/>
         <source>Description</source>
         <translation>Działanie</translation>
     </message>
@@ -1376,7 +1376,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1703"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1699"/>
         <source>Save Error</source>
         <translation>Błąd zapisu</translation>
     </message>
@@ -1384,7 +1384,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1697"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1693"/>
         <source>Capture saved as </source>
         <translation>Zaznaczenie zapisano jako </translation>
     </message>
@@ -1397,7 +1397,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1700"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1696"/>
         <source>Error trying to save as </source>
         <translation>Błąd przy próbie zapisu jako </translation>
     </message>
@@ -1774,7 +1774,7 @@ Note that not all codecs are supported by all containers, and that not all media
     </message>
     <message>
         <location filename="../src/widgets/screenrecorder.cpp" line="647"/>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1051"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1050"/>
         <source>Pause recording</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1804,12 +1804,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1055"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1053"/>
         <source>Start recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/screenrecorder.cpp" line="1069"/>
+        <location filename="../src/widgets/screenrecorder.cpp" line="1067"/>
         <source>Encoding remaining data ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2045,12 +2045,12 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">Tekst</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="58"/>
+        <location filename="../src/tools/text/texttool.cpp" line="59"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="66"/>
+        <location filename="../src/tools/text/texttool.cpp" line="67"/>
         <source>Add text to your capture</source>
         <translation>Dodaje tekst do zrzutu</translation>
     </message>
