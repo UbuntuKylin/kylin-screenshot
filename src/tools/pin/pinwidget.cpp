@@ -31,7 +31,7 @@ PinWidget::PinWidget(const QPixmap &pixmap, QWidget *parent) :
                    | Qt::FramelessWindowHint);
     //set the bottom widget background transparent
     setAttribute(Qt::WA_TranslucentBackground);
-
+    setMinimumWidth(300);
     ConfigHandler conf;
     m_baseColor = conf.uiMainColorValue();
     m_hoverColor = conf.uiContrastColorValue();

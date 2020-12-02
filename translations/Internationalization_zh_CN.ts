@@ -70,7 +70,7 @@
     <message>
         <location filename="../src/tools/blur/blurtool.cpp" line="+43"/>
         <source>blur</source>
-        <translation type="unfinished"></translation>
+        <translation>模糊</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -288,12 +288,13 @@ Press Space to open the side panel.</source>
     <message>
         <location filename="../src/tools/cut/cut.cpp" line="+39"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>截图</translatorcomment>
+        <translation>截图</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>cut</source>
-        <translation type="unfinished">截图模式</translation>
+        <translation>截图模式</translation>
     </message>
 </context>
 <context>
@@ -516,7 +517,7 @@ Press Space to open the side panel.</source>
     <message>
         <location line="+4"/>
         <source>Launch Kylin-screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>运行麒麟截图</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -531,12 +532,13 @@ Press Space to open the side panel.</source>
     <message>
         <location line="+9"/>
         <source>Copy URL after upload</source>
-        <translation type="unfinished"></translation>
+        <translation>上传后复制URL</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copy URL and close window after upload</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>复制URL并在上传后关闭窗口</translatorcomment>
+        <translation>复制URL并在上传后关闭窗口</translation>
     </message>
 </context>
 <context>
@@ -1348,12 +1350,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/luping/luping.cpp" line="+39"/>
         <source>LuPing</source>
-        <translation type="unfinished"></translation>
+        <translation>录屏</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>luping</source>
-        <translation type="unfinished">录屏模式</translation>
+        <translation>录屏模式</translation>
     </message>
 </context>
 <context>
@@ -1387,7 +1389,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/options/options.cpp" line="+39"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>选项</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1526,7 +1528,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/save/saveastool.cpp" line="+41"/>
         <source>saveas</source>
-        <translation type="unfinished"></translation>
+        <translation>另存为</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1544,7 +1546,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/save/savetool.cpp" line="+39"/>
         <source>save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1587,12 +1589,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/screencap/screencap.cpp" line="+28"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>选项</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
+        <translation>截图保存配置</translation>
     </message>
 </context>
 <context>
@@ -2111,7 +2113,8 @@ Note that not all codecs are supported by all containers, and that not all media
     <message>
         <location filename="../src/tools/text/texttool.cpp" line="+59"/>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>文本</translatorcomment>
+        <translation type="unfinished">文本</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -2166,7 +2169,8 @@ Note that not all codecs are supported by all containers, and that not all media
     <message>
         <location filename="../src/tools/undo/undotool.cpp" line="+43"/>
         <source>undo</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>撤消</translatorcomment>
+        <translation type="unfinished">撤消</translation>
     </message>
     <message>
         <location line="+8"/>
