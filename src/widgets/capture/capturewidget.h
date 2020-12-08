@@ -114,7 +114,6 @@ private:
     void fontsize_color_chose2_default();
     void savetype_chose_default();
     void savetype_chose2_default();
-
 protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *);
@@ -166,6 +165,14 @@ private:
     void updateCursor();
     void pushToolToStack();
     void makeChild(QWidget *w);
+
+      //format code
+    void show_childwindow(CaptureButton *b);
+    void hide_ChildWindow();
+    void show_FontSize_Color_Chose_Window(CaptureButton *b);
+    void show_Save_Location_Window(CaptureButton *b);
+    void show_Font_Options_Window(CaptureButton *b);
+    void deal_with_SaveAs(CaptureButton *b);
 
     QRect extendedSelection() const;
     QRect extendedRect(QRect *r) const;

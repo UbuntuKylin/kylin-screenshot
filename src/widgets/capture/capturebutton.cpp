@@ -77,7 +77,7 @@ void CaptureButton::initButton() {
     m_tool = ToolFactory().CreateTool(m_buttonType, this);
     setFocusPolicy(Qt::NoFocus);
 
-    if (m_tool->name() =="Options")
+    if (m_buttonType == CaptureButton::TYPE_OPTION)
     {
         resize(GlobalValues::buttonBaseSize()*2+12, GlobalValues::buttonBaseSize());
         setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()*2+16,
