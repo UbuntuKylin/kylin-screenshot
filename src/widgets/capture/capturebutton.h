@@ -77,7 +77,7 @@ public:
 
     void setColor(const QColor &c);
     void animatedShow();
-
+    ButtonType m_buttonType;
 protected:
     virtual void mousePressEvent(QMouseEvent *);
     static QVector<ButtonType> iterableButtonTypes;
@@ -89,7 +89,6 @@ signals:
 
 private:
     CaptureButton(QWidget *parent = nullptr);
-    ButtonType m_buttonType;
 
     QPropertyAnimation *m_emergeAnimation;
 

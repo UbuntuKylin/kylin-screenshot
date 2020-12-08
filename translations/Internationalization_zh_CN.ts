@@ -70,7 +70,7 @@
     <message>
         <location filename="../src/tools/blur/blurtool.cpp" line="+43"/>
         <source>blur</source>
-        <translation type="unfinished"></translation>
+        <translation>模糊</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1386,7 +1386,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/options/options.cpp" line="+39"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>选项</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1525,7 +1525,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/save/saveastool.cpp" line="+41"/>
         <source>saveas</source>
-        <translation type="unfinished"></translation>
+        <translation>另存为</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1543,7 +1543,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/save/savetool.cpp" line="+39"/>
         <source>save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -2110,7 +2110,7 @@ Note that not all codecs are supported by all containers, and that not all media
     <message>
         <location filename="../src/tools/text/texttool.cpp" line="+59"/>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation>文本</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -2165,7 +2165,7 @@ Note that not all codecs are supported by all containers, and that not all media
     <message>
         <location filename="../src/tools/undo/undotool.cpp" line="+43"/>
         <source>undo</source>
-        <translation type="unfinished"></translation>
+        <translation>撤消</translation>
     </message>
     <message>
         <location line="+8"/>

@@ -226,10 +226,6 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     m_context.saveType =".png";
     QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
     m_context.savePath = a.at(0);
-    save_location->hide();
-    save_location2->hide();
-    font_options->hide();
-    font_options2->hide();
     // Init notification widget
     m_notifierBox = new NotifierBox(this);
     m_notifierBox->hide();
@@ -242,9 +238,10 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     SaveAs_btn = new  QPushButton(this);
     SaveAs_btn->setFixedSize(90,30);
     SaveAs_btn->setFont(ft);
-    SaveAs_btn->hide();
     SaveAs_btn->setStyleSheet("QPushButton{background-color:rgb(0,98,240)}");
     SaveAs_btn->setText(tr("save as"));
+
+    hide_ChildWindow();
     connect(SaveAs_btn,SIGNAL(pressed()),this,SLOT(ClickedSaveAsFile()));
 }
 
@@ -877,244 +874,19 @@ void CaptureWidget::setState(CaptureButton *b) {
         m_toolWidget->deleteLater();
         if (m_activeTool->isValid()) {
             b->setIcon(b->tool()->icon(m_contrastUiColor,false,m_context));
-            font_color->hide();
-            font_color2->hide();
+            hide_ChildWindow();
             pushToolToStack();
         }
     }
     if (m_activeButton != b) {
-        if (b->y()>m_selection->y())
-        {
-            if(b->tool()->name()=="Options")
-            {
-                if (b->y()+170 <= QGuiApplication::primaryScreen()->geometry().height())
-                {
-                    font_color_point->setX(b->x()-67);
-                    font_color_point->setY(b->y()+50);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    savetype_chose_default();
-                    save_location->move(font_color_point->x(),font_color_point->y());
-                    save_location->show();
-                    connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                }
-                else
-                {
-                    font_color_point->setX(b->x()-67);
-                    font_color_point->setY(b->y()-155);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    savetype_chose2_default();
-                    save_location2->move(font_color_point->x(),font_color_point->y());
-                    save_location2->show();
-                    connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
-                }
-            }
-            else if(b->tool()->name()=="text")
-            {
-                if (b->y()+125 <= QGuiApplication::primaryScreen()->geometry().height())
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color_point->setX(b->x()-125);
-                    font_color_point->setY(b->y()+50);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    font_options->move(font_color_point->x(),font_color_point->y());
-                    font_options_defult();
-                    font_options->show();
-
-                }
-                else
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color_point->setX(b->x()-125);
-                    font_color_point->setY(b->y()-95);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    font_options2->move(font_color_point->x(),font_color_point->y());
-                    font_options2_defult();
-                    font_options2->show();
-                }
-            }
-            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "saveas"
-                      && b->tool()->name() != "LuPing" && b->tool()->name() != "blur")
-            {
-                if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color_point->setX(b->x()-90);
-                    font_color_point->setY(b->y()+50);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    font_color->move(font_color_point->x(),font_color_point->y());
-                    fontsize_color_chose_default();
-                    font_color->show();
-                }
-                else
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color_point->setX(b->x()-90);
-                    font_color_point->setY(b->y()-80);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    font_color2->move(font_color_point->x(),font_color_point->y());
-                    fontsize_color_chose2_default();
-                    font_color2->show();
-                }
-            }
-            //resolved bug  19105 by zhanghuanhuan
-            else if (b->tool()->name() == "blur")
-            {
-                b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-            }
-            else if (b->tool()->name() == "saveas")
-            {
-                if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color2->hide();
-                    font_color_point->setX(b->x()-63);
-                    font_color_point->setY(b->y()+40);
-                    SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                    SaveAs_btn->show();
-                }
-                else
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color2->hide();
-                    font_color_point->setX(b->x()-63);
-                    font_color_point->setY(b->y()-37);
-                    SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                    SaveAs_btn->show();
-                }
-            }
-         }
-        else {
-            if(b->tool()->name()=="Options")
-            {
-                if (b->y()-155>= 0)
-                {
-                    font_color_point->setX(b->x()-67);
-                    font_color_point->setY(b->y()-155);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    savetype_chose2_default();
-                    save_location2->move(font_color_point->x(),font_color_point->y());
-                    save_location2->show();
-                    connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
-                }
-               else
-                {
-                    font_color_point->setX(b->x()-67);
-                    font_color_point->setY(b->y()+50);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    savetype_chose_default();
-                    save_location->move(font_color_point->x(),font_color_point->y());
-                    save_location->show();
-                    connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                 }
-            }
-            else if(b->tool()->name()=="text")
-            {
-                if (b->y()- 95 >= 0)
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color_point->setX(b->x()-125);
-                    font_color_point->setY(b->y()-95);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    font_options2->move(font_color_point->x(),font_color_point->y());
-                    font_options2_defult();
-                    font_options2->show();
-                }
-                else
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color_point->setX(b->x()-125);
-                    font_color_point->setY(b->y()+50);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    font_options->move(font_color_point->x(),font_color_point->y());
-                    font_options_defult();
-                    font_options->show();
-                    connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                }
-            }
-            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "saveas"
-                      && b->tool()->name() != "LuPing" && b->tool()->name() != "blur")
-            {
-                if (b->y()-80 >= 0)
-                {
-                    save_location->hide();
-                    save_location2->hide();
-                    font_color_point->setX(b->x()-90);
-                    font_color_point->setY(b->y()-80);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    font_color2->move(font_color_point->x(),font_color_point->y());
-                    fontsize_color_chose2_default();
-                    font_color2->show();
-                }
-                else
-                {
-                    save_location->hide();
-                    save_location2->hide();
-                    font_color_point->setX(b->x()-90);
-                    font_color_point->setY(b->y()+50);
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    font_color->move(font_color_point->x(),font_color_point->y());
-                    fontsize_color_chose2_default();
-                    font_color->show();
-                }
-            }
-            //resolve bug  19105 by zhanghuanhuan
-            else if (b->tool()->name() == "blur")
-            {
-                    b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-            }
-            else if (b->tool()->name() == "saveas")
-            {
-                if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color2->hide();
-                    font_color_point->setX(b->x()-63);
-                    font_color_point->setY(b->y()+40);
-                    SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                    SaveAs_btn->show();
-                    setCursor(Qt::ArrowCursor);
-                }
-                else
-                {
-                    save_location2->hide();
-                    save_location->hide();
-                    font_color->hide();
-                    font_color2->hide();
-                    font_color_point->setX(b->x()-63);
-                    font_color_point->setY(b->y()-37);
-                    SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                    SaveAs_btn->show();
-                    setCursor(Qt::ArrowCursor);
-                }
-            }
-        }
+        b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
+        show_childwindow(b);
         processTool(b->tool());
     }
     // Only close activated from button
     if (b->tool()->closeOnButtonPressed()) {
         b->setIcon(b->tool()->icon(m_contrastUiColor,false,m_context));
-        save_location->hide();
-        save_location2->hide();
-        font_color->hide();
-        font_color2->hide();
+        hide_ChildWindow();
         close();
     }
     if (b->tool()->isSelectable()) {
@@ -1124,258 +896,22 @@ void CaptureWidget::setState(CaptureButton *b) {
             if (m_activeButton) {
                 m_activeButton->setColor(m_uiColor);
                 m_activeButton->setIcon(m_activeButton->tool()->icon(m_uiColor,false,m_context));
-                save_location->hide();
-                save_location2->hide();
-                font_color2->hide();
-                font_color->hide();
-                font_options->hide();
-                font_options2->hide();
-                if (b->y()>m_selection->y())
-                {
-                    if(b->tool()->name()=="Options")
-                    {
-                        if (b->y()+170 <= QGuiApplication::primaryScreen()->geometry().height())
-                        {
-                            font_color_point->setX(b->x()-67);
-                            font_color_point->setY(b->y()+50);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            savetype_chose_default();
-                            save_location->move(font_color_point->x(),font_color_point->y());
-                            save_location->show();
-                            connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                        }
-                        else
-                        {
-                            font_color_point->setX(b->x()-67);
-                            font_color_point->setY(b->y()-155);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            savetype_chose2_default();
-                            save_location2->move(font_color_point->x(),font_color_point->y());
-                            save_location2->show();
-                            connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
-                        }
-                    }
-                    else if(b->tool()->name()=="text")
-                    {
-                        if (b->y()+125 <= QGuiApplication::primaryScreen()->geometry().height())
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color_point->setX(b->x()-125);
-                            font_color_point->setY(b->y()+50);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            font_options->move(font_color_point->x(),font_color_point->y());
-                            font_options_defult();
-                            font_options->show();
-                        }
-                        else
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color_point->setX(b->x()-125);
-                            font_color_point->setY(b->y()-95);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            font_options2->move(font_color_point->x(),font_color_point->y());
-                            font_options2_defult();
-                            font_options2->show();
-                        }
-                    }
-                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "saveas"
-                              && b->tool()->name() != "LuPing" && b->tool()->name() != "blur")
-                    {
-                        if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color_point->setX(b->x()-90);
-                            font_color_point->setY(b->y()+50);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            font_color->move(font_color_point->x(),font_color_point->y());
-                            fontsize_color_chose_default();
-                            font_color->show();
-                        }
-                        else
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color_point->setX(b->x()-90);
-                            font_color_point->setY(b->y()-80);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            font_color2->move(font_color_point->x(),font_color_point->y());
-                            fontsize_color_chose2_default();
-                            font_color2->show();
-                        }
-                    }
-                    //resolved bug  19105 by zhanghuanhuan
-                    else if (b->tool()->name() == "blur")
-                    {
-                         b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    }
-                    else if (b->tool()->name() == "saveas")
-                    {
-                        if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color2->hide();
-                            font_color_point->setX(b->x()-63);
-                            font_color_point->setY(b->y()+40);
-                            SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                            SaveAs_btn->show();
-                            setCursor(Qt::ArrowCursor);
-                        }
-                        else
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color2->hide();
-                            font_color_point->setX(b->x()-63);
-                            font_color_point->setY(b->y()-37);
-                            SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                            SaveAs_btn->show();
-                            setCursor(Qt::ArrowCursor);
-                        }
-                    }
-                 }
-                else {
-                    if(b->tool()->name()=="Options")
-                    {
-                        if (b->y()-155 >= 0)
-                        {
-                            font_color_point->setX(b->x()-67);
-                            font_color_point->setY(b->y()-155);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            savetype_chose2_default();
-                            save_location2->move(font_color_point->x(),font_color_point->y());
-                            save_location2->show();
-                            connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
-                        }
-                       else
-                        {
-                            font_color_point->setX(b->x()-67);
-                            font_color_point->setY(b->y()+50);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            savetype_chose_default();
-                            save_location->move(font_color_point->x(),font_color_point->y());
-                            save_location->show();
-                            connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                         }
-                    }
-                    else if(b->tool()->name()=="text")
-                    {
-                        if (b->y()-95 >= 0)
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color_point->setX(b->x()-125);
-                            font_color_point->setY(b->y()-95);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            font_options2->move(font_color_point->x(),font_color_point->y());
-                            font_options2_defult();
-                            font_options2->show();
-
-                        }
-                        else
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color_point->setX(b->x()-125);
-                            font_color_point->setY(b->y()+50);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            font_options->move(font_color_point->x(),font_color_point->y());
-                            font_options2_defult();
-                            font_options->show();
-                            //connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                        }
-                    }
-
-                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo" && b->tool()->name() != "saveas"
-                              && b->tool()->name() != "LuPing" && b->tool()->name() != "blur")
-                    {
-                        if (b->y()-80 >= 0)
-                        {
-                            save_location->hide();
-                            save_location2->hide();
-                            font_color_point->setX(b->x()-90);
-                            font_color_point->setY(b->y()-80);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            font_color2->move(font_color_point->x(),font_color_point->y());
-                            fontsize_color_chose2_default();
-                            font_color2->show();
-                        }
-                        else
-                        {
-                            save_location->hide();
-                            save_location2->hide();
-                            font_color_point->setX(b->x()-90);
-                            font_color_point->setY(b->y()+50);
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                            font_color->move(font_color_point->x(),font_color_point->y());
-                            fontsize_color_chose_default();
-                            font_color->show();
-                        }
-                    }
-                    //resolved bug  19105  by zhanghuanhuan
-                    else if (b->tool()->name() == "blur")
-                    {
-                            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                    }
-                    else if (b->tool()->name() == "saveas")
-                    {
-                        if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color2->hide();
-                            font_color_point->setX(b->x()-63);
-                            font_color_point->setY(b->y()+40);
-                            SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                            SaveAs_btn->show();
-                            setCursor(Qt::ArrowCursor);
-                        }
-                        else
-                        {
-                            save_location2->hide();
-                            save_location->hide();
-                            font_color->hide();
-                            font_color2->hide();
-                            font_color_point->setX(b->x()-63);
-                            font_color_point->setY(b->y()-37);
-                            SaveAs_btn->move(font_color_point->x(),font_color_point->y());
-                            SaveAs_btn->show();
-                            setCursor(Qt::ArrowCursor);
-                        }
-                    }
-                }
-                 }
-                 m_activeButton = b;
-                 m_activeButton->setColor(m_contrastUiColor);
+                b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
+                show_childwindow(b);
+             }
+             m_activeButton = b;
+             m_activeButton->setColor(m_contrastUiColor);
              }
         else if (m_activeButton) {
                  m_panel->clearToolWidget();
                  m_activeButton->setColor(m_uiColor);
                  b->setIcon(b->tool()->icon(m_uiColor,false,m_context));
-                 font_color->hide();
-                 save_location2->hide();
-                 font_color2->hide();
-                 save_location->hide();
-                 font_options->hide();
-                 font_options2->hide();
-                 SaveAs_btn->hide();
+                 hide_ChildWindow();
                  m_activeButton = nullptr;
              }
              update(); // clear mouse preview
          }
-     }
+   }
 
      void CaptureWidget::processTool(CaptureTool *t) {
          auto backup = m_activeTool;
@@ -1909,3 +1445,187 @@ void CaptureWidget::setState(CaptureButton *b) {
                        | Qt::FramelessWindowHint
                        | Qt::Tool);
          }
+         //format code
+         void CaptureWidget::hide_ChildWindow()
+         {
+                 font_color->hide();
+                 font_color2->hide();
+                 save_location->hide();
+                 save_location2->hide();
+                 font_options->hide();
+                 font_options2->hide();
+                 SaveAs_btn->hide();
+         }
+         void CaptureWidget::show_childwindow(CaptureButton *b)
+         {
+             int i = b->m_buttonType;
+             switch (i) {
+             case CaptureButton::TYPE_OPTION:
+                 show_Save_Location_Window(b);
+                 break;
+             case CaptureButton::TYPE_TEXT:
+                 show_Font_Options_Window(b);
+                 break;
+             case CaptureButton::TYPE_RECT:
+             case CaptureButton::TYPE_CIRCLE:
+             case CaptureButton::TYPE_LINE:
+             case CaptureButton::TYPE_ARROW:
+             case CaptureButton::TYPE_PEN:
+             case CaptureButton::TYPE_MARKER:
+                 show_FontSize_Color_Chose_Window(b);
+                 break;
+             case CaptureButton::TYPE_SAVEAS:
+                 deal_with_SaveAs(b);
+                 break;
+             default:
+                 hide_ChildWindow();
+                 break;
+             }
+         }
+         //rect  circle  line arrow  pen marker
+         void CaptureWidget::show_FontSize_Color_Chose_Window(CaptureButton *b)
+         {
+             hide_ChildWindow();
+             fontsize_color_chose_default();
+             fontsize_color_chose2_default();
+             qDebug()<<"show FontSize_Color_Chose_Window";
+             if (b->y()>m_selection->y())
+             {
+                 if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
+                 {
+                     font_color_point->setX(b->x()-90);
+                     font_color_point->setY(b->y()+50);
+                     font_color->move(font_color_point->x(),font_color_point->y());
+                     font_color->show();
+                 }
+                 else
+                 {
+                     font_color_point->setX(b->x()-90);
+                     font_color_point->setY(b->y()-80);
+                     font_color2->move(font_color_point->x(),font_color_point->y());
+                     font_color2->show();
+                 }
+             }
+             else
+             {
+                 if (b->y()-80 >= 0)
+                 {
+                     font_color_point->setX(b->x()-90);
+                     font_color_point->setY(b->y()-80);
+                     font_color2->move(font_color_point->x(),font_color_point->y());
+                     font_color2->show();
+                 }
+                 else
+                 {
+                     font_color_point->setX(b->x()-90);
+                     font_color_point->setY(b->y()+50);
+                     font_color->move(font_color_point->x(),font_color_point->y());
+                     font_color->show();
+                 }
+             }
+         }
+         //options
+         void CaptureWidget::show_Save_Location_Window(CaptureButton *b)
+             {
+                 hide_ChildWindow();
+                 savetype_chose_default();
+                 savetype_chose2_default();
+                 qDebug()<<"show Save_Location_Window";
+                 connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
+                 connect(save_location2->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir2()));
+                 if(b->y()>m_selection->y())
+                 {
+                    if (b->y()+170 <= QGuiApplication::primaryScreen()->geometry().height())
+                    {
+                     font_color_point->setX(b->x()-67);
+                     font_color_point->setY(b->y()+50);
+                     save_location->move(font_color_point->x(),font_color_point->y());
+                     save_location->show();
+                     }
+                    else
+                    {
+                     font_color_point->setX(b->x()-67);
+                     font_color_point->setY(b->y()-155);
+                     save_location2->move(font_color_point->x(),font_color_point->y());
+                     save_location2->show();
+                    }
+                 }
+                 else
+                 {
+                     if (b->y()-155>= 0)
+                     {
+                         font_color_point->setX(b->x()-67);
+                         font_color_point->setY(b->y()-155);
+                         save_location2->move(font_color_point->x(),font_color_point->y());
+                         save_location2->show();
+                     }
+                    else
+                     {
+                         font_color_point->setX(b->x()-67);
+                         font_color_point->setY(b->y()+50);
+                         save_location->move(font_color_point->x(),font_color_point->y());
+                         save_location->show();
+                      }
+                 }
+             }
+        //text
+         void CaptureWidget::show_Font_Options_Window(CaptureButton *b)
+             {
+                 hide_ChildWindow();
+                 font_options_defult();
+                 font_options2_defult();
+                 qDebug()<<"show Font_Options_Window";
+                 if(b->y()>m_selection->y())
+                 {
+                     if (b->y()+125 <= QGuiApplication::primaryScreen()->geometry().height())
+                     {
+                         font_color_point->setX(b->x()-125);
+                         font_color_point->setY(b->y()+50);
+                         font_options->move(font_color_point->x(),font_color_point->y());
+                         font_options->show();
+                     }
+                     else
+                     {
+                         font_color_point->setX(b->x()-125);
+                         font_color_point->setY(b->y()-95);
+                         font_options2->move(font_color_point->x(),font_color_point->y());
+                         font_options2->show();
+                     }
+                 }
+                 else
+                 {
+                     if (b->y()-95 >= 0)
+                     {
+                         font_color_point->setX(b->x()-125);
+                         font_color_point->setY(b->y()-95);
+                         font_options2->move(font_color_point->x(),font_color_point->y());
+                         font_options2->show();
+
+                     }
+                     else
+                     {
+                         font_color_point->setX(b->x()-125);
+                         font_color_point->setY(b->y()+50);
+                         font_options->move(font_color_point->x(),font_color_point->y());
+                         font_options->show();
+                     }
+                 }
+             }
+         void CaptureWidget::deal_with_SaveAs(CaptureButton *b)
+          {
+              hide_ChildWindow();
+              setCursor(Qt::ArrowCursor);
+              qDebug()<<"show SaveAs";
+              if(b->y()+77 <= QGuiApplication::primaryScreen()->geometry().height())
+              {
+                  font_color_point->setX(b->x()-63);
+                  font_color_point->setY(b->y()+40);
+              }
+              else
+              {
+                  font_color_point->setX(b->x()-63);
+                  font_color_point->setY(b->y()-37);
+              }
+              SaveAs_btn->move(font_color_point->x(),font_color_point->y());
+              SaveAs_btn->show();
+          }
