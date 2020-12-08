@@ -41,14 +41,11 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     QFont font ( "Noto Sans CJK Regular", 11, 25);
     if (t == TYPE_OPTION)
     {
-        label = new  QLabel(this);
-        label2 = new  QLabel(this);
-        //layout = new  QHBoxLayout(this);
-        //label->setAlignment( Qt::AlignCenter);
-        label->setAlignment(Qt::AlignRight);
+        QLabel *label = new  QLabel(this);
+        QLabel *label2 = new  QLabel(this);
+        label->setAlignment( Qt::AlignRight);
         label->setGeometry(0,10,47,24);
         label2->setAlignment( Qt::AlignCenter|Qt::AlignHCenter);
-        //setStyleSheet("QPushButton{font-family:'Noto Sans CJK SC Regular';font-size:16px;color:rgb(0,0,0,255);}");
         label->setFont(font);
         label->setText(tr("option"));
         label2->setGeometry(47,13,20,20);
@@ -58,21 +55,17 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         else if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
              label2->setPixmap(QPixmap(QStringLiteral(":/img/material/dark-theme/down.png")));
         }
-        //layout->addWidget(label);
-        //layout->addWidget(label2);
-
         this->setFixedSize(GlobalValues::buttonBaseSize()*2,GlobalValues::buttonBaseSize());
         QFont f = this->font();
         f.setBold(true);
+        setFlat(false);
     }
     else
     {
         if (t == TYPE_SAVE)
         {
+            setFlat(false);
             setFont(font);
-            //setStyleSheet("QPushButton{font-family:'Noto Sans CJK SC Regular';font-size:16px;color:rgb(255,255,255,255);}");
-            //setFlat(true);
-            setStyleSheet("color:white");
             setText(tr("Save"));
         }       
     }

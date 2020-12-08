@@ -378,44 +378,43 @@ void ButtonHandler::moveButtonsToPoints(
 {
     for (const QPoint &p: points) {
         auto button = m_vectorButtons[index];
-        if(index >= 8)
-        {
-          button->move(p.x()+29,p.y());
-          if(index == 9)
-              button->move(p.x()+19,p.y());
-          if(index >= 10)
-          {
-              button->move(p.x()+84,p.y());
-              if(index == 12 )
-              {
-                  button->move(p.x()+108,p.y());
-              }
-              else if(index == 13)
-              {
-                  button->move(p.x()+106,p.y());
-              }
-              else if(index == 14)
-              {
-                  if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
-                         {
-                            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
-                                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
-                            else
-                                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
-                         }
-                         else
-                         {
-                            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
-                                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
-                            else
-                                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
-                         }
-              }
-
-          }
+        switch (index) {
+        case CaptureButton::TYPR_UNDO:
+            button->move(p.x()+29,p.y());
+            break;
+        case CaptureButton::TYPE_OPTION:
+            button->move(p.x()+19,p.y());
+            break;
+        case CaptureButton::TYPE_CLOSE:
+        case CaptureButton::TYPE_COPY:
+            button->move(p.x()+84,p.y());
+            break;
+        case CaptureButton::TYPE_SAVE:
+            button->move(p.x()+108,p.y());
+            break;
+        case CaptureButton::TYPE_SAVEAS:
+            button->move(p.x()+106,p.y());
+            break;
+        case CaptureButton::TYPE_PIN:
+            if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
+                   {
+                      if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
+                          button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
+                      else
+                          button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+                   }
+            else
+                   {
+                      if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
+                          button->move(m_selection.left()-GlobalValues::buttonBaseSize(),qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
+                      else
+                          button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
+                   }
+            break;
+        default:
+            button->move(p);
+            break;
         }
-        else
-        button->move(p);
         ++index;
     }
 }
