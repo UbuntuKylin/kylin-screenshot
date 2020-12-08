@@ -97,10 +97,4 @@ private:
 
     void initButton();
     void updateIcon();
-private:
-    QLabel *label;
-    QLabel *label2;
-
-    QHBoxLayout *layout;
-
 };
