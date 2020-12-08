@@ -81,12 +81,12 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="53"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="50"/>
         <source>option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="78"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="69"/>
         <source>Save</source>
         <translation type="unfinished">Zapisz</translation>
     </message>

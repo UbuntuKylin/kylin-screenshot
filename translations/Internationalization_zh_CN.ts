@@ -70,7 +70,7 @@
     <message>
         <location filename="../src/tools/blur/blurtool.cpp" line="+43"/>
         <source>blur</source>
-        <translation>模糊</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -86,13 +86,12 @@
         <translation type="vanished">选项</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="+53"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="+50"/>
         <source>option</source>
-        <translatorcomment>选项</translatorcomment>
         <translation>选项</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+19"/>
         <source>Save</source>
         <translatorcomment>保存</translatorcomment>
         <translation>保存</translation>
@@ -288,13 +287,12 @@ Press Space to open the side panel.</source>
     <message>
         <location filename="../src/tools/cut/cut.cpp" line="+39"/>
         <source>Cut</source>
-        <translatorcomment>截图</translatorcomment>
-        <translation>截图</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
         <source>cut</source>
-        <translation>截图模式</translation>
+        <translation type="unfinished">截图模式</translation>
     </message>
 </context>
 <context>
@@ -517,7 +515,7 @@ Press Space to open the side panel.</source>
     <message>
         <location line="+4"/>
         <source>Launch Kylin-screenshot</source>
-        <translation>运行麒麟截图</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -532,13 +530,12 @@ Press Space to open the side panel.</source>
     <message>
         <location line="+9"/>
         <source>Copy URL after upload</source>
-        <translation>上传后复制URL</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copy URL and close window after upload</source>
-        <translatorcomment>复制URL并在上传后关闭窗口</translatorcomment>
-        <translation>复制URL并在上传后关闭窗口</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1350,12 +1347,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/luping/luping.cpp" line="+39"/>
         <source>LuPing</source>
-        <translation>录屏</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
         <source>luping</source>
-        <translation>录屏模式</translation>
+        <translation type="unfinished">录屏模式</translation>
     </message>
 </context>
 <context>
@@ -1389,7 +1386,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/options/options.cpp" line="+39"/>
         <source>Options</source>
-        <translation>选项</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1528,7 +1525,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/save/saveastool.cpp" line="+41"/>
         <source>saveas</source>
-        <translation>另存为</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1546,7 +1543,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/save/savetool.cpp" line="+39"/>
         <source>save</source>
-        <translation>保存</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -1589,12 +1586,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/tools/screencap/screencap.cpp" line="+28"/>
         <source>Options</source>
-        <translation>选项</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
         <source>options tool</source>
-        <translation>截图保存配置</translation>
+        <translation type="unfinished">截图保存配置</translation>
     </message>
 </context>
 <context>
@@ -2113,8 +2110,7 @@ Note that not all codecs are supported by all containers, and that not all media
     <message>
         <location filename="../src/tools/text/texttool.cpp" line="+59"/>
         <source>text</source>
-        <translatorcomment>文本</translatorcomment>
-        <translation type="unfinished">文本</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -2169,8 +2165,7 @@ Note that not all codecs are supported by all containers, and that not all media
     <message>
         <location filename="../src/tools/undo/undotool.cpp" line="+43"/>
         <source>undo</source>
-        <translatorcomment>撤消</translatorcomment>
-        <translation type="unfinished">撤消</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
