@@ -217,7 +217,13 @@ void Controller::openLauncherWindow() {
     CaptureLauncher *w = new CaptureLauncher();
     w->move(((qApp->desktop()->screenGeometry().width()-w->width())/2),
             ((qApp->desktop()->screenGeometry().height()-w->height())/2));
-    w->show();
+    QGSettings *screen= new QGSettings("org.ukui.screenshot");
+    QString screenshot = screen->get("screenshot").toString();
+    if (screenshot.compare("true")==0){
+        w->show();
+    }
+    else
+        disableScreenCut();
 }
 
 void Controller::enableTrayIcon() {
