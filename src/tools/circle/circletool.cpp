@@ -26,6 +26,14 @@ CircleTool::CircleTool(QObject *parent) : AbstractTwoPointTool(parent) {
     m_supportsDiagonalAdj = true;
 }
 
+QIcon CircleTool::icon(const QColor &background, bool inEditor) const {
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "circle-outline.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "circle-outline.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "circle-outline.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon CircleTool::icon(const QColor &background, bool inEditor ,const CaptureContext &context ) const {
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "circle-outline.svg");
@@ -39,6 +47,7 @@ QIcon CircleTool::icon(const QColor &background, bool inEditor ,const CaptureCon
                       QIcon(QStringLiteral(":/img/material/dark-theme/") + "circle-outline.png");
     }
 }
+#endif
 QString CircleTool::name() const {
     return tr("Circle");
 }

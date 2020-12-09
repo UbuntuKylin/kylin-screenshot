@@ -26,6 +26,14 @@ bool MoveTool::closeOnButtonPressed() const {
     return false;
 }
 
+QIcon MoveTool::icon(const QColor &background, bool inEditor) const {
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "cursor-move.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "cursor-move.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "cursor-move.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon MoveTool::icon(const QColor &background, bool inEditor, const CaptureContext &context ) const {
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "cursor-move.svg");
@@ -33,6 +41,7 @@ QIcon MoveTool::icon(const QColor &background, bool inEditor, const CaptureConte
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "cursor-move.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "cursor-move.svg");
 }
+#endif
 QString MoveTool::name() const {
     return tr("Move");
 }

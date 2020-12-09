@@ -29,6 +29,15 @@ bool SelectionTool::closeOnButtonPressed() const {
     return false;
 }
 
+QIcon SelectionTool::icon(const QColor &background, bool inEditor) const {
+   // Q_UNUSED(inEditor);
+   // return QIcon(iconPath(background) + "square-outline.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "square.svg");
+
+}
+#ifdef SUPPORT_UKUI
 QIcon SelectionTool::icon(const QColor &background, bool inEditor, const CaptureContext &context ) const {
    // Q_UNUSED(inEditor);
    // return QIcon(iconPath(background) + "square-outline.svg");
@@ -42,6 +51,7 @@ QIcon SelectionTool::icon(const QColor &background, bool inEditor, const Capture
                            QIcon(QStringLiteral(":/img/material/dark-theme/") + "square.png");
     }
 }
+#endif
 QString SelectionTool::name() const {
     return tr("Rectangular Selection");
 }

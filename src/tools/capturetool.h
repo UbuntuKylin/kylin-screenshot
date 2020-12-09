@@ -66,6 +66,18 @@ public:
         REQ_LUPING,
 
         REQ_OPTIONS,
+
+#ifdef ENABLE_RECORD
+        REQ_CURSOR_RECORD,
+
+        REQ_AUDIO_RECORD,
+
+        REQ_FOLLOW_MOUSE_RECORD,
+
+        REQ_OPTION_RECORD,
+
+        REQ_START_RECORD,
+#endif
     };
 
     explicit CaptureTool(QObject *parent = nullptr) : QObject(parent){}
@@ -84,8 +96,11 @@ public:
     // The icon of the tool.
     // inEditor is true when the icon is requested inside the editor
     // and false otherwise.
+    virtual QIcon icon(const QColor &background, bool inEditor) const = 0;
+#ifdef SUPPORT_UKUI
     virtual QIcon icon(const QColor &background,
                        bool inEditor,const CaptureContext &context) const = 0;
+#endif
     // Name displayed for the tool, this could be translated with tr()
     virtual QString name() const = 0;
     // Codename for the tool, this hsouldn't change as it is used as ID
@@ -125,6 +140,21 @@ public:
     // When the tool is selected, this is called when the mouse moves
     virtual void paintMousePreview(QPainter &painter, const CaptureContext &context) = 0;
 
+#ifdef ENABLE_RECORD
+    virtual void setIsInitActive(bool isActive) {
+        m_isInitActive = isActive;
+    }
+    virtual bool getIsInitActive() {
+        return m_isInitActive;
+    }
+    virtual void setIsIsolated(bool isIsolated) {
+        m_isIsolated = isIsolated;
+    }
+    virtual bool getIsIsolated() {
+        return m_isIsolated;
+    }
+#endif
+
 signals:
     void requestAction(Request r);
 
@@ -133,6 +163,10 @@ protected:
         return ColorUtils::colorIsDark(c) ?
                     PathInfo::whiteIconPath() : PathInfo::blackIconPath();
     }*/
+#ifdef ENABLE_RECORD
+    bool m_isInitActive = false;
+    bool m_isIsolated = false;
+#endif
 
 public slots:
     // On mouse release.

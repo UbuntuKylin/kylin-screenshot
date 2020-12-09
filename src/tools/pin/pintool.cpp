@@ -25,6 +25,14 @@ bool PinTool::closeOnButtonPressed() const {
     return true;
 }
 
+QIcon PinTool::icon(const QColor &background, bool inEditor) const {
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "pin.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pin_icon.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "pin_icon.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon PinTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "pin.svg");
@@ -38,6 +46,7 @@ QIcon PinTool::icon(const QColor &background, bool inEditor , const CaptureConte
                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "pin_icon.png");
     }
 }
+#endif
 QString PinTool::name() const {
     return tr("Pin Tool");
 }

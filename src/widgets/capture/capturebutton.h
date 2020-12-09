@@ -36,8 +36,10 @@ public:
     // in the .cpp and the order value in the private array buttonTypeOrder
     enum ButtonType
     {
-       // TYPE_CUT,
-       // TYPE_LUPING,
+#ifdef ENABLE_RECORD
+        TYPE_CUT,
+        TYPE_LUPING,
+#endif
         TYPE_RECT,
         TYPE_CIRCLE,
         TYPE_LINE,
@@ -53,6 +55,14 @@ public:
         TYPE_SAVE,
         TYPE_SAVEAS,
         TYPE_PIN,
+#ifdef ENABLE_RECORD
+        TYPE_RECORD_CURSOR,
+        TYPE_RECORD_AUDIO,
+        TYPE_RECORD_FOLLOW_MOUSE,
+        TYPE_RECORD_OPTION,
+//        TYPE_RECORD_CLOSE,
+        TYPE_RECORD_START,
+#endif
     };
 
 

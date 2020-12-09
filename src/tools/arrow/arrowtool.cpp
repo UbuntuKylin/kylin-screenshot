@@ -75,6 +75,15 @@ ArrowTool::ArrowTool(QObject *parent) : AbstractTwoPointTool(parent) {
     m_supportsDiagonalAdj = true;
 }
 
+QIcon ArrowTool::icon(const QColor &background, bool inEditor) const {
+    //Q_UNUSED(inEditor);
+   // return QIcon(iconPath(background) + "arrow-bottom-left.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "arrow-bottom-left.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "arrow-bottom-left.svg");
+
+}
+#ifdef SUPPORT_UKUI
 QIcon ArrowTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const {
     //Q_UNUSED(inEditor);
    // return QIcon(iconPath(background) + "arrow-bottom-left.svg");
@@ -88,6 +97,7 @@ QIcon ArrowTool::icon(const QColor &background, bool inEditor, const CaptureCont
                   QIcon(QStringLiteral(":/img/material/dark-theme/") + "arrow-bottom-left.png");
      }
 }
+#endif
 QString ArrowTool::name() const {
     return tr("Arrow");
 }

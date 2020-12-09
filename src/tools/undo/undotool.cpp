@@ -26,6 +26,15 @@ bool UndoTool::closeOnButtonPressed() const {
     return false;
 }
 
+QIcon UndoTool::icon(const QColor &background, bool inEditor) const {
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "undo-variant.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "undo-variant.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "undo-variant.svg");
+
+}
+#ifdef SUPPORT_UKUI
 QIcon UndoTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "undo-variant.svg");
@@ -39,6 +48,7 @@ QIcon UndoTool::icon(const QColor &background, bool inEditor , const CaptureCont
                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "undo-variant.png");
         }
 }
+#endif
 QString UndoTool::name() const {
     return tr("undo");
 }

@@ -26,6 +26,14 @@ bool AppLauncher::closeOnButtonPressed() const {
     return true;
 }
 
+QIcon AppLauncher::icon(const QColor &background, bool inEditor) const {
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "open_with.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "open_with.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "open_with.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon AppLauncher::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "open_with.svg");
@@ -33,6 +41,7 @@ QIcon AppLauncher::icon(const QColor &background, bool inEditor , const CaptureC
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "open_with.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "open_with.svg");
 }
+#endif
 QString AppLauncher::name() const {
     return tr("App Launcher");
 }

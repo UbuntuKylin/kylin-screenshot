@@ -28,6 +28,14 @@ MarkerTool::MarkerTool(QObject *parent) : AbstractTwoPointTool(parent) {
     m_supportsDiagonalAdj = true;
 }
 
+QIcon MarkerTool::icon(const QColor &background, bool inEditor) const {
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "marker.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "marker.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "marker.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon MarkerTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const {
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "marker.svg");
@@ -41,6 +49,7 @@ QIcon MarkerTool::icon(const QColor &background, bool inEditor, const CaptureCon
                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "marker.png");
     }
 }
+#endif
 QString MarkerTool::name() const {
     return tr("Marker");
 }

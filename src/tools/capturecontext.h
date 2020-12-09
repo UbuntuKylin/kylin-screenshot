@@ -52,6 +52,8 @@ struct CaptureContext {
     bool underline;
     bool deleteline;
     bool italic;   
+#ifdef SUPPORT_UKUI
     QGSettings *style_settings;
     QString style_name;
+#endif
 };

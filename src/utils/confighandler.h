@@ -25,7 +25,11 @@ class ConfigHandler {
 public:
     explicit ConfigHandler();
 
-    QVector<CaptureButton::ButtonType> getButtons();
+    QVector<CaptureButton::ButtonType> getButtons(
+        #ifdef ENABLE_RECORD
+            bool isRecord = false
+        #endif
+            );
     void setButtons(const QVector<CaptureButton::ButtonType> &);
 
     QVector<QColor> getUserColors();

@@ -33,6 +33,21 @@ bool AbstractActionTool::showMousePreview() const {
     return false;
 }
 
+QIcon AbstractActionTool::icon(const QColor &background, bool inEditor) const
+{
+    Q_UNUSED(background);
+    Q_UNUSED(inEditor);
+    return QIcon();
+}
+#ifdef SUPPORT_UKUI
+QIcon AbstractActionTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const
+{
+    Q_UNUSED(background);
+    Q_UNUSED(inEditor);
+    Q_UNUSED(context);
+    return QIcon();
+}
+#endif
 void AbstractActionTool::undo(QPixmap &pixmap) {
     Q_UNUSED(pixmap);
 }

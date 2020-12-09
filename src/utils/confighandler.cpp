@@ -20,11 +20,17 @@
 #include <QDir>
 #include <QCoreApplication>
 
+//#include <QDebug>
+
 ConfigHandler::ConfigHandler(){
     m_settings.setDefaultFormat(QSettings::IniFormat);
 }
 
-QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
+QVector<CaptureButton::ButtonType> ConfigHandler::getButtons(
+        #ifdef ENABLE_RECORD
+        bool isRecord
+        #endif
+        ) {
     QVector<CaptureButton::ButtonType> buttons;
     if (m_settings.contains(QStringLiteral("buttons"))) {
         // TODO: remove toList in v1.0
@@ -37,9 +43,13 @@ QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
         buttons = fromIntToButton(buttonsInt);
     } else {
         // Default tools
-//        buttons << CaptureButton:: TYPE_CUT
- //              << CaptureButton:: TYPE_LUPING
-       buttons << CaptureButton:: TYPE_RECT
+#ifdef ENABLE_RECORD
+        buttons << CaptureButton:: TYPE_CUT
+               << CaptureButton:: TYPE_LUPING;
+        if (!isRecord) {
+#endif
+               buttons
+               << CaptureButton:: TYPE_RECT
                << CaptureButton:: TYPE_CIRCLE
                << CaptureButton:: TYPE_LINE
                << CaptureButton:: TYPE_ARROW
@@ -54,6 +64,19 @@ QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
                << CaptureButton:: TYPE_SAVE
                << CaptureButton:: TYPE_SAVEAS
                << CaptureButton:: TYPE_PIN;
+#ifdef ENABLE_RECORD
+        } else {
+//            qDebug() << "bybobbi: ConfigHandler::getButtons will be cursor";
+            buttons
+               << CaptureButton::TYPE_RECORD_CURSOR
+               << CaptureButton::TYPE_RECORD_AUDIO
+               << CaptureButton::TYPE_RECORD_FOLLOW_MOUSE
+               << CaptureButton::TYPE_RECORD_OPTION
+//               << CaptureButton::TYPE_RECORD_CLOSE
+               << CaptureButton::TYPE_RECORD_START;
+        }
+#endif //ENABLE_RECORD
+
     }
 
     using bt = CaptureButton::ButtonType;

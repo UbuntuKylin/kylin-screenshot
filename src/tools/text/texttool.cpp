@@ -41,6 +41,14 @@ bool TextTool::showMousePreview() const {
     return false;
 }
 
+QIcon TextTool::icon(const QColor &background, bool inEditor) const {
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "text.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "text.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "format-text.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon TextTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "text.svg");
@@ -54,7 +62,7 @@ QIcon TextTool::icon(const QColor &background, bool inEditor , const CaptureCont
                            QIcon(QStringLiteral(":/img/material/dark-theme/") + "format-text.png");
     }
 }
-
+#endif
 QString TextTool::name() const {
     return tr("text");
 }

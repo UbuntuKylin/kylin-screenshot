@@ -26,6 +26,14 @@ RectangleTool::RectangleTool(QObject *parent) : AbstractTwoPointTool(parent) {
     m_supportsDiagonalAdj = true;
 }
 
+QIcon RectangleTool::icon(const QColor &background, bool inEditor) const {
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "square.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "square.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon RectangleTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "square.svg");
@@ -39,6 +47,7 @@ QIcon RectangleTool::icon(const QColor &background, bool inEditor , const Captur
                            QIcon(QStringLiteral(":/img/material/dark-theme/") + "square.png");
     }
 }
+#endif
 QString RectangleTool::name() const {
     return tr("Rectangle");
 }

@@ -184,8 +184,30 @@ void CaptureButton::setColor(const QColor &c) {
 QColor CaptureButton::m_mainColor = ConfigHandler().uiMainColorValue();
 
 static std::map<CaptureButton::ButtonType, int> buttonTypeOrder {
-   //  { CaptureButton::  TYPE_CUT,          0 },
-    // { CaptureButton::  TYPE_LUPING,       1 },
+#ifdef ENABLE_RECORD
+    { CaptureButton::  TYPE_CUT,          0 },
+    { CaptureButton::  TYPE_LUPING,       1 },
+    { CaptureButton::  TYPE_RECT,         2 },
+    { CaptureButton:: TYPE_CIRCLE,        3 },
+    { CaptureButton::  TYPE_LINE,         4 },
+    { CaptureButton::  TYPE_ARROW,        5 },
+    { CaptureButton:: TYPE_PEN,           6 },
+    { CaptureButton:: TYPE_MARKER,        7 },
+    { CaptureButton::  TYPE_TEXT,         8 },
+    { CaptureButton::  TYPE_BLUR,         9 },
+    { CaptureButton:: TYPR_UNDO,          10 },
+    { CaptureButton:: TYPE_OPTION,        11 },
+    { CaptureButton:: TYPE_CLOSE,         12 },
+    { CaptureButton:: TYPE_COPY,          13 },
+    { CaptureButton:: TYPE_SAVE,          14 },
+    { CaptureButton:: TYPE_SAVEAS,        15 },
+    { CaptureButton:: TYPE_PIN,           16 },
+    {CaptureButton::  TYPE_RECORD_CURSOR, 17 },
+    {CaptureButton::  TYPE_RECORD_CURSOR, 18 },
+    {CaptureButton::  TYPE_RECORD_CURSOR, 19 },
+    {CaptureButton::  TYPE_RECORD_OPTION, 20 },
+    {CaptureButton::  TYPE_RECORD_START,  21 },
+#else
      { CaptureButton::  TYPE_RECT,         0 },
      { CaptureButton:: TYPE_CIRCLE,        1 },
      { CaptureButton::  TYPE_LINE,         2 },
@@ -201,6 +223,7 @@ static std::map<CaptureButton::ButtonType, int> buttonTypeOrder {
      { CaptureButton:: TYPE_SAVE,          12 },
      { CaptureButton:: TYPE_SAVEAS,        13 },
      { CaptureButton:: TYPE_PIN,           14 },
+#endif
 };
 
 int CaptureButton::getPriorityByButton(CaptureButton::ButtonType b) {
@@ -209,8 +232,10 @@ int CaptureButton::getPriorityByButton(CaptureButton::ButtonType b) {
 }
 
 QVector<CaptureButton::ButtonType> CaptureButton::iterableButtonTypes = {
-    //CaptureButton:: TYPE_CUT,
-    //CaptureButton:: TYPE_LUPING,
+#ifdef ENABLE_RECORD
+    CaptureButton:: TYPE_CUT,
+    CaptureButton:: TYPE_LUPING,
+#endif
     CaptureButton:: TYPE_RECT,
     CaptureButton:: TYPE_CIRCLE,
     CaptureButton:: TYPE_LINE,
@@ -226,4 +251,11 @@ QVector<CaptureButton::ButtonType> CaptureButton::iterableButtonTypes = {
     CaptureButton:: TYPE_SAVE,
     CaptureButton:: TYPE_SAVEAS,
     CaptureButton:: TYPE_PIN,
+#ifdef ENABLE_RECORD
+    CaptureButton:: TYPE_RECORD_CURSOR,
+    CaptureButton:: TYPE_RECORD_AUDIO,
+    CaptureButton:: TYPE_RECORD_FOLLOW_MOUSE,
+    CaptureButton:: TYPE_RECORD_OPTION,
+    CaptureButton:: TYPE_RECORD_START,
+#endif
 };

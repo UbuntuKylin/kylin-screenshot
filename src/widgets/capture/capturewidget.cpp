@@ -55,9 +55,13 @@
 #include <QGraphicsBlurEffect>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
+#ifdef ENABLE_RECORD
+#include "ssrtools.h"
+#include "mypopup.h"
+#endif
+
 // CaptureWidget is the main component used to capture the screen. It scontains an
 // are of selection with its respective buttons.
-#include "src/widgets/screenrecorder.h"
 
 // enableSaveWIndow
 CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
@@ -67,6 +71,9 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     m_previewEnabled(true), m_adjustmentButtonPressed(false), m_activeButton(nullptr),
     m_activeTool(nullptr), m_toolWidget(nullptr),
     m_mouseOverHandle(SelectionWidget::NO_SIDE), m_id(id)
+#ifdef ENABLE_RECORD
+    ,m_activeButtons{}, m_isolatedButtons{}
+#endif
 {
     // Base config of the widget
     m_eventFilter = new HoverEventFilter(this);
@@ -145,8 +152,12 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     save_location2 = new Save_Location2(this);
     font_options = new  Font_Options(this);
     font_options2 = new Font_Options2(this);
-    screenCap = new ScreenRecorder();
-    screenCap->hide();
+#ifdef ENABLE_RECORD
+    mp = new mypopup(this);
+    ssr = new ssrtools(this, mp);
+    m_pushbutton_save = new QPushButton(this);
+    m_pushbutton_cancel = new QPushButton(this);
+#endif
 
     connect(m_colorPicker, &ColorPicker::colorSelected,
             this, &CaptureWidget::setDrawColor);
@@ -188,9 +199,10 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
                 this,&CaptureWidget::ClickedSaveType);
     connect(save_location2,&Save_Location2::save_type_clicked,
                 this,&CaptureWidget::ClickedSaveType2);
-    connect(screenCap->m_pushbutton_video_select_rectangle, &QPushButton::clicked, screenCap, &ScreenRecorder::on_m_pushbutton_video_select_rectangle_clicked);
-    connect(screenCap->m_pushbutton_video_select_window, &QPushButton::clicked, screenCap, &ScreenRecorder::on_m_pushbutton_video_select_window_clicked);
-
+#ifdef ENABLE_RECORD
+    connect(m_pushbutton_cancel, SIGNAL(clicked()), this, SLOT(record_cancel_clicked()));
+    connect(m_pushbutton_save, SIGNAL(clicked()), this, SLOT(record_save_clicked()));
+#endif
     m_colorPicker->hide();
     font_color->setStartPos(95);
     font_color->setTriangleInfo(20, 10);
@@ -229,6 +241,16 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     // Init notification widget
     m_notifierBox = new NotifierBox(this);
     m_notifierBox->hide();
+#ifdef ENABLE_RECORD
+    m_pushbutton_cancel->setFixedSize(QSize(50, 50));
+    m_pushbutton_cancel->move(200, 100);
+    m_pushbutton_cancel->setText(QString::fromUtf8("cancel"));
+    m_pushbutton_save->setFixedSize(QSize(50, 50));
+    m_pushbutton_save->setText(QString::fromUtf8("save"));
+    m_pushbutton_save->move(300, 100);
+    m_pushbutton_cancel->hide();
+    m_pushbutton_save->hide();
+#endif
     font_color_point = new QPoint();
     connect(&m_undoStack, &QUndoStack::indexChanged,
             this, [this](int){ this->update(); });
@@ -256,10 +278,21 @@ CaptureWidget::~CaptureWidget() {
 
 // redefineButtons retrieves the buttons configured to be shown with the
 // selection in the capture
-void CaptureWidget::updateButtons() {
+void CaptureWidget::updateButtons(
+        #ifdef ENABLE_RECORD
+        bool isRecord
+        #endif
+        ) {
+#ifdef ENABLE_RECORD
+    vectorButtons.clear();
+#endif
     m_uiColor = m_config.uiMainColorValue();
     m_contrastUiColor = m_config.uiContrastColorValue();
-    auto buttons = m_config.getButtons();
+    auto buttons = m_config.getButtons(
+            #ifdef ENABLE_RECORD
+                isRecord
+            #endif
+                );
     for (const CaptureButton::ButtonType &t: buttons) {
         CaptureButton *b = new CaptureButton(t, this);
         if (t == CaptureButton::TYPE_OPTION) {
@@ -275,6 +308,14 @@ void CaptureWidget::updateButtons() {
             b->setColor(m_uiColor);
         }
         makeChild(b);
+#ifdef ENABLE_RECORD
+        if (b->tool()->getIsInitActive()) {
+            m_activeButtons.insert(b->m_buttonType, b->tool());
+        }
+        if (b->tool()->getIsIsolated()) {
+            m_isolatedButtons.insert(b->m_buttonType, b->tool());
+        }
+#endif
         connect(b, &CaptureButton::pressedButton, this, &CaptureWidget::setState);
         connect(b->tool(), &CaptureTool::requestAction,
                 this, &CaptureWidget::handleButtonSignal);
@@ -392,6 +433,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                              .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
         }
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
+#ifndef ENABLE_RECORD
             if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
                 painter.setBrush(QColor(200,200,200));
                 painter.setPen(QColor(200,200,200));
@@ -492,6 +534,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setOpacity(0.5);
             }
+#endif
         }
         update();
         painter.setBrush(QColor(160,160,160));
@@ -726,6 +769,9 @@ void CaptureWidget::mouseReleaseEvent(QMouseEvent *e) {
             newGeometry.setBottom(top);
         }
         m_selection->setGeometry(newGeometry);
+#ifdef ENABLE_RECORD
+        emit rectReleased(newGeometry);//bybobbi
+#endif
         m_context.selection = extendedRect(&newGeometry);
         updateSizeIndicator();
         m_buttonHandler->updatePosition(newGeometry);
@@ -965,11 +1011,60 @@ void CaptureWidget::setState(CaptureButton *b) {
          case CaptureTool::REQ_CUT:
              //m_captureDone =false;
              //update();
+#ifdef ENABLE_RECORD
+             m_buttonHandler->hide();          //bybobbi
+             m_buttonHandler->clearButtons();
+             updateButtons(false);
+         {
+             QRect newGeometry = m_selection->geometry().intersected(rect());
+             qDebug() << "record newGeometry is " << newGeometry.x() << ", " << newGeometry.y();
+             // normalize
+             if (newGeometry.width() <= 0) {
+                 int left = newGeometry.left();
+                 newGeometry.setLeft(newGeometry.right());
+                 newGeometry.setRight(left);
+             }
+             if (newGeometry.height() <= 0) {
+                 int top = newGeometry.top();
+                 newGeometry.setTop(newGeometry.bottom());
+                 newGeometry.setBottom(top);
+             }
+             m_selection->setGeometry(newGeometry);
+             m_context.selection = extendedRect(&newGeometry);
+             updateSizeIndicator();
+             m_buttonHandler->updatePosition(newGeometry);
+         }
+             m_buttonHandler->show();
+#endif
              break;
          case CaptureTool::REQ_LUPING:
              //m_captureDone = true;
              //hide_window();
-             //screenCap->show();
+#ifdef ENABLE_RECORD
+             m_buttonHandler->hide();          //bybobbi
+             m_buttonHandler->clearButtons();
+             updateButtons(true);
+         {
+             QRect newGeometry = m_selection->geometry().intersected(rect());
+             qDebug() << "bybobbi: record newGeometry in LUPING is " << newGeometry.x() << ", " << newGeometry.y();
+             // normalize
+             if (newGeometry.width() <= 0) {
+                 int left = newGeometry.left();
+                 newGeometry.setLeft(newGeometry.right());
+                 newGeometry.setRight(left);
+             }
+             if (newGeometry.height() <= 0) {
+                 int top = newGeometry.top();
+                 newGeometry.setTop(newGeometry.bottom());
+                 newGeometry.setBottom(top);
+             }
+             m_selection->setGeometry(newGeometry);
+             m_context.selection = extendedRect(&newGeometry);
+             updateSizeIndicator();
+             m_buttonHandler->updatePosition(newGeometry);
+         }
+             m_buttonHandler->show();
+#endif
              break;
          case CaptureTool::REQ_OPTIONS:
              //update();
@@ -1199,6 +1294,25 @@ void CaptureWidget::setState(CaptureButton *b) {
                       r->width()  * devicePixelRatio,
                       r->height() * devicePixelRatio);
      }
+
+#ifdef ENABLE_RECORD
+     void CaptureWidget::record_save_clicked()
+     {
+        m_pushbutton_cancel->hide();
+        m_pushbutton_save->hide();
+//        syslog(LOG_INFO, "will save, cancel and save button hide");
+        ssr->OnRecordSave();
+     }
+
+     void CaptureWidget::record_cancel_clicked()
+     {
+        m_pushbutton_cancel->hide();
+        m_pushbutton_save->hide();
+//        syslog(LOG_INFO, "will save, cancel and save button hide");
+        ssr->OnRecordCancel();
+     }
+#endif
+
      void CaptureWidget::ClickedSaveAsFile()
      {
          hide_window();
