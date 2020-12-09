@@ -925,8 +925,6 @@ void CaptureWidget::setState(CaptureButton *b) {
         }
     }
     if (m_activeButton != b) {
-        b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-        show_childwindow(b);
         processTool(b->tool());
     }
     // Only close activated from button
@@ -942,10 +940,10 @@ void CaptureWidget::setState(CaptureButton *b) {
             if (m_activeButton) {
                 m_activeButton->setColor(m_uiColor);
                 m_activeButton->setIcon(m_activeButton->tool()->icon(m_uiColor,false,m_context));
-                b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-                show_childwindow(b);
              }
+             show_childwindow(b);
              m_activeButton = b;
+             b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
              m_activeButton->setColor(m_contrastUiColor);
              }
         else if (m_activeButton) {
