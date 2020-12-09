@@ -27,6 +27,14 @@ bool ImgurUploaderTool::closeOnButtonPressed() const {
     return true;
 }
 
+QIcon ImgurUploaderTool::icon(const QColor &background, bool inEditor) const {
+   //Q_UNUSED(inEditor);
+   // return QIcon(iconPath(background) + "cloud-upload.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon ImgurUploaderTool::icon(const QColor &background, bool inEditor, const CaptureContext &context ) const {
    //Q_UNUSED(inEditor);
    // return QIcon(iconPath(background) + "cloud-upload.svg");
@@ -34,6 +42,7 @@ QIcon ImgurUploaderTool::icon(const QColor &background, bool inEditor, const Cap
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
 }
+#endif
 QString ImgurUploaderTool::name() const {
     return tr("Image Uploader");
 }

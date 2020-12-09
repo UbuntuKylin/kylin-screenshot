@@ -80,5 +80,11 @@
         <file>img/material/white/down_2.png</file>
         <file>img/material/white/down_1.png</file>
         <file>img/material/white/down_3.png</file>
+        <file>img/material/black/record/audio_record_active.png</file>
+        <file>img/material/black/record/audio_record_noactive.png</file>
+        <file>img/material/black/record/cursor_record_active.png</file>
+        <file>img/material/black/record/cursor_record_noactive.png</file>
+        <file>img/material/black/record/follow_mouse_record_active.png</file>
+        <file>img/material/black/record/follow_mouse_record_noactive.png</file>
     </qresource>
 </RCC>

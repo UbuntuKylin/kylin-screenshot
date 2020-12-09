@@ -39,6 +39,11 @@
 #include "luping/luping.h"
 #include "options/options.h"
 #include "save/saveastool.h"
+#include "cursor_record/cursor_record_tool.h"
+#include "start_record/start_record_tool.h"
+#include "option_record/option_record_tool.h"
+#include "audio_record/audio_record_tool.h"
+#include "follow_mouse_record/follow_mouse_record_tool.h"
 ToolFactory::ToolFactory(QObject *parent) : QObject(parent) {
 
 }
@@ -49,14 +54,14 @@ CaptureTool* ToolFactory::CreateTool(
 {
     CaptureTool *tool;
     switch (t) {
-/*
+#ifdef ENABLE_RECORD
     case CaptureButton::TYPE_CUT:
         tool = new Cut(parent);
         break;
     case CaptureButton::TYPE_LUPING:
         tool = new LuPing(parent);
         break;
-        */
+#endif
     case CaptureButton::TYPE_RECT:
         //空心矩形   矩形选择框
         tool = new  SelectionTool(parent);
@@ -105,6 +110,26 @@ CaptureTool* ToolFactory::CreateTool(
     case CaptureButton::TYPE_SAVEAS:
         tool = new SaveAsTool(parent);
         break;
+#ifdef ENABLE_RECORD
+    case CaptureButton::TYPE_RECORD_CURSOR:
+        tool = new CursorRecordTool(parent);
+        break;
+    case CaptureButton::TYPE_RECORD_AUDIO:
+        tool = new AudioRecordTool(parent);
+        break;
+
+    case CaptureButton::TYPE_RECORD_FOLLOW_MOUSE:
+        tool = new FollowMouseRecordTool(parent);
+        break;
+
+    case CaptureButton::TYPE_RECORD_OPTION:
+        tool = new OptionRecordTool(parent);
+        break;
+
+    case CaptureButton::TYPE_RECORD_START:
+        tool = new StartRecordTool(parent);
+        break;
+#endif	//ENABLE_RECORD
 
     default:
         tool = nullptr;

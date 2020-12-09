@@ -42,6 +42,8 @@ public:
     void updateScreenRegions(const QVector<QRect> &rects);
     void updateScreenRegions(const QRect &rect);
 
+    void clearButtons();
+
 public slots:
     void updatePosition(const QRect &selection);
     void hide();

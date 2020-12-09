@@ -18,7 +18,7 @@
 #ifndef COMMANDLINEOPTIONS_H
 #define COMMANDLINEOPTIONS_H
 
-#include "src/core/Global.h"
+#include "Global.h"
 
 class CommandLineException : public std::exception {
 public:

@@ -29,6 +29,8 @@ public:
     bool isSelectable() const override;
     bool showMousePreview() const override;
 
+    QIcon icon(const QColor &background, bool inEditor) const override {}
+
     void undo(QPixmap &pixmap) override;
 
 public slots:

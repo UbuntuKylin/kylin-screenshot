@@ -27,6 +27,15 @@ bool Options::closeOnButtonPressed() const
      return false;
 }
 
+QIcon Options::icon(const QColor &background, bool inEditor) const
+{
+    Q_UNUSED(background);
+    Q_UNUSED(inEditor);
+   // return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
+     //                 QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
+    return QIcon();
+}
+#ifdef SUPPORT_UKUI
 QIcon Options::icon(const QColor &background, bool inEditor, const CaptureContext &context) const
 {
     Q_UNUSED(background);
@@ -34,6 +43,7 @@ QIcon Options::icon(const QColor &background, bool inEditor, const CaptureContex
      //                 QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
     return QIcon();
 }
+#endif
 QString Options::name() const
 {
     return tr("Options");

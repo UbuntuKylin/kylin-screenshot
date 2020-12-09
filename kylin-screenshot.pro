@@ -14,6 +14,9 @@ isEmpty(TAG_VERSION){
 }
 DEFINES += APP_VERSION=\\\"$$TAG_VERSION\\\"
 
+#DEFINES += ENABLE_RECORD
+DEFINES += SUPPORT_UKUI
+
 QT  += core gui widgets network svg x11extras KWindowSystem
 
 unix:!macx {
@@ -78,33 +81,11 @@ include(src/third-party/Qt-Color-Widgets//color_widgets.pri)
 
 DEFINES += QAPPLICATION_CLASS=QApplication
 
+INCLUDEPATH += src/common src/utils
+
 SOURCES += src/main.cpp \
-    src/AV/AVWrapper.cpp \
-    src/AV/FastResamper_FirFilter_Fallback.cpp \
-    src/AV/FastResampler.cpp \
-    src/AV/FastScaler.cpp \
-    src/AV/FastScaler_Convert_Fallback.cpp \
-    src/AV/FastScaler_Convert_SSSE3.cpp \
-    src/AV/FastScaler_Scale_Fallback.cpp \
-    src/AV/FastScaler_Scale_Generic.cpp \
-    src/AV/FastScaler_Scale_SSSE3.cpp \
-    src/AV/SourceSink.cpp \
-    src/AV/input/PulseAudioInput.cpp \
-    src/AV/input/X11Input.cpp \
-    src/AV/input/input_widgets.cpp \
-    src/AV/output/AudioEncoder.cpp \
-    src/AV/output/BaseEncoder.cpp \
-    src/AV/output/Muxer.cpp \
-    src/AV/output/OutputManager.cpp \
-    src/AV/output/SyncDiagram.cpp \
-    src/AV/output/Synchronizer.cpp \
-    src/AV/output/VideoEncoder.cpp \
-    src/AV/output/X264Presets.cpp \
-    src/common/CPUFeatures.cpp \
     src/common/CommandLineOptions.cpp \
     src/common/Logger.cpp \
-    src/common/WidgetWrapper.cpp \
-    src/common/utils.cpp \
     src/widgets/capture/buttonhandler.cpp \
     src/widgets/capture/font_options.cpp \
     src/widgets/capture/font_options2.cpp \
@@ -147,7 +128,6 @@ SOURCES += src/main.cpp \
     src/tools/imgur/imguruploader.cpp \
     src/widgets/loadspinner.cpp \
     src/widgets/imagelabel.cpp \
-    src/widgets/mypopup.cpp \
     src/widgets/notificationwidget.cpp \
     src/widgets/capture/notifierbox.cpp \
     src/utils/desktopinfo.cpp \
@@ -179,45 +159,19 @@ SOURCES += src/main.cpp \
     src/core/capturerequest.cpp \
     src/tools/text/textconfig.cpp \
     src/widgets/panel/sidepanelwidget.cpp \
-    src/widgets/screenoption.cpp \
-    src/widgets/screenrecorder.cpp \
+    src/widgets/capture/fontsize_color_chose.cpp \
+    src/widgets/capture/fontsize_color_chose2.cpp \
+    src/widgets/capture/save_location.cpp \
+    src/widgets/capture/save_location2.cpp \
+    src/tools/options/options.cpp \
+    src/tools/save/saveastool.cpp \
     src/widgets/screentype.cpp \
-    src/widgets/widget.cpp
+#    src/widgets/widget.cpp
 
 HEADERS  += src/widgets/capture/buttonhandler.h \
-    src/AV/AVWrapper.h \
-    src/AV/FastResampler.h \
-    src/AV/FastResampler_FirFilter.h \
-    src/AV/FastScaler.h \
-    src/AV/FastScaler_Convert.h \
-    src/AV/FastScaler_Scale.h \
-    src/AV/FastScaler_Scale_Generic.h \
-    src/AV/SampleCast.h \
-    src/AV/SourceSink.h \
-    src/AV/input/PulseAudioInput.h \
-    src/AV/input/X11Input.h \
-    src/AV/input/input_widgets.h \
-    src/AV/output/AudioEncoder.h \
-    src/AV/output/BaseEncoder.h \
-    src/AV/output/Muxer.h \
-    src/AV/output/OutputManager.h \
-    src/AV/output/OutputSettings.h \
-    src/AV/output/SyncDiagram.h \
-    src/AV/output/Synchronizer.h \
-    src/AV/output/VideoEncoder.h \
-    src/AV/output/X264Presets.h \
-    src/common/CPUFeatures.h \
     src/common/CommandLineOptions.h \
     src/common/Enum.h \
-    src/common/EnumStrings.h \
     src/common/Logger.h \
-    src/common/MutexDataPair.h \
-    src/common/QueueBuffer.h \
-    src/common/SomeData.h \
-    src/common/TempBuffer.h \
-    src/common/WidgetWrapper.h \
-    src/common/utils.h \
-    src/core/Global.h \
     src/widgets/capture/font_options.h \
     src/widgets/capture/font_options2.h \
     src/widgets/infowindow.h \
@@ -260,7 +214,6 @@ HEADERS  += src/widgets/capture/buttonhandler.h \
     src/tools/imgur/imguruploader.h \
     src/widgets/loadspinner.h \
     src/widgets/imagelabel.h \
-    src/widgets/mypopup.h \
     src/widgets/notificationwidget.h \
     src/widgets/capture/notifierbox.h \
     src/utils/desktopinfo.h \
@@ -292,10 +245,14 @@ HEADERS  += src/widgets/capture/buttonhandler.h \
     src/core/capturerequest.h \
     src/tools/text/textconfig.h \
     src/widgets/panel/sidepanelwidget.h \
-    src/widgets/screenoption.h \
-    src/widgets/screenrecorder.h \
+    src/widgets/capture/fontsize_color_chose.h \
+    src/widgets/capture/fontsize_color_chose2.h \
+    src/widgets/capture/save_location.h \
+    src/widgets/capture/save_location2.h \
+    src/tools/options/options.h \
+    src/tools/save/saveastool.h \
     src/widgets/screentype.h \
-    src/widgets/widget.h
+#    src/widgets/widget.h
 
 unix:!macx {
     SOURCES += src/core/flameshotdbusadapter.cpp \
@@ -370,3 +327,7 @@ unix:!macx {
 
 # Imgur API data
 include(src/imgur.pri)
+
+if(contains(DEFINES, ENABLE_RECORD)) {
+        include(src/record/record.pri)
+}

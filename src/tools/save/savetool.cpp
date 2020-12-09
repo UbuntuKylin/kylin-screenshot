@@ -27,6 +27,15 @@ bool SaveTool::closeOnButtonPressed() const {
     return true;
 }
 
+QIcon SaveTool::icon(const QColor &background, bool inEditor) const {
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "content-save.svg");
+    Q_UNUSED(background);
+    /*return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-save.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");*/
+    return  QIcon();
+}
+#ifdef SUPPORT_UKUI
 QIcon SaveTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "content-save.svg");
@@ -35,6 +44,7 @@ QIcon SaveTool::icon(const QColor &background, bool inEditor , const CaptureCont
                       QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");*/
     return  QIcon();
 }
+#endif
 QString SaveTool::name() const {
     return tr("save");
 }

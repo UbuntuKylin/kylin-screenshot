@@ -32,6 +32,7 @@
 #include <QDesktopWidget>
 #include <QGSettings/qgsettings.h>
 #include "src/utils/systemnotification.h"
+//#include "Logger.h"
 #ifdef Q_OS_WIN
 #include "src/core/globalshortcutfilter.h"
 #endif
@@ -124,10 +125,18 @@ void Controller::requestCapture(const CaptureRequest &request) {
 
 // creation of a new capture in GUI mode
 void Controller::startVisualCapture(const uint id, const QString &forcedSavePath) {
+#ifdef SUPPORT_UKUI
     QGSettings *screen= new QGSettings("org.ukui.screenshot");
+//    if (!screen) {
+//        Logger::LogInfo("[Controller::startVisualCapture] " + Logger::tr("not support org.ukui.screenshot..."));
+//        exit(1);
+//    }
     QString screenshot = screen->get("screenshot").toString();
+#endif
     if (!m_captureWindow) {
+#ifdef SUPPORT_UKUI
         if (screenshot.compare("true")==0){
+#endif
             QWidget *modalWidget = nullptr;
             do {
                 modalWidget = qApp->activeModalWidget();
@@ -143,6 +152,7 @@ void Controller::startVisualCapture(const uint id, const QString &forcedSavePath
                 this, &Controller::captureFailed);
             connect(m_captureWindow, &CaptureWidget::captureTaken,
                 this, &Controller::captureTaken);
+#ifdef SUPPORT_UKUI
         }
         else
         {
@@ -152,13 +162,17 @@ void Controller::startVisualCapture(const uint id, const QString &forcedSavePath
                 this, &Controller::captureTaken);
             disableScreenCut();
         }
-
+#endif
 #ifdef Q_OS_WIN
         m_captureWindow->show();
 #else
+#ifdef SUPPORT_UKUI
         if (screenshot.compare("true")==0){
+#endif
             m_captureWindow->showFullScreen();
+#ifdef SUPPORT_UKUI
         }
+#endif
         //m_captureWindow->show(); // Debug
 #endif
     } else {

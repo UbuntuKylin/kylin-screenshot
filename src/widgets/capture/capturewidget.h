@@ -49,7 +49,11 @@ class ColorPicker;
 class Screenshot;
 class NotifierBox;
 class HoverEventFilter;
-class ScreenRecorder;
+#ifdef ENABLE_RECORD
+class ssrtools;
+class mypopup;
+#endif
+
 class CaptureWidget : public QWidget {
     Q_OBJECT
 
@@ -60,11 +64,14 @@ public:
                            QWidget *parent = nullptr);
     ~CaptureWidget();
     QString file;
-    void updateButtons();
+    void updateButtons(
+        #ifdef ENABLE_RECORD
+            bool isRecord = false
+        #endif
+            );
     QPixmap pixmap();
     QVector<CaptureButton*> vectorButtons;
     QPoint  *font_color_point;
-    ScreenRecorder *screenCap;
     void hide_window();
     void show_window();
 
@@ -81,6 +88,10 @@ signals:
     void captureFailed(uint id);
     void colorChanged(const QColor &c);
     void thicknessChanged(const int thickness);
+#ifdef ENABLE_RECORD
+    void rectReleased(QRect &rect);
+#endif
+
 private slots:
     // TODO replace with tools
     void copyScreenshot();
@@ -195,4 +206,18 @@ private:
     QPoint m_dragStartPoint;
     SelectionWidget::SideType m_mouseOverHandle;
     uint m_id;
+#ifdef ENABLE_RECORD
+    ssrtools *ssr;
+    mypopup *mp;
+    QPushButton *m_pushbutton_save, *m_pushbutton_cancel;
+
+    QMap<CaptureButton::ButtonType, CaptureTool*> m_activeButtons;
+    QMap<CaptureButton::ButtonType, CaptureTool*> m_isolatedButtons;
+
+private slots:
+    void record_save_clicked();
+    void record_cancel_clicked();
+
+#endif
+
 };
