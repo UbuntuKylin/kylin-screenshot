@@ -71,9 +71,6 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     m_previewEnabled(true), m_adjustmentButtonPressed(false), m_activeButton(nullptr),
     m_activeTool(nullptr), m_toolWidget(nullptr),
     m_mouseOverHandle(SelectionWidget::NO_SIDE), m_id(id)
-#ifdef ENABLE_RECORD
-    ,m_activeButtons{}, m_isolatedButtons{}
-#endif
 {
     // Base config of the widget
     m_eventFilter = new HoverEventFilter(this);
@@ -153,10 +150,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     font_options = new  Font_Options(this);
     font_options2 = new Font_Options2(this);
 #ifdef ENABLE_RECORD
-    mp = new mypopup(this);
-    ssr = new ssrtools(this, mp);
-    m_pushbutton_save = new QPushButton(this);
-    m_pushbutton_cancel = new QPushButton(this);
+    recorder = new Recorder(this);
 #endif
 
     connect(m_colorPicker, &ColorPicker::colorSelected,
@@ -199,10 +193,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
                 this,&CaptureWidget::ClickedSaveType);
     connect(save_location2,&Save_Location2::save_type_clicked,
                 this,&CaptureWidget::ClickedSaveType2);
-#ifdef ENABLE_RECORD
-    connect(m_pushbutton_cancel, SIGNAL(clicked()), this, SLOT(record_cancel_clicked()));
-    connect(m_pushbutton_save, SIGNAL(clicked()), this, SLOT(record_save_clicked()));
-#endif
+
     m_colorPicker->hide();
     font_color->setStartPos(95);
     font_color->setTriangleInfo(20, 10);
@@ -242,14 +233,14 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     m_notifierBox = new NotifierBox(this);
     m_notifierBox->hide();
 #ifdef ENABLE_RECORD
-    m_pushbutton_cancel->setFixedSize(QSize(50, 50));
-    m_pushbutton_cancel->move(200, 100);
-    m_pushbutton_cancel->setText(QString::fromUtf8("cancel"));
-    m_pushbutton_save->setFixedSize(QSize(50, 50));
-    m_pushbutton_save->setText(QString::fromUtf8("save"));
-    m_pushbutton_save->move(300, 100);
-    m_pushbutton_cancel->hide();
-    m_pushbutton_save->hide();
+    recorder->m_pushbutton_cancel->setFixedSize(QSize(50, 50));
+    recorder->m_pushbutton_cancel->move(200, 100);
+    recorder->m_pushbutton_cancel->setText(QString::fromUtf8("cancel"));
+    recorder->m_pushbutton_save->setFixedSize(QSize(50, 50));
+    recorder->m_pushbutton_save->setText(QString::fromUtf8("save"));
+    recorder->m_pushbutton_save->move(300, 100);
+    recorder->m_pushbutton_cancel->hide();
+    recorder->m_pushbutton_save->hide();
 #endif
     font_color_point = new QPoint();
     connect(&m_undoStack, &QUndoStack::indexChanged,
@@ -309,12 +300,7 @@ void CaptureWidget::updateButtons(
         }
         makeChild(b);
 #ifdef ENABLE_RECORD
-        if (b->tool()->getIsInitActive()) {
-            m_activeButtons.insert(b->m_buttonType, b->tool());
-        }
-        if (b->tool()->getIsIsolated()) {
-            m_isolatedButtons.insert(b->m_buttonType, b->tool());
-        }
+        recorder->updateRecordButtons_sth(b);
 #endif
         connect(b, &CaptureButton::pressedButton, this, &CaptureWidget::setState);
         connect(b->tool(), &CaptureTool::requestAction,
@@ -770,7 +756,7 @@ void CaptureWidget::mouseReleaseEvent(QMouseEvent *e) {
         }
         m_selection->setGeometry(newGeometry);
 #ifdef ENABLE_RECORD
-        emit rectReleased(newGeometry);//bybobbi
+        recorder->ssr->OnUpdateVideoAreaFields_(newGeometry);//bybobbi
 #endif
         m_context.selection = extendedRect(&newGeometry);
         updateSizeIndicator();
@@ -1100,6 +1086,19 @@ void CaptureWidget::setState(CaptureButton *b) {
                  w->show();
              }
              break;
+#ifdef ENABLE_RECORD
+         case CaptureTool::REQ_CURSOR_RECORD: {
+            recorder->OnRecordCursorClicked();
+            break;
+         }
+         case CaptureTool::REQ_OPTION_RECORD:
+             recorder->OnRecordOptionClicked();
+            break;
+
+         case CaptureTool::REQ_START_RECORD:
+             recorder->OnRecordStartClicked();
+            break;
+#endif
          default:
              break;
          }
@@ -1292,24 +1291,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                       r->width()  * devicePixelRatio,
                       r->height() * devicePixelRatio);
      }
-
-#ifdef ENABLE_RECORD
-     void CaptureWidget::record_save_clicked()
-     {
-        m_pushbutton_cancel->hide();
-        m_pushbutton_save->hide();
-//        syslog(LOG_INFO, "will save, cancel and save button hide");
-        ssr->OnRecordSave();
-     }
-
-     void CaptureWidget::record_cancel_clicked()
-     {
-        m_pushbutton_cancel->hide();
-        m_pushbutton_save->hide();
-//        syslog(LOG_INFO, "will save, cancel and save button hide");
-        ssr->OnRecordCancel();
-     }
-#endif
 
      void CaptureWidget::ClickedSaveAsFile()
      {

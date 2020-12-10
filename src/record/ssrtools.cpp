@@ -46,15 +46,11 @@ ENUMSTRINGS(ssr::enum_audio_codec) = {
     {ssr::enum_audio_codec::AUDIO_CODEC_OTHER, "other"},
 };
 
-static CaptureWidget *cw = nullptr;
-
 ssrtools::ssrtools(QWidget *parent, mypopup *myp) :
     QWidget(parent),
     ui(new Ui::ssrtools),
     mp(myp)
 {
-    cw = dynamic_cast<CaptureWidget*>(parent);
-
     ui->setupUi(this);
     this->hide();
     setStyle();
@@ -132,8 +128,6 @@ void ssrtools::Input_init()
     connect(ui->m_spinbox_video_h, SIGNAL(focusOut()), this, SLOT(OnUpdateRecordingFrame()));
     connect(ui->m_spinbox_video_h, SIGNAL(valueChanged(int)), this, SLOT(OnUpdateRecordingFrame()));
 
-
-    connect(cw, &CaptureWidget::rectReleased, this, &ssrtools::OnUpdateVideoAreaFields_);
 
     m_combobox_pulseaudio_source = new QComboBox;
     LoadPulseAudioSources();
