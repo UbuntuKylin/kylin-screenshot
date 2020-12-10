@@ -37,6 +37,7 @@ HEADERS += \
 #    $$PWD/../widgets/capture/buttonhandercap.h \
 #    $$PWD/../widgets/capture/capturebuttoncap.h \
     $$PWD/mypopup.h \
+    $$PWD/recorder.h \
     $$PWD/ssrtools.h \
  \#    $$PWD/myrecord.h
 
@@ -88,6 +89,7 @@ SOURCES += \
 #    $$PWD/../widgets/capture/capturebuttoncap.cpp \
     $$PWD/../record/mypopup.cpp \
     $$PWD/../record/ssrtools.cpp \
+    $$PWD/recorder.cpp
 
 FORMS += \
     $$PWD/mypopup.ui \
