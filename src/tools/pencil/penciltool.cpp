@@ -31,16 +31,15 @@ QIcon PencilTool::icon(const QColor &background, bool inEditor) const {
 }
 #ifdef SUPPORT_UKUI
 QIcon PencilTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
-    //Q_UNUSED(inEditor);
-    //return QIcon(iconPath(background) + "pencil.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pencil.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "pencil.svg");
-    }
-    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pencil.svg") :
                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "pencil.png");
+    }
+    //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
+    else{
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pencil.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "pencil.svg");
     }
 }
 #endif

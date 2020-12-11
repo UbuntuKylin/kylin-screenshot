@@ -62,6 +62,7 @@ public:
                            bool fullScreen = true,
                            QWidget *parent = nullptr);
     ~CaptureWidget();
+
     QString file;
     void updateButtons(
         #ifdef ENABLE_RECORD
@@ -180,6 +181,7 @@ private:
     void show_Save_Location_Window(CaptureButton *b);
     void show_Font_Options_Window(CaptureButton *b);
     void deal_with_SaveAs(CaptureButton *b);
+    void updateMagnifier(CaptureContext m_context);
 
     QRect extendedSelection() const;
     QRect extendedRect(QRect *r) const;
@@ -202,6 +204,8 @@ private:
     QPoint m_dragStartPoint;
     SelectionWidget::SideType m_mouseOverHandle;
     uint m_id;
+    int magnifier_x;
+    int magnifier_y;
 #ifdef ENABLE_RECORD
     Recorder *recorder;
 #endif
