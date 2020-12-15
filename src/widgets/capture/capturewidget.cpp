@@ -348,38 +348,16 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
     }
     if (m_context.mousePos.x() >= 0 && m_context.mousePos.x()-144 <= qApp->desktop()->screenGeometry().width()
             && m_context.mousePos.y() >= 0 &&m_context.mousePos.y()-144 <= qApp->desktop()->screenGeometry().height())
-           {
-               if (!m_selection->isVisible()) {
-                   painter.setOpacity(0.5);
-                   if(m_context.mousePos.y()+144>=qApp->desktop()->screenGeometry().height())
-                   {
-                          if(m_context.mousePos.x()+144<=qApp->desktop()->screenGeometry().width()){
-                                painter.drawPixmap(m_context.mousePos.x()+25,m_context.mousePos.y()-129,crosspixmap);
-                                painter.drawText(m_context.mousePos.x()+25,m_context.mousePos.y()-9,tr("%1 , %2")
-                                     .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
-                          }
-                          else
-                          {
-                                  painter.drawPixmap(m_context.mousePos.x()-144,m_context.mousePos.y()-144,crosspixmap);
-                                  painter.drawText(m_context.mousePos.x()-144,m_context.mousePos.y()-24,tr("%1 , %2")
-                                     .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
-                          }
-                   }
-                   else{
-                           if(m_context.mousePos.x()+144>=qApp->desktop()->screenGeometry().width()){
-                                painter.drawPixmap(m_context.mousePos.x()-144,m_context.mousePos.y()+10,crosspixmap);
-                                painter.drawText(m_context.mousePos.x()-144,m_context.mousePos.y()+130,tr("%1 , %2")
-                                     .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
-                          }
-                           else{
-                                painter.drawPixmap(m_context.mousePos.x()+25,m_context.mousePos.y()+25,crosspixmap);
-                                painter.drawText(m_context.mousePos.x()+25,m_context.mousePos.y()+145,tr("%1 , %2")
-                                     .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
-                           }
-                   }
-               }
-               update();
-            }
+    {
+        if (!m_selection->isVisible()) {
+            painter.setOpacity(0.5);
+            updateMagnifier(m_context);
+            painter.drawPixmap(magnifier_x,magnifier_y,crosspixmap);
+            painter.drawText(magnifier_x+20,magnifier_y+120,tr("%1 , %2")
+                            .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+            update();
+        }
+    }
     QColor overlayColor(0, 0, 0, m_opacity);
     painter.setBrush(overlayColor);
     QRect r;
@@ -400,16 +378,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         painter.setRenderHint(QPainter::Antialiasing);
         painter.setOpacity(0.5);
         // draw capture size
-        if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
-        painter.setBrush(QColor(195,195,195));
-        painter.drawRoundRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,
-                              82,24,4,4);
-        painter.setPen(Qt::black);
-        painter.setFont(ft);
-        painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
-                         .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
-        }
-        else if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
+        if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
             painter.setBrush(QColor(0,0,0));
             painter.drawRoundRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,
                                   82,24,4,4);
@@ -418,34 +387,41 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
                              .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
         }
+        else{
+            painter.setBrush(QColor(195,195,195));
+            painter.drawRoundRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,
+                              82,24,4,4);
+            painter.setPen(Qt::black);
+            painter.setFont(ft);
+            painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
+                         .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
+        }
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
 #ifndef ENABLE_RECORD
-            if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
-                painter.setBrush(QColor(200,200,200));
-                painter.setPen(QColor(200,200,200));
-                //rect
-                QRect rr = QRect(vectorButtons.first()->pos().x()-15,vectorButtons.first()->pos().y(),
-                             735,44);
-                QRect r1 = rr.adjusted(1,1,-1,-1);
-                painter.setOpacity(0);
-                QPixmap p = m_context.origScreenshot.copy(r1);
-                auto pixelRatio = p.devicePixelRatio();
+            QRect rr = QRect(vectorButtons.first()->pos().x()-15,vectorButtons.first()->pos().y(),
+                         735,44);
+            QRect r1 = rr.adjusted(1,1,-1,-1);
+            painter.setOpacity(0.8);
+            QPixmap p = m_context.origScreenshot.copy(r1);
+            auto pixelRatio = p.devicePixelRatio();
 
-                QRect selection = QRect(r1.topLeft(), r1.bottomRight()).normalized();
-                QRect selectionScaled = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
+            QRect selection = QRect(r1.topLeft(), r1.bottomRight()).normalized();
+            QRect selectionScaled = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
 
-                QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
-                blur->setBlurRadius(10);
-                QGraphicsPixmapItem *item = new QGraphicsPixmapItem (
-                                          p.copy(selectionScaled));
-                item->setGraphicsEffect(blur);
+            QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+            blur->setBlurRadius(10);
+            QGraphicsPixmapItem *item = new QGraphicsPixmapItem (
+                                      p.copy(selectionScaled));
+            item->setGraphicsEffect(blur);
 
-                QGraphicsScene scene;
-                scene.addItem(item);
-                scene.render(&painter, selection, QRectF());
-                blur->setBlurRadius(10);
-                scene.render(&painter, selection, QRectF());
-                //scene.render(&painter, selection, QRectF());
+            QGraphicsScene scene;
+            scene.addItem(item);
+            scene.render(&painter, selection, QRectF());
+            blur->setBlurRadius(10);
+            scene.render(&painter, selection, QRectF());
+            if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
+                painter.setBrush(QColor(0,0,0));
+                painter.setPen(QColor(0,0,0));
                 painter.setOpacity(0.66);
                 painter.drawRoundRect(rr,6,6);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
@@ -455,6 +431,33 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                                     GlobalValues::buttonBaseSize()/2,
                                     GlobalValues::buttonBaseSize()/2);
 
+                QPainterPath path;
+                QColor color(92,93,95,50);
+                painter.setOpacity(0.8);
+                QColor rectColor2(QColor(0,98,240));
+                painter.setBrush(rectColor2);
+                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
+
+                //两个分隔符
+                painter.setBrush(QColor(0,0,0,100));
+                painter.setPen(QColor(0,0,0,100));
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,vectorButtons.first()->pos().y()+14, 1, 16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,vectorButtons.first()->pos().y()+14, 1,16);
+                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
+                painter.setOpacity(0.5);
+            }
+            //if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
+            else{
+                painter.setBrush(QColor(200,200,200));
+                painter.setPen(QColor(200,200,200));
+                painter.setOpacity(0.66);
+                painter.drawRoundRect(rr,6,6);
+                painter.drawRoundedRect(vectorButtons.last()->pos().x(),
+                                    vectorButtons.last()->pos().y(),
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize()/2,
+                                    GlobalValues::buttonBaseSize()/2);
                 QPainterPath path;
                 QColor color(92,93,95,50);
                 painter.setOpacity(0.8);
@@ -471,55 +474,6 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setOpacity(0.5);
             }
-            else if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
-                painter.setBrush(QColor(0,0,0));
-                painter.setPen(QColor(0,0,0));
-                painter.setOpacity(0.66);
-                QRect rr = QRect(vectorButtons.first()->pos().x()-15,vectorButtons.first()->pos().y(),
-                             735,44);
-                QRect r1 = rr.adjusted(2,2,-2,-2);
-                QPixmap p = m_context.origScreenshot.copy(r1);
-                auto pixelRatio = p.devicePixelRatio();
-
-                QRect selection = QRect(r1.topLeft(), r1.bottomRight()).normalized();
-                QRect selectionScaled = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
-
-                QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
-                blur->setBlurRadius(10);
-                QGraphicsPixmapItem *item = new QGraphicsPixmapItem (
-                                          p.copy(selectionScaled));
-                item->setGraphicsEffect(blur);
-
-                QGraphicsScene scene;
-                scene.addItem(item);
-
-                scene.render(&painter, selection, QRectF());
-                blur->setBlurRadius(12);
-                scene.render(&painter, selection, QRectF());
-                scene.render(&painter, selection, QRectF());
-                painter.drawRoundRect(rr,6,6);
-                painter.drawRoundedRect(vectorButtons.last()->pos().x(),
-                                    vectorButtons.last()->pos().y(),
-                                    GlobalValues::buttonBaseSize(),
-                                    GlobalValues::buttonBaseSize(),
-                                    GlobalValues::buttonBaseSize()/2,
-                                    GlobalValues::buttonBaseSize()/2);
-
-                QPainterPath path;
-                QColor color(92,93,95,50);
-                painter.setOpacity(0.8);
-                QColor rectColor2(QColor(0,98,240));
-                painter.setBrush(rectColor2);
-                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
-
-                //两个分隔符
-                painter.setBrush(QColor(0,0,0,100));
-                painter.setPen(QColor(0,0,0,100));
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,vectorButtons.first()->pos().y()+14, 1, 16);
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,vectorButtons.first()->pos().y()+14, 1,16);
-                painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
-                painter.setOpacity(0.5);
-            }
 #endif
         }
         update();
@@ -530,6 +484,34 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
     }
 }
 
+void CaptureWidget::updateMagnifier(CaptureContext m_context){
+    int x = m_context.mousePos.x();
+    int y = m_context.mousePos.y();
+    if(y+144>=qApp->desktop()->screenGeometry().height())
+    {
+
+           if(x+144<=qApp->desktop()->screenGeometry().width()){
+                 magnifier_x =x+25;
+                 magnifier_y =y-129;
+           }
+           else
+           {
+                  magnifier_x = x-144;
+                  magnifier_y = y-144;
+           }
+    }
+    else{
+            if(x+144>=qApp->desktop()->screenGeometry().width()){
+                magnifier_x = x-144;
+                magnifier_y = y+10;
+           }
+            else{
+                magnifier_x = x+25;
+                magnifier_y = y+25;
+            }
+    }
+
+}
 void CaptureWidget::mousePressEvent(QMouseEvent *e) {
     update();
     if (e->button() == Qt::RightButton) {
@@ -586,7 +568,7 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     w = 26;
     h = 26;
    //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
-    mypixmap = mypixmap.grabWidget(this,e->pos().x(),e->pos().y(),w,h);
+    mypixmap = mypixmap.grabWidget(this,e->pos().x()-10,e->pos().y()-10,w,h);
     QImage crosstmp=mypixmap.toImage();
     QRgb value = qRgb(0,0,255);
     for(int i=0;i<w;i++)
@@ -883,6 +865,7 @@ void CaptureWidget::initPanel() {
             sidePanel, &SidePanelWidget::updateThickness);
     connect(sidePanel, &SidePanelWidget::togglePanel,
             m_panel, &UtilityPanel::toggle);
+
     sidePanel->colorChanged(m_context.color);
     sidePanel->thicknessChanged(m_context.thickness);
     m_panel->pushWidget(sidePanel);
