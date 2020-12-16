@@ -1478,7 +1478,7 @@ void CaptureWidget::setState(CaptureButton *b) {
           }
           else if (i >= 30)
           {
-              font_color2->color_rect =font_color->m_colorAreaList.at(3);
+              font_color2->color_rect =font_color2->m_colorAreaList.at(3);
           }
           else
           {
@@ -1498,11 +1498,11 @@ void CaptureWidget::setState(CaptureButton *b) {
      void CaptureWidget::savetype_chose2_default()
      {
          if(m_context.saveType == ".jpg")
-             save_location2->type_rect = save_location->m_TypeList.at(0);
+             save_location2->type_rect = save_location2->m_TypeList.at(0);
          else if(m_context.saveType == ".bmp")
-             save_location2->type_rect = save_location->m_TypeList.at(2);
+             save_location2->type_rect = save_location2->m_TypeList.at(2);
          else
-             save_location2->type_rect = save_location->m_TypeList.at(1);
+             save_location2->type_rect = save_location2->m_TypeList.at(1);
          save_location2->SaveDir->setText(m_context.savePath);
      }
      void CaptureWidget::hide_window()
