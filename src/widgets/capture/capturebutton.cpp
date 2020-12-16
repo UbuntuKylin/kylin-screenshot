@@ -152,7 +152,13 @@ QString CaptureButton::styleSheet() const {
 
 // get icon returns the icon for the type of button
 QIcon CaptureButton::icon() const {
-    return m_tool->icon(m_mainColor, false,m_context);
+    return m_tool->icon(m_mainColor,
+                    #ifdef ENABLE_RECORD
+                        m_tool->getIsInitActive()
+                    #else
+                        false
+                    #endif
+                        ,m_context);
 }
 
 void CaptureButton::mousePressEvent(QMouseEvent *e) {

@@ -3,7 +3,7 @@
 AudioRecordTool::AudioRecordTool(QObject *parent) : AbstractActionTool(parent)
 {
     setIsInitActive(true);
-    setIsIsolated(true);
+    setIsPressed(true);
 }
 
 bool AudioRecordTool::closeOnButtonPressed() const
@@ -14,6 +14,11 @@ bool AudioRecordTool::closeOnButtonPressed() const
 QString AudioRecordTool::name() const
 {
     return tr("AudioRecord");
+}
+
+bool AudioRecordTool::isIsolated() const
+{
+    return true;
 }
 
 QIcon AudioRecordTool::icon(const QColor &background, bool inEditor) const

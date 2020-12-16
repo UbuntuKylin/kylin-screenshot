@@ -11,6 +11,8 @@ public:
 
     QString name() const override;
 
+    bool isIsolated() const override;
+
     QIcon icon(const QColor &background, bool inEditor) const;
 #ifdef SUPPORT_UKUI
     QIcon icon(const QColor &background, bool inEditor,const CaptureContext &context) const override;
