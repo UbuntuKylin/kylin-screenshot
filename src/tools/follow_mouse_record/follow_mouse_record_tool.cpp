@@ -2,8 +2,6 @@
 
 FollowMouseRecordTool::FollowMouseRecordTool(QObject *parent) : AbstractActionTool(parent)
 {
-    setIsInitActive(false);
-    setIsIsolated(true);
 }
 
 bool FollowMouseRecordTool::closeOnButtonPressed() const
@@ -14,6 +12,11 @@ bool FollowMouseRecordTool::closeOnButtonPressed() const
 QString FollowMouseRecordTool::name() const
 {
     return tr("FollowMouseRecord");
+}
+
+bool FollowMouseRecordTool::isIsolated() const
+{
+    return true;
 }
 
 QIcon FollowMouseRecordTool::icon(const QColor &background, bool inEditor) const

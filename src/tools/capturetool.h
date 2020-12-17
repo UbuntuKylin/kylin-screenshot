@@ -93,6 +93,25 @@ public:
     // Enable mouse preview.
     virtual bool showMousePreview() const = 0;
 
+    //only for record buttons
+    virtual bool isIsolated() const {
+        return false;
+    }
+#ifdef ENABLE_RECORD
+    virtual void setIsInitActive(bool isInitActive) {
+        m_isInitActive = isInitActive;
+    }
+    virtual bool getIsInitActive() const {
+        return m_isInitActive;
+    }
+    virtual void setIsPressed(bool isPressed) {
+        m_isPressed = isPressed;
+    }
+    virtual bool getIsPressed() {
+        return m_isPressed;
+    }
+#endif
+
     // The icon of the tool.
     // inEditor is true when the icon is requested inside the editor
     // and false otherwise.
@@ -140,21 +159,6 @@ public:
     // When the tool is selected, this is called when the mouse moves
     virtual void paintMousePreview(QPainter &painter, const CaptureContext &context) = 0;
 
-#ifdef ENABLE_RECORD
-    virtual void setIsInitActive(bool isActive) {
-        m_isInitActive = isActive;
-    }
-    virtual bool getIsInitActive() {
-        return m_isInitActive;
-    }
-    virtual void setIsIsolated(bool isIsolated) {
-        m_isIsolated = isIsolated;
-    }
-    virtual bool getIsIsolated() {
-        return m_isIsolated;
-    }
-#endif
-
 signals:
     void requestAction(Request r);
 
@@ -164,8 +168,9 @@ protected:
                     PathInfo::whiteIconPath() : PathInfo::blackIconPath();
     }*/
 #ifdef ENABLE_RECORD
+    //well, these two variables do not take up too much space, maybe optimize in the future
+    bool m_isPressed = false;
     bool m_isInitActive = false;
-    bool m_isIsolated = false;
 #endif
 
 public slots:
@@ -186,4 +191,10 @@ public slots:
     virtual void colorChanged(const QColor &c) = 0;
     // Called when the thickness of the tool is updated in the editor.
     virtual void thicknessChanged(const int th) = 0;
+
+#ifdef ENABLE_RECORD
+    virtual void pressCalled() {
+        m_isPressed = !m_isPressed;
+    }
+#endif
 };

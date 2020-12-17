@@ -71,6 +71,9 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     m_previewEnabled(true), m_adjustmentButtonPressed(false), m_activeButton(nullptr),
     m_activeTool(nullptr), m_toolWidget(nullptr),
     m_mouseOverHandle(SelectionWidget::NO_SIDE), m_id(id)
+  #ifdef ENABLE_RECORD
+    , m_isolatedButtons{}
+  #endif
 {
     // Base config of the widget
     m_eventFilter = new HoverEventFilter(this);
@@ -300,7 +303,10 @@ void CaptureWidget::updateButtons(
         }
         makeChild(b);
 #ifdef ENABLE_RECORD
-        recorder->updateRecordButtons_sth(b);
+        if (b->tool()->isIsolated()) {
+            m_isolatedButtons.insert(b->m_buttonType, b->tool());
+        }
+
 #endif
         connect(b, &CaptureButton::pressedButton, this, &CaptureWidget::setState);
         connect(b->tool(), &CaptureTool::requestAction,
@@ -884,6 +890,9 @@ void CaptureWidget::setState(CaptureButton *b) {
     if (!b) {
         return;
     }
+#ifdef ENABLE_RECORD
+    b->tool()->pressCalled();
+#endif
     m_context.style_name = m_context.style_settings->get("style-name").toString();
     if (m_toolWidget) {
         m_toolWidget->deleteLater();
@@ -908,23 +917,41 @@ void CaptureWidget::setState(CaptureButton *b) {
             m_panel->addToolWidget(confW);
             if (m_activeButton) {
                 m_activeButton->setColor(m_uiColor);
+#ifdef ENABLE_RECORD
+                if (!m_isolatedButtons[m_activeButton->m_buttonType]) {
+#endif
                 m_activeButton->setIcon(m_activeButton->tool()->icon(m_uiColor,false,m_context));
-             }
-             show_childwindow(b);
-             m_activeButton = b;
-             b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
-             m_activeButton->setColor(m_contrastUiColor);
-             }
+#ifdef ENABLE_RECORD
+                m_activeButton->tool()->setIsPressed(false);
+                }
+#endif
+            }
+            show_childwindow(b);
+            m_activeButton = b;
+#ifdef ENABLE_RECORD
+            b->setIcon(b->tool()->icon(m_contrastUiColor, b->tool()->getIsPressed(),m_context));
+#else
+            b->setIcon(b->tool()->icon(m_contrastUiColor,true,m_context));
+#endif
+            m_activeButton->setColor(m_contrastUiColor);
+        }
         else if (m_activeButton) {
-                 m_panel->clearToolWidget();
-                 m_activeButton->setColor(m_uiColor);
-                 b->setIcon(b->tool()->icon(m_uiColor,false,m_context));
-                 hide_ChildWindow();
-                 m_activeButton = nullptr;
-             }
-             update(); // clear mouse preview
-         }
-   }
+            m_panel->clearToolWidget();
+            m_activeButton->setColor(m_uiColor);
+#ifdef ENABLE_RECORD
+            b->setIcon(b->tool()->icon(m_contrastUiColor, b->tool()->getIsPressed(),m_context));
+#else
+            b->setIcon(b->tool()->icon(m_uiColor,false,m_context));
+#endif
+            hide_ChildWindow();
+            m_activeButton = nullptr;
+        }
+#ifdef ENABLE_RECORD
+        record_do_sth(b);
+#endif
+        update(); // clear mouse preview
+    }
+}
 
      void CaptureWidget::processTool(CaptureTool *t) {
          auto backup = m_activeTool;
@@ -1070,17 +1097,18 @@ void CaptureWidget::setState(CaptureButton *b) {
              }
              break;
 #ifdef ENABLE_RECORD
-         case CaptureTool::REQ_CURSOR_RECORD: {
-            recorder->OnRecordCursorClicked();
-            break;
-         }
+         case CaptureTool::REQ_CURSOR_RECORD:
+             break;
+         case CaptureTool::REQ_AUDIO_RECORD:
+             break;
+         case CaptureTool::REQ_FOLLOW_MOUSE_RECORD:
+             break;
          case CaptureTool::REQ_OPTION_RECORD:
              recorder->OnRecordOptionClicked();
-            break;
-
+             break;
          case CaptureTool::REQ_START_RECORD:
              recorder->OnRecordStartClicked();
-            break;
+             break;
 #endif
          default:
              break;
@@ -1516,7 +1544,7 @@ void CaptureWidget::setState(CaptureButton *b) {
              {
                  activateWindow(); //设置成活动窗口
              }
-	 setWindowFlags(Qt::BypassWindowManagerHint
+     setWindowFlags(Qt::BypassWindowManagerHint
                        | Qt::WindowStaysOnTopHint
                        | Qt::FramelessWindowHint
                        | Qt::Tool);
@@ -1532,6 +1560,23 @@ void CaptureWidget::setState(CaptureButton *b) {
                  font_options2->hide();
                  SaveAs_btn->hide();
          }
+#ifdef ENABLE_RECORD
+         void CaptureWidget::record_do_sth(CaptureButton *b)
+         {
+             int i = b->m_buttonType;
+             switch(i) {
+             case CaptureButton::TYPE_RECORD_CURSOR:
+                 recorder->OnRecordCursorClicked(b->tool()->getIsPressed());
+                 break;
+             case CaptureButton::TYPE_RECORD_FOLLOW_MOUSE:
+                 recorder->OnRecordFollowMouseClicked(b->tool()->getIsPressed());
+                 break;
+             case CaptureButton::TYPE_RECORD_AUDIO:
+                 recorder->OnRecordAudioClicked(b->tool()->getIsPressed());
+                 break;
+             }
+         }
+#endif
          void CaptureWidget::show_childwindow(CaptureButton *b)
          {
              int i = b->m_buttonType;
