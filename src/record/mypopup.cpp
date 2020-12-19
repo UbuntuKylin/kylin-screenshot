@@ -6,6 +6,7 @@
 
 #include <QFileDialog>
 #include <QGroupBox>
+#include "Logger.h"
 
 #include "common/utils.h"
 

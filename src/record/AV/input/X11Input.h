@@ -22,6 +22,8 @@
 
 #include "AV/SourceSink.h"
 #include "common/MutexDataPair.h"
+
+#include "my_x.h"
 class X11Input : public VideoSource
 {
 private:

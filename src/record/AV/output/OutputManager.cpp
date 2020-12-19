@@ -19,6 +19,7 @@
 */
 #include "OutputManager.h"
 #include "src/common/Logger.h"
+#include "my_qt.h"
 
 const size_t OutputManager::THROTTLE_THRESHOLD_FRAMES = 20;
 const size_t OutputManager::THROTTLE_THRESHOLD_PACKETS = 100;

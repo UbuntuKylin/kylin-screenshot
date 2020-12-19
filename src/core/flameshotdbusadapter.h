@@ -18,7 +18,6 @@
 #pragma once
 
 #include <QtDBus/QDBusAbstractAdaptor>
-#include "src/core/controller.h"
 
 class FlameshotDBusAdapter : public QDBusAbstractAdaptor {
     Q_OBJECT

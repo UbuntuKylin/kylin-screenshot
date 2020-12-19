@@ -16,18 +16,9 @@
 */
 
 #include "geneneralconf.h"
-#include "src/utils/confighandler.h"
+#include "my_qt.h"
 #include "src/utils/confighandler.h"
 #include "src/core/controller.h"
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QFile>
-#include <QTextCodec>
-#include <QGroupBox>
 
 GeneneralConf::GeneneralConf(QWidget *parent) : QWidget(parent) {
     m_layout = new QVBoxLayout(this);

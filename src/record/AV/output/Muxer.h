@@ -32,7 +32,7 @@
 #define MUXER_MAX_STREAMS 2
 
 #include "Global.h"
-
+#include "my_av.h"
 
 #define MUXER_MAX_STREAMS 2
 

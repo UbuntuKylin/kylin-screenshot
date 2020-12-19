@@ -1,19 +1,18 @@
 #include "ssrtools.h"
 #include "ui_ssrtools.h"
 //#include "Input_Widgets.h"
-#include <QDebug>
-
-#include <QFile>
-
-
+#include "my_qt.h"
 #include "common/utils.h"
 #include "CommandLineOptions.h"
 #include "common/EnumStrings.h"
-#include "AV/input/X11Input.h"
 
 #include "mypopup.h"
 
 #include "../widgets/capture/capturewidget.h"
+#include "Logger.h"
+
+#include "AV/input/X11Input.h"
+#include "common/X_utils.hpp"
 
 #include <syslog.h>
 

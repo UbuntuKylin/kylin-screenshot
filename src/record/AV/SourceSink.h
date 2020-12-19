@@ -21,7 +21,7 @@
 #include <vector>
 
 #include "Global.h"
-#include "AV/AVWrapper.h"
+#include "my_av.h"
 #include "common/MutexDataPair.h"
 
 #define SINK_TIMESTAMP_NONE ((int64_t) 0x8000000000000000ull)

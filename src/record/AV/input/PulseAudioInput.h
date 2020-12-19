@@ -19,6 +19,7 @@
 #define PULSEAUDIOINPUT_H
 
 #include "Global.h"
+#include "my_qt.h"
 #if SSR_USE_PULSEAUDIO
 #include "AV/SourceSink.h"
 #include "common/MutexDataPair.h"
