@@ -379,11 +379,15 @@ void ButtonHandler::moveButtonsToPoints(
     for (const QPoint &p: points) {
         auto button = m_vectorButtons[index];
         switch (index) {
+#ifndef SUPPORT_NEWUI
         case CaptureButton::TYPR_UNDO:
             button->move(p.x()+29,p.y());
             break;
         case CaptureButton::TYPE_OPTION:
             button->move(p.x()+19,p.y());
+            break;
+        case CaptureButton::TYPE_SAVEAS:
+            button->move(p.x()+106,p.y());
             break;
         case CaptureButton::TYPE_CLOSE:
         case CaptureButton::TYPE_COPY:
@@ -392,9 +396,17 @@ void ButtonHandler::moveButtonsToPoints(
         case CaptureButton::TYPE_SAVE:
             button->move(p.x()+108,p.y());
             break;
-        case CaptureButton::TYPE_SAVEAS:
-            button->move(p.x()+106,p.y());
+#else
+        case CaptureButton::TYPR_UNDO:
+        case CaptureButton::TYPE_CLOSE:
+        case CaptureButton::TYPE_COPY:
+            button->move(p.x()+29,p.y());
             break;
+        case CaptureButton::TYPE_SAVE:
+            button->move(p.x()+46,p.y());
+            break;
+#endif
+
         case CaptureButton::TYPE_PIN:
             if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
                    {

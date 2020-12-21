@@ -28,7 +28,6 @@
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
 #include <QApplication>
-
 // Button represents a single button of the capture widget, it can enable
 // multiple functionality.
 
@@ -39,6 +38,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     setCursor(Qt::ArrowCursor);
     updateIcon();
     QFont font ( "Noto Sans CJK Regular", 11, 25);
+#ifndef SUPPORT_NEWUI
     if (t == TYPE_OPTION)
     {
         QLabel *label = new  QLabel(this);
@@ -62,13 +62,16 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     }
     else
     {
+#endif
         if (t == TYPE_SAVE)
         {
             setFlat(false);
             setFont(font);
             setText(tr("Save"));
-        }       
+        }
+#ifndef SUPPORT_NEWUI
     }
+#endif
 }
 
 void CaptureButton::initButton() {
@@ -76,7 +79,7 @@ void CaptureButton::initButton() {
     m_context.style_name = m_context.style_settings->get("style-name").toString();
     m_tool = ToolFactory().CreateTool(m_buttonType, this);
     setFocusPolicy(Qt::NoFocus);
-
+#ifndef SUPPORT_NEWUI
     if (m_buttonType == CaptureButton::TYPE_OPTION)
     {
         resize(GlobalValues::buttonBaseSize()*2+12, GlobalValues::buttonBaseSize());
@@ -86,11 +89,14 @@ void CaptureButton::initButton() {
     }
     else
     {
-        resize(GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize());
-        setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()+2,
+#endif
+	resize(GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize());
+    	setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()+2,
                           GlobalValues::buttonBaseSize()+2),
-                     QRegion::Rectangle));
+                          QRegion::Rectangle));
+#ifndef SUPPORT_NEWUI
     }
+#endif
     setToolTip(m_tool->description());
     m_emergeAnimation = new  QPropertyAnimation(this, "size", this);
     m_emergeAnimation->setEasingCurve(QEasingCurve::InOutQuad);
@@ -214,21 +220,37 @@ static std::map<CaptureButton::ButtonType, int> buttonTypeOrder {
     {CaptureButton::  TYPE_RECORD_OPTION, 20 },
     {CaptureButton::  TYPE_RECORD_START,  21 },
 #else
-     { CaptureButton::  TYPE_RECT,         0 },
-     { CaptureButton:: TYPE_CIRCLE,        1 },
-     { CaptureButton::  TYPE_LINE,         2 },
-     { CaptureButton::  TYPE_ARROW,        3 },
-     { CaptureButton:: TYPE_PEN,           4 },
-     { CaptureButton:: TYPE_MARKER,        5 },
-     { CaptureButton::  TYPE_TEXT,         6 },
-     { CaptureButton::  TYPE_BLUR,         7 },
-     { CaptureButton:: TYPR_UNDO,          8 },
-     { CaptureButton:: TYPE_OPTION,        9 },
-     { CaptureButton:: TYPE_CLOSE,         10 },
-     { CaptureButton:: TYPE_COPY,          11 },
-     { CaptureButton:: TYPE_SAVE,          12 },
-     { CaptureButton:: TYPE_SAVEAS,        13 },
-     { CaptureButton:: TYPE_PIN,           14 },
+#ifdef SUPPORT_NEWUI
+    { CaptureButton::  TYPE_RECT,         0 },
+    { CaptureButton:: TYPE_CIRCLE,        1 },
+    { CaptureButton::  TYPE_LINE,         2 },
+    { CaptureButton::  TYPE_ARROW,        3 },
+    { CaptureButton:: TYPE_PEN,           4 },
+    { CaptureButton:: TYPE_MARKER,        5 },
+    { CaptureButton::  TYPE_TEXT,         6 },
+    { CaptureButton::  TYPE_BLUR,         7 },
+    { CaptureButton:: TYPR_UNDO,          8 },
+    { CaptureButton:: TYPE_CLOSE,         9 },
+    { CaptureButton:: TYPE_COPY,          10 },
+    { CaptureButton:: TYPE_SAVE,          11 },
+    { CaptureButton:: TYPE_PIN,           12 },
+#else
+    { CaptureButton::  TYPE_RECT,         0 },
+    { CaptureButton:: TYPE_CIRCLE,        1 },
+    { CaptureButton::  TYPE_LINE,         2 },
+    { CaptureButton::  TYPE_ARROW,        3 },
+    { CaptureButton:: TYPE_PEN,           4 },
+    { CaptureButton:: TYPE_MARKER,        5 },
+    { CaptureButton::  TYPE_TEXT,         6 },
+    { CaptureButton::  TYPE_BLUR,         7 },
+    { CaptureButton:: TYPR_UNDO,          8 },
+    { CaptureButton:: TYPE_OPTION,        9 },
+    { CaptureButton:: TYPE_CLOSE,         10 },
+    { CaptureButton:: TYPE_COPY,          11 },
+    { CaptureButton:: TYPE_SAVE,          12 },
+    { CaptureButton:: TYPE_SAVEAS,        13 },
+    { CaptureButton:: TYPE_PIN,           14 },
+#endif
 #endif
 };
 
@@ -251,11 +273,15 @@ QVector<CaptureButton::ButtonType> CaptureButton::iterableButtonTypes = {
     CaptureButton:: TYPE_TEXT,
     CaptureButton:: TYPE_BLUR,
     CaptureButton:: TYPR_UNDO,
+#ifndef SUPPORT_NEWUI
     CaptureButton:: TYPE_OPTION,
+#endif
     CaptureButton:: TYPE_CLOSE,
     CaptureButton:: TYPE_COPY,
     CaptureButton:: TYPE_SAVE,
+#ifndef SUPPORT_NEWUI
     CaptureButton:: TYPE_SAVEAS,
+#endif
     CaptureButton:: TYPE_PIN,
 #ifdef ENABLE_RECORD
     CaptureButton:: TYPE_RECORD_CURSOR,

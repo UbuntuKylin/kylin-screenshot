@@ -23,6 +23,7 @@
 //#include <QDebug>
 
 ConfigHandler::ConfigHandler(){
+    m_settings.clear();
     m_settings.setDefaultFormat(QSettings::IniFormat);
 }
 
@@ -58,11 +59,15 @@ QVector<CaptureButton::ButtonType> ConfigHandler::getButtons(
                << CaptureButton:: TYPE_TEXT
                << CaptureButton:: TYPE_BLUR
                << CaptureButton:: TYPR_UNDO
+   #ifndef SUPPORT_NEWUI
                << CaptureButton:: TYPE_OPTION
+   #endif
                << CaptureButton:: TYPE_CLOSE
                << CaptureButton:: TYPE_COPY
                << CaptureButton:: TYPE_SAVE
+   #ifndef SUPPORT_NEWUI
                << CaptureButton:: TYPE_SAVEAS
+   #endif
                << CaptureButton:: TYPE_PIN;
 #ifdef ENABLE_RECORD
         } else {

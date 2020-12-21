@@ -49,11 +49,15 @@ public:
         TYPE_TEXT,
         TYPE_BLUR,
         TYPR_UNDO,
+#ifndef SUPPORT_NEWUI
         TYPE_OPTION,
+#endif
         TYPE_CLOSE,
         TYPE_COPY,
         TYPE_SAVE,
+#ifndef SUPPORT_NEWUI
         TYPE_SAVEAS,
+#endif
         TYPE_PIN,
 #ifdef ENABLE_RECORD
         TYPE_RECORD_CURSOR,

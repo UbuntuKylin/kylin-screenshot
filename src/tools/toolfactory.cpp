@@ -92,9 +92,14 @@ CaptureTool* ToolFactory::CreateTool(
     case CaptureButton::TYPR_UNDO:
         tool = new UndoTool(parent);
         break;
+#ifndef SUPPORT_NEWUI
     case CaptureButton::TYPE_OPTION:
         tool = new Options(parent);
         break;
+    case CaptureButton::TYPE_SAVEAS:
+        tool = new SaveAsTool(parent);
+        break;
+#endif
     case CaptureButton::TYPE_CLOSE:
         tool = new ExitTool(parent);
         break;
@@ -106,9 +111,6 @@ CaptureTool* ToolFactory::CreateTool(
         break;
     case CaptureButton::TYPE_PIN:
         tool = new PinTool(parent);
-        break;
-    case CaptureButton::TYPE_SAVEAS:
-        tool = new SaveAsTool(parent);
         break;
 #ifdef ENABLE_RECORD
     case CaptureButton::TYPE_RECORD_CURSOR:

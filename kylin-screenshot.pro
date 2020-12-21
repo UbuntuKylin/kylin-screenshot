@@ -16,6 +16,7 @@ DEFINES += APP_VERSION=\\\"$$TAG_VERSION\\\"
 
 #DEFINES += ENABLE_RECORD
 DEFINES += SUPPORT_UKUI
+DEFINES += SUPPORT_NEWUI
 
 QT  += core gui widgets network svg x11extras KWindowSystem
 
