@@ -19,6 +19,8 @@
 #define COMMANDLINEOPTIONS_H
 
 #include "Global.h"
+#include "my_qt.h"
+#include "my_av.h"
 
 class CommandLineException : public std::exception {
 public:

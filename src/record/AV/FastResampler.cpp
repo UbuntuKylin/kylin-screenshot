@@ -19,6 +19,7 @@
 */
 #include "FastResampler.h"
 
+#include "my_av.h"
 #include "Logger.h"
 #include "common/CPUFeatures.h"
 

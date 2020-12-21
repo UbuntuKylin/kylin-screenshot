@@ -17,8 +17,10 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 *
 */
+#include "Logger.h"
 #include "X11Input.h"
-
+#undef max
+#undef min
 /*
 The code in this file is based on the MIT-SHM example code and the x11grab device in libav/ffmpeg (which is GPL):
 http://www.xfree86.org/current/mit-shm.html

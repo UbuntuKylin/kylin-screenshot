@@ -19,7 +19,7 @@
 */
 #include "SyncDiagram.h"
 #include <cmath>
-
+#include "my_qt.h"
 //constexpr int SyncDiagram::CHANNEL_HEIGHT, SyncDiagram::CHANNEL_SPACING, SyncDiagram::MARGIN_RIGHT;
 //constexpr double SyncDiagram::PIXELS_PER_SECOND;
 

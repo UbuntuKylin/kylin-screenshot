@@ -18,6 +18,7 @@
 *
 */
 #include "FastResampler_FirFilter.h"
+#include "my_qt.h"
 
 void FastResampler_FirFilter2_C1_Fallback(unsigned int channels, unsigned int filter_length, float* coef1, float* coef2, float frac, float* input, float* output) {
     Q_UNUSED(channels);

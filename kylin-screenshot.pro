@@ -6,7 +6,7 @@
 
 win32:LIBS += -luser32 -lshell32
 
-LIBS += -lavutil -lavformat -lavcodec -lswscale -lX11 -lXext -lXfixes -lXinerama -lpulse
+LIBS += -lavutil -lavformat -lavcodec -lswscale -lX11 -lXext -lXtst -lXfixes -lXinerama -lpulse
 
 TAG_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
 isEmpty(TAG_VERSION){
@@ -168,7 +168,7 @@ SOURCES += src/main.cpp \
     src/widgets/screentype.cpp \
 #    src/widgets/widget.cpp
 
-HEADERS  += src/widgets/capture/buttonhandler.h \
+HEADERS  += src/common/Global.h src/common/my_qt.h src/common/my_x.h src/common/my_av.h src/widgets/capture/buttonhandler.h \
     src/common/CommandLineOptions.h \
     src/common/Enum.h \
     src/common/Logger.h \
