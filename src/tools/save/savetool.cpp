@@ -62,6 +62,7 @@ CaptureTool* SaveTool::copy(QObject *parent) {
 }
 
 void SaveTool::pressed(const CaptureContext &context) {
+#ifndef SUPPORT_NEWUI
     QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
     if (context.savePath.isEmpty()) {
         emit requestAction(REQ_HIDE_GUI);
@@ -88,4 +89,20 @@ void SaveTool::pressed(const CaptureContext &context) {
            emit requestAction(REQ_CAPTURE_DONE_OK);
         }
     }
+#else
+    if (context.savePath.isEmpty()) {
+        emit requestAction(REQ_HIDE_GUI);
+        bool ok = ScreenshotSaver().saveToFilesystemGUI(
+                    context.selectedScreenshotArea());
+        if (ok) {
+            emit requestAction(REQ_CAPTURE_DONE_OK);
+        }
+    } else {
+        bool ok = ScreenshotSaver().saveToFilesystem(
+                    context.selectedScreenshotArea(), context.savePath);
+        if (ok) {
+            emit requestAction(REQ_CAPTURE_DONE_OK);
+        }
+    }
+#endif
 }

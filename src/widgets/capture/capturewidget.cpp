@@ -229,9 +229,11 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
 
     font_color->hide();
     font_color2->hide();
+#ifndef SUPPORT_NEWUI
     m_context.saveType =".png";
     QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
     m_context.savePath = a.at(0);
+#endif
     // Init notification widget
     m_notifierBox = new NotifierBox(this);
     m_notifierBox->hide();
@@ -289,11 +291,14 @@ void CaptureWidget::updateButtons(
                 );
     for (const CaptureButton::ButtonType &t: buttons) {
         CaptureButton *b = new CaptureButton(t, this);
+#ifndef SUPPORT_NEWUI
         if (t == CaptureButton::TYPE_OPTION) {
             m_sizeIndButton = b;
             m_sizeIndButton->setColor(Qt::black);
         }
-        else if (t == CaptureButton::TYPE_SAVE)
+        else
+#endif
+            if (t == CaptureButton::TYPE_SAVE)
         {
             b->setColor(Qt::black);
         }
@@ -405,7 +410,13 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
 #ifndef ENABLE_RECORD
             QRect rr = QRect(vectorButtons.first()->pos().x()-15,vectorButtons.first()->pos().y(),
-                         735,44);
+#ifndef SUPPORT_NEWUI
+                             735,44);
+#else
+                             612,44);
+#endif
+            //blur
+            {
             QRect r1 = rr.adjusted(1,1,-1,-1);
             painter.setOpacity(0.8);
             QPixmap p = m_context.origScreenshot.copy(r1);
@@ -425,6 +436,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             scene.render(&painter, selection, QRectF());
             blur->setBlurRadius(10);
             scene.render(&painter, selection, QRectF());
+        }
             if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
                 painter.setBrush(QColor(0,0,0));
                 painter.setPen(QColor(0,0,0));
@@ -442,14 +454,19 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.setOpacity(0.8);
                 QColor rectColor2(QColor(0,98,240));
                 painter.setBrush(rectColor2);
+#ifndef SUPPORT_NEWUI
                 painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
-
+#else
+                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,66,30,20,20);
+#endif
                 //两个分隔符
                 painter.setBrush(QColor(0,0,0,100));
                 painter.setPen(QColor(0,0,0,100));
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,vectorButtons.first()->pos().y()+14, 1, 16);
+#ifndef SUPPORT_NEWUI
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
+#endif
                 painter.setOpacity(0.5);
             }
             //if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
@@ -469,15 +486,21 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.setOpacity(0.8);
                 QColor rectColor2(QColor(0,98,240));
                 painter.setBrush(rectColor2);
+#ifndef SUPPORT_NEWUI
                 painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
+#else
+                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,66,30,20,20);
+#endif
                 //两个分隔符
                 painter.setBrush(QColor(0,0,0,100));
                 painter.setPen(QColor(0,0,0,100));
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,vectorButtons.first()->pos().y()+14, 1, 16);
+#ifndef SUPPORT_NEWUI
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.setBrush(QColor(255,255,255));
                 painter.setPen(QColor(255,255,255));
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
+#endif
                 painter.setOpacity(0.5);
             }
 #endif
@@ -1581,9 +1604,6 @@ void CaptureWidget::setState(CaptureButton *b) {
          {
              int i = b->m_buttonType;
              switch (i) {
-             case CaptureButton::TYPE_OPTION:
-                 show_Save_Location_Window(b);
-                 break;
              case CaptureButton::TYPE_TEXT:
                  show_Font_Options_Window(b);
                  break;
@@ -1595,9 +1615,14 @@ void CaptureWidget::setState(CaptureButton *b) {
              case CaptureButton::TYPE_MARKER:
                  show_FontSize_Color_Chose_Window(b);
                  break;
+#ifndef SUPPORT_NEWUI
              case CaptureButton::TYPE_SAVEAS:
                  deal_with_SaveAs(b);
                  break;
+             case CaptureButton::TYPE_OPTION:
+                 show_Save_Location_Window(b);
+                 break;
+#endif
              default:
                  hide_ChildWindow();
                  break;
