@@ -39,6 +39,7 @@ HEADERS += \
     $$PWD/mypopup.h \
     $$PWD/recorder.h \
     $$PWD/ssrtools.h \
+    $$PWD/common/X_utils.hpp \
  \#    $$PWD/myrecord.h
 
 SOURCES += \

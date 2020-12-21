@@ -24,13 +24,7 @@
 #include "src/widgets/capturelauncher.h"
 #include "src/utils/systemnotification.h"
 #include "src/utils/screengrabber.h"
-#include <QFile>
-#include <QApplication>
-#include <QSystemTrayIcon>
-#include <QAction>
-#include <QMenu>
-#include <QDesktopWidget>
-#include <QGSettings/qgsettings.h>
+#include "my_qt.h"
 #include "src/utils/systemnotification.h"
 //#include "Logger.h"
 #ifdef Q_OS_WIN

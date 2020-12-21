@@ -127,6 +127,8 @@ private:
 
     bool m_video_record_cursor;
 
+    bool m_video_follow_mouse;
+
     bool m_audio_enabled;
     unsigned int m_audio_channels, m_audio_sample_rate;
 
@@ -215,6 +217,9 @@ public:
 
     inline void SetVideoRecordRursor(bool b) { m_video_record_cursor = b; }
     inline bool GetVideoRecordRursor() { return m_video_record_cursor; }
+
+    inline void SetVideoRecordFollowMouse(bool b) { m_video_follow_mouse = b; }
+    inline bool GetVideoRecordFollowMouse() { return m_video_follow_mouse; }
 
 //    inline std::vector<ContainerData> GetContainers() { return m_containers; }
 //    inline std::vector<ContainerData> GetContainersAV() { return m_containers_av; }

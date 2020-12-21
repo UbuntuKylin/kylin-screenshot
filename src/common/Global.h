@@ -26,7 +26,7 @@
 #include <set>
 #include <thread>
 #include <atomic>
-
+#include <cmath>
 
 #include <unistd.h>
 #include <sys/ipc.h>
@@ -36,41 +36,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-
-#include <QDebug>
-
-#include <QtGui>
-#include <QButtonGroup>
-#include <QLabel>
-#include <QPainter>
-#include <QComboBox>
-#include <QSpinBox>
-#include <QLineEdit>
-#include <QProgressDialog>
-
-#include "src/common/Logger.h"
-#include "src/common/Enum.h"
-
-
-extern "C" {
-#include <libavutil/rational.h>
-#include <libavformat/avformat.h>
-#include <libavutil/frame.h>
-#include <libavutil/mem.h>
-//#include <libavcodec/avcodec.h>
-#include <libswscale/swscale.h>
-#include <libavutil/pixfmt.h>
-#include <libavutil/samplefmt.h>
-}
-
-
-#include <QX11Info>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/extensions/XShm.h>
-#include <X11/extensions/Xfixes.h>
-#include <X11/extensions/Xinerama.h>
-
 //enum enum_video_area {
 //    VIDEO_AREA_SCREEN,
 //    VIDEO_AREA_FIXED,
@@ -79,78 +44,10 @@ extern "C" {
 //};
 
 
-// replacement for QX11Info::isPlatformX11()
-#if QT_VERSION < QT_VERSION_CHECK(5, 2, 0)
-inline bool IsPlatformX11() {
-    char *v = getenv("XDG_SESSION_TYPE");
-    return (v == NULL || strcasecmp(v, "x11") == 0);
-}
-#else
-inline bool IsPlatformX11() {
-    char *v = getenv("XDG_SESSION_TYPE");
-    //return true;
-    return ((v == NULL || strcasecmp(v, "x11") == 0) && QX11Info::isPlatformX11());
-}
-#endif
-
 // simple function to do 16-byte alignment
 inline size_t grow_align16(size_t size) {
     return (size_t) (size + 15) & ~((size_t) 15);
 }
-
-// convert weird types from libav/ffmpeg to doubles
-inline double ToDouble(const AVRational& r) {
-    return (double) r.num / (double) r.den;
-}
-
-struct ContainerData {
-    QString name, avname;
-    QStringList suffixes;
-    QString filter;
-    std::set<ssr::enum_video_codec> supported_video_codecs;
-    std::set<ssr::enum_audio_codec> supported_audio_codecs;
-    inline bool operator<(const ContainerData& other) const { return (avname < other.avname); }
-};
-struct VideoCodecData {
-    QString name, avname;
-    inline bool operator<(const VideoCodecData& other) const { return (avname < other.avname); }
-};
-struct AudioCodecData {
-    QString name, avname;
-    inline bool operator<(const AudioCodecData& other) const { return (avname < other.avname); }
-};
-struct AudioKBitRate {
-    QString rate;
-    inline bool operator<(const AudioKBitRate& other) const { return (rate < other.rate); }
-};
-
-class LibavException : public std::exception {
-public:
-    inline virtual const char * what() const throw() override {
-        return "LibavException";
-    }
-};
-class ResamplerException : public std::exception {
-public:
-    inline virtual const char* what() const throw() override {
-        return "ResamplerException";
-    }
-};
-class X11Exception : public std::exception {
-public:
-    inline virtual const char* what() const throw() override {
-        return "X11Exception";
-    }
-};
-#if SSR_USE_PULSEAUDIO
-class PulseAudioException : public std::exception {
-public:
-    inline virtual const char* what() const throw() override {
-        return "PulseAudioException";
-    }
-};
-#endif
-
 
 template<typename T>
 inline T clamp(T v, T lo, T hi) {
@@ -231,11 +128,6 @@ inline int64_t hrt_time_micro() {
 // Maximum allowed image size (to avoid 32-bit integer overflow)
 #define SSR_MAX_IMAGE_SIZE 20000
 
-inline void GroupVisible(std::initializer_list<QWidget*> widgets, bool visible) {
-    for(QWidget *w : widgets) {
-        w->setVisible(visible);
-    }
-}
 
 
 #endif // GLOBAL_H

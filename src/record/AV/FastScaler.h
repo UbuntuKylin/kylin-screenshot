@@ -21,6 +21,8 @@
 
 #include "Global.h"
 
+#include "my_av.h"
+
 class FastScaler
 {
 private:

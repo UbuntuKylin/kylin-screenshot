@@ -3,7 +3,7 @@
 CursorRecordTool::CursorRecordTool(QObject *parent) : AbstractActionTool(parent)
 {
     setIsInitActive(true);
-    setIsIsolated(true);
+    setIsPressed(true);
 }
 
 bool CursorRecordTool::closeOnButtonPressed() const
@@ -14,6 +14,11 @@ bool CursorRecordTool::closeOnButtonPressed() const
 QString CursorRecordTool::name() const
 {
     return tr("CursorRecord");
+}
+
+bool CursorRecordTool::isIsolated() const
+{
+    return true;
 }
 
 QIcon CursorRecordTool::icon(const QColor &background, bool inEditor) const

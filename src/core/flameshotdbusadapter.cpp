@@ -22,6 +22,7 @@
 #include "src/utils/screenshotsaver.h"
 #include "src/utils/systemnotification.h"
 #include <QBuffer>
+
 FlameshotDBusAdapter::FlameshotDBusAdapter(QObject *parent)
     : QDBusAbstractAdaptor(parent)
 {

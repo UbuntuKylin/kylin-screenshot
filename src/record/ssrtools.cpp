@@ -1,19 +1,18 @@
 #include "ssrtools.h"
 #include "ui_ssrtools.h"
 //#include "Input_Widgets.h"
-#include <QDebug>
-
-#include <QFile>
-
-
+#include "my_qt.h"
 #include "common/utils.h"
 #include "CommandLineOptions.h"
 #include "common/EnumStrings.h"
-#include "AV/input/X11Input.h"
 
 #include "mypopup.h"
 
 #include "../widgets/capture/capturewidget.h"
+#include "Logger.h"
+
+#include "AV/input/X11Input.h"
+#include "common/X_utils.hpp"
 
 #include <syslog.h>
 
@@ -98,6 +97,11 @@ void ssrtools::Input_init()
 {
     //录制光标
     m_video_record_cursor = true;
+
+    //跟随鼠标
+    m_video_follow_mouse = false;
+
+    m_video_area_follow_fullscreen = false; //fixed bybobbi
 
     //input
     m_buttongroup_video_area = new QButtonGroup;
@@ -266,8 +270,6 @@ void ssrtools::Prepare_Record()
     m_audio_channels = 2;
     m_audio_sample_rate = 48000;
 
-
-    m_video_area_follow_fullscreen = true;
 
     //bybobbi
     m_video_frame_rate = 30;
@@ -503,7 +505,8 @@ void ssrtools::StartInput()
 
         // start the video input
         m_x11_input.reset(new X11Input(m_video_x, m_video_y, m_video_in_width, m_video_in_height, m_video_record_cursor,
-                                       m_video_area == ssr::enum_video_area::VIDEO_AREA_CURSOR, m_video_area_follow_fullscreen));
+                                       m_video_record_cursor, m_video_area_follow_fullscreen));
+//                                       m_video_area == ssr::enum_video_area::VIDEO_AREA_CURSOR, m_video_area_follow_fullscreen));
 
         //start the audio input
 #if SSR_USE_PULSEAUDIO

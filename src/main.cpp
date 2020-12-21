@@ -24,17 +24,10 @@
 #include "src/utils/systemnotification.h"
 #include "src/utils/pathinfo.h"
 #include "src/core/capturerequest.h"
-#include <QApplication>
-#include <QLibraryInfo>
-#include <QTranslator>
-#include <QTextStream>
-#include <QTimer>
-#include <QDir>
-#include <QFile>
+#include "my_qt.h"
 #include <sys/types.h>
 #include <signal.h>
 #include "src/common/CommandLineOptions.h"
-#include <X11/Xlib.h>
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
 #include "src/core/flameshotdbusadapter.h"
@@ -42,6 +35,9 @@
 #include <QDBusMessage>
 #include <QDBusConnection>
 #endif
+
+#include "Logger.h"
+#include "my_x.h"
 
 int getScreenWidth()
 {

@@ -20,6 +20,7 @@
 
 
 #include "Global.h"
+#include "my_qt.h"
 
 
 class QComboBoxWithSignal : public QComboBox {

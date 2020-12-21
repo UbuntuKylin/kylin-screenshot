@@ -177,6 +177,9 @@ private:
       //format code
     void show_childwindow(CaptureButton *b);
     void hide_ChildWindow();
+#ifdef ENABLE_RECORD
+    void record_do_sth(CaptureButton *b);
+#endif
     void show_FontSize_Color_Chose_Window(CaptureButton *b);
     void show_Save_Location_Window(CaptureButton *b);
     void show_Font_Options_Window(CaptureButton *b);
@@ -208,6 +211,7 @@ private:
     int magnifier_y;
 #ifdef ENABLE_RECORD
     Recorder *recorder;
+    QMap<CaptureButton::ButtonType, CaptureTool*> m_isolatedButtons;
 #endif
 
 };
