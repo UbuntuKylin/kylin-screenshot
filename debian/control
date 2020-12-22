@@ -23,6 +23,7 @@ Build-Depends: debhelper-compat (= 13),
 	       libgsettings-qt-dev,
 	       libkf5windowsystem5,
 	       libkf5windowsystem-dev,
+               libxtst-dev,
 Standards-Version: 4.5.0
 Rules-Requires-Root: no
 Homepage: https://github.com/ubuntukylin/kylin-screenshot
