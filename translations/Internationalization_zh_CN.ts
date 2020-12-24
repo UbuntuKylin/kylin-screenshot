@@ -530,7 +530,7 @@ Press Space to open the side panel.</source>
     <message>
         <location line="+9"/>
         <source>Copy URL after upload</source>
-        <translation type="unfinished"></translation>
+        <translation >上传后复制URL</translation>
     </message>
     <message>
         <location line="+3"/>
