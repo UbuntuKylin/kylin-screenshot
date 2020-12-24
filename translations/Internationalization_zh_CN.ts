@@ -4,7 +4,7 @@
 <context>
     <name>AppLauncher</name>
     <message>
-        <location filename="../src/tools/launcher/applaunchertool.cpp" line="+37"/>
+        <location filename="../src/tools/launcher/applaunchertool.cpp" line="+46"/>
         <source>App Launcher</source>
         <translation>应用启动器</translation>
     </message>
@@ -51,7 +51,7 @@
 <context>
     <name>ArrowTool</name>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="+92"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="+103"/>
         <source>Arrow</source>
         <translation>箭头</translation>
     </message>
@@ -62,13 +62,22 @@
     </message>
 </context>
 <context>
+    <name>AudioRecordTool</name>
+    <message>
+        <location filename="../src/tools/audio_record/audio_record_tool.cpp" line="+16"/>
+        <location line="+26"/>
+        <source>AudioRecord</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BlurTool</name>
     <message>
         <source>Blur</source>
         <translation type="vanished">模糊</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="+43"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="+53"/>
         <source>blur</source>
         <translation>模糊</translation>
     </message>
@@ -91,7 +100,7 @@
         <translation>选项</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+20"/>
         <source>Save</source>
         <translatorcomment>保存</translatorcomment>
         <translation>保存</translation>
@@ -147,13 +156,13 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+94"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+101"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+153"/>
+        <location line="+159"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -164,10 +173,7 @@
         <translation type="obsolete">另存为....</translation>
     </message>
     <message>
-        <location line="+87"/>
-        <location line="+6"/>
-        <location line="+7"/>
-        <location line="+5"/>
+        <location line="+107"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -184,7 +190,7 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+31"/>
         <location line="+9"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
@@ -197,7 +203,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="+43"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="+51"/>
         <source>Circle</source>
         <translation>圆环</translation>
     </message>
@@ -233,7 +239,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="+216"/>
+        <location filename="../src/core/controller.cpp" line="+230"/>
         <source>&amp;Take Screenshot</source>
         <translation>进行截图(&amp;T)</translation>
     </message>
@@ -263,7 +269,7 @@ Press Space to open the side panel.</source>
         <translation>麒麟截图</translation>
     </message>
     <message>
-        <location line="+87"/>
+        <location line="+88"/>
         <source>Unable to use kylin-screenshot</source>
         <translatorcomment>麒麟截图已禁用</translatorcomment>
         <translation type="unfinished">麒麟截图已禁用</translation>
@@ -272,7 +278,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>CopyTool</name>
     <message>
-        <location filename="../src/tools/copy/copytool.cpp" line="+44"/>
+        <location filename="../src/tools/copy/copytool.cpp" line="+53"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
@@ -283,9 +289,18 @@ Press Space to open the side panel.</source>
     </message>
 </context>
 <context>
+    <name>CursorRecordTool</name>
+    <message>
+        <location filename="../src/tools/cursor_record/cursor_record_tool.cpp" line="+16"/>
+        <location line="+26"/>
+        <source>CursorRecord</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Cut</name>
     <message>
-        <location filename="../src/tools/cut/cut.cpp" line="+39"/>
+        <location filename="../src/tools/cut/cut.cpp" line="+47"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
@@ -313,7 +328,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>ExitTool</name>
     <message>
-        <location filename="../src/tools/exit/exittool.cpp" line="+37"/>
+        <location filename="../src/tools/exit/exittool.cpp" line="+47"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -372,9 +387,18 @@ Press Space to open the side panel.</source>
     </message>
 </context>
 <context>
+    <name>FollowMouseRecordTool</name>
+    <message>
+        <location filename="../src/tools/follow_mouse_record/follow_mouse_record_tool.cpp" line="+14"/>
+        <location line="+26"/>
+        <source>FollowMouseRecord</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+95"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+92"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -401,7 +425,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+123"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+103"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -428,7 +452,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>GeneneralConf</name>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="+140"/>
+        <location filename="../src/config/geneneralconf.cpp" line="+131"/>
         <source>Show help message</source>
         <translation>显示帮助文档</translation>
     </message>
@@ -530,7 +554,7 @@ Press Space to open the side panel.</source>
     <message>
         <location line="+9"/>
         <source>Copy URL after upload</source>
-        <translation >上传后复制URL</translation>
+        <translation>上传后复制URL</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -590,7 +614,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>ImgurUploaderTool</name>
     <message>
-        <location filename="../src/tools/imgur/imguruploadertool.cpp" line="+38"/>
+        <location filename="../src/tools/imgur/imguruploadertool.cpp" line="+47"/>
         <source>Image Uploader</source>
         <translation>上传图片</translation>
     </message>
@@ -616,12 +640,12 @@ Press Space to open the side panel.</source>
         <translation type="vanished">右键</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+27"/>
         <source>Mouse Wheel</source>
         <translation>鼠标滑轮</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+10"/>
         <source>Move selection 1px</source>
         <translation>移动选择 1 px</translation>
     </message>
@@ -664,12 +688,39 @@ Press Space to open the side panel.</source>
         <translation>改变工具的厚度</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+4"/>
+        <source>Capturn Full Screen</source>
+        <translation>全屏截图</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Capture Top Screen</source>
+        <translation>截取窗口的截图</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Capture Screen selection</source>
+        <translation>截取一个区域的截图</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>&lt;u&gt;&lt;b&gt;sysShortcuts&lt;/b&gt;&lt;/u&gt;</source>
+        <translation>&lt;u&gt;&lt;b&gt;系统快捷键&lt;/b&gt;&lt;/u&gt;</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Available System shortcuts.</source>
+        <translation>可截图的系统快捷键</translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <location line="+40"/>
         <source>Key</source>
         <translation>键</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="-40"/>
+        <location line="+40"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
@@ -709,7 +760,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>LineTool</name>
     <message>
-        <location filename="../src/tools/line/linetool.cpp" line="+46"/>
+        <location filename="../src/tools/line/linetool.cpp" line="+54"/>
         <source>Line</source>
         <translation>直线</translation>
     </message>
@@ -722,7 +773,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Logger</name>
     <message>
-        <location filename="../src/AV/FastResampler.cpp" line="+126"/>
+        <location filename="../src/record/AV/FastResampler.cpp" line="+127"/>
         <source>Error: Resample ratio is out of range!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -737,7 +788,7 @@ Press Space to open the side panel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/FastScaler.cpp" line="+126"/>
+        <location filename="../src/record/AV/FastScaler.cpp" line="+126"/>
         <source>Warning: Pixel format is not supported (%1 -&gt; %2), using swscale instead. This is not a problem, but performance will be worse.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -759,7 +810,7 @@ Press Space to open the side panel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/PulseAudioInput.cpp" line="+34"/>
+        <location filename="../src/record/AV/input/PulseAudioInput.cpp" line="+34"/>
         <source>Error: pa_mainloop_prepare failed!</source>
         <comment>Don&apos;t translate &apos;pa_mainloop_prepare&apos;</comment>
         <translation type="unfinished"></translation>
@@ -850,7 +901,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
     <message>
         <location line="+31"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="+426"/>
+        <location filename="../src/record/AV/input/X11Input.cpp" line="+428"/>
         <source>Input thread started.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -872,36 +923,36 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="+113"/>
+        <location filename="../src/record/AV/input/X11Input.cpp" line="+113"/>
         <source>Input thread stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="+4"/>
+        <location filename="../src/record/AV/input/X11Input.cpp" line="+4"/>
         <source>Exception &apos;%1&apos; in input thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../src/AV/input/X11Input.cpp" line="+3"/>
+        <location filename="../src/record/AV/input/X11Input.cpp" line="+3"/>
         <source>Unknown exception in input thread.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/input/X11Input.cpp" line="-495"/>
+        <location filename="../src/record/AV/input/X11Input.cpp" line="-495"/>
         <source>Error: Unsupported X11 image pixel format!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+124"/>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="+96"/>
+        <location filename="../src/record/AV/output/VideoEncoder.cpp" line="+96"/>
         <source>Error: Width or height is zero!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="+4"/>
+        <location filename="../src/record/AV/output/VideoEncoder.cpp" line="+4"/>
         <source>Error: Width or height is too large, the maximum width and height is %1!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -981,7 +1032,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/AudioEncoder.cpp" line="+98"/>
+        <location filename="../src/record/AV/output/AudioEncoder.cpp" line="+98"/>
         <source>Error: Channel count is zero.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1017,7 +1068,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/BaseEncoder.cpp" line="+30"/>
+        <location filename="../src/record/AV/output/BaseEncoder.cpp" line="+30"/>
         <location line="+9"/>
         <source>Error: Option &apos;%1&apos; could not be parsed!</source>
         <translation type="unfinished"></translation>
@@ -1063,7 +1114,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Muxer.cpp" line="+72"/>
+        <location filename="../src/record/AV/output/Muxer.cpp" line="+72"/>
         <source>Stopping encoders ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1171,7 +1222,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/OutputManager.cpp" line="+68"/>
+        <location filename="../src/record/AV/output/OutputManager.cpp" line="+69"/>
         <source>Stopping fragment thread ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1206,7 +1257,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="+220"/>
+        <location filename="../src/record/AV/output/Synchronizer.cpp" line="+220"/>
         <source>Stopping synchronizer thread ...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1276,7 +1327,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/AV/output/VideoEncoder.cpp" line="+4"/>
+        <location filename="../src/record/AV/output/VideoEncoder.cpp" line="+4"/>
         <source>Error: Width or height is not an even number!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1312,7 +1363,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/common/CPUFeatures.cpp" line="+42"/>
+        <location filename="../src/record/common/CPUFeatures.cpp" line="+42"/>
         <source>CPU features</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1345,7 +1396,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>LuPing</name>
     <message>
-        <location filename="../src/tools/luping/luping.cpp" line="+39"/>
+        <location filename="../src/tools/luping/luping.cpp" line="+47"/>
         <source>LuPing</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1358,7 +1409,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>MarkerTool</name>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="+45"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="+53"/>
         <source>Marker</source>
         <translation>标记</translation>
     </message>
@@ -1371,7 +1422,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>MoveTool</name>
     <message>
-        <location filename="../src/tools/move/movetool.cpp" line="+37"/>
+        <location filename="../src/tools/move/movetool.cpp" line="+46"/>
         <source>Move</source>
         <translation>移动</translation>
     </message>
@@ -1382,9 +1433,22 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>OptionRecordTool</name>
+    <message>
+        <location filename="../src/tools/option_record/option_record_tool.cpp" line="+32"/>
+        <source>OptionRecord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>options record tool</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Options</name>
     <message>
-        <location filename="../src/tools/options/options.cpp" line="+39"/>
+        <location filename="../src/tools/options/options.cpp" line="+49"/>
         <source>Options</source>
         <translation>选项</translation>
     </message>
@@ -1397,7 +1461,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PencilTool</name>
     <message>
-        <location filename="../src/tools/pencil/penciltool.cpp" line="+39"/>
+        <location filename="../src/tools/pencil/penciltool.cpp" line="+47"/>
         <source>Pencil</source>
         <translation>铅笔</translation>
     </message>
@@ -1410,7 +1474,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>PinTool</name>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="+42"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="+49"/>
         <source>Pin Tool</source>
         <translation>贴图工具</translation>
     </message>
@@ -1424,7 +1488,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1305"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+955"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1450,7 +1514,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+96"/>
+        <location filename="../src/main.cpp" line="+92"/>
         <source>kylin-screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>
@@ -1497,7 +1561,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>RectangleTool</name>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="+43"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="+51"/>
         <source>Rectangle</source>
         <translation>实心矩形</translation>
     </message>
@@ -1510,7 +1574,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>RedoTool</name>
     <message>
-        <location filename="../src/tools/redo/redotool.cpp" line="+37"/>
+        <location filename="../src/tools/redo/redotool.cpp" line="+46"/>
         <source>Redo</source>
         <translation>重做</translation>
     </message>
@@ -1523,7 +1587,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>SaveAsTool</name>
     <message>
-        <location filename="../src/tools/save/saveastool.cpp" line="+41"/>
+        <location filename="../src/tools/save/saveastool.cpp" line="+51"/>
         <source>saveas</source>
         <translation>另存为</translation>
     </message>
@@ -1541,7 +1605,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="vanished">保存</translation>
     </message>
     <message>
-        <location filename="../src/tools/save/savetool.cpp" line="+39"/>
+        <location filename="../src/tools/save/savetool.cpp" line="+49"/>
         <source>save</source>
         <translation>保存</translation>
     </message>
@@ -1584,66 +1648,36 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenCap</name>
     <message>
-        <location filename="../src/tools/screencap/screencap.cpp" line="+28"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
+        <translation type="obsolete">截图保存配置</translation>
     </message>
 </context>
 <context>
     <name>ScreenCapExit</name>
     <message>
-        <location filename="../src/tools/screencapexit/screencapexit.cpp" line="+28"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
+        <translation type="obsolete">截图保存配置</translation>
     </message>
 </context>
 <context>
     <name>ScreenCapOption</name>
     <message>
-        <location filename="../src/tools/screencapoption/screencapoption.cpp" line="+28"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
+        <translation type="obsolete">截图保存配置</translation>
     </message>
 </context>
 <context>
     <name>ScreenCapStart</name>
     <message>
-        <location filename="../src/tools/screencapstart/screencapstart.cpp" line="+28"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
+        <translation type="obsolete">截图保存配置</translation>
     </message>
 </context>
 <context>
     <name>ScreenCut</name>
     <message>
-        <location filename="../src/tools/screencut/screencut.cpp" line="+28"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
+        <translation type="obsolete">截图保存配置</translation>
     </message>
 </context>
 <context>
@@ -1657,243 +1691,28 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenMouse</name>
     <message>
-        <location filename="../src/tools/screenmouse/screenmouse.cpp" line="+28"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
+        <translation type="obsolete">截图保存配置</translation>
     </message>
 </context>
 <context>
     <name>ScreenMouseCursor</name>
     <message>
-        <location filename="../src/tools/screenmousecursor/screenmousecursor.cpp" line="+28"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
-    </message>
-</context>
-<context>
-    <name>ScreenRecorder</name>
-    <message>
-        <location filename="../src/widgets/screenrecorder.cpp" line="+112"/>
-        <source>Frame rate:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>The number of frames per second in the final video. Higher frame rates use more CPU time.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Container:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>Save as:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
-        <source>Record cursor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Record audio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+31"/>
-        <source>Cancel recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Save recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>(not installed)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>The container (file format) that will be used to save the recording.
-Note that not all codecs are supported by all containers, and that not all media players can read all file formats.
-- Matroska (MKV) supports all the codecs, but is less well-known.
-- MP4 is the most well-known format and will play on almost any modern media player, but supports only H.264 video
-   (and many media players only support AAC audio).
-- WebM is intended for embedding video into websites (with the HTML5 &lt;video&gt; tag). The format was created by Google.
-   WebM is supported by default in Firefox, Chrome and Opera, and plugins are available for Internet Explorer and Safari.
-   It supports only VP8 and Vorbis.
-- OGG supports only Theora and Vorbis.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+68"/>
-        <source>Save recording as</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+48"/>
-        <location line="+3"/>
-        <location line="+3"/>
-        <location line="+3"/>
-        <location line="+42"/>
-        <source>%1 files</source>
-        <comment>This appears in the file dialog, e.g. &apos;MP4 files&apos;</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-39"/>
-        <location line="+6"/>
-        <location line="+7"/>
-        <source>Other...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-1"/>
-        <source>Uncompressed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+66"/>
-        <source>Error: Could not find any suitable container in libavformat!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>Error: Could not find any suitable video codec in libavcodec!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <source>Error: Could not find any suitable audio codec in libavcodec!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+63"/>
-        <source>Starting page ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Started page.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+65"/>
-        <location line="+8"/>
-        <source>not installed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-6"/>
-        <location line="+8"/>
-        <source>not supported by container</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+25"/>
-        <source>Starting input ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>Started input.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location line="+104"/>
-        <source>Error: Something went wrong during initialization.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-90"/>
-        <source>Stopping input ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Stopped input.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+54"/>
-        <source>Starting output ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <location line="+403"/>
-        <source>Pause recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-384"/>
-        <source>Started output.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+302"/>
-        <source>Stopping page ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+26"/>
-        <source>Stopped page.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <source>Stopping output ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+21"/>
-        <source>Stopped output.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Start recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+14"/>
-        <source>Encoding remaining data ...</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">截图保存配置</translation>
     </message>
 </context>
 <context>
     <name>ScreenVoice</name>
     <message>
-        <location filename="../src/tools/screenvoice/screenvoice.cpp" line="+30"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>options tool</source>
-        <translation type="unfinished">截图保存配置</translation>
+        <translation type="obsolete">截图保存配置</translation>
     </message>
 </context>
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="+46"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="+55"/>
         <source>Rectangular Selection</source>
         <translation>矩形选择</translation>
     </message>
@@ -1929,7 +1748,7 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SizeIndicatorTool</name>
     <message>
-        <location filename="../src/tools/sizeindicator/sizeindicatortool.cpp" line="+34"/>
+        <location filename="../src/tools/sizeindicator/sizeindicatortool.cpp" line="+40"/>
         <source>Selection Size Indicator</source>
         <translation>选择尺寸指示</translation>
     </message>
@@ -1937,6 +1756,15 @@ Note that not all codecs are supported by all containers, and that not all media
         <location line="+8"/>
         <source>Show the dimensions of the selection (X Y)</source>
         <translation>显示选择的尺寸 (X Y)</translation>
+    </message>
+</context>
+<context>
+    <name>StartRecordTool</name>
+    <message>
+        <location filename="../src/tools/start_record/start_record_tool.cpp" line="+28"/>
+        <location line="+19"/>
+        <source>StartRecord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2050,7 +1878,7 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>SyncDiagram</name>
     <message>
-        <location filename="../src/AV/output/Synchronizer.cpp" line="-675"/>
+        <location filename="../src/record/AV/output/Synchronizer.cpp" line="-675"/>
         <source>Video in</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2108,7 +1936,7 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">文本</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="+59"/>
+        <location filename="../src/tools/text/texttool.cpp" line="+67"/>
         <source>text</source>
         <translation>文本</translation>
     </message>
@@ -2163,7 +1991,7 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="vanished">撤消</translation>
     </message>
     <message>
-        <location filename="../src/tools/undo/undotool.cpp" line="+43"/>
+        <location filename="../src/tools/undo/undotool.cpp" line="+52"/>
         <source>undo</source>
         <translation>撤消</translation>
     </message>
@@ -2201,7 +2029,44 @@ Note that not all codecs are supported by all containers, and that not all media
 <context>
     <name>mypopup</name>
     <message>
-        <location filename="../src/widgets/mypopup.cpp" line="+124"/>
+        <location filename="../src/record/mypopup.cpp" line="+83"/>
+        <location line="+3"/>
+        <location line="+3"/>
+        <location line="+3"/>
+        <location line="+47"/>
+        <source>%1 files</source>
+        <comment>This appears in the file dialog, e.g. &apos;MP4 files&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-44"/>
+        <location line="+7"/>
+        <location line="+8"/>
+        <source>Other...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-1"/>
+        <source>Uncompressed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+69"/>
+        <source>Error: Could not find any suitable container in libavformat!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: Could not find any suitable video codec in libavcodec!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: Could not find any suitable audio codec in libavcodec!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
         <source>All screens: %1x%2</source>
         <comment>This appears in the screen selection combobox</comment>
         <translation type="unfinished"></translation>
@@ -2213,7 +2078,7 @@ Note that not all codecs are supported by all containers, and that not all media
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+198"/>
+        <location line="+217"/>
         <location line="+8"/>
         <source>not installed</source>
         <translation type="unfinished"></translation>
@@ -2228,6 +2093,283 @@ Note that not all codecs are supported by all containers, and that not all media
         <location line="+14"/>
         <source>Screen %1</source>
         <comment>This appears in the screen labels</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Save recording as</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/record/mypopup.ui" line="+14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>store location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>audio byte rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>video frate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>video res</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>video codec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>audio codec</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ssrtools</name>
+    <message>
+        <location filename="../src/record/ssrtools.ui" line="+14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>VideoFrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Height</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>select rectangle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>select window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Total time:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+16"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-107"/>
+        <source>FPS in:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>FPS out:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Size in:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Size out:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>File name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>File size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Bit rate:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
+        <source>fullscreen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>cursor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>record cursor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>enable audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>option</source>
+        <translation type="unfinished">选项</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>save</source>
+        <translation type="unfinished">保存</translation>
+    </message>
+    <message>
+        <location filename="../src/record/ssrtools.cpp" line="+320"/>
+        <source>Starting page ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Started page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+44"/>
+        <source>Stopping page ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Stopped page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Starting output ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Started output.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <location line="+71"/>
+        <source>Error: Something went wrong during initialization.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-60"/>
+        <source>Stopping output ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Stopped output.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+24"/>
+        <source>Starting input ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Started input.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Stopping input ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Stopped input.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+587"/>
+        <source>Encoding remaining data ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+78"/>
+        <source>Pause recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Start recording</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
