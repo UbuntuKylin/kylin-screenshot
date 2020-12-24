@@ -35,7 +35,7 @@
 InfoWindow::InfoWindow(QWidget *parent) : QWidget(parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     //fixed when windows maxed the layout's problem
-    this->setFixedSize(600, 500);
+    this->setFixedSize(600, 600);
     setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
     setWindowTitle(tr("About"));
 
@@ -50,6 +50,7 @@ InfoWindow::InfoWindow(QWidget *parent) : QWidget(parent) {
     m_layout->setAlignment(Qt::AlignHCenter);
     initLabels();
     initInfoTable();
+    initInfoSysTable();
     show();
 }
 
@@ -66,6 +67,12 @@ QVector<const char *> InfoWindow::m_keys = {
     QT_TR_NOOP("Mouse Wheel")
 };
 
+QVector<const char *> InfoWindow::sys_keys = {
+    "PRINT",
+    "CTRL + PRINT",
+    "SHIFT + PRINT"
+};
+
 QVector<const char *> InfoWindow::m_description = {
     QT_TR_NOOP("Move selection 1px"),
     QT_TR_NOOP("Resize selection 1px"),
@@ -77,6 +84,55 @@ QVector<const char *> InfoWindow::m_description = {
     //QT_TR_NOOP("Show color picker"),
     QT_TR_NOOP("Change the tool's thickness")
 };
+
+QVector<const char *> InfoWindow::m_sys_description = {
+    QT_TR_NOOP("Capturn Full Screen"),
+    QT_TR_NOOP("Capture Top Screen"),
+    QT_TR_NOOP("Capture Screen selection")
+};
+
+void InfoWindow::initInfoSysTable() {
+    m_layout->addStretch();
+    QLabel *sysshortcutsTitleLabel = new QLabel(tr("<u><b>sysShortcuts</b></u>"), this);
+    sysshortcutsTitleLabel->setAlignment(Qt::AlignHCenter);;
+    m_layout->addWidget(sysshortcutsTitleLabel);
+    QTableWidget *table = new QTableWidget(this);
+    table->setToolTip(tr("Available System shortcuts."));
+
+    m_layout->addWidget(table);
+    table->setColumnCount(2);
+    table->setRowCount(sys_keys.size());
+    table->setSelectionMode(QAbstractItemView::NoSelection);
+    table->setFocusPolicy(Qt::NoFocus);
+    table->verticalHeader()->hide();
+    // header creation
+    QStringList names;
+    names  << tr("Key") << tr("Description");
+    table->setHorizontalHeaderLabels(names);
+
+    //add content
+    for (int i= 0; i < sys_keys.size(); ++i){
+        table->setItem(i, 0, new QTableWidgetItem(tr(sys_keys.at(i))));
+        table->setItem(i, 1, new QTableWidgetItem(tr(m_sys_description.at(i))));
+    }
+
+    // Read-only table items
+    for (int x = 0; x < table->rowCount(); ++x) {
+        for (int y = 0; y < table->columnCount(); ++y) {
+            QTableWidgetItem *item = table->item(x, y);
+            item->setFlags(item->flags() ^ Qt::ItemIsEditable);
+        }
+    }
+
+    // adjust size
+//    table->resizeColumnsToContents();
+//    table->resizeRowsToContents();
+    table->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
+    table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+    table->horizontalHeader()->setSizePolicy(QSizePolicy::Expanding,
+                                             QSizePolicy::Expanding);
+  //  m_layout->addStretch();
+}
 
 void InfoWindow::initInfoTable() {
     QTableWidget *table = new QTableWidget(this);
@@ -109,8 +165,9 @@ void InfoWindow::initInfoTable() {
     }
 
     // adjust size
+    table->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
     table->resizeColumnsToContents();
-    table->resizeRowsToContents();
+//    table->resizeRowsToContents();
 
     table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     table->horizontalHeader()->setSizePolicy(QSizePolicy::Expanding,
@@ -142,6 +199,7 @@ void InfoWindow::initLabels() {
     QLabel *shortcutsTitleLabel = new QLabel(tr("<u><b>Shortcuts</b></u>"), this);
     shortcutsTitleLabel->setAlignment(Qt::AlignHCenter);;
     m_layout->addWidget(shortcutsTitleLabel);
+    m_layout->addSpacing(10);
 }
 
 void InfoWindow::keyPressEvent(QKeyEvent *e) {
