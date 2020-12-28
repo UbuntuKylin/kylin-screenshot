@@ -506,9 +506,11 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 #endif
         }
         update();
+        painter.setOpacity(1);
         painter.setBrush(QColor(160,160,160));
         for(auto r: m_selection->handlerAreas()) {
-            painter.drawRoundRect(r, 80, 80);
+            //painter.drawRoundRect(r, 80, 80);
+            painter.drawPixmap(r,QPixmap(QStringLiteral(":/img/material/control_point.png")));
         }
     }
 }
@@ -902,7 +904,9 @@ void CaptureWidget::initPanel() {
 }
 
 void CaptureWidget::initSelection() {
-    m_selection = new SelectionWidget(m_uiColor, this);
+    //m_selection = new SelectionWidget(m_uiColor, this);
+    //Color of the outer border of the capture
+    m_selection = new SelectionWidget(QColor(Qt::white), this);
     connect(m_selection, &SelectionWidget::animationEnded, this, [this](){
         this->m_buttonHandler->updatePosition(this->m_selection->geometry());
     });
