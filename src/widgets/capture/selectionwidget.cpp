@@ -29,8 +29,8 @@ SelectionWidget::SelectionWidget(const QColor &c, QWidget *parent) :
             this, &SelectionWidget::animationEnded);
 
     setAttribute(Qt::WA_TransparentForMouseEvents);
-    int sideVal = GlobalValues::buttonBaseSize() * 0.6;
-    int handleSide = sideVal / 2;
+    int sideVal = GlobalValues::buttonBaseSize();
+    int handleSide = sideVal / 4;
     const QRect areaRect(0, 0, sideVal, sideVal);
     const QRect handleRect(0, 0, handleSide, handleSide);
     m_TLHandle = m_TRHandle = m_BLHandle = m_BRHandle =
