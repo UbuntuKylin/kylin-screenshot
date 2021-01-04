@@ -21,8 +21,8 @@
 #include <QClipboard>
 #include <QApplication>
 #include <QMessageBox>
-#include <QFileDialog>
 #include <QImageWriter>
+#include "mysavedialog.h"
 
 ScreenshotSaver::ScreenshotSaver() {
 }
@@ -78,11 +78,9 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture) {
     bool ok = false;
 
     while (!ok) {
-        QString savePath = QFileDialog::getSaveFileName(
-                    nullptr,
-                    QString(),
-                    FileNameHandler().absoluteSavePath() + ".png",
-					QLatin1String("Portable Network Graphic file (PNG) (*.png);;BMP file (*.bmp);;JPEG file (*.jpg)"));
+        MySaveDialog *a = new  MySaveDialog(nullptr);
+        if(a->exec() == QFileDialog::Accepted){
+        QString savePath = a->selectedFiles().at(0);
 
         if (savePath.isNull()) {
             break;
@@ -110,6 +108,11 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture) {
                         msg);
             saveErrBox.setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
             saveErrBox.exec();
+        }
+    }
+        else
+        {
+            return ok;
         }
     }
     return ok;
