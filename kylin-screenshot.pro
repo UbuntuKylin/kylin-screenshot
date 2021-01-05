@@ -27,6 +27,7 @@ unix:!macx {
 CONFIG += c++11 link_pkgconfig 
 PKGCONFIG += gsettings-qt
 QMAKE_CXXFLAGS += -std=c++0x
+PKGCONFIG += libavutil libavformat libavcodec libswscale x11 xext xfixes xinerama libpulse
 
 #CONFIG += packaging   # Enables "make install" for packaging paths
 
