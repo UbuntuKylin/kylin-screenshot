@@ -384,6 +384,7 @@ void ButtonHandler::moveButtonsToPoints(
             button->move(p.x()+29,p.y());
             break;
         case CaptureButton::TYPE_OPTION:
+            Save_Location_Window_Pos = move_Save_Location_Window(p.x()+19,p.y());
             button->move(p.x()+19,p.y());
             break;
         case CaptureButton::TYPE_SAVEAS:
@@ -405,6 +406,13 @@ void ButtonHandler::moveButtonsToPoints(
         case CaptureButton::TYPE_SAVE:
             button->move(p.x()+46,p.y());
             break;
+        case CaptureButton::TYPE_TEXT:
+            Font_Options_Window_Pos = move_Font_Options_Window(p.x(),p.y());
+            button->move(p);
+            break;
+         case CaptureButton::TYPE_BLUR:
+            button->move(p);
+            break;
 #endif
 
         case CaptureButton::TYPE_PIN:
@@ -424,6 +432,7 @@ void ButtonHandler::moveButtonsToPoints(
                    }
             break;
         default:
+            FontSize_Color_Chose_Window_Y = move_FontSize_Color_Chose_Window(p.y());
             button->move(p);
             break;
         }
@@ -478,4 +487,65 @@ void ButtonHandler::clearButtons()
 {
    m_vectorButtons.clear();
 }
+
+int ButtonHandler::move_FontSize_Color_Chose_Window(int y)
+{
+    int FontSize_Color_Chose_Window_y;
+    if (y>m_selection.y())
+    {
+        if (y+150 <= QGuiApplication::primaryScreen()->geometry().height())
+            FontSize_Color_Chose_Window_y = y+50;
+        else
+            FontSize_Color_Chose_Window_y = y-80;
+    }
+    else
+    {
+        if (y-80 >= 0)
+            FontSize_Color_Chose_Window_y = y-80;
+        else
+            FontSize_Color_Chose_Window_y = y+50;
+    }
+    return  FontSize_Color_Chose_Window_y;
+}
+QPoint ButtonHandler::move_Save_Location_Window(int x,int y)
+{
+    QPoint p(x,y);
+    p.setX(x-50);
+    if (y>m_selection.y())
+    {
+        if (y+170 <= QGuiApplication::primaryScreen()->geometry().height())
+            p.setY(y+50);
+        else
+            p.setY(y-155);
+    }
+    else
+    {
+        if (y-155>= 0)
+            p.setY(y-155);
+        else
+            p.setY(y+50);
+    }
+    return p;
+}
+QPoint ButtonHandler::move_Font_Options_Window(int x,int y)
+{
+    QPoint p(x,y);
+    p.setX(x-120);
+    if(y>m_selection.y())
+    {
+        if (y+125 <= QGuiApplication::primaryScreen()->geometry().height())
+            p.setY(y+50);
+        else
+            p.setY(y-95);
+    }
+    else
+    {
+        if (y-95 >= 0)
+            p.setY(y-95);
+        else
+            p.setY(y+50);
+    }
+    return p;
+}
+
 

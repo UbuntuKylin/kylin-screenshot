@@ -513,8 +513,66 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             painter.drawPixmap(r,QPixmap(QStringLiteral(":/img/material/control_point.png")));
         }
     }
+    updateChildWindow();
 }
 
+void CaptureWidget::updateChildWindow()
+{
+    if (font_color->isVisible())
+    {
+        if (m_buttonHandler->FontSize_Color_Chose_Window_Y <  vectorButtons.first()->pos().y())
+           {
+            font_color->hide();
+            font_color2->show();
+           }
+    }
+    if (font_color2->isVisible())
+    {
+        if (m_buttonHandler->FontSize_Color_Chose_Window_Y >  vectorButtons.first()->pos().y())
+           {
+            font_color2->hide();
+            font_color->show();
+           }
+    }
+   if (save_location->isVisible())
+   {
+       if (m_buttonHandler->Save_Location_Window_Pos.y() <  vectorButtons.first()->pos().y())
+          {
+           save_location->hide();
+           save_location2->show();
+          }
+   }
+   if (save_location2->isVisible())
+   {
+       if (m_buttonHandler->Save_Location_Window_Pos.y() > vectorButtons.first()->pos().y())
+          {
+           save_location2->hide();
+           save_location->show();
+          }
+   }
+   if (font_options->isVisible())
+   {
+       if (m_buttonHandler->Font_Options_Window_Pos.y() <  vectorButtons.first()->pos().y())
+          {
+           font_options->hide();
+           font_options2->show();
+          }
+   }
+   if (font_options2->isVisible())
+   {
+       if (m_buttonHandler->Font_Options_Window_Pos.y()> vectorButtons.first()->pos().y())
+          {
+           font_options->hide();
+           font_options2->show();
+          }
+   }
+    font_color ->move(vectorButtons.first()->pos().x()+length,m_buttonHandler->FontSize_Color_Chose_Window_Y);
+    font_color2 ->move(vectorButtons.first()->pos().x()+length,m_buttonHandler->FontSize_Color_Chose_Window_Y);
+    save_location ->move(m_buttonHandler->Font_Options_Window_Pos);
+    save_location2 ->move(m_buttonHandler->Font_Options_Window_Pos);
+    font_options ->move(m_buttonHandler->Font_Options_Window_Pos);
+    font_options2 ->move(m_buttonHandler->Font_Options_Window_Pos);
+}
 void CaptureWidget::updateMagnifier(CaptureContext m_context){
     int x = m_context.mousePos.x();
     int y = m_context.mousePos.y();
@@ -1473,6 +1531,7 @@ void CaptureWidget::setState(CaptureButton *b) {
 
      void CaptureWidget::font_options_defult()
      {
+         font_options->move(m_buttonHandler->Font_Options_Window_Pos);
          font_options->Font_size->setValue(m_context.thickness);
          font_options->color = m_context.color;
          font_options->Underline = m_context.underline;
@@ -1482,6 +1541,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      }
      void CaptureWidget::font_options2_defult()
      {
+         font_options2->move(m_buttonHandler->Font_Options_Window_Pos);
          font_options2->Font_size->setValue(m_context.thickness);
          font_options2->color = m_context.color;
          font_options2->Underline = m_context.underline;
@@ -1542,6 +1602,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      }
      void CaptureWidget::savetype_chose_default()
      {
+         save_location->move(m_buttonHandler->Save_Location_Window_Pos);
          if(m_context.saveType == ".jpg")
              save_location->type_rect = save_location->m_TypeList.at(0);
          else if(m_context.saveType == ".bmp")
@@ -1552,6 +1613,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      }
      void CaptureWidget::savetype_chose2_default()
      {
+         save_location->move(m_buttonHandler->Save_Location_Window_Pos);
          if(m_context.saveType == ".jpg")
              save_location2->type_rect = save_location2->m_TypeList.at(0);
          else if(m_context.saveType == ".bmp")
@@ -1647,6 +1709,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                      font_color_point->setY(b->y()+50);
                      font_color->move(font_color_point->x(),font_color_point->y());
                      font_color->show();
+                     length = font_color->x() - vectorButtons.first()->pos().x();
                  }
                  else
                  {
@@ -1654,6 +1717,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                      font_color_point->setY(b->y()-80);
                      font_color2->move(font_color_point->x(),font_color_point->y());
                      font_color2->show();
+                     length = font_color2->x() - vectorButtons.first()->pos().x();
                  }
              }
              else
@@ -1664,6 +1728,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                      font_color_point->setY(b->y()-80);
                      font_color2->move(font_color_point->x(),font_color_point->y());
                      font_color2->show();
+                     length = font_color2->x() - vectorButtons.first()->pos().x();
                  }
                  else
                  {
@@ -1671,8 +1736,10 @@ void CaptureWidget::setState(CaptureButton *b) {
                      font_color_point->setY(b->y()+50);
                      font_color->move(font_color_point->x(),font_color_point->y());
                      font_color->show();
+                     length = font_color->x() - vectorButtons.first()->pos().x();
                  }
              }
+
          }
          //options
          void CaptureWidget::show_Save_Location_Window(CaptureButton *b)
@@ -1686,36 +1753,16 @@ void CaptureWidget::setState(CaptureButton *b) {
                  if(b->y()>m_selection->y())
                  {
                     if (b->y()+170 <= QGuiApplication::primaryScreen()->geometry().height())
-                    {
-                     font_color_point->setX(b->x()-67);
-                     font_color_point->setY(b->y()+50);
-                     save_location->move(font_color_point->x(),font_color_point->y());
                      save_location->show();
-                     }
                     else
-                    {
-                     font_color_point->setX(b->x()-67);
-                     font_color_point->setY(b->y()-155);
-                     save_location2->move(font_color_point->x(),font_color_point->y());
                      save_location2->show();
-                    }
                  }
                  else
                  {
-                     if (b->y()-155>= 0)
-                     {
-                         font_color_point->setX(b->x()-67);
-                         font_color_point->setY(b->y()-155);
-                         save_location2->move(font_color_point->x(),font_color_point->y());
-                         save_location2->show();
-                     }
+                   if (b->y()-155>= 0)
+                        save_location2->show();
                     else
-                     {
-                         font_color_point->setX(b->x()-67);
-                         font_color_point->setY(b->y()+50);
-                         save_location->move(font_color_point->x(),font_color_point->y());
-                         save_location->show();
-                      }
+                        save_location->show();
                  }
              }
         //text
@@ -1728,37 +1775,16 @@ void CaptureWidget::setState(CaptureButton *b) {
                  if(b->y()>m_selection->y())
                  {
                      if (b->y()+125 <= QGuiApplication::primaryScreen()->geometry().height())
-                     {
-                         font_color_point->setX(b->x()-125);
-                         font_color_point->setY(b->y()+50);
-                         font_options->move(font_color_point->x(),font_color_point->y());
                          font_options->show();
-                     }
                      else
-                     {
-                         font_color_point->setX(b->x()-125);
-                         font_color_point->setY(b->y()-95);
-                         font_options2->move(font_color_point->x(),font_color_point->y());
                          font_options2->show();
-                     }
                  }
                  else
                  {
                      if (b->y()-95 >= 0)
-                     {
-                         font_color_point->setX(b->x()-125);
-                         font_color_point->setY(b->y()-95);
-                         font_options2->move(font_color_point->x(),font_color_point->y());
                          font_options2->show();
-
-                     }
                      else
-                     {
-                         font_color_point->setX(b->x()-125);
-                         font_color_point->setY(b->y()+50);
-                         font_options->move(font_color_point->x(),font_color_point->y());
                          font_options->show();
-                     }
                  }
              }
          void CaptureWidget::deal_with_SaveAs(CaptureButton *b)
