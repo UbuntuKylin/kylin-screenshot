@@ -174,6 +174,7 @@ private:
     void pushToolToStack();
     void makeChild(QWidget *w);
 
+    void updateChildWindow();
       //format code
     void show_childwindow(CaptureButton *b);
     void hide_ChildWindow();
@@ -209,6 +210,8 @@ private:
     uint m_id;
     int magnifier_x;
     int magnifier_y;
+    //signed  width between FontSize_Color_Chose_Window and fistbutton
+    int length;
 #ifdef ENABLE_RECORD
     Recorder *recorder;
     QMap<CaptureButton::ButtonType, CaptureTool*> m_isolatedButtons;

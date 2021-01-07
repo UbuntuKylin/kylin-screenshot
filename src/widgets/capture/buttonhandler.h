@@ -44,6 +44,13 @@ public:
 
     void clearButtons();
 
+    int move_FontSize_Color_Chose_Window(int y);
+    QPoint move_Save_Location_Window(int x,int y);
+    QPoint move_Font_Options_Window(int x,int y);
+
+    int FontSize_Color_Chose_Window_Y;
+    QPoint Save_Location_Window_Pos;
+    QPoint Font_Options_Window_Pos;
 public slots:
     void updatePosition(const QRect &selection);
     void hide();
