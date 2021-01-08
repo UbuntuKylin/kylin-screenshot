@@ -88,6 +88,7 @@ INCLUDEPATH += src/common src/utils
 SOURCES += src/main.cpp \
     src/common/CommandLineOptions.cpp \
     src/common/Logger.cpp \
+    src/tools/AbstractActionToolWithWidget.cpp \
     src/utils/mysavedialog.cpp \
     src/widgets/capture/buttonhandler.cpp \
     src/widgets/capture/font_options.cpp \
@@ -175,6 +176,7 @@ HEADERS  += src/common/Global.h src/common/my_qt.h src/common/my_x.h src/common/
     src/common/CommandLineOptions.h \
     src/common/Enum.h \
     src/common/Logger.h \
+    src/tools/AbstractActionToolWithWidget.h \
     src/utils/mysavedialog.h \
     src/widgets/capture/font_options.h \
     src/widgets/capture/font_options2.h \

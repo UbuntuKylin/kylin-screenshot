@@ -1,6 +1,9 @@
-/* Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
-*
-* This file is part of Kylin-Screenshot.
+/*
+ *
+ * Copyright: 2020 KylinSoft Co., Ltd.
+ * Authors:
+ *   huanhuan zhang <zhanghuanhuan@kylinos.cn>
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -13,34 +16,33 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
+ */
+#include "AbstractActionToolWithWidget.h".h"
 
-#include "abstractactiontool.h"
-
-AbstractActionTool::AbstractActionTool(QObject *parent) : CaptureTool(parent) {
+AbstractActionToolWithWidget::AbstractActionToolWithWidget(QObject *parent) : CaptureTool(parent) {
 
 }
 
-bool AbstractActionTool::isValid() const {
+bool AbstractActionToolWithWidget::isValid() const {
     return true;
 }
 
-bool AbstractActionTool::isSelectable() const {
+bool AbstractActionToolWithWidget::isSelectable() const {
+    return true;
+}
+
+bool AbstractActionToolWithWidget::showMousePreview() const {
     return false;
 }
 
-bool AbstractActionTool::showMousePreview() const {
-    return false;
-}
-
-QIcon AbstractActionTool::icon(const QColor &background, bool inEditor) const
+QIcon AbstractActionToolWithWidget::icon(const QColor &background, bool inEditor) const
 {
     Q_UNUSED(background);
     Q_UNUSED(inEditor);
     return QIcon();
 }
 #ifdef SUPPORT_UKUI
-QIcon AbstractActionTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const
+QIcon AbstractActionToolWithWidget::icon(const QColor &background, bool inEditor, const CaptureContext &context) const
 {
     Q_UNUSED(background);
     Q_UNUSED(inEditor);
@@ -48,39 +50,39 @@ QIcon AbstractActionTool::icon(const QColor &background, bool inEditor, const Ca
     return QIcon();
 }
 #endif
-void AbstractActionTool::undo(QPixmap &pixmap) {
+void AbstractActionToolWithWidget::undo(QPixmap &pixmap) {
     Q_UNUSED(pixmap);
 }
 
-void AbstractActionTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo) {
+void AbstractActionToolWithWidget::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo) {
     Q_UNUSED(painter);
     Q_UNUSED(pixmap);
     Q_UNUSED(recordUndo);
 }
 
-void AbstractActionTool::paintMousePreview(
+void AbstractActionToolWithWidget::paintMousePreview(
         QPainter &painter, const CaptureContext &context)
 {
     Q_UNUSED(painter);
     Q_UNUSED(context);
 }
 
-void AbstractActionTool::drawEnd(const QPoint &p) {
+void AbstractActionToolWithWidget::drawEnd(const QPoint &p) {
     Q_UNUSED(p);
 }
 
-void AbstractActionTool::drawMove(const QPoint &p) {
+void AbstractActionToolWithWidget::drawMove(const QPoint &p) {
     Q_UNUSED(p);
 }
 
-void AbstractActionTool::drawStart(const CaptureContext &context) {
+void AbstractActionToolWithWidget::drawStart(const CaptureContext &context) {
     Q_UNUSED(context);
 }
 
-void AbstractActionTool::colorChanged(const QColor &c) {
+void AbstractActionToolWithWidget::colorChanged(const QColor &c) {
     Q_UNUSED(c);
 }
 
-void AbstractActionTool::thicknessChanged(const int th) {
+void AbstractActionToolWithWidget::thicknessChanged(const int th) {
     Q_UNUSED(th);
 }
