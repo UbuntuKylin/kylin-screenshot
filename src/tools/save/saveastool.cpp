@@ -21,7 +21,7 @@
 #include "src/utils/screenshotsaver.h"
 #include <QPainter>
 #include <QStandardPaths>
-SaveAsTool::SaveAsTool(QObject *parent) : AbstractActionTool(parent) {
+SaveAsTool::SaveAsTool(QObject *parent) : AbstractActionToolWithWidget(parent) {
 
 }
 

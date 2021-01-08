@@ -19,7 +19,7 @@
  */
 #include "options.h"
 
-Options::Options(QObject *parent) : AbstractActionTool(parent)
+Options::Options(QObject *parent) : AbstractActionToolWithWidget(parent)
 {
 }
 bool Options::closeOnButtonPressed() const

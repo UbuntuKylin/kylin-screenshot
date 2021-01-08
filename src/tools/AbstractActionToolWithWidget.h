@@ -17,29 +17,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#ifndef SAVEASTOOL_H
-#define SAVEASTOOL_H
-#include "src/tools/AbstractActionToolWithWidget.h"
-class SaveAsTool : public AbstractActionToolWithWidget
-{
+#pragma once
+
+#include "capturetool.h"
+
+class AbstractActionToolWithWidget : public CaptureTool {
     Q_OBJECT
 public:
-    explicit SaveAsTool(QObject *parent = nullptr);
+    explicit AbstractActionToolWithWidget(QObject *parent = nullptr);
 
-    bool closeOnButtonPressed() const;
+    bool isValid() const override;
+    bool isSelectable() const override;
+    bool showMousePreview() const override;
 
     QIcon icon(const QColor &background, bool inEditor) const override;
 #ifdef SUPPORT_UKUI
     QIcon icon(const QColor &background, bool inEditor,const CaptureContext &context) const override;
 #endif
-    QString name() const override;
-    static QString nameID();
-    QString description() const override;
-
-    CaptureTool* copy(QObject *parent = nullptr) override;
+    void undo(QPixmap &pixmap) override;
+    void process(QPainter &painter, const QPixmap &pixmap, bool recordUndo = false) override;
+    void paintMousePreview(QPainter &painter, const CaptureContext &context) override;
 
 public slots:
-    void pressed(const CaptureContext &context) override;
+    void drawEnd(const QPoint &p) override;
+    void drawMove(const QPoint &p) override;
+    void drawStart(const CaptureContext &context) override;
+    void colorChanged(const QColor &c) override;
+    void thicknessChanged(const int th) override;
 };
-
-#endif // SAVEASTOOL_H
