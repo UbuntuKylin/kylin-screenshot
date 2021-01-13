@@ -28,7 +28,7 @@
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
 #define TRIANGLE_WIDTH 20    //小三角的宽度
 #define TRIANGLE_HEIGHT 10    //小三角的高度
-#define BORDER_RADIUS 10       //窗口边角弧度
+#define BORDER_RADIUS 6       //窗口边角弧度
 
 Save_Location::Save_Location(QWidget *parent)
     : QWidget(parent)
@@ -106,9 +106,9 @@ void Save_Location::paintEvent(QPaintEvent *event)
     trianglePolygon << QPoint(m_startx + m_triangleWidth,m_triangleHeight + SHADOW_WIDTH);
 
     QPainterPath drawPath;
-    drawPath.addRoundRect(QRect(SHADOW_WIDTH, m_triangleHeight+ SHADOW_WIDTH,
+    drawPath.addRoundedRect(QRect(SHADOW_WIDTH, m_triangleHeight+ SHADOW_WIDTH,
                                 width()-SHADOW_WIDTH *2 ,height() -SHADOW_WIDTH *2 -m_triangleHeight),
-                         BORDER_RADIUS,BORDER_RADIUS);
+                         BORDER_RADIUS,BORDER_RADIUS,Qt::AbsoluteSize);
     drawPath.addPolygon(trianglePolygon);
     if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         painter.setBrush(QColor(25,25,25,180));

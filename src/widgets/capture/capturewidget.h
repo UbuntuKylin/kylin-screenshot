@@ -187,6 +187,7 @@ private:
     void deal_with_SaveAs(CaptureButton *b);
     void updateMagnifier(CaptureContext m_context);
 
+    QLabel *size_label;
     QRect extendedSelection() const;
     QRect extendedRect(QRect *r) const;
 

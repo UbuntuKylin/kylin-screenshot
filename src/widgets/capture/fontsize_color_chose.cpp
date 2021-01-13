@@ -26,7 +26,7 @@
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
 #define TRIANGLE_WIDTH 20    //小三角的宽度
 #define TRIANGLE_HEIGHT 10  //小三角的高度
-#define BORDER_RADIUS 10       //窗口边角弧度
+#define BORDER_RADIUS 6       //窗口边角弧度
 
 FontSize_Color_Chose::FontSize_Color_Chose(QWidget *parent)
     : QWidget(parent)
@@ -93,8 +93,8 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
     trianglePolygon << QPoint(m_startx+m_triangleWidth/2,SHADOW_WIDTH);
     trianglePolygon << QPoint(m_startx + m_triangleWidth,m_triangleHeight + SHADOW_WIDTH);
     QPainterPath drawPath;
-    drawPath.addRoundRect(QRect(SHADOW_WIDTH , m_triangleHeight + SHADOW_WIDTH ,width()- SHADOW_WIDTH,height()- m_triangleHeight-SHADOW_WIDTH),
-                         BORDER_RADIUS,BORDER_RADIUS);
+    drawPath.addRoundedRect(QRect(SHADOW_WIDTH , m_triangleHeight + SHADOW_WIDTH ,width()- SHADOW_WIDTH,height()- m_triangleHeight-SHADOW_WIDTH),
+                         BORDER_RADIUS,BORDER_RADIUS,Qt::AbsoluteSize);
     drawPath.addPolygon(trianglePolygon);
     if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         painter.setBrush(QColor(25,25,25,180));
