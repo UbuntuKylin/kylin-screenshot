@@ -441,7 +441,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.setBrush(QColor(0,0,0));
                 painter.setPen(QColor(0,0,0));
                 painter.setOpacity(0.66);
-                painter.drawRoundRect(rr,6,6);
+                painter.drawRoundedRect(rr,6,6,Qt::AbsoluteSize);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
                                     GlobalValues::buttonBaseSize(),
@@ -457,7 +457,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 #ifndef SUPPORT_NEWUI
                 painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
 #else
-                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,66,30,20,20);
+                painter.drawRoundedRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,
+                                        66,30,6,6,Qt::AbsoluteSize);
 #endif
                 //两个分隔符
                 painter.setBrush(QColor(0,0,0,100));
@@ -474,7 +475,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.setBrush(QColor(200,200,200));
                 painter.setPen(QColor(200,200,200));
                 painter.setOpacity(0.66);
-                painter.drawRoundRect(rr,6,6);
+                painter.drawRoundedRect(rr,6,6,Qt::AbsoluteSize);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
                                     GlobalValues::buttonBaseSize(),
@@ -489,7 +490,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 #ifndef SUPPORT_NEWUI
                 painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,90,30,20,20);
 #else
-                painter.drawRoundRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,66,30,20,20);
+                painter.drawRoundedRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,66,
+                                        30,6,6,Qt::AbsoluteSize);
 #endif
                 //两个分隔符
                 painter.setBrush(QColor(0,0,0,100));
