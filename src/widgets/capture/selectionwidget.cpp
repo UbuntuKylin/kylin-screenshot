@@ -38,7 +38,7 @@ SelectionWidget::SelectionWidget(const QColor &c, QWidget *parent) :
     m_TLArea = m_TRArea = m_BLArea = m_BRArea = areaRect;
 
     m_areaOffset = QPoint(-sideVal/2, -sideVal/2);
-    m_handleOffset = QPoint(-handleSide/2, -handleSide/2);
+    m_handleOffset = QPoint(-handleSide/2+1, -handleSide/2+1);
 }
 
 SelectionWidget::SideType SelectionWidget::getMouseSide(const QPoint &point) const {
