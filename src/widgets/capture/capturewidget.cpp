@@ -227,8 +227,14 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     font_options2->setFixedSize(QSize(261, 80));
     font_options2->setCenterWidget();
 
-    font_color->hide();
-    font_color2->hide();
+    size_label = new QLabel(this);
+    size_label->setFixedSize(82,24);
+    size_label->hide();
+    QFont ft1;
+    ft1.setPointSize(10);
+    size_label->setFont(ft1);
+    size_label->setAlignment(Qt::AlignCenter);
+
 #ifndef SUPPORT_NEWUI
     m_context.saveType =".png";
     QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
@@ -388,24 +394,23 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         painter.setPen(m_uiColor);
         painter.setRenderHint(QPainter::Antialiasing);
         painter.setOpacity(0.5);
+        size_label->move(m_selection->geometry().intersected(rect()).x(),
+                m_selection->geometry().intersected(rect()).y()-37);
+        size_label->setText(tr("%1 * %2")
+                            .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
+        size_label->show();
         // draw capture size
         if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
             painter.setBrush(QColor(0,0,0));
-            painter.drawRoundRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,
-                                  82,24,4,4);
-            painter.setPen(Qt::white);
-            painter.setFont(ft);
-            painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
-                             .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
+            painter.setPen(QColor(0,0,0));
+            painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x(),
+                                    m_selection->geometry().intersected(rect()).y()-37,82,24,4,4,Qt::AbsoluteSize);
         }
         else{
+            painter.setPen(QColor(195,195,195));
             painter.setBrush(QColor(195,195,195));
-            painter.drawRoundRect((m_selection->geometry().intersected(rect()).x()),m_selection->geometry().intersected(rect()).y()-37,
-                              82,24,4,4);
-            painter.setPen(Qt::black);
-            painter.setFont(ft);
-            painter.drawText((m_selection->geometry().intersected(rect()).x()+2),m_selection->geometry().intersected(rect()).y()-19,tr("%1 * %2")
-                         .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
+            painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x(),
+                                    m_selection->geometry().intersected(rect()).y()-37,82,24,4,4,Qt::AbsoluteSize);
         }
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
 #ifndef ENABLE_RECORD
@@ -440,7 +445,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             if((m_context.style_name.compare("ukui-dark")==0) || (m_context.style_name.compare("ukui-black")==0)){
                 painter.setBrush(QColor(0,0,0));
                 painter.setPen(QColor(0,0,0));
-                painter.setOpacity(0.66);
+                painter.setOpacity(0.5);
                 painter.drawRoundedRect(rr,6,6,Qt::AbsoluteSize);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
@@ -468,13 +473,12 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,vectorButtons.first()->pos().y()+14, 1,16);
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
 #endif
-                painter.setOpacity(0.5);
             }
             //if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
             else{
                 painter.setBrush(QColor(200,200,200));
                 painter.setPen(QColor(200,200,200));
-                painter.setOpacity(0.66);
+                painter.setOpacity(0.5);
                 painter.drawRoundedRect(rr,6,6,Qt::AbsoluteSize);
                 painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
@@ -503,7 +507,6 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                 painter.setPen(QColor(255,255,255));
                 painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,vectorButtons.first()->pos().y()+14, 1,16);
 #endif
-                painter.setOpacity(0.5);
             }
 #endif
         }
