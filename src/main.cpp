@@ -65,7 +65,8 @@ int main(int argc, char *argv[]) {
     }
     qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
     qApp->setApplicationVersion(static_cast<QString>(APP_VERSION));
-
+    if (qgetenv("QT_QPA_PLATFORMTHEME") != "ukui")
+            qputenv("QT_QPA_PLATFORMTHEME", "ukui");
     // no arguments, just launch kylin-screenshot
     if (argc == 1) {
         SingleApplication app(argc, argv);
