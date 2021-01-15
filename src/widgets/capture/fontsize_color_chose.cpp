@@ -40,6 +40,7 @@ FontSize_Color_Chose::FontSize_Color_Chose(QWidget *parent)
     setCursor(Qt::ArrowCursor);
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
+    setFocus();
     //设置阴影边框
     auto shadowEffect = new QGraphicsDropShadowEffect(this);
     shadowEffect->setOffset(0,0);
@@ -72,6 +73,7 @@ FontSize_Color_Chose::FontSize_Color_Chose(QWidget *parent)
          Start_x += 24;
     }
     m_colorAreaList.append(QRect(8,35,7,7));
+    m_colorAreaList.append(QRect(18,34,9,9));
 }
 void FontSize_Color_Chose::setStartPos(double startX)
 {
@@ -103,6 +105,7 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
         painter.setBrush(QColor(Qt::black));
         painter.setOpacity(0);
         painter.drawEllipse(rect);
+        painter.drawEllipse(m_colorAreaList.at(13));
         painter.setOpacity(1);
     }
     else{
@@ -113,6 +116,7 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
         painter.setBrush(QColor(Qt::gray));
         painter.setOpacity(0);
         painter.drawEllipse(rect);
+        painter.drawEllipse(m_colorAreaList.at(13));
         painter.setOpacity(1);
     }
     for (int i=0;i<4;i++)
@@ -148,34 +152,39 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
     }
 }
 void FontSize_Color_Chose::mousePressEvent(QMouseEvent *e) {
-    for (int i = 0; i < 4; i++) {
-        if(i == 0)
-        {
+    for (int i = 0; i < 12; i++) {
+        switch (i) {
+        case 0:
             if (m_colorAreaList.at(12).contains(e->pos())) {
             color_rect = m_colorAreaList.at(i);
             emit font_size_change(i*10) ;
-            update();
+            }
             break;
-         }
+        case 1:
+            if (m_colorAreaList.at(13).contains(e->pos())) {
+                color_rect = m_colorAreaList.at(i);
+                emit font_size_change(i*10) ;
+            }
+            break;
+        case 2:
+        case 3:
+            if (m_colorAreaList.at(i).contains(e->pos())) {
+                       color_rect = m_colorAreaList.at(i);
+                        emit font_size_change(i*10) ;
+                     }
+            break;
+        default:
+            if (m_colorAreaList.at(i).contains(e->pos())) {
+               color = m_colorList.at(i-4);
+               if (i == 11)
+               {
+                   emit colorSelected(QColor(225,225,225));
+               }
+               else
+                    emit colorSelected(color);
+            break;
         }
-        else if (m_colorAreaList.at(i).contains(e->pos())) {
-           color_rect = m_colorAreaList.at(i);
-            emit font_size_change(i*10) ;
-            update();
-            break;
-         }
-    }
-    for (int i = 4; i < 12; i++) {
-        if (m_colorAreaList.at(i).contains(e->pos())) {
-           color = m_colorList.at(i-4);
-           if (i == 11)
-           {
-               emit colorSelected(QColor(225,225,225));
-           }
-           else
-                emit colorSelected(color);
-           update();
-           break;
-         }
+        update();
+       }
     }
 }
