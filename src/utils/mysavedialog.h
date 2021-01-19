@@ -26,5 +26,6 @@ class MySaveDialog :public QFileDialog
 Q_OBJECT
 public:
     explicit MySaveDialog(QWidget *parent = 0);
+    QString filename();
 signals:
 };

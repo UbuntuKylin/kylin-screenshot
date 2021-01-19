@@ -162,7 +162,7 @@
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+159"/>
+        <location line="+165"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -190,8 +190,7 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="+31"/>
-        <location line="+9"/>
+        <location line="+26"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -272,7 +271,7 @@ Press Space to open the side panel.</source>
         <location line="+88"/>
         <source>Unable to use kylin-screenshot</source>
         <translatorcomment>麒麟截图已禁用</translatorcomment>
-        <translation type="unfinished">麒麟截图已禁用</translation>
+        <translation>麒麟截图已禁用</translation>
     </message>
 </context>
 <context>
@@ -713,7 +712,7 @@ Press Space to open the side panel.</source>
         <translation>可截图的系统快捷键</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+10"/>
         <location line="+40"/>
         <source>Key</source>
         <translation>键</translation>
@@ -725,7 +724,7 @@ Press Space to open the side panel.</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>&lt;u&gt;&lt;b&gt;License&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;许可证&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
@@ -752,7 +751,7 @@ Press Space to open the side panel.</source>
         <translation>&lt;u&gt;&lt;b&gt;快捷键&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="-60"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>屏幕捕捉模式中的可用快捷键。</translation>
     </message>
@@ -1487,34 +1486,46 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="+109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+955"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="+122"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1030"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
     <message>
-        <location line="-62"/>
+        <location line="-75"/>
         <location line="+20"/>
-        <location line="+36"/>
+        <location line="+37"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="-6"/>
         <source>Capture saved as </source>
         <translation>捕获已保存为 </translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-72"/>
         <source>Capture saved to clipboard</source>
         <translation>捕获已保存至剪贴板</translation>
     </message>
     <message>
         <location line="+17"/>
         <location line="+20"/>
-        <location line="+37"/>
+        <location line="+49"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="+3"/>
         <source>Error trying to save as </source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+92"/>
+        <location line="-8"/>
+        <source>file name can not contains &apos;/&apos;</source>
+        <translatorcomment>保存文件名称中不能包含字符&apos;/&apos;</translatorcomment>
+        <translation>保存文件名称中不能包含字符&apos;/&apos;</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>can not save file as hide file</source>
+        <translatorcomment>不能将文件保存为隐藏文件</translatorcomment>
+        <translation>不能将文件保存为隐藏文件</translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="+93"/>
         <source>kylin-screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>
