@@ -51,3 +51,7 @@ MySaveDialog::MySaveDialog(QWidget *parent) :
         this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
     });
 }
+QString  MySaveDialog::filename()
+{
+    return  this->findChildren<QLineEdit *>("fileNameEdit").at(0)->text();
+}

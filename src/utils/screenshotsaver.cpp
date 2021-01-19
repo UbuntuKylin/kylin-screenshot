@@ -92,16 +92,31 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture) {
 
 	    savePath += QLatin1String(".png");
 	}
-
+    QString name = a->filename();
+     QString msg;
+    if (!name.startsWith(QChar('.'),Qt::CaseInsensitive))
+    {
         ok = capture.save(savePath);
-
-        if (ok) {
+    }
+    if (ok) {
             QString pathNoFile = savePath.left(savePath.lastIndexOf(QLatin1String("/")));
             ConfigHandler().setSavePath(pathNoFile);
-            QString msg = QObject::tr("Capture saved as ") + savePath;
+            msg = QObject::tr("Capture saved as ") + savePath;
             SystemNotification().sendMessage(msg, savePath);
-        } else {
-            QString msg = QObject::tr("Error trying to save as ") + savePath;
+        }
+    else {
+       if (name.contains(QChar('/')))
+            {
+                msg = QObject::tr("file name can not contains '/'");
+            }
+            else if (name.startsWith(QChar('.'),Qt::CaseInsensitive))
+            {
+                msg = QObject::tr("can not save file as hide file");
+            }
+            else
+            {
+                msg = QObject::tr("Error trying to save as ") + savePath;
+            }
             QMessageBox saveErrBox(
                         QMessageBox::Warning,
                         QObject::tr("Save Error"),
