@@ -126,7 +126,7 @@ QString CaptureButton::globalStyleSheet() {
     QString baseSheet = "CaptureButton {"
                         "border-width:0px;"                     //边框宽度像素
                         "border-radius:0px;"
-                        "background-color: %1; color: %3 }"
+                        "background-color: %1; color: white }"
                         "CaptureButton:hover { background-color: %2; }"
                         "CaptureButton:pressed:!hover { "
                         "background-color: %1; }";
@@ -136,13 +136,12 @@ QString CaptureButton::globalStyleSheet() {
     // foreground color
     QString color = ColorUtils::colorIsDark(mainColor) ? "white" : "black";
 
-    return baseSheet.arg(Qt::blue).arg(Qt::gray)
-                .arg(Qt::black);
+    return baseSheet.arg(Qt::blue).arg(Qt::gray) ;
 }
 
 QString CaptureButton::styleSheet() const {
     QString baseSheet = "CaptureButton { "
-                        "background-color: %1; color: %3 }"
+                        "background-color: %1; color: white}"
                         "CaptureButton:hover { background-color: %2; }"
                         "CaptureButton:pressed:!hover { "
                         "background-color: %1; }";
@@ -152,8 +151,7 @@ QString CaptureButton::styleSheet() const {
     QString color = ColorUtils::colorIsDark(m_mainColor) ? "white" : "black";
 
    // return color;
-    return baseSheet.arg(Qt::blue).arg(Qt::blue)
-            .arg(Qt::black);
+    return baseSheet.arg(Qt::blue).arg(Qt::blue);
 }
 
 // get icon returns the icon for the type of button
