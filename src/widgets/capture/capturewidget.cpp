@@ -567,8 +567,8 @@ void CaptureWidget::updateChildWindow()
    {
        if (m_buttonHandler->Font_Options_Window_Pos.y()> vectorButtons.first()->pos().y())
           {
-           font_options->hide();
-           font_options2->show();
+           font_options2->hide();
+           font_options->show();
           }
    }
     font_color ->move(vectorButtons.first()->pos().x()+length,m_buttonHandler->FontSize_Color_Chose_Window_Y);
@@ -987,8 +987,6 @@ void CaptureWidget::setState(CaptureButton *b) {
     if (m_toolWidget) {
         m_toolWidget->deleteLater();
         if (m_activeTool->isValid()) {
-            b->setIcon(b->tool()->icon(m_contrastUiColor,false,m_context));
-            hide_ChildWindow();
             pushToolToStack();
         }
     }
