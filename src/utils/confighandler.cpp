@@ -184,9 +184,9 @@ void ConfigHandler::setUIContrastColor(const QColor &c) {
 }
 
 QColor ConfigHandler::drawColorValue() {
-    QColor res(Qt::red);
+   QColor res(219,2,15);
 
-    if (m_settings.contains(QStringLiteral("drawColor"))) {
+   if (m_settings.contains(QStringLiteral("drawColor"))) {
         QString hex = m_settings.value(QStringLiteral("drawColor")).toString();
 
         if (QColor::isValidColor(hex)) {
@@ -246,7 +246,7 @@ void ConfigHandler::setDisabledTrayIcon(const bool disabledTrayIcon) {
 }
 
 int ConfigHandler::drawThicknessValue() {
-    int res = 0;
+    int res = 12;
     if (m_settings.contains(QStringLiteral("drawThickness"))) {
         res = m_settings.value(QStringLiteral("drawThickness")).toInt();
     }
