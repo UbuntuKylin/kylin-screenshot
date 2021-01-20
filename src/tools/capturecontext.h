@@ -41,6 +41,7 @@ struct CaptureContext {
     QPoint mousePos;
     // Value of the desired thickness
     int thickness;
+    int text_thickness;
     // Mode of the capture widget
     bool fullscreen;
 

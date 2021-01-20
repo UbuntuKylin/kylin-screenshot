@@ -62,6 +62,9 @@ void AbstractPathTool::colorChanged(const QColor &c) {
 void AbstractPathTool::thicknessChanged(const int th) {
     m_thickness = th;
 }
+void AbstractPathTool::textthicknessChanged(const int th) {
+    Q_UNUSED(th);
+}
 
 void AbstractPathTool::updateBackup(const QPixmap &pixmap) {
     const int val = m_thickness + m_padding;

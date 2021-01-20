@@ -96,3 +96,6 @@ void MarkerTool::pressed(const CaptureContext &context) {
 void MarkerTool::thicknessChanged(const int th) {
     m_thickness = th + PADDING_VALUE;
 }
+void MarkerTool::textthicknessChanged(const int th) {
+    Q_UNUSED(th);
+}

@@ -191,7 +191,7 @@ public slots:
     virtual void colorChanged(const QColor &c) = 0;
     // Called when the thickness of the tool is updated in the editor.
     virtual void thicknessChanged(const int th) = 0;
-
+    virtual void textthicknessChanged(const int th) = 0;
 #ifdef ENABLE_RECORD
     virtual void pressCalled() {
         m_isPressed = !m_isPressed;

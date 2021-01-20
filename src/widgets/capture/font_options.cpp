@@ -85,6 +85,7 @@ void Font_Options::setCenterWidget(QWidget *widget)
     Font_type->setStyleSheet("font:8px;");
     Font_type->setGeometry(12,26,90,18);
     Font_size = new  QSpinBox(this);
+    Font_size->setMinimum(6);
     Font_size->setStyleSheet("font:10px;");
     Font_size->setValue(2);
     Font_size->setGeometry(107,26,36,18);

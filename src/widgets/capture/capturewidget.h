@@ -88,7 +88,7 @@ signals:
     void captureFailed(uint id);
     void colorChanged(const QColor &c);
     void thicknessChanged(const int thickness);
-
+    void textThicknessChanged(const int text_thickness);
 private slots:
     // TODO replace with tools
     void copyScreenshot();
@@ -109,6 +109,7 @@ private slots:
     void handleButtonSignal(CaptureTool::Request r);
     void setDrawColor(const QColor &c);
     void setDrawThickness(const int &t);
+    void setTextDrawThickness(const int &t);
     void font_type_changed(QFont f);
 
     void  font_italic_clicked(bool);
