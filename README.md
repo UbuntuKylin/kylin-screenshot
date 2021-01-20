@@ -47,6 +47,7 @@ You will need the following packages to compile kylin-screenshot:
 -               libgsettings-qt-dev,
 -               libkf5windowsystem5
 -               libkf5windowsystem-dev,
+-               libxtst-dev,
 You can Build and Install by apt command
 ```shell
 sudo mk-build-deps -i kylin-screenshot/debian/control

@@ -42,5 +42,9 @@ DesktopInfo::WM DesktopInfo::windowManager() {
     } else if (!KDE_FULL_SESSION.isEmpty() || DESKTOP_SESSION == QLatin1String("kde-plasma")) {
         res = DesktopInfo::KDE;
     }
+    else if (XDG_CURRENT_DESKTOP.contains(QLatin1String("UKUI"), Qt::CaseInsensitive))
+    {
+        res = DesktopInfo::UKUI;
+    }
     return res;
 }

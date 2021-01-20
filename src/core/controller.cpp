@@ -24,14 +24,9 @@
 #include "src/widgets/capturelauncher.h"
 #include "src/utils/systemnotification.h"
 #include "src/utils/screengrabber.h"
-#include <QFile>
-#include <QApplication>
-#include <QSystemTrayIcon>
-#include <QAction>
-#include <QMenu>
-#include <QDesktopWidget>
-#include <QGSettings/qgsettings.h>
+#include "my_qt.h"
 #include "src/utils/systemnotification.h"
+//#include "Logger.h"
 #ifdef Q_OS_WIN
 #include "src/core/globalshortcutfilter.h"
 #endif
@@ -124,10 +119,18 @@ void Controller::requestCapture(const CaptureRequest &request) {
 
 // creation of a new capture in GUI mode
 void Controller::startVisualCapture(const uint id, const QString &forcedSavePath) {
+#ifdef SUPPORT_UKUI
     QGSettings *screen= new QGSettings("org.ukui.screenshot");
+//    if (!screen) {
+//        Logger::LogInfo("[Controller::startVisualCapture] " + Logger::tr("not support org.ukui.screenshot..."));
+//        exit(1);
+//    }
     QString screenshot = screen->get("screenshot").toString();
+#endif
     if (!m_captureWindow) {
+#ifdef SUPPORT_UKUI
         if (screenshot.compare("true")==0){
+#endif
             QWidget *modalWidget = nullptr;
             do {
                 modalWidget = qApp->activeModalWidget();
@@ -143,6 +146,7 @@ void Controller::startVisualCapture(const uint id, const QString &forcedSavePath
                 this, &Controller::captureFailed);
             connect(m_captureWindow, &CaptureWidget::captureTaken,
                 this, &Controller::captureTaken);
+#ifdef SUPPORT_UKUI
         }
         else
         {
@@ -152,13 +156,17 @@ void Controller::startVisualCapture(const uint id, const QString &forcedSavePath
                 this, &Controller::captureTaken);
             disableScreenCut();
         }
-
+#endif
 #ifdef Q_OS_WIN
         m_captureWindow->show();
 #else
+#ifdef SUPPORT_UKUI
         if (screenshot.compare("true")==0){
+#endif
             m_captureWindow->showFullScreen();
+#ifdef SUPPORT_UKUI
         }
+#endif
         //m_captureWindow->show(); // Debug
 #endif
     } else {
@@ -203,7 +211,13 @@ void Controller::openLauncherWindow() {
     CaptureLauncher *w = new CaptureLauncher();
     w->move(((qApp->desktop()->screenGeometry().width()-w->width())/2),
             ((qApp->desktop()->screenGeometry().height()-w->height())/2));
-    w->show();
+    QGSettings *screen= new QGSettings("org.ukui.screenshot");
+    QString screenshot = screen->get("screenshot").toString();
+    if (screenshot.compare("true")==0){
+        w->show();
+    }
+    else
+        disableScreenCut();
 }
 
 void Controller::enableTrayIcon() {
@@ -245,7 +259,8 @@ void Controller::enableTrayIcon() {
     m_trayIcon = new QSystemTrayIcon();
     m_trayIcon->setToolTip(tr("Kylin-Screenshot"));
     m_trayIcon->setContextMenu(trayIconMenu);
-    QIcon trayicon = QIcon::fromTheme("kylin-screenshot-tray", QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
+    //QIcon trayicon = QIcon::fromTheme("kylin-screenshot-tray", QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
+    QIcon trayicon = QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png");
     m_trayIcon->setIcon(trayicon);
 
     auto trayIconActivated = [this](QSystemTrayIcon::ActivationReason r){

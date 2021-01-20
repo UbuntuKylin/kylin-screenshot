@@ -378,42 +378,64 @@ void ButtonHandler::moveButtonsToPoints(
 {
     for (const QPoint &p: points) {
         auto button = m_vectorButtons[index];
-        if(index >= 8)
-        {
-          button->move(p.x()+29,p.y());
-          if(index >= 10)
-          {
-              button->move(p.x()+84,p.y());
-              if(index == 12 )
-              {
-                  button->move(p.x()+106,p.y());
-              }
-              else if(index == 13)
-              {
-                  button->move(p.x()+106,p.y());
-              }
-              else if(index == 14)
-              {
-                  if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
-                         {
-                            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
-                                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
-                            else
-                                button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
-                         }
-                         else
-                         {
-                            if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
-                                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
-                            else
-                                button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
-                         }
-              }
+        switch (index) {
+#ifndef SUPPORT_NEWUI
+        case CaptureButton::TYPR_UNDO:
+            button->move(p.x()+29,p.y());
+            break;
+        case CaptureButton::TYPE_OPTION:
+            Save_Location_Window_Pos = move_Save_Location_Window(p.x()+19,p.y());
+            button->move(p.x()+19,p.y());
+            break;
+        case CaptureButton::TYPE_SAVEAS:
+            button->move(p.x()+106,p.y());
+            break;
+        case CaptureButton::TYPE_CLOSE:
+        case CaptureButton::TYPE_COPY:
+            button->move(p.x()+84,p.y());
+            break;
+        case CaptureButton::TYPE_SAVE:
+            button->move(p.x()+108,p.y());
+            break;
+#else
+        case CaptureButton::TYPR_UNDO:
+        case CaptureButton::TYPE_CLOSE:
+        case CaptureButton::TYPE_COPY:
+            button->move(p.x()+29,p.y());
+            break;
+        case CaptureButton::TYPE_SAVE:
+            button->move(p.x()+46,p.y());
+            break;
+        case CaptureButton::TYPE_TEXT:
+            Font_Options_Window_Pos = move_Font_Options_Window(p.x(),p.y());
+            button->move(p);
+            break;
+         case CaptureButton::TYPE_BLUR:
+            button->move(p);
+            break;
+#endif
 
-          }
+        case CaptureButton::TYPE_PIN:
+            if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
+                   {
+                      if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
+                          button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
+                      else
+                          button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+                   }
+            else
+                   {
+                      if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
+                          button->move(m_selection.left()-GlobalValues::buttonBaseSize(),qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
+                      else
+                          button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
+                   }
+            break;
+        default:
+            FontSize_Color_Chose_Window_Y = move_FontSize_Color_Chose_Window(p.y());
+            button->move(p);
+            break;
         }
-        else
-        button->move(p);
         ++index;
     }
 }
@@ -460,3 +482,70 @@ void ButtonHandler::updateScreenRegions(const QVector<QRect> &rects) {
 void ButtonHandler::updateScreenRegions(const QRect &rect) {
     m_screenRegions = QRegion(rect);
 }
+
+void ButtonHandler::clearButtons()
+{
+   m_vectorButtons.clear();
+}
+
+int ButtonHandler::move_FontSize_Color_Chose_Window(int y)
+{
+    int FontSize_Color_Chose_Window_y;
+    if (y>m_selection.y())
+    {
+        if (y+150 <= QGuiApplication::primaryScreen()->geometry().height())
+            FontSize_Color_Chose_Window_y = y+50;
+        else
+            FontSize_Color_Chose_Window_y = y-80;
+    }
+    else
+    {
+        if (y-80 >= 0)
+            FontSize_Color_Chose_Window_y = y-80;
+        else
+            FontSize_Color_Chose_Window_y = y+50;
+    }
+    return  FontSize_Color_Chose_Window_y;
+}
+QPoint ButtonHandler::move_Save_Location_Window(int x,int y)
+{
+    QPoint p(x,y);
+    p.setX(x-50);
+    if (y>m_selection.y())
+    {
+        if (y+170 <= QGuiApplication::primaryScreen()->geometry().height())
+            p.setY(y+50);
+        else
+            p.setY(y-155);
+    }
+    else
+    {
+        if (y-155>= 0)
+            p.setY(y-155);
+        else
+            p.setY(y+50);
+    }
+    return p;
+}
+QPoint ButtonHandler::move_Font_Options_Window(int x,int y)
+{
+    QPoint p(x,y);
+    p.setX(x-120);
+    if(y>m_selection.y())
+    {
+        if (y+125 <= QGuiApplication::primaryScreen()->geometry().height())
+            p.setY(y+50);
+        else
+            p.setY(y-95);
+    }
+    else
+    {
+        if (y-95 >= 0)
+            p.setY(y-95);
+        else
+            p.setY(y+50);
+    }
+    return p;
+}
+
+

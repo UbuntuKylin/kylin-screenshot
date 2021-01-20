@@ -65,7 +65,7 @@ void SystemNotification::sendMessage(
     }
     args << (qAppName())                 //appname
          << static_cast<unsigned int>(0) //id
-         << "kylin-creenshot"                  //icon
+         << "kylin-screenshot"                  //icon
          << title                        //summary
          << text                         //body
          << QStringList()                //actions

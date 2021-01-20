@@ -22,15 +22,17 @@
 
 #include <QLabel>
 #include <QHBoxLayout>
-#include "src/tools/abstractactiontool.h"
-class Options : public AbstractActionTool {
+#include "src/tools/AbstractActionToolWithWidget.h"
+class Options : public AbstractActionToolWithWidget {
     Q_OBJECT
 public:
     explicit Options(QObject *parent = nullptr);
 
     bool closeOnButtonPressed() const;
-
+    QIcon icon(const QColor &background, bool inEditor) const override;
+#ifdef SUPPORT_UKUI
     QIcon icon(const QColor &background, bool inEditor, const CaptureContext &context) const override;
+#endif
     QString name() const override;
     static QString nameID();
     QString description() const override;

@@ -30,9 +30,12 @@ protected:
 
 private:
     void initInfoTable();
+    void initInfoSysTable();
     void initLabels();
     QVBoxLayout *m_layout;
 
     static QVector<const char *> m_keys;
+    static QVector<const char *> sys_keys;
     static QVector<const char *> m_description;
+    static QVector<const char *> m_sys_description;
 };

@@ -29,7 +29,7 @@
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
 #define TRIANGLE_WIDTH 20    //小三角的宽度
 #define TRIANGLE_HEIGHT 10    //小三角的高度
-#define BORDER_RADIUS 10      //窗口边角弧度
+#define BORDER_RADIUS 6      //窗口边角弧度
 
 Save_Location2::Save_Location2(QWidget *parent)
     :  QWidget(parent)
@@ -63,7 +63,7 @@ void Save_Location2::setCenterWidget(QWidget *widget)
     QFont ft ("SourceHanSansCN", 9);
     savedir = new QLabel(tr("save location"),this);
     savedir->setFont(ft);
-    savedir->setGeometry(14,18,48,12);
+    savedir->setGeometry(14,18,80,12);
     //savedir->move(13,21);
     SaveDir = new  QPushButton(this);
     SaveDir->setGeometry(14,36,118,20);
@@ -72,7 +72,7 @@ void Save_Location2::setCenterWidget(QWidget *widget)
     SaveDir->setFont(ft);
     ft.setPointSize(9);
     savetype = new QLabel(tr("save type"),this);
-    savetype->setGeometry(14,74,48,12);
+    savetype->setGeometry(14,74,80,12);
     //savetype->move(13,82);
     savetype->setFont(ft);
     ft.setPointSize(9);
@@ -105,15 +105,17 @@ void Save_Location2::paintEvent(QPaintEvent *event)
     trianglePolygon << QPoint(m_startx+m_triangleWidth/2,height());
     trianglePolygon << QPoint(m_startx + m_triangleWidth,height()-m_triangleHeight);
     QPainterPath drawPath;
-    drawPath.addRoundRect(QRect(SHADOW_WIDTH, SHADOW_WIDTH,width()-SHADOW_WIDTH,height()- m_triangleHeight-SHADOW_WIDTH),
-                                        BORDER_RADIUS,BORDER_RADIUS);
+    drawPath.addRoundedRect(QRect(SHADOW_WIDTH, SHADOW_WIDTH,width()-SHADOW_WIDTH,height()- m_triangleHeight-SHADOW_WIDTH),
+                                        BORDER_RADIUS,BORDER_RADIUS,Qt::AbsoluteSize);
     drawPath.addPolygon(trianglePolygon);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)|| (context.style_name.compare("ukui-light")==0)){
-        painter.setBrush(QColor(225,225,225,180));
+    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+        painter.setBrush(QColor(25,25,25,180));
         painter.drawPath(drawPath);
     }
-    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
-        painter.setBrush(QColor(25,25,25,180));
+    else
+    {
+        //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)|| (context.style_name.compare("ukui-light")==0)){
+        painter.setBrush(QColor(225,225,225,180));
         painter.drawPath(drawPath);
     }
     for (int i=0;i<3;i++)

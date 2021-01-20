@@ -86,6 +86,9 @@ void AbstractTwoPointTool::colorChanged(const QColor &c) {
 void AbstractTwoPointTool::thicknessChanged(const int th) {
     m_thickness = th;
 }
+void AbstractTwoPointTool::textthicknessChanged(const int th) {
+    Q_UNUSED(th);
+}
 
 void AbstractTwoPointTool::updateBackup(const QPixmap &pixmap) {
     m_pixmapBackup = pixmap.copy(backupRect(pixmap.rect()));

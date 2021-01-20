@@ -28,6 +28,10 @@ public:
     bool isSelectable() const override;
     bool showMousePreview() const override;
 
+    QIcon icon(const QColor &background, bool inEditor) const override;
+#ifdef SUPPORT_UKUI
+    QIcon icon(const QColor &background, bool inEditor,const CaptureContext &context) const override;
+#endif
     void undo(QPixmap &pixmap) override;
     void process(QPainter &painter, const QPixmap &pixmap, bool recordUndo = false) override;
     void paintMousePreview(QPainter &painter, const CaptureContext &context) override;
@@ -38,4 +42,5 @@ public slots:
     void drawStart(const CaptureContext &context) override;
     void colorChanged(const QColor &c) override;
     void thicknessChanged(const int th) override;
+    void textthicknessChanged(const int th) override;
 };

@@ -41,20 +41,28 @@ bool TextTool::showMousePreview() const {
     return false;
 }
 
-QIcon TextTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
+QIcon TextTool::icon(const QColor &background, bool inEditor) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "text.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "text.svg") :
-                           QIcon(QStringLiteral(":/img/material/white/") + "format-text.svg");
-    }
-    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "text.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "format-text.svg");
+}
+#ifdef SUPPORT_UKUI
+QIcon TextTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
+    Q_UNUSED(background);
+    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "text.svg") :
                            QIcon(QStringLiteral(":/img/material/dark-theme/") + "format-text.png");
     }
-}
+    //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
+    else{
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "text.svg") :
+                           QIcon(QStringLiteral(":/img/material/white/") + "format-text.svg");
+    }
 
+}
+#endif
 QString TextTool::name() const {
     return tr("text");
 }
@@ -157,7 +165,7 @@ void TextTool::drawMove(const QPoint &p) {
 
 void TextTool::drawStart(const CaptureContext &context) {
     m_color = context.color;
-    m_size = context.thickness;
+    m_size = context.text_thickness;
     m_font.setFamily(context.font_type.family());
     m_font.setBold(context.bold);
     m_font.setItalic(context.italic);
@@ -186,6 +194,15 @@ void TextTool::colorChanged(const QColor &c) {
 }
 
 void TextTool::thicknessChanged(const int th) {
+//    m_size = th;
+//    m_font.setPointSize(m_size + BASE_POINT_SIZE);
+//    if (m_widget) {
+//        m_widget->setFont(m_font);
+//    }
+    Q_UNUSED(th);
+}
+
+void TextTool::textthicknessChanged(const int th) {
     m_size = th;
     m_font.setPointSize(m_size + BASE_POINT_SIZE);
     if (m_widget) {

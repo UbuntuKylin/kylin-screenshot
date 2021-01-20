@@ -29,19 +29,27 @@ LineTool::LineTool(QObject *parent) : AbstractTwoPointTool(parent) {
     m_supportsDiagonalAdj = true;
 }
 
-QIcon LineTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const {
+QIcon LineTool::icon(const QColor &background, bool inEditor) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "line.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
-         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "line.svg") :
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "line.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "line.svg");
-    }
-    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+}
+#ifdef SUPPORT_UKUI
+QIcon LineTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const {
+    Q_UNUSED(background);
+    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "line.svg") :
                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "line.png");
     }
+    //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
+    else{
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "line.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "line.svg");
+    }
 }
+#endif
 QString LineTool::name() const {
     return tr("Line");
 }

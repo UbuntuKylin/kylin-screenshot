@@ -33,7 +33,11 @@ public:
     bool showMousePreview() const override;
 
     QIcon icon(const QColor &background,
+                       bool inEditor) const override;
+#ifdef SUPPORT_UKUI
+    QIcon icon(const QColor &background,
                        bool inEditor,const CaptureContext &context) const override;
+#endif
     QString name() const override;
     static QString nameID();
     QString description() const override;
@@ -54,7 +58,7 @@ public slots:
     void pressed(const CaptureContext &context) override;
     void colorChanged(const QColor &c) override;
     void thicknessChanged(const int th) override;
-
+    void textthicknessChanged(const int th) override;
 private slots:
     void updateText(const QString &s);
     void setFont(const QFont &f);

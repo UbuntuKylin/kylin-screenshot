@@ -35,7 +35,7 @@ public slots:
     void drawMove(const QPoint &p) override;
     void colorChanged(const QColor &c) override;
     void thicknessChanged(const int th) override;
-
+    void textthicknessChanged(const int th) override;
 protected:
     void updateBackup(const QPixmap &pixmap);
     void addPoint(const QPoint &point);

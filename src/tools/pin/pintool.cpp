@@ -25,19 +25,26 @@ bool PinTool::closeOnButtonPressed() const {
     return true;
 }
 
-QIcon PinTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
+QIcon PinTool::icon(const QColor &background, bool inEditor) const {
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "pin.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pin_icon.svg") :
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pin_icon.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "pin_icon.svg");
-    }
-    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+}
+#ifdef SUPPORT_UKUI
+QIcon PinTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
+    Q_UNUSED(background);
+    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pin_icon.svg") :
                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "pin_icon.png");
     }
+    else{
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pin_icon.svg") :
+                          QIcon(QStringLiteral(":/img/material/white/") + "pin_icon.svg");
+    }
 }
+#endif
 QString PinTool::name() const {
     return tr("Pin Tool");
 }

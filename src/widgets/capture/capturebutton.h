@@ -36,8 +36,10 @@ public:
     // in the .cpp and the order value in the private array buttonTypeOrder
     enum ButtonType
     {
-       // TYPE_CUT,
-       // TYPE_LUPING,
+#ifdef ENABLE_RECORD
+        TYPE_CUT,
+        TYPE_LUPING,
+#endif
         TYPE_RECT,
         TYPE_CIRCLE,
         TYPE_LINE,
@@ -47,12 +49,24 @@ public:
         TYPE_TEXT,
         TYPE_BLUR,
         TYPR_UNDO,
+#ifndef SUPPORT_NEWUI
         TYPE_OPTION,
+#endif
         TYPE_CLOSE,
         TYPE_COPY,
         TYPE_SAVE,
+#ifndef SUPPORT_NEWUI
         TYPE_SAVEAS,
+#endif
         TYPE_PIN,
+#ifdef ENABLE_RECORD
+        TYPE_RECORD_CURSOR,
+        TYPE_RECORD_AUDIO,
+        TYPE_RECORD_FOLLOW_MOUSE,
+        TYPE_RECORD_OPTION,
+//        TYPE_RECORD_CLOSE,
+        TYPE_RECORD_START,
+#endif
     };
 
 
@@ -77,7 +91,7 @@ public:
 
     void setColor(const QColor &c);
     void animatedShow();
-
+    ButtonType m_buttonType;
 protected:
     virtual void mousePressEvent(QMouseEvent *);
     static QVector<ButtonType> iterableButtonTypes;
@@ -89,7 +103,6 @@ signals:
 
 private:
     CaptureButton(QWidget *parent = nullptr);
-    ButtonType m_buttonType;
 
     QPropertyAnimation *m_emergeAnimation;
 
@@ -97,10 +110,4 @@ private:
 
     void initButton();
     void updateIcon();
-private:
-    QLabel *label;
-    QLabel *label2;
-
-    QHBoxLayout *layout;
-
 };

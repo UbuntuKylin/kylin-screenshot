@@ -26,6 +26,7 @@ public:
     enum WM {
         GNOME,
         KDE,
+        UKUI,
         OTHER
     };
 

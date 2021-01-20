@@ -66,6 +66,18 @@ public:
         REQ_LUPING,
 
         REQ_OPTIONS,
+
+#ifdef ENABLE_RECORD
+        REQ_CURSOR_RECORD,
+
+        REQ_AUDIO_RECORD,
+
+        REQ_FOLLOW_MOUSE_RECORD,
+
+        REQ_OPTION_RECORD,
+
+        REQ_START_RECORD,
+#endif
     };
 
     explicit CaptureTool(QObject *parent = nullptr) : QObject(parent){}
@@ -81,11 +93,33 @@ public:
     // Enable mouse preview.
     virtual bool showMousePreview() const = 0;
 
+    //only for record buttons
+    virtual bool isIsolated() const {
+        return false;
+    }
+#ifdef ENABLE_RECORD
+    virtual void setIsInitActive(bool isInitActive) {
+        m_isInitActive = isInitActive;
+    }
+    virtual bool getIsInitActive() const {
+        return m_isInitActive;
+    }
+    virtual void setIsPressed(bool isPressed) {
+        m_isPressed = isPressed;
+    }
+    virtual bool getIsPressed() {
+        return m_isPressed;
+    }
+#endif
+
     // The icon of the tool.
     // inEditor is true when the icon is requested inside the editor
     // and false otherwise.
+    virtual QIcon icon(const QColor &background, bool inEditor) const = 0;
+#ifdef SUPPORT_UKUI
     virtual QIcon icon(const QColor &background,
                        bool inEditor,const CaptureContext &context) const = 0;
+#endif
     // Name displayed for the tool, this could be translated with tr()
     virtual QString name() const = 0;
     // Codename for the tool, this hsouldn't change as it is used as ID
@@ -133,6 +167,11 @@ protected:
         return ColorUtils::colorIsDark(c) ?
                     PathInfo::whiteIconPath() : PathInfo::blackIconPath();
     }*/
+#ifdef ENABLE_RECORD
+    //well, these two variables do not take up too much space, maybe optimize in the future
+    bool m_isPressed = false;
+    bool m_isInitActive = false;
+#endif
 
 public slots:
     // On mouse release.
@@ -152,4 +191,10 @@ public slots:
     virtual void colorChanged(const QColor &c) = 0;
     // Called when the thickness of the tool is updated in the editor.
     virtual void thicknessChanged(const int th) = 0;
+    virtual void textthicknessChanged(const int th) = 0;
+#ifdef ENABLE_RECORD
+    virtual void pressCalled() {
+        m_isPressed = !m_isPressed;
+    }
+#endif
 };
