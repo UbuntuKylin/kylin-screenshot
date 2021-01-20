@@ -39,7 +39,7 @@ public slots:
     void drawMoveWithAdjustment(const QPoint &p) override;
     void colorChanged(const QColor &c) override;
     void thicknessChanged(const int th) override;
-
+    void textthicknessChanged(const int th) override;
 protected:
     void updateBackup(const QPixmap &pixmap);
     QRect backupRect(const QRect &limits) const;

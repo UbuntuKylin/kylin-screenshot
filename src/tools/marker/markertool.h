@@ -39,4 +39,5 @@ public slots:
     void drawStart(const CaptureContext &context) override;
     void pressed(const CaptureContext &context) override;
     void thicknessChanged(const int th) override;
+    void textthicknessChanged(const int th) override;
 };

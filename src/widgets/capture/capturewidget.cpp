@@ -169,7 +169,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     connect(font_options,&Font_Options::colorSelected,
                     this,&CaptureWidget::setDrawColor);
     connect(font_options,&Font_Options::font_size_Selete,
-                    this,&CaptureWidget::setDrawThickness);
+                    this,&CaptureWidget::setTextDrawThickness);
     connect(font_options,&Font_Options::font_type_Selete,
                      this,&CaptureWidget::font_type_changed);
     connect(font_options,SIGNAL(font_bold_change(bool)),
@@ -181,7 +181,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     connect(font_options,SIGNAL(font_delete_change(bool)),
                      this,SLOT(font_delete_clicked(bool)));
     connect(font_options2,&Font_Options2::font_size_Selete,
-                    this,&CaptureWidget::setDrawThickness);
+                    this,&CaptureWidget::textThicknessChanged);
     connect(font_options2,&Font_Options2::font_type_Selete,
                      this,&CaptureWidget::font_type_changed);
     connect(font_options2,SIGNAL(font_bold_change(bool)),
@@ -220,7 +220,6 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     font_options->setTriangleInfo(20, 10);
     font_options->setFixedSize(QSize(261, 90));
     font_options->setCenterWidget();
-    font_options->Font_size->setValue(m_context.thickness);
 
     font_options2->setStartPos(130);
     font_options2->setTriangleInfo(20, 10);
@@ -634,6 +633,8 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
                     m_activeTool, &CaptureTool::colorChanged);
             connect(this, &CaptureWidget::thicknessChanged,
                     m_activeTool, &CaptureTool::thicknessChanged);
+            connect(this, &CaptureWidget::textThicknessChanged,
+                    m_activeTool, &CaptureTool::textthicknessChanged);
             connect(m_activeTool, &CaptureTool::requestAction,
                     this, &CaptureWidget::handleButtonSignal);
             m_activeTool->drawStart(m_context);
@@ -887,21 +888,32 @@ void CaptureWidget::keyReleaseEvent(QKeyEvent *e) {
 }
 
 void CaptureWidget::wheelEvent(QWheelEvent *e) {
-    m_context.thickness += e->delta() / 120;
-    m_context.thickness = qBound(0, m_context.thickness, 99);
     QPoint topLeft = qApp->desktop()->screenGeometry(
                 qApp->desktop()->screenNumber(QCursor::pos())).topLeft();
+    if (font_color->isVisible()||font_color2->isVisible())
+    {
+        m_context.thickness += e->delta() / 120;
+        m_context.thickness = qBound(1, m_context.thickness, 99);
+        m_notifierBox->showMessage(QString::number(m_context.thickness));
+        emit thicknessChanged(m_context.thickness);
+        fontsize_color_chose_default();
+        fontsize_color_chose2_default();
+    }
+    else if (font_options->isVisible() || font_options2->isVisible())
+    {
+        m_context.text_thickness += e->delta() / 120;
+        m_context.text_thickness = qBound(6, m_context.text_thickness, 99);
+        m_notifierBox->showMessage(QString::number(m_context.text_thickness));
+        emit thicknessChanged(m_context.text_thickness);
+        emit  textThicknessChanged(m_context.text_thickness);
+        font_options_defult();
+        font_options2_defult();
+    }
     int offset = m_notifierBox->width() / 4;
-    m_notifierBox->move(mapFromGlobal(topLeft) + QPoint(offset, offset));
-    m_notifierBox->showMessage(QString::number(m_context.thickness));
     if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
         update();
-    }
-    emit thicknessChanged(m_context.thickness);
-    font_options_defult();
-    font_options2_defult();
-    fontsize_color_chose_default();
-    fontsize_color_chose2_default();
+    } m_notifierBox->move(mapFromGlobal(topLeft) + QPoint(offset, offset));
+
 }
 
 void CaptureWidget::resizeEvent(QResizeEvent *e) {
@@ -926,6 +938,7 @@ void CaptureWidget::initContext(const QString &savePath, bool fullscreen) {
     m_context.widgetOffset = mapToGlobal(QPoint(0,0));
     m_context.mousePos= mapFromGlobal(QCursor::pos());
     m_context.thickness = m_config.drawThicknessValue();
+    m_context.text_thickness = m_config.drawTextThicknessValue();
     m_context.fullscreen = fullscreen;
     m_context.font_type = QFont("方正黑体");
     m_context.bold = false;
@@ -1211,9 +1224,16 @@ void CaptureWidget::setState(CaptureButton *b) {
 
      void CaptureWidget::setDrawThickness(const int &t)
      {
-         m_context.thickness = qBound(0, t, 100);
+         m_context.thickness = qBound(1, t, 99);
          ConfigHandler().setdrawThickness(m_context.thickness);
          emit thicknessChanged(m_context.thickness);
+     }
+
+     void CaptureWidget::setTextDrawThickness(const int &t)
+     {
+         m_context.text_thickness = qBound(6, t, 99);
+         ConfigHandler().setdrawThickness(m_context.text_thickness);
+         emit textThicknessChanged(m_context.text_thickness);
      }
 
      void CaptureWidget::leftResize() {
@@ -1535,7 +1555,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      void CaptureWidget::font_options_defult()
      {
          font_options->move(m_buttonHandler->Font_Options_Window_Pos);
-         font_options->Font_size->setValue(m_context.thickness);
+         font_options->Font_size->setValue(m_context.text_thickness);
          font_options->color = m_context.color;
          font_options->Underline = m_context.underline;
          font_options->italic = m_context.italic;
@@ -1545,13 +1565,12 @@ void CaptureWidget::setState(CaptureButton *b) {
      void CaptureWidget::font_options2_defult()
      {
          font_options2->move(m_buttonHandler->Font_Options_Window_Pos);
-         font_options2->Font_size->setValue(m_context.thickness);
+         font_options2->Font_size->setValue(m_context.text_thickness);
          font_options2->color = m_context.color;
          font_options2->Underline = m_context.underline;
          font_options2->italic = m_context.italic;
          font_options2->bold = m_context.bold;
          font_options2->Delete = m_context.deleteline;
-
      }
      void CaptureWidget::fontsize_color_chose_default()
      {

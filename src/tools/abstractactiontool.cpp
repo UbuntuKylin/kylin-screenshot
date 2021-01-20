@@ -84,3 +84,7 @@ void AbstractActionTool::colorChanged(const QColor &c) {
 void AbstractActionTool::thicknessChanged(const int th) {
     Q_UNUSED(th);
 }
+void AbstractActionTool::textthicknessChanged(const int th) {
+    Q_UNUSED(th);
+}
+
