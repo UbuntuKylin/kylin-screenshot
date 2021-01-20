@@ -68,7 +68,19 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
                 dbusResult.remove();
             }
             break;
-        } default:
+        } case DesktopInfo::UKUI: {
+            QDBusInterface UkuiInterface(QStringLiteral("org.ukui.KWin"),
+                                         QStringLiteral("/Screenshot"),
+                                         QStringLiteral("org.ukui.kwin.Screenshot"));
+            QDBusReply<QString> reply = UkuiInterface.call(QStringLiteral("screenshotFullscreen"));
+            res = QPixmap(reply.value());
+            if (!res.isNull()) {
+                QFile dbusResult(reply.value());
+                dbusResult.remove();
+            }
+            break;
+        }
+        default:
             ok = false;
             break;
         }
