@@ -893,7 +893,7 @@ void CaptureWidget::wheelEvent(QWheelEvent *e) {
     if (font_color->isVisible()||font_color2->isVisible())
     {
         m_context.thickness += e->delta() / 120;
-        m_context.thickness = qBound(1, m_context.thickness, 99);
+        m_context.thickness = qBound(1, m_context.thickness, 20);
         m_notifierBox->showMessage(QString::number(m_context.thickness));
         emit thicknessChanged(m_context.thickness);
         fontsize_color_chose_default();
@@ -1576,19 +1576,19 @@ void CaptureWidget::setState(CaptureButton *b) {
      {
           font_color->color = m_context.color;
           int i = m_context.thickness;
-          if (i>= 0 && i < 10)
+          if (i>= 0 && i <= 3)
           {
               font_color->color_rect =font_color->m_colorAreaList.at(0);
           }
-          else if (i >= 10 && i<20)
+          else if (i >= 4 && i<9)
           {
               font_color->color_rect =font_color->m_colorAreaList.at(1);
           }
-          else if (i >= 20 && i<30)
+          else if (i >= 9 && i<13)
           {
               font_color->color_rect =font_color->m_colorAreaList.at(2);
           }
-          else if (i >= 30)
+          else if (i >= 13)
           {
               font_color->color_rect =font_color->m_colorAreaList.at(3);
           }
@@ -1601,19 +1601,19 @@ void CaptureWidget::setState(CaptureButton *b) {
      {
           font_color2->color = m_context.color;
           int i = m_context.thickness;
-          if (i>= 0 && i < 10)
+          if (i>= 0 && i <= 3)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(0);
           }
-          else if (i >= 10 && i<20)
+          else if (i >= 4 && i< 5)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(1);
           }
-          else if (i >= 20 && i<30)
+          else if (i >= 9 && i< 13)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(2);
           }
-          else if (i >= 30)
+          else if (i >= 13)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(3);
           }
