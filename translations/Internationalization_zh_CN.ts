@@ -162,7 +162,7 @@
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+165"/>
+        <location line="+164"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -397,7 +397,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+92"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+93"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -424,7 +424,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+103"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+104"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -1487,7 +1487,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1030"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1049"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1694,7 +1694,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="+76"/>
+        <location filename="../src/utils/screengrabber.cpp" line="+88"/>
         <source>Unable to capture screen</source>
         <translation>无法捕获屏幕</translation>
     </message>
@@ -1915,6 +1915,11 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/systemnotification.cpp" line="+45"/>
         <source>Kylin-ScreenShot Info</source>
         <translation>麒麟截图 消息</translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>kylin-screenshot</source>
+        <translation>麒麟截图</translation>
     </message>
 </context>
 <context>

@@ -151,12 +151,12 @@
         <translation>Nie można przechwycić ekranu</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="260"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="265"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="367"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="372"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -173,7 +173,6 @@ Spacja, aby pokazać panel boczny.</translation>
     </message>
     <message>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="398"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="407"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -368,22 +367,22 @@ Spacja, aby pokazać panel boczny.</translation>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="92"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="93"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Przekreślenie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="95"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="96"/>
         <source>Underline</source>
         <translation type="unfinished">Podkreślenie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="99"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="100"/>
         <source>Bold</source>
         <translation type="unfinished">Pogrubienie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="101"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
         <source>Italic</source>
         <translation type="unfinished">Kursywa</translation>
     </message>
@@ -391,22 +390,22 @@ Spacja, aby pokazać panel boczny.</translation>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="103"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="104"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Przekreślenie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="104"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="105"/>
         <source>Underline</source>
         <translation type="unfinished">Podkreślenie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="105"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="106"/>
         <source>Bold</source>
         <translation type="unfinished">Pogrubienie</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="106"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="107"/>
         <source>Italic</source>
         <translation type="unfinished">Kursywa</translation>
     </message>
@@ -642,13 +641,13 @@ Spacja, aby pokazać panel boczny.</translation>
         <translation>Zmień grubość narzędzia</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="140"/>
+        <location filename="../src/widgets/infowindow.cpp" line="139"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>Dostępne skróty w trybie przechwytywania obrazu.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="111"/>
-        <location filename="../src/widgets/infowindow.cpp" line="151"/>
+        <location filename="../src/widgets/infowindow.cpp" line="110"/>
+        <location filename="../src/widgets/infowindow.cpp" line="150"/>
         <source>Key</source>
         <translation>Klawisz</translation>
     </message>
@@ -678,8 +677,8 @@ Spacja, aby pokazać panel boczny.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="111"/>
-        <location filename="../src/widgets/infowindow.cpp" line="151"/>
+        <location filename="../src/widgets/infowindow.cpp" line="110"/>
+        <location filename="../src/widgets/infowindow.cpp" line="150"/>
         <source>Description</source>
         <translation>Działanie</translation>
     </message>
@@ -1439,16 +1438,16 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="109"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1362"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1447"/>
         <source>Save Error</source>
         <translation>Błąd zapisu</translation>
     </message>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="103"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1356"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="104"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1441"/>
         <source>Capture saved as </source>
         <translation>Zaznaczenie zapisano jako </translation>
     </message>
@@ -1460,27 +1459,37 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="106"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1359"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="118"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1444"/>
         <source>Error trying to save as </source>
         <translation>Błąd przy próbie zapisu jako </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="92"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="110"/>
+        <source>file name can not contains &apos;/&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/utils/screenshotsaver.cpp" line="114"/>
+        <source>can not save file as hide file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="93"/>
         <source>kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="101"/>
-        <location filename="../src/main.cpp" line="251"/>
-        <location filename="../src/main.cpp" line="410"/>
-        <location filename="../src/main.cpp" line="434"/>
-        <location filename="../src/main.cpp" line="463"/>
+        <location filename="../src/main.cpp" line="102"/>
+        <location filename="../src/main.cpp" line="252"/>
+        <location filename="../src/main.cpp" line="411"/>
+        <location filename="../src/main.cpp" line="435"/>
+        <location filename="../src/main.cpp" line="464"/>
         <source>Unable to connect via DBus</source>
         <translation>Nie udało się połączyć za pomocą DBus</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="117"/>
+        <location filename="../src/main.cpp" line="118"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1585,7 +1594,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="76"/>
+        <location filename="../src/utils/screengrabber.cpp" line="88"/>
         <source>Unable to capture screen</source>
         <translation>Nie można przechwycić ekranu</translation>
     </message>
@@ -1784,6 +1793,11 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/utils/systemnotification.cpp" line="45"/>
         <source>Kylin-ScreenShot Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/utils/systemnotification.cpp" line="66"/>
+        <source>kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
