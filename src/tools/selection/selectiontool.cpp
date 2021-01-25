@@ -72,7 +72,10 @@ void SelectionTool::process(QPainter &painter, const QPixmap &pixmap, bool recor
         updateBackup(pixmap);
     }
     painter.setPen(QPen(m_color, m_thickness));
-    painter.drawRect(QRect(m_points.first, m_points.second));
+    painter.drawLine(QLine(m_points.first, QPoint(m_points.second.x(),m_points.first.y())));
+    painter.drawLine(QLine(m_points.first, QPoint(m_points.first.x(),m_points.second.y())));
+    painter.drawLine(QLine(m_points.second, QPoint(m_points.first.x(),m_points.second.y())));
+    painter.drawLine(QLine(m_points.second, QPoint(m_points.second.x(),m_points.first.y())));
 }
 
 void SelectionTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {

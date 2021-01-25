@@ -157,20 +157,20 @@ void FontSize_Color_Chose::mousePressEvent(QMouseEvent *e) {
         case 0:
             if (m_colorAreaList.at(12).contains(e->pos())) {
             color_rect = m_colorAreaList.at(i);
-            emit font_size_change(i*10) ;
+            emit font_size_change(3) ;
             }
             break;
         case 1:
             if (m_colorAreaList.at(13).contains(e->pos())) {
                 color_rect = m_colorAreaList.at(i);
-                emit font_size_change(i*10) ;
+                emit font_size_change(5) ;
             }
             break;
         case 2:
         case 3:
             if (m_colorAreaList.at(i).contains(e->pos())) {
                        color_rect = m_colorAreaList.at(i);
-                        emit font_size_change(i*10) ;
+                        emit font_size_change(4*i+1) ;
                      }
             break;
         default:
