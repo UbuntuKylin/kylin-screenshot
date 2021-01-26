@@ -152,10 +152,10 @@ void Font_Options::paintEvent(QPaintEvent *event)
              Rect_h= rect.height()+4;
              Rect_w = rect.width() +4;
              painter.setBrush(QColor(255,255,255));
-             painter.drawRect(QRect(rect.x()-2,rect.y()-2,Rect_h,Rect_w));
+             painter.drawRoundedRect(QRect(rect.x()-2,rect.y()-2,Rect_h,Rect_w),2,2,Qt::AbsoluteSize);
         }
         painter.setBrush(color1);
-        painter.drawRect(m_colorAreaList.at(i));
+        painter.drawRoundedRect(m_colorAreaList.at(i),2,2,Qt::AbsoluteSize);
     }
     if (bold){
         bold_btn->setStyleSheet("QPushButton{border-image:url"
