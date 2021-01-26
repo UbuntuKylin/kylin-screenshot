@@ -192,6 +192,8 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
                      this,SLOT(font_underline_clicked(bool)));
     connect(font_options2,SIGNAL(font_delete_change(bool)),
                      this,SLOT(font_delete_clicked(bool)));
+    connect(font_options2,&Font_Options2::colorSelected,
+                    this,&CaptureWidget::setDrawColor);
     connect(save_location,&Save_Location::save_type_clicked,
                 this,&CaptureWidget::ClickedSaveType);
     connect(save_location2,&Save_Location2::save_type_clicked,
@@ -200,7 +202,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     m_colorPicker->hide();
     font_color->setStartPos(95);
     font_color->setTriangleInfo(20, 10);
-    font_color->setFixedSize(QSize(187, 67));
+    font_color->setFixedSize(QSize(192, 67));
 
     font_color2->setStartPos(95);
     font_color2->setTriangleInfo(20, 10);
@@ -1605,7 +1607,7 @@ void CaptureWidget::setState(CaptureButton *b) {
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(0);
           }
-          else if (i >= 4 && i< 5)
+          else if (i >= 4 && i< 9)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(1);
           }

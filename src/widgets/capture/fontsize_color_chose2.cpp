@@ -69,8 +69,10 @@ FontSize_Color_Chose2::FontSize_Color_Chose2(QWidget *parent)
          m_colorAreaList.append(QRect(Start_x,Start_y,14,14));
          Start_x += 24;
     }
-    m_colorAreaList.append(QRect(8,21,7,7));
-    m_colorAreaList.append(QRect(18,20,9,9));
+    m_colorAreaList.append(QRect(0,5,16,46));
+    m_colorAreaList.append(QRect(17,5,13,46));
+    m_colorAreaList.append(QRect(31,5,17,46));
+    m_colorAreaList.append(QRect(49,5,30,46));
 }
 void FontSize_Color_Chose2::setStartPos(double startX)
 {
@@ -98,22 +100,26 @@ void FontSize_Color_Chose2::paintEvent(QPaintEvent *event)
     if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         painter.setBrush(QColor(25,25,25,180));
         painter.drawPath(drawPath);
-        QRect rect = m_colorAreaList.at(12);
-        painter.setBrush(QColor(Qt::black));
-        painter.setOpacity(0);
-        painter.drawEllipse(rect);
-        painter.drawEllipse(m_colorAreaList.at(13));
+        for (int i =12 ;i < 16; i++)
+          {
+            QRect rect = m_colorAreaList.at(i);
+            painter.setBrush(QColor(Qt::black));
+            painter.setOpacity(0);
+            painter.drawEllipse(rect);
+          }
         painter.setOpacity(1);
     }
     else{
     //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
         painter.setBrush(QColor(225,225,225,180));
         painter.drawPath(drawPath);
-        QRect rect = m_colorAreaList.at(12);
-        painter.setBrush(QColor(Qt::gray));
-        painter.setOpacity(0);
-        painter.drawEllipse(rect);
-        painter.drawEllipse(m_colorAreaList.at(13));
+        for (int i =12 ;i < 16; i++)
+          {
+            QRect rect = m_colorAreaList.at(i);
+            painter.setBrush(QColor(Qt::gray));
+            painter.setOpacity(0);
+            painter.drawEllipse(rect);
+          }
         painter.setOpacity(1);
     }
     for (int i=0;i<4;i++)
@@ -140,16 +146,16 @@ void FontSize_Color_Chose2::paintEvent(QPaintEvent *event)
         QColor color1 =  m_colorList.at(i-4);
         if (color == color1){
              Rect_h= rect.height()+4;
-             Rect_w = rect.width() +4;
+             Rect_w = rect.width()+4;
              painter.setBrush(QColor(255,255,255));
-             painter.drawRect(QRect(rect.x()-2,rect.y()-2,Rect_h,Rect_w));
+             painter.drawRoundedRect(QRect(rect.x()-2,rect.y()-2,Rect_h,Rect_w),2,2,Qt::AbsoluteSize);
         }
         painter.setBrush(color1);
-        painter.drawRect(m_colorAreaList.at(i));
+        painter.drawRoundedRect(m_colorAreaList.at(i),2,2,Qt::AbsoluteSize);
     }
 }
 void FontSize_Color_Chose2::mousePressEvent(QMouseEvent *e) {
-      for (int i = 0; i < 4; i++) {
+      for (int i = 0; i < 12; i++) {
           switch (i) {
           case 0:
               if (m_colorAreaList.at(12).contains(e->pos())) {
@@ -164,8 +170,13 @@ void FontSize_Color_Chose2::mousePressEvent(QMouseEvent *e) {
               }
               break;
           case 2:
+              if (m_colorAreaList.at(14).contains(e->pos())) {
+                  color_rect = m_colorAreaList.at(i);
+                  emit font_size_change2(4*i+1) ;
+              }
+              break;
           case 3:
-              if (m_colorAreaList.at(i).contains(e->pos())) {
+              if (m_colorAreaList.at(15).contains(e->pos())) {
                          color_rect = m_colorAreaList.at(i);
                           emit font_size_change2(4*i+1) ;
                        }
@@ -178,7 +189,7 @@ void FontSize_Color_Chose2::mousePressEvent(QMouseEvent *e) {
                      emit colorSelected2(QColor(225,225,225));
                  }
                  else
-                      emit colorSelected2(color);
+                     emit colorSelected2(color);
               break;
           }
           update();
