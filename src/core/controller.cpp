@@ -21,7 +21,6 @@
 #include "src/widgets/infowindow.h"
 #include "src/config/configwindow.h"
 #include "src/widgets/capture/capturebutton.h"
-#include "src/widgets/capturelauncher.h"
 #include "src/utils/systemnotification.h"
 #include "src/utils/screengrabber.h"
 #include "my_qt.h"
@@ -208,16 +207,18 @@ void Controller::openInfoWindow() {
 }
 
 void Controller::openLauncherWindow() {
-    CaptureLauncher *w = new CaptureLauncher();
-    w->move(((qApp->desktop()->screenGeometry().width()-w->width())/2),
-            ((qApp->desktop()->screenGeometry().height()-w->height())/2));
     QGSettings *screen= new QGSettings("org.ukui.screenshot");
     QString screenshot = screen->get("screenshot").toString();
-    if (screenshot.compare("true")==0){
-        w->show();
-    }
-    else
-        disableScreenCut();
+    if (!m_launcherWindow) {
+        m_launcherWindow = new CaptureLauncher();
+        m_launcherWindow->move(((qApp->desktop()->screenGeometry().width()-m_launcherWindow->width())/2),
+            ((qApp->desktop()->screenGeometry().height()-m_launcherWindow->height())/2));
+        if (screenshot.compare("true")==0){
+            m_launcherWindow->show();
+        }
+        else
+            disableScreenCut();
+        }
 }
 
 void Controller::enableTrayIcon() {
