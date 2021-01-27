@@ -33,7 +33,7 @@ QString FileNameHandler::parsedPattern() {
 QString FileNameHandler::parseFilename(const QString &name) {
     QString res = name;
     if (name.isEmpty()) {
-        res = QLatin1String("%F_%H-%M");
+        res = QLatin1String("%F_%H-%M-%S");
     }
     std::time_t t = std::time(NULL);
 
