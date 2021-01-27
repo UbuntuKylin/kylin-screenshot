@@ -151,17 +151,17 @@
         <translation>無法擷取螢幕</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="265"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="267"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="372"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="374"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="398"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="402"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -205,37 +205,37 @@
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="230"/>
+        <location filename="../src/core/controller.cpp" line="231"/>
         <source>&amp;Take Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="235"/>
+        <location filename="../src/core/controller.cpp" line="236"/>
         <source>&amp;Open Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="238"/>
+        <location filename="../src/core/controller.cpp" line="239"/>
         <source>&amp;Configuration</source>
         <translation>&amp;設定</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="241"/>
+        <location filename="../src/core/controller.cpp" line="242"/>
         <source>&amp;Information</source>
         <translation>&amp;資訊</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="244"/>
+        <location filename="../src/core/controller.cpp" line="245"/>
         <source>&amp;Quit</source>
         <translation>&amp;結束</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="260"/>
+        <location filename="../src/core/controller.cpp" line="261"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="348"/>
+        <location filename="../src/core/controller.cpp" line="349"/>
         <source>Unable to use kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1373,6 +1373,24 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>MySaveDialog</name>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="31"/>
+        <source>Portable Network Graphic file (PNG) (*.png)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="32"/>
+        <source>BMP file (*.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="33"/>
+        <source>JPEG file (*.jpg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OptionRecordTool</name>
     <message>
         <location filename="../src/tools/option_record/option_record_tool.cpp" line="32"/>
@@ -1428,7 +1446,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1447"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1468"/>
         <source>Save Error</source>
         <translation>存檔錯誤</translation>
     </message>
@@ -1436,7 +1454,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="104"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1441"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1462"/>
         <source>Capture saved as </source>
         <translation>截圖已另存為 </translation>
     </message>
@@ -1449,7 +1467,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="118"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1444"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1465"/>
         <source>Error trying to save as </source>
         <translation>嘗試另存新檔時發生錯誤 </translation>
     </message>

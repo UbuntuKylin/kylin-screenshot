@@ -162,7 +162,7 @@
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+164"/>
+        <location line="+166"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -190,7 +190,7 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+28"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -238,7 +238,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="+230"/>
+        <location filename="../src/core/controller.cpp" line="+231"/>
         <source>&amp;Take Screenshot</source>
         <translation>进行截图(&amp;T)</translation>
     </message>
@@ -1432,6 +1432,24 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>MySaveDialog</name>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="+31"/>
+        <source>Portable Network Graphic file (PNG) (*.png)</source>
+        <translation>PNG 格式 (*.png)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>BMP file (*.bmp)</source>
+        <translation>BMP格式 （*.bmp）</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>JPEG file (*.jpg)</source>
+        <translation>JPEG 格式 （*.jpg）</translation>
+    </message>
+</context>
+<context>
     <name>OptionRecordTool</name>
     <message>
         <location filename="../src/tools/option_record/option_record_tool.cpp" line="+32"/>
@@ -1487,7 +1505,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1049"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1066"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
