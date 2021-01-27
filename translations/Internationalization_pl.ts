@@ -151,12 +151,12 @@
         <translation>Nie można przechwycić ekranu</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="265"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="267"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="372"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="374"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -172,7 +172,7 @@ Prawy klik, aby pokazać próbnik kolorów.
 Spacja, aby pokazać panel boczny.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="398"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="402"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -216,37 +216,37 @@ Spacja, aby pokazać panel boczny.</translation>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="230"/>
+        <location filename="../src/core/controller.cpp" line="231"/>
         <source>&amp;Take Screenshot</source>
         <translation>&amp;Zrzut ekranu</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="235"/>
+        <location filename="../src/core/controller.cpp" line="236"/>
         <source>&amp;Open Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="238"/>
+        <location filename="../src/core/controller.cpp" line="239"/>
         <source>&amp;Configuration</source>
         <translation>&amp;Konfiguracja</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="241"/>
+        <location filename="../src/core/controller.cpp" line="242"/>
         <source>&amp;Information</source>
         <translation>&amp;Informacje</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="244"/>
+        <location filename="../src/core/controller.cpp" line="245"/>
         <source>&amp;Quit</source>
         <translation>&amp;Wyjdź</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="260"/>
+        <location filename="../src/core/controller.cpp" line="261"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="348"/>
+        <location filename="../src/core/controller.cpp" line="349"/>
         <source>Unable to use kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1384,6 +1384,24 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>MySaveDialog</name>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="31"/>
+        <source>Portable Network Graphic file (PNG) (*.png)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="32"/>
+        <source>BMP file (*.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="33"/>
+        <source>JPEG file (*.jpg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OptionRecordTool</name>
     <message>
         <location filename="../src/tools/option_record/option_record_tool.cpp" line="32"/>
@@ -1439,7 +1457,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1447"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1468"/>
         <source>Save Error</source>
         <translation>Błąd zapisu</translation>
     </message>
@@ -1447,7 +1465,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="104"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1441"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1462"/>
         <source>Capture saved as </source>
         <translation>Zaznaczenie zapisano jako </translation>
     </message>
@@ -1460,7 +1478,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="118"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1444"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1465"/>
         <source>Error trying to save as </source>
         <translation>Błąd przy próbie zapisu jako </translation>
     </message>

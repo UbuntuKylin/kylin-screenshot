@@ -27,7 +27,11 @@ MySaveDialog::MySaveDialog(QWidget *parent) :
     QFileDialog(parent)
 {
     setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
-    setNameFilter(QLatin1String("Portable Network Graphic file (PNG) (*.png);;BMP file (*.bmp);;JPEG file (*.jpg)"));
+    QStringList filters;
+    filters << tr("Portable Network Graphic file (PNG) (*.png)")
+            << tr("BMP file (*.bmp)")
+            << tr("JPEG file (*.jpg)");
+    setNameFilters(filters);
     setDirectory(QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0));
     setAcceptMode(QFileDialog::AcceptSave);
     QString a =  FileNameHandler().parsedPattern()+".png";
