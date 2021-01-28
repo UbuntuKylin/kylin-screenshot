@@ -179,6 +179,8 @@ private:
       //format code
     void show_childwindow(CaptureButton *b);
     void hide_ChildWindow();
+
+    void  size_label_option();
 #ifdef ENABLE_RECORD
     void record_do_sth(CaptureButton *b);
 #endif
