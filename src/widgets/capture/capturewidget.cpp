@@ -369,6 +369,9 @@ void CaptureWidget::size_label_option()
             && size_label->y() > vectorButtons.first()->pos().y() && m_buttonHandler->isVisible())
         size_label->move(m_selection->geometry().intersected(rect()).x(),
                 m_selection->geometry().intersected(rect()).y()+2);
+    else if (m_selection->geometry().intersected(rect()).y()-24 < 0)
+        size_label->move(m_selection->geometry().intersected(rect()).x(),
+                m_selection->geometry().intersected(rect()).y()+2);
     else
         size_label->move(m_selection->geometry().intersected(rect()).x(),
             m_selection->geometry().intersected(rect()).y()-37);
