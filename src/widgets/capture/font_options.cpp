@@ -25,6 +25,8 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QGraphicsDropShadowEffect>
+#include<QAbstractItemView>
+#include <QFontDatabase>
 #include <QDebug>
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
 #define TRIANGLE_WIDTH 20    //小三角的宽度
@@ -79,10 +81,17 @@ void Font_Options::setTriangleInfo(double width, double height)
 }
 void Font_Options::setCenterWidget(QWidget *widget)
 {
-    Font_type = new  QFontComboBox(this);
-    //Font_type->setMaxVisibleItems(400);
-    Font_type->setCurrentFont(QFont("华文黑体"));
-    Font_type->setStyleSheet("font:8px;");
+    QFont f;
+    f.setPixelSize(10);
+    Font_type = new  QComboBox(this);
+    QFontDatabase database;
+    foreach (const QString &family, database.families())
+    {
+         Font_type->addItem(family);
+    }
+    Font_type->setFont(f);
+    Font_type->view()->setFixedWidth(240);
+    Font_type->setStyleSheet("QComboBox QAbstractItemView::item { min-height: 40px; min-width: 60px; }");
     Font_type->setGeometry(12,26,90,18);
     Font_size = new  QSpinBox(this);
     Font_size->setMinimum(6);
@@ -108,8 +117,10 @@ void Font_Options::setCenterWidget(QWidget *widget)
     Italic_btn->setStyleSheet(styleTheme.arg(IsDarkTheme()).arg("italic.png"));
     connect(Font_size,SIGNAL(valueChanged(int)),
             this,SLOT(font_size_change(int)));
-    connect(Font_type,SIGNAL(currentFontChanged(QFont)),
-            this,SLOT(font_type_change(QFont)));
+    connect(Font_type, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [=](int index)
+    {
+        emit font_type_Selete(QFont(Font_type->currentText()));
+    });
     connect(delete_btn,&QPushButton::clicked,
             this,&Font_Options::font_delete_selete);
     connect(Underline_btn,&QPushButton::clicked,
@@ -205,11 +216,7 @@ void  Font_Options::font_size_change(int i)
     qDebug()<<"text font thickness changed";
     emit font_size_Selete(i);
 }
-void  Font_Options::font_type_change(QFont font)
-{
-    qDebug()<<"text font family changed" <<font ;
-    emit font_type_Selete(font);
-}
+
 void Font_Options::font_bold_selete()
 {
     bold = !bold;

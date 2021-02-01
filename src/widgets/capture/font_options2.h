@@ -24,7 +24,7 @@
 #include <QWidget>
 #include <QFrame>
 #include <QMouseEvent>
-#include <QFontComboBox>
+#include <QComboBox>
 #include <QSpinBox>
 #include  <QPushButton>
 #include "src/tools/capturecontext.h"
@@ -65,7 +65,6 @@ signals:
     void  font_italic_change(bool);
 public  slots:
     void font_size_change(int thickness);
-    void font_type_change(QFont font);
     void font_bold_selete();
     void font_delete_selete();
     void font_underline_selete();
@@ -90,7 +89,7 @@ private:
 public:
     QColor color;
     QRect color_rect;
-    QFontComboBox *Font_type;
+    QComboBox *Font_type;
     QFont font_type;
     QSpinBox *Font_size;
     int  font_size;
