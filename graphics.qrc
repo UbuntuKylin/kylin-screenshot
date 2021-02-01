@@ -89,5 +89,7 @@
         <file>img/material/control_point.png</file>
         <file>img/material/control_point@2x.png</file>
         <file>img/material/control_point@3x.png</file>
+        <file>img/material/black/content-copy.png</file>
+        <file>img/material/white/content-copy.png</file>
     </qresource>
 </RCC>
