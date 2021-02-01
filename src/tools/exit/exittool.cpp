@@ -26,6 +26,15 @@ bool ExitTool::closeOnButtonPressed() const {
     return true;
 }
 
+QIcon ExitTool::icon(const QColor &background, bool inEditor) const {
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "close.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "close.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "close.svg");
+}
+
+#ifdef SUPPORT_UKUI
 QIcon ExitTool::icon(const QColor &background, bool inEditor,const CaptureContext &context ) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "close.svg");
@@ -33,6 +42,7 @@ QIcon ExitTool::icon(const QColor &background, bool inEditor,const CaptureContex
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "close.svg") :
                        QIcon(QStringLiteral(":/img/material/white/") + "close.svg");
 }
+#endif
 QString ExitTool::name() const {
     return tr("Exit");
 }

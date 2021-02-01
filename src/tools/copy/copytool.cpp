@@ -27,19 +27,28 @@ bool CopyTool::closeOnButtonPressed() const {
     return true;
 }
 
-QIcon CopyTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const {
+QIcon CopyTool::icon(const QColor &background, bool inEditor) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "content-copy.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
-                           QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
+
+}
+#ifdef SUPPORT_UKUI
+QIcon CopyTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const {
+    Q_UNUSED(background);
+    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.png") :
+                           QIcon(QStringLiteral(":/img/material/white/") + "content-copy.png");
     }
-    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
-                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "copy.png");
+    //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
+    else{
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.png") :
+                           QIcon(QStringLiteral(":/img/material/white/") + "content-copy.png");
     }
 }
+#endif
 QString CopyTool::name() const {
     return tr("Copy");
 }

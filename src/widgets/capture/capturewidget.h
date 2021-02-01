@@ -49,7 +49,10 @@ class ColorPicker;
 class Screenshot;
 class NotifierBox;
 class HoverEventFilter;
-class ScreenRecorder;
+#ifdef ENABLE_RECORD
+#include "recorder.h"
+#endif
+
 class CaptureWidget : public QWidget {
     Q_OBJECT
 
@@ -59,12 +62,16 @@ public:
                            bool fullScreen = true,
                            QWidget *parent = nullptr);
     ~CaptureWidget();
+
     QString file;
-    void updateButtons();
+    void updateButtons(
+        #ifdef ENABLE_RECORD
+            bool isRecord = false
+        #endif
+            );
     QPixmap pixmap();
     QVector<CaptureButton*> vectorButtons;
     QPoint  *font_color_point;
-    ScreenRecorder *screenCap;
     void hide_window();
     void show_window();
 
@@ -81,6 +88,7 @@ signals:
     void captureFailed(uint id);
     void colorChanged(const QColor &c);
     void thicknessChanged(const int thickness);
+    void textThicknessChanged(const int text_thickness);
 private slots:
     // TODO replace with tools
     void copyScreenshot();
@@ -101,6 +109,7 @@ private slots:
     void handleButtonSignal(CaptureTool::Request r);
     void setDrawColor(const QColor &c);
     void setDrawThickness(const int &t);
+    void setTextDrawThickness(const int &t);
     void font_type_changed(QFont f);
 
     void  font_italic_clicked(bool);
@@ -114,7 +123,6 @@ private:
     void fontsize_color_chose2_default();
     void savetype_chose_default();
     void savetype_chose2_default();
-
 protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *);
@@ -167,6 +175,22 @@ private:
     void pushToolToStack();
     void makeChild(QWidget *w);
 
+    void updateChildWindow();
+      //format code
+    void show_childwindow(CaptureButton *b);
+    void hide_ChildWindow();
+
+    void  size_label_option();
+#ifdef ENABLE_RECORD
+    void record_do_sth(CaptureButton *b);
+#endif
+    void show_FontSize_Color_Chose_Window(CaptureButton *b);
+    void show_Save_Location_Window(CaptureButton *b);
+    void show_Font_Options_Window(CaptureButton *b);
+    void deal_with_SaveAs(CaptureButton *b);
+    void updateMagnifier(CaptureContext m_context);
+
+    QLabel *size_label;
     QRect extendedSelection() const;
     QRect extendedRect(QRect *r) const;
 
@@ -188,4 +212,13 @@ private:
     QPoint m_dragStartPoint;
     SelectionWidget::SideType m_mouseOverHandle;
     uint m_id;
+    int magnifier_x;
+    int magnifier_y;
+    //signed  width between FontSize_Color_Chose_Window and fistbutton
+    int length;
+#ifdef ENABLE_RECORD
+    Recorder *recorder;
+    QMap<CaptureButton::ButtonType, CaptureTool*> m_isolatedButtons;
+#endif
+
 };

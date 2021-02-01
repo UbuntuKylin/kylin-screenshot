@@ -23,6 +23,7 @@
 #include <QMap>
 #include <QTimer>
 #include <functional>
+#include "src/widgets/capturelauncher.h"
 
 class CaptureWidget;
 class ConfigWindow;
@@ -83,4 +84,5 @@ private:
     QPointer<InfoWindow> m_infoWindow;
     QPointer<ConfigWindow> m_configWindow;
     QPointer<QSystemTrayIcon> m_trayIcon;
+    QPointer<CaptureLauncher> m_launcherWindow;
 };

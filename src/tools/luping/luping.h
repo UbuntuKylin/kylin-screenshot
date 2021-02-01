@@ -27,8 +27,10 @@ public:
     explicit LuPing(QObject *parent = nullptr);
 
     bool closeOnButtonPressed() const;
-
+    QIcon icon(const QColor &background, bool inEditor) const override;
+#ifdef SUPPORT_UKUI
     QIcon icon(const QColor &background, bool inEditor , const CaptureContext &context) const override;
+#endif
     QString name() const override;
     static QString nameID();
     QString description() const override;

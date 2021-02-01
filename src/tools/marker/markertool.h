@@ -22,8 +22,10 @@ class MarkerTool : public AbstractTwoPointTool {
     Q_OBJECT
 public:
     explicit MarkerTool(QObject *parent = nullptr);
-
+    QIcon icon(const QColor &background, bool inEditor) const override;
+#ifdef SUPPORT_UKUI
     QIcon icon(const QColor &background, bool inEditor,const CaptureContext &context) const override;
+#endif
     QString name() const override;
     static QString nameID();
     QString description() const override;
@@ -37,4 +39,5 @@ public slots:
     void drawStart(const CaptureContext &context) override;
     void pressed(const CaptureContext &context) override;
     void thicknessChanged(const int th) override;
+    void textthicknessChanged(const int th) override;
 };

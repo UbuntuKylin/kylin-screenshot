@@ -29,6 +29,8 @@ public:
     bool isSelectable() const override;
     bool showMousePreview() const override;
 
+    QIcon icon(const QColor &background, bool inEditor) const override {}
+
     void undo(QPixmap &pixmap) override;
 
 public slots:
@@ -37,7 +39,7 @@ public slots:
     void drawMoveWithAdjustment(const QPoint &p) override;
     void colorChanged(const QColor &c) override;
     void thicknessChanged(const int th) override;
-
+    void textthicknessChanged(const int th) override;
 protected:
     void updateBackup(const QPixmap &pixmap);
     QRect backupRect(const QRect &limits) const;

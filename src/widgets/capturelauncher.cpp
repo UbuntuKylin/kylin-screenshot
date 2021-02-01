@@ -33,7 +33,7 @@
 #include <QMimeData>
 #include <QDrag>
 #include <QFormLayout>
-
+#include <QStandardPaths>
 // https://github.com/KDE/spectacle/blob/941c1a517be82bed25d1254ebd735c29b0d2951c/src/Gui/KSWidget.cpp
 // https://github.com/KDE/spectacle/blob/941c1a517be82bed25d1254ebd735c29b0d2951c/src/Gui/KSMainWindow.cpp
 
@@ -134,14 +134,14 @@ void CaptureLauncher::captureTaken(uint id, QPixmap p) {
     if (id == m_id) {
         m_id = 0;
         m_imageLabel->setScreenshot(p);
+        auto mode = static_cast<CaptureRequest::CaptureMode>(
+    	m_captureType->currentData().toInt());
+        QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+  	if (mode == CaptureRequest::FULLSCREEN_MODE) {
+        ScreenshotSaver().saveToFilesystem(p,a.at(0));
+  	}
         show();
     }
-    auto mode = static_cast<CaptureRequest::CaptureMode>(
-    m_captureType->currentData().toInt());
-
-  if (mode == CaptureRequest::FULLSCREEN_MODE) {
-    ScreenshotSaver().saveToFilesystemGUI(p);
-  }
 }
 
 void CaptureLauncher::captureFailed(uint id) {

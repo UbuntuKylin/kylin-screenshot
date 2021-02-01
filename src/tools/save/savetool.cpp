@@ -27,6 +27,15 @@ bool SaveTool::closeOnButtonPressed() const {
     return true;
 }
 
+QIcon SaveTool::icon(const QColor &background, bool inEditor) const {
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "content-save.svg");
+    Q_UNUSED(background);
+    /*return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-save.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");*/
+    return  QIcon();
+}
+#ifdef SUPPORT_UKUI
 QIcon SaveTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "content-save.svg");
@@ -35,6 +44,7 @@ QIcon SaveTool::icon(const QColor &background, bool inEditor , const CaptureCont
                       QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");*/
     return  QIcon();
 }
+#endif
 QString SaveTool::name() const {
     return tr("save");
 }
@@ -52,6 +62,7 @@ CaptureTool* SaveTool::copy(QObject *parent) {
 }
 
 void SaveTool::pressed(const CaptureContext &context) {
+#ifndef SUPPORT_NEWUI
     QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
     if (context.savePath.isEmpty()) {
         emit requestAction(REQ_HIDE_GUI);
@@ -78,4 +89,20 @@ void SaveTool::pressed(const CaptureContext &context) {
            emit requestAction(REQ_CAPTURE_DONE_OK);
         }
     }
+#else
+    if (context.savePath.isEmpty()) {
+        emit requestAction(REQ_HIDE_GUI);
+        bool ok = ScreenshotSaver().saveToFilesystemGUI(
+                    context.selectedScreenshotArea());
+        if (ok) {
+            emit requestAction(REQ_CAPTURE_DONE_OK);
+        }
+    } else {
+        bool ok = ScreenshotSaver().saveToFilesystem(
+                    context.selectedScreenshotArea(), context.savePath);
+        if (ok) {
+            emit requestAction(REQ_CAPTURE_DONE_OK);
+        }
+    }
+#endif
 }

@@ -20,11 +20,18 @@
 #include <QDir>
 #include <QCoreApplication>
 
+//#include <QDebug>
+
 ConfigHandler::ConfigHandler(){
+    m_settings.clear();
     m_settings.setDefaultFormat(QSettings::IniFormat);
 }
 
-QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
+QVector<CaptureButton::ButtonType> ConfigHandler::getButtons(
+        #ifdef ENABLE_RECORD
+        bool isRecord
+        #endif
+        ) {
     QVector<CaptureButton::ButtonType> buttons;
     if (m_settings.contains(QStringLiteral("buttons"))) {
         // TODO: remove toList in v1.0
@@ -37,9 +44,13 @@ QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
         buttons = fromIntToButton(buttonsInt);
     } else {
         // Default tools
-//        buttons << CaptureButton:: TYPE_CUT
- //              << CaptureButton:: TYPE_LUPING
-       buttons << CaptureButton:: TYPE_RECT
+#ifdef ENABLE_RECORD
+        buttons << CaptureButton:: TYPE_CUT
+               << CaptureButton:: TYPE_LUPING;
+        if (!isRecord) {
+#endif
+               buttons
+               << CaptureButton:: TYPE_RECT
                << CaptureButton:: TYPE_CIRCLE
                << CaptureButton:: TYPE_LINE
                << CaptureButton:: TYPE_ARROW
@@ -48,12 +59,29 @@ QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
                << CaptureButton:: TYPE_TEXT
                << CaptureButton:: TYPE_BLUR
                << CaptureButton:: TYPR_UNDO
+   #ifndef SUPPORT_NEWUI
                << CaptureButton:: TYPE_OPTION
+   #endif
                << CaptureButton:: TYPE_CLOSE
                << CaptureButton:: TYPE_COPY
                << CaptureButton:: TYPE_SAVE
+   #ifndef SUPPORT_NEWUI
                << CaptureButton:: TYPE_SAVEAS
+   #endif
                << CaptureButton:: TYPE_PIN;
+#ifdef ENABLE_RECORD
+        } else {
+//            qDebug() << "bybobbi: ConfigHandler::getButtons will be cursor";
+            buttons
+               << CaptureButton::TYPE_RECORD_CURSOR
+               << CaptureButton::TYPE_RECORD_AUDIO
+               << CaptureButton::TYPE_RECORD_FOLLOW_MOUSE
+               << CaptureButton::TYPE_RECORD_OPTION
+//               << CaptureButton::TYPE_RECORD_CLOSE
+               << CaptureButton::TYPE_RECORD_START;
+        }
+#endif //ENABLE_RECORD
+
     }
 
     using bt = CaptureButton::ButtonType;
@@ -156,9 +184,9 @@ void ConfigHandler::setUIContrastColor(const QColor &c) {
 }
 
 QColor ConfigHandler::drawColorValue() {
-    QColor res(Qt::red);
+   QColor res(219,2,15);
 
-    if (m_settings.contains(QStringLiteral("drawColor"))) {
+   if (m_settings.contains(QStringLiteral("drawColor"))) {
         QString hex = m_settings.value(QStringLiteral("drawColor")).toString();
 
         if (QColor::isValidColor(hex)) {
@@ -218,7 +246,7 @@ void ConfigHandler::setDisabledTrayIcon(const bool disabledTrayIcon) {
 }
 
 int ConfigHandler::drawThicknessValue() {
-    int res = 0;
+    int res = 5;
     if (m_settings.contains(QStringLiteral("drawThickness"))) {
         res = m_settings.value(QStringLiteral("drawThickness")).toInt();
     }
@@ -227,6 +255,18 @@ int ConfigHandler::drawThicknessValue() {
 
 void ConfigHandler::setdrawThickness(const int thickness) {
     m_settings.setValue(QStringLiteral("drawThickness"), thickness);
+}
+
+int ConfigHandler::drawTextThicknessValue() {
+    int res = 14;
+    if (m_settings.contains(QStringLiteral("text_thickness"))) {
+        res = m_settings.value(QStringLiteral("text_thickness")).toInt();
+    }
+    return res;
+}
+
+void ConfigHandler::setdrawTextThickness(const int text_thickness) {
+    m_settings.setValue(QStringLiteral("text_thickness"), text_thickness);
 }
 
 bool ConfigHandler::keepOpenAppLauncherValue() {

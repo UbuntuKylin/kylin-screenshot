@@ -26,10 +26,16 @@ bool SizeIndicatorTool::closeOnButtonPressed() const {
     return false;
 }
 
+QIcon SizeIndicatorTool::icon(const QColor &background, bool inEditor) const {
+    return inEditor ? QIcon(QStringLiteral(":/img/material/black/") + "content-save.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon SizeIndicatorTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
     return inEditor ? QIcon(QStringLiteral(":/img/material/black/") + "content-save.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");
 }
+#endif
 QString SizeIndicatorTool::name() const {
     return tr("Selection Size Indicator");
 }

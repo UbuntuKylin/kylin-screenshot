@@ -26,19 +26,27 @@ RectangleTool::RectangleTool(QObject *parent) : AbstractTwoPointTool(parent) {
     m_supportsDiagonalAdj = true;
 }
 
-QIcon RectangleTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
+QIcon RectangleTool::icon(const QColor &background, bool inEditor) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "square.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)|| (context.style_name.compare("ukui-light")==0)){
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
-                      QIcon(QStringLiteral(":/img/material/dark-theme/") + "square.png");
-    }
-    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "square.svg");
+}
+#ifdef SUPPORT_UKUI
+QIcon RectangleTool::icon(const QColor &background, bool inEditor , const CaptureContext &context) const {
+    Q_UNUSED(background);
+    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
                            QIcon(QStringLiteral(":/img/material/dark-theme/") + "square.png");
     }
+    //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0)|| (context.style_name.compare("ukui-light")==0)){
+    else{
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
+                      QIcon(QStringLiteral(":/img/material/dark-theme/") + "square.png");
+    }
 }
+#endif
 QString RectangleTool::name() const {
     return tr("Rectangle");
 }

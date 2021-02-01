@@ -28,19 +28,27 @@ MarkerTool::MarkerTool(QObject *parent) : AbstractTwoPointTool(parent) {
     m_supportsDiagonalAdj = true;
 }
 
-QIcon MarkerTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const {
+QIcon MarkerTool::icon(const QColor &background, bool inEditor) const {
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "marker.svg");
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "marker.svg") :
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "marker.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "marker.svg");
-    }
-    else if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
+}
+#ifdef SUPPORT_UKUI
+QIcon MarkerTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const {
+    Q_UNUSED(background);
+    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
         return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "marker.svg") :
                           QIcon(QStringLiteral(":/img/material/dark-theme/") + "marker.png");
     }
+    //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
+    else{
+        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "marker.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "marker.svg");
+    }
 }
+#endif
 QString MarkerTool::name() const {
     return tr("Marker");
 }
@@ -87,4 +95,7 @@ void MarkerTool::pressed(const CaptureContext &context) {
 
 void MarkerTool::thicknessChanged(const int th) {
     m_thickness = th + PADDING_VALUE;
+}
+void MarkerTool::textthicknessChanged(const int th) {
+    Q_UNUSED(th);
 }

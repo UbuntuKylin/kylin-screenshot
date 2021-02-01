@@ -63,9 +63,9 @@ void SystemNotification::sendMessage(
         // allows the notification to be dragged and dropped
         hintsMap[QStringLiteral("x-kde-urls")] = QStringList({fullPath.toString()});
     }
-    args << (qAppName())                 //appname
+    args << tr("kylin-screenshot")                 //appname
          << static_cast<unsigned int>(0) //id
-         << "kylin-creenshot"                  //icon
+         << "kylin-screenshot"                  //icon
          << title                        //summary
          << text                         //body
          << QStringList()                //actions

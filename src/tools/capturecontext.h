@@ -41,6 +41,7 @@ struct CaptureContext {
     QPoint mousePos;
     // Value of the desired thickness
     int thickness;
+    int text_thickness;
     // Mode of the capture widget
     bool fullscreen;
 
@@ -52,6 +53,8 @@ struct CaptureContext {
     bool underline;
     bool deleteline;
     bool italic;   
+#ifdef SUPPORT_UKUI
     QGSettings *style_settings;
     QString style_name;
+#endif
 };

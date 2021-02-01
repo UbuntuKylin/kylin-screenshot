@@ -26,6 +26,14 @@ bool RedoTool::closeOnButtonPressed() const {
     return false;
 }
 
+QIcon RedoTool::icon(const QColor &background, bool inEditor) const {
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "redo-variant.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "redo-variant.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "redo-variant.svg");
+}
+#ifdef SUPPORT_UKUI
 QIcon RedoTool::icon(const QColor &background, bool inEditor, const CaptureContext &context ) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "redo-variant.svg");
@@ -33,6 +41,7 @@ QIcon RedoTool::icon(const QColor &background, bool inEditor, const CaptureConte
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "redo-variant.svg") :
                       QIcon(QStringLiteral(":/img/material/white/") + "redo-variant.svg");
 }
+#endif
 QString RedoTool::name() const {
     return tr("Redo");
 }
