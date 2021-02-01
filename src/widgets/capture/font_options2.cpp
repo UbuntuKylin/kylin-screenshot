@@ -25,6 +25,8 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QGraphicsDropShadowEffect>
+#include<QAbstractItemView>
+#include <QFontDatabase>
 #include <QDebug>
 #define SHADOW_WIDTH  5     //小三角的阴影宽度
 #define TRIANGLE_WIDTH  20    //小三角的宽度
@@ -79,10 +81,18 @@ void Font_Options2::setTriangleInfo(double width, double height)
 }
 void Font_Options2::setCenterWidget(QWidget *widget)
 {
-    Font_type = new  QFontComboBox(this);
-    Font_type->setCurrentFont(QFont("华文黑体"));
+    QFont f;
+    f.setPixelSize(10);
+    Font_type = new  QComboBox(this);
+    QFontDatabase database;
+    foreach (const QString &family, database.families())
+    {
+         Font_type->addItem(family);
+    }
+    Font_type->setFont(f);
+    Font_type->view()->setFixedWidth(240);
+    Font_type->setStyleSheet("QComboBox QAbstractItemView::item { min-height: 40px; min-width: 60px; }");
     Font_type->setGeometry(12,16,90,18);
-    Font_type->setStyleSheet("font:10px;");
     Font_size = new  QSpinBox(this);
     Font_size->setMinimum(6);
     Font_size->setGeometry(107,16,36,18);
@@ -107,8 +117,12 @@ void Font_Options2::setCenterWidget(QWidget *widget)
     Italic_btn->setToolTip(tr("Italic"));
     connect(Font_size,SIGNAL(valueChanged(int)),
             this,SLOT(font_size_change(int)));
-    connect(Font_type,SIGNAL(currentFontChanged(QFont)),
-            this,SLOT(font_type_change(QFont)));
+
+    connect(Font_type, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [=](int index)
+    {
+        emit font_type_Selete(QFont(Font_type->currentText()));
+    });
+
     connect(delete_btn,&QPushButton::clicked,
             this,&Font_Options2::font_delete_selete);
     connect(Underline_btn,&QPushButton::clicked,
@@ -205,11 +219,6 @@ void  Font_Options2::font_size_change(int i)
 {
     qDebug()<<"text font thickness changed";
     emit font_size_Selete(i);
-}
-void  Font_Options2::font_type_change(QFont font)
-{
-    qDebug()<<"text font family changed" <<font ;
-    emit font_type_Selete(font);
 }
 void Font_Options2::font_bold_selete()
 {
