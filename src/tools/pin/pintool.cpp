@@ -54,7 +54,7 @@ QString PinTool::nameID() {
 }
 
 QString PinTool::description() const {
-    return tr("Pin image on the desktop");
+    return tr("Pin image on the desktop  exit with Esc");
 }
 
 QWidget* PinTool::widget() {
