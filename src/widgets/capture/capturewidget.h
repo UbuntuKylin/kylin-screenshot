@@ -37,7 +37,7 @@
 #include "save_location2.h"
 #include "font_options.h"
 #include "font_options2.h"
-//#include <QGSettings/qgsettings.h>
+#include <QGSettings/qgsettings.h>
 
 class QPaintEvent;
 class QResizeEvent;
@@ -216,6 +216,8 @@ private:
     int magnifier_y;
     //signed  width between FontSize_Color_Chose_Window and fistbutton
     int length;
+
+    QGSettings *isrunning;
 #ifdef ENABLE_RECORD
     Recorder *recorder;
     QMap<CaptureButton::ButtonType, CaptureTool*> m_isolatedButtons;
