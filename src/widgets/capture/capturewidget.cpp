@@ -75,6 +75,9 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     , m_isolatedButtons{}
   #endif
 {
+
+    isrunning= new QGSettings("org.ukui.screenshot");
+    isrunning->set("isrunning",true);
     // Base config of the widget
     m_eventFilter = new HoverEventFilter(this);
     connect(m_eventFilter, &HoverEventFilter::hoverIn,
@@ -99,6 +102,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
         m_context.screenshot = ScreenGrabber().grabEntireDesktop(ok);
         if(!ok) {
             SystemNotification().sendMessage(tr("Unable to capture screen"));
+            hide_window();
             this->close();
         }
         m_context.origScreenshot = m_context.screenshot;
@@ -342,6 +346,7 @@ void CaptureWidget::deleteToolwidgetOrClose() {
         m_toolWidget->deleteLater();
         m_toolWidget = nullptr;
     } else {
+        hide_window();
         close();
     }
 }
@@ -658,6 +663,7 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
             m_selection->setGeometry(QRect(e->pos(), e->pos()));
             m_selection->setVisible(false);
             m_newSelection = true;
+            size_label->hide();
             m_buttonHandler->hide();
             update();
         } else {
@@ -1019,6 +1025,7 @@ void CaptureWidget::setState(CaptureButton *b) {
     if (b->tool()->closeOnButtonPressed()) {
         b->setIcon(b->tool()->icon(m_contrastUiColor,false,m_context));
         hide_ChildWindow();
+        hide_window();
         close();
     }
     if (b->tool()->isSelectable()) {
@@ -1078,6 +1085,7 @@ void CaptureWidget::setState(CaptureButton *b) {
              update();
              break;
          case CaptureTool::REQ_CLOSE_GUI:
+             hide_window();
              close();
              break;
          case CaptureTool::REQ_HIDE_GUI:
@@ -1193,6 +1201,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                  break;
              } else {
                  QWidget *w = m_activeTool->widget();
+                 connect(this, &CaptureWidget::destroyed, this, &CaptureWidget::hide_window);
                  connect(this, &CaptureWidget::destroyed, w, &QWidget::deleteLater);
                  w->show();
              }
@@ -1289,7 +1298,7 @@ void CaptureWidget::setState(CaptureButton *b) {
          }
      }
      void CaptureWidget::initShortcuts() {
-         new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
+         new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(hide_window()));
          new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_S), this, SLOT(saveScreenshot()));
          new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_C), this, SLOT(copyScreenshot()));
          new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z), this, SLOT(undo()));
@@ -1383,6 +1392,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      void CaptureWidget::copyScreenshot() {
          m_captureDone = true;
          ScreenshotSaver().saveToClipboard(pixmap());
+         hide_window();
          close();
      }
 
@@ -1394,6 +1404,7 @@ void CaptureWidget::setState(CaptureButton *b) {
          } else {
              ScreenshotSaver().saveToFilesystem(pixmap(), m_context.savePath);
          }
+         hide_window();
          close();
      }
 
@@ -1459,6 +1470,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                  saveErrBox.exec();
              }
          }
+         hide_window();
          close();
      }
      void CaptureWidget::ClickedSavedir()
@@ -1655,6 +1667,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      }
      void CaptureWidget::hide_window()
          {
+            isrunning->set("isrunning",false);
              hide();
          }
          void CaptureWidget::show_window()

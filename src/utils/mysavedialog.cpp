@@ -27,14 +27,10 @@ MySaveDialog::MySaveDialog(QWidget *parent) :
     QFileDialog(parent)
 {
     setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
-    QStringList filters;
-    filters << tr("Portable Network Graphic file (PNG) (*.png)")
-            << tr("BMP file (*.bmp)")
-            << tr("JPEG file (*.jpg)");
-    setNameFilters(filters);
+    setNameFilter(QLatin1String(" PNG(*.png);;BMP(*.bmp);;JPEG(*.jpg)"));
     setDirectory(QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0));
     setAcceptMode(QFileDialog::AcceptSave);
-    QString a =  FileNameHandler().parsedPattern()+".png";
+    QString a =  FileNameHandler().parsedPattern()+ ".png";
     this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
     connect(this->findChildren<QComboBox *>("fileTypeCombo").at(0), QOverload<int>::of(&QComboBox::currentIndexChanged),
                   [=](int index)
@@ -52,7 +48,7 @@ MySaveDialog::MySaveDialog(QWidget *parent) :
         default:
             break;
         }
-        this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
+       this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
     });
 }
 QString  MySaveDialog::filename()

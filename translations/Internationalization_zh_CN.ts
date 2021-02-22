@@ -162,7 +162,7 @@
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+166"/>
+        <location line="+163"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -173,7 +173,7 @@
         <translation type="obsolete">另存为....</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+139"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -190,7 +190,7 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-37"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -397,7 +397,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+93"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+102"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -424,7 +424,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+104"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+114"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -1434,19 +1434,16 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>MySaveDialog</name>
     <message>
-        <location filename="../src/utils/mysavedialog.cpp" line="+31"/>
         <source>Portable Network Graphic file (PNG) (*.png)</source>
-        <translation>PNG 格式 (*.png)</translation>
+        <translation type="vanished">PNG 格式 (*.png)</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>BMP file (*.bmp)</source>
-        <translation>BMP格式 （*.bmp）</translation>
+        <translation type="vanished">BMP格式 （*.bmp）</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>JPEG file (*.jpg)</source>
-        <translation>JPEG 格式 （*.jpg）</translation>
+        <translation type="vanished">JPEG 格式 （*.jpg）</translation>
     </message>
 </context>
 <context>
@@ -1497,15 +1494,19 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
     <message>
         <location line="+8"/>
+        <source>Pin image on the desktop  exit with Esc</source>
+        <translation>在桌面上固定图像  按Esc键退出</translation>
+    </message>
+    <message>
         <source>Pin image on the desktop</source>
-        <translation>在桌面上固定图像</translation>
+        <translation type="vanished">在桌面上固定图像</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1066"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1090"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
