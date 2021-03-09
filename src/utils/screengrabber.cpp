@@ -23,6 +23,7 @@
 #include <QGuiApplication>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QPainter>
 #include <KF5/KWindowSystem/KWindowSystem>
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
 #include <QDBusInterface>
@@ -90,22 +91,30 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
         return res;
     }
 #endif
-
+    
     QRect geometry;
+    QVector<QRect> rects;
     for (QScreen *const screen : QGuiApplication::screens()) {
         geometry = geometry.united(screen->geometry());
+	rects.append(screen->geometry());
     }
-
-    QPixmap p(QApplication::primaryScreen()->grabWindow(
+    QPixmap p1(QApplication::primaryScreen()->grabWindow(
                   QApplication::desktop()->winId(),
                   geometry.x(),
                   geometry.y(),
                   geometry.width(),
                   geometry.height())
               );
-    auto screenNumber = QApplication::desktop()->screenNumber();
-    QScreen *screen = QApplication::screens()[screenNumber];
-    p.setDevicePixelRatio(screen->devicePixelRatio());
+    QPixmap p(geometry.width(),geometry.height());
+    p.fill(QColor(Qt::black));
+    QPainter painter(&p);
+    for (QRect const &rect : rects) {
+	 QPixmap p2 = p1.copy(rect);
+	 auto screenNumber = QApplication::desktop()->screenNumber();
+         QScreen *screen = QApplication::screens()[screenNumber];
+         p1.setDevicePixelRatio(screen->devicePixelRatio());
+	 painter.drawPixmap(rect,p2);
+    }
     return p;
 }
 
