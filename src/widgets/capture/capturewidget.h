@@ -190,6 +190,7 @@ private:
     void deal_with_SaveAs(CaptureButton *b);
     void updateMagnifier(CaptureContext m_context);
 
+    QVector<QRect> areas;
     QLabel *size_label;
     QRect extendedSelection() const;
     QRect extendedRect(QRect *r) const;
