@@ -69,7 +69,7 @@ private:
     QRegion m_screenRegions;
 
     QRect m_selection;
-
+    QVector<QRect> allrect;
     int m_separator;
     int m_buttonExtendedSize;
     int m_buttonBaseSize;

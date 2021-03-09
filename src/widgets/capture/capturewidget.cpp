@@ -75,7 +75,6 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     , m_isolatedButtons{}
   #endif
 {
-
     isrunning= new QGSettings("org.ukui.screenshot");
     isrunning->set("isrunning",true);
     // Base config of the widget
@@ -131,7 +130,6 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     // Create buttons
     m_buttonHandler = new ButtonHandler(this);
     updateButtons();
-    QVector<QRect> areas;
     if (m_context.fullscreen) {
         for (QScreen *const screen : QGuiApplication::screens()) {
             QRect r = screen->geometry();
@@ -399,8 +397,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
     }
     else if (!m_buttonHandler->isVisible())
     {
-        if (m_context.mousePos.x() >= 0 && m_context.mousePos.x()-144 <= qApp->desktop()->screenGeometry().width()
-                && m_context.mousePos.y() >= 0 &&m_context.mousePos.y()-144 <= qApp->desktop()->screenGeometry().height())
+        if (m_context.mousePos.x() >= 0 && m_context.mousePos.x()-144 <= qApp->desktop()->width()
+                && m_context.mousePos.y() >= 0 &&m_context.mousePos.y()-144 <= qApp->desktop()->height())
         {
             painter.setOpacity(0.5);
             updateMagnifier(m_context);
@@ -594,30 +592,34 @@ void CaptureWidget::updateChildWindow()
 void CaptureWidget::updateMagnifier(CaptureContext m_context){
     int x = m_context.mousePos.x();
     int y = m_context.mousePos.y();
-    if(y+144>=qApp->desktop()->screenGeometry().height())
+    for (int i =0; i < areas.size(); i++)
     {
-
-           if(x+144<=qApp->desktop()->screenGeometry().width()){
-                 magnifier_x =x+25;
-                 magnifier_y =y-129;
-           }
-           else
-           {
-                  magnifier_x = x-144;
-                  magnifier_y = y-144;
-           }
-    }
-    else{
-            if(x+144>=qApp->desktop()->screenGeometry().width()){
-                magnifier_x = x-144;
-                magnifier_y = y+10;
-           }
-            else{
-                magnifier_x = x+25;
-                magnifier_y = y+25;
+        if (areas.at(i).contains(m_context.mousePos))
+        {
+            if(y+144>=areas.at(i).y() +areas.at(i).height())
+            {
+                   if(x+144<=areas.at(i).x() + areas.at(i).width()){
+                         magnifier_x =x+25;
+                         magnifier_y =y-129;
+                   }
+                   else
+                   {
+                          magnifier_x = x-144;
+                          magnifier_y = y-144;
+                   }
             }
+            else{
+                    if(x+144>=areas.at(i).x() + areas.at(i).width()){
+                        magnifier_x = x-144;
+                        magnifier_y = y+10;
+                   }
+                    else{
+                        magnifier_x = x+25;
+                        magnifier_y = y+25;
+                    }
+            }
+        }
     }
-
 }
 void CaptureWidget::mousePressEvent(QMouseEvent *e) {
     update();
@@ -674,7 +676,7 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
 }
 
 void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
-    m_context.mousePos = e->pos();
+    m_context.mousePos = e->globalPos();
     w = 26;
     h = 26;
    //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);

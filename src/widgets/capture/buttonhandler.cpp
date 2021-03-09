@@ -93,7 +93,6 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             m_selection = selection;
             positionButtonsInside(elemIndicator);
             break; // the while
-            qDebug()<<"qq"<<elemIndicator;
         }
         // Number of buttons per row column
         int buttonsPerRow = 19; 
@@ -215,7 +214,6 @@ void ButtonHandler::updatePosition(const QRect &selection) {
         if (elemIndicator < vecLength && !(m_allSidesBlocked)) {
             expandSelection();
         }
-        qDebug()<<"qqqqqqq"<<elemIndicator;
         updateBlockedSides();
     }
 }
@@ -274,7 +272,7 @@ QVector<QPoint> ButtonHandler::verticalPoints(
 
 QRect ButtonHandler::intersectWithAreas(const QRect &rect) {
     QRect res;
-    for(const QRect &r : m_screenRegions.rects()) {
+    for(const QRect &r : allrect) {
         QRect temp = rect.intersected(r);
         if (temp.height() * temp.width() > res.height() * res.width()) {
             res = temp;
@@ -416,20 +414,25 @@ void ButtonHandler::moveButtonsToPoints(
 #endif
 
         case CaptureButton::TYPE_PIN:
-            if(m_selection.right()+GlobalValues::buttonBaseSize()<=qApp->desktop()->screenGeometry().width())
-                   {
-                      if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
-                          button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
-                      else
-                          button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
-                   }
-            else
-                   {
-                      if (m_selection.y()+GlobalValues::buttonBaseSize() >= qApp->desktop()->screenGeometry().height())
-                          button->move(m_selection.left()-GlobalValues::buttonBaseSize(),qApp->desktop()->screenGeometry().height()-GlobalValues::buttonBaseSize());
-                      else
-                          button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
-                   }
+            for (const QRect &rect: allrect) {
+                if(rect.contains(m_selection.bottomRight()))
+                {
+                    if(m_selection.right()+GlobalValues::buttonBaseSize()<=rect.x()+rect.width())
+                           {
+                              if (m_selection.y()+GlobalValues::buttonBaseSize() >= rect.y()+rect.height())
+                                  button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,rect.y()+rect.height()-GlobalValues::buttonBaseSize());
+                              else
+                                  button->move(m_selection.right()+GlobalValues::buttonBaseSize()/3,m_selection.top());
+                           }
+                    else
+                           {
+                              if (m_selection.y()+GlobalValues::buttonBaseSize() >= rect.y()+rect.height())
+                                  button->move(m_selection.left()-GlobalValues::buttonBaseSize(),rect.y()+rect.height()-GlobalValues::buttonBaseSize());
+                              else
+                                  button->move(m_selection.left()-GlobalValues::buttonBaseSize(),m_selection.top());
+                           }
+                }
+            }
             break;
         default:
             FontSize_Color_Chose_Window_Y = move_FontSize_Color_Chose_Window(p.y());
@@ -475,11 +478,13 @@ bool ButtonHandler::contains(const QPoint &p) const {
 void ButtonHandler::updateScreenRegions(const QVector<QRect> &rects) {
     m_screenRegions = QRegion();
     for (const QRect &rect: rects) {
+        allrect.append(rect);
         m_screenRegions += rect;
     }
 }
 
 void ButtonHandler::updateScreenRegions(const QRect &rect) {
+    allrect.append(rect);
     m_screenRegions = QRegion(rect);
 }
 
