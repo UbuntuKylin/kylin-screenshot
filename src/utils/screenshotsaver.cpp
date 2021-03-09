@@ -22,8 +22,10 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QImageWriter>
+#include <QStandardPaths>
 #include "mysavedialog.h"
-
+QString typeStr = ".png";
+QString PathStr = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0);
 ScreenshotSaver::ScreenshotSaver() {
 }
 
@@ -36,8 +38,8 @@ void ScreenshotSaver::saveToClipboard(const QPixmap &capture) {
 bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture,
                                        const QString &path)
 {
-    QString completePath = FileNameHandler().generateAbsolutePath(path);
-    completePath += QLatin1String(".png");
+    QString completePath  = FileNameHandler().generateAbsolutePath(PathStr); //= FileNameHandler().generateAbsolutePath(path);
+    completePath = completePath + typeStr; //QLatin1String(".png");
     bool ok = capture.save(completePath);
     QString saveMessage;
     QString notificationPath = completePath;
@@ -86,13 +88,18 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture) {
             break;
         }
 
-	if (!savePath.endsWith(QLatin1String(".png"), Qt::CaseInsensitive) &&
-	    !savePath.endsWith(QLatin1String(".bmp"), Qt::CaseInsensitive) &&
-	    !savePath.endsWith(QLatin1String(".jpg"), Qt::CaseInsensitive)) {
-
+    if (savePath.endsWith(QLatin1String(".png"), Qt::CaseInsensitive))
+        typeStr = ".png";
+    else if (savePath.endsWith(QLatin1String(".bmp"), Qt::CaseInsensitive))
+        typeStr = ".bmp";
+    else if (savePath.endsWith(QLatin1String(".jpg"), Qt::CaseInsensitive))
+        typeStr = ".jpg";
+    else
+    {
+        typeStr = ".png";
 	    savePath += QLatin1String(".png");
 	}
-    QString name = a->filename();
+     QString name = a->filename();
      QString msg;
     if (!name.startsWith(QChar('.'),Qt::CaseInsensitive))
     {
@@ -103,6 +110,7 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture) {
             ConfigHandler().setSavePath(pathNoFile);
             msg = QObject::tr("Capture saved as ") + savePath;
             SystemNotification().sendMessage(msg, savePath);
+            PathStr = pathNoFile;
         }
     else {
        if (name.contains(QChar('/')))
