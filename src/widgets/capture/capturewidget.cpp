@@ -105,7 +105,6 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
             this->close();
         }
         m_context.origScreenshot = m_context.screenshot;
-
 #ifdef Q_OS_WIN
         setWindowFlags(Qt::WindowStaysOnTopHint
                        | Qt::FramelessWindowHint
@@ -132,7 +131,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     updateButtons();
     if (m_context.fullscreen) {
         for (QScreen *const screen : QGuiApplication::screens()) {
-            QRect r = screen->geometry();
+            QRect r = QRect(screen->geometry());
 #ifdef Q_OS_WIN
             r.moveTo(r.topLeft() - topLeft);
 #endif
@@ -1427,10 +1426,10 @@ void CaptureWidget::setState(CaptureButton *b) {
 
      QRect CaptureWidget::extendedRect(QRect *r) const {
          auto devicePixelRatio = m_context.screenshot.devicePixelRatio();
-         return QRect(r->left()   * devicePixelRatio,
-                      r->top()    * devicePixelRatio,
-                      r->width()  * devicePixelRatio,
-                      r->height() * devicePixelRatio);
+         return QRect(r->left(),
+                      r->top(),
+                      r->width(),
+                      r->height());
      }
 
      void CaptureWidget::ClickedSaveAsFile()
