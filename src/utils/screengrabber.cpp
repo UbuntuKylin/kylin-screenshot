@@ -105,16 +105,26 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
                   geometry.width(),
                   geometry.height())
               );
-    QPixmap p(geometry.width(),geometry.height());
+    QPixmap p(p1.width(),p1.height());
     p.fill(QColor(Qt::black));
     QPainter painter(&p);
+    auto screenNumber = QApplication::desktop()->screenNumber();
+    QScreen *screen = QApplication::screens()[screenNumber];
     for (QRect const &rect : rects) {
-	 QPixmap p2 = p1.copy(rect);
-	 auto screenNumber = QApplication::desktop()->screenNumber();
-         QScreen *screen = QApplication::screens()[screenNumber];
-         p1.setDevicePixelRatio(screen->devicePixelRatio());
-	 painter.drawPixmap(rect,p2);
+	 QPixmap p2 = p1.copy(
+			 QRect(rect.x() * screen->devicePixelRatio(),
+			 rect.y() * screen->devicePixelRatio() ,
+			 rect.width() * screen->devicePixelRatio() ,
+			 rect.height() * screen->devicePixelRatio())
+			 );
+	 painter.drawPixmap(
+			 QRect(rect.x() * screen->devicePixelRatio(),
+                         rect.y() * screen->devicePixelRatio() ,
+                         rect.width() * screen->devicePixelRatio() ,
+                         rect.height() * screen->devicePixelRatio()),
+			 p2);
     }
+    p.setDevicePixelRatio(screen->devicePixelRatio());
     return p;
 }
 
