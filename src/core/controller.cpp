@@ -209,6 +209,10 @@ void Controller::openInfoWindow() {
 void Controller::openLauncherWindow() {
     QGSettings *screen= new QGSettings("org.ukui.screenshot");
     QString screenshot = screen->get("screenshot").toString();
+    if (m_launcherWindow)
+    {   
+        delete m_launcherWindow;
+    }
     if (!m_launcherWindow) {
         m_launcherWindow = new CaptureLauncher();
         m_launcherWindow->move(((qApp->desktop()->screenGeometry().width()-m_launcherWindow->width())/2),
@@ -216,7 +220,7 @@ void Controller::openLauncherWindow() {
         if (screenshot.compare("true")==0){
             m_launcherWindow->show();
         }
-        else
+	else
             disableScreenCut();
         }
 }
