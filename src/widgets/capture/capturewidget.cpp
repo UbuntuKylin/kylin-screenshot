@@ -401,9 +401,12 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         {
             painter.setOpacity(0.5);
             updateMagnifier(m_context);
-            painter.drawPixmap(magnifier_x,magnifier_y,crosspixmap);
-            painter.drawText(magnifier_x+20,magnifier_y+120,tr("%1 , %2")
+            if (crosspixmap)
+            {
+                painter.drawPixmap(magnifier_x,magnifier_y,crosspixmap);
+                painter.drawText(magnifier_x+20,magnifier_y+120,tr("%1 , %2")
                                 .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
+            }
             update();
         }
     }
