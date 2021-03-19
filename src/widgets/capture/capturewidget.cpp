@@ -1605,19 +1605,19 @@ void CaptureWidget::setState(CaptureButton *b) {
      {
           font_color->color = m_context.color;
           int i = m_context.thickness;
-          if (i>= 0 && i <= 3)
+          if (i>= 0 && i <= 2)
           {
               font_color->color_rect =font_color->m_colorAreaList.at(0);
           }
-          else if (i >= 4 && i<9)
+          else if (i >= 3 && i<5)
           {
               font_color->color_rect =font_color->m_colorAreaList.at(1);
           }
-          else if (i >= 9 && i<13)
+          else if (i >= 5 && i<8)
           {
               font_color->color_rect =font_color->m_colorAreaList.at(2);
           }
-          else if (i >= 13)
+          else if (i >= 8)
           {
               font_color->color_rect =font_color->m_colorAreaList.at(3);
           }
@@ -1630,19 +1630,19 @@ void CaptureWidget::setState(CaptureButton *b) {
      {
           font_color2->color = m_context.color;
           int i = m_context.thickness;
-          if (i>= 0 && i <= 3)
+          if (i>= 0 && i <= 2)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(0);
           }
-          else if (i >= 4 && i< 9)
+          else if (i >= 3 && i< 5)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(1);
           }
-          else if (i >= 9 && i< 13)
+          else if (i >= 5 && i< 8)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(2);
           }
-          else if (i >= 13)
+          else if (i >= 8)
           {
               font_color2->color_rect =font_color2->m_colorAreaList.at(3);
           }
