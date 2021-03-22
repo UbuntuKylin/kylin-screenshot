@@ -1744,7 +1744,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location line="+8"/>
         <source>Set the rectangle as the paint tool</source>
-        <translation>矩形选择</translation>
+        <translation>将矩形选择设置为绘画工具</translation>
     </message>
     <message>
         <source>Set Selection as the paint tool</source>
