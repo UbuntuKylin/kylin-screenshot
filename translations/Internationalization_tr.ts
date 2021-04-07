@@ -146,17 +146,17 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="101"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="103"/>
         <source>Unable to capture screen</source>
         <translation>Ekran resmi alınamadı</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="264"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="265"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="403"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="411"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -173,7 +173,7 @@ Aracınızın kalınlığını değiştirmek için Fare Tekerleğini kullanın.
 Yan paneli açmak için Boşluk tuşuna basın.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="366"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="368"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -217,37 +217,37 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="231"/>
+        <location filename="../src/core/controller.cpp" line="235"/>
         <source>&amp;Take Screenshot</source>
         <translation>&amp;Ekran Resmi Al</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="236"/>
+        <location filename="../src/core/controller.cpp" line="240"/>
         <source>&amp;Open Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="239"/>
+        <location filename="../src/core/controller.cpp" line="243"/>
         <source>&amp;Configuration</source>
         <translation>&amp;Ayarlar</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="242"/>
+        <location filename="../src/core/controller.cpp" line="246"/>
         <source>&amp;Information</source>
         <translation>&amp;Bilgi</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="245"/>
+        <location filename="../src/core/controller.cpp" line="249"/>
         <source>&amp;Quit</source>
         <translation>&amp;Çıkış</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="261"/>
+        <location filename="../src/core/controller.cpp" line="265"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="349"/>
+        <location filename="../src/core/controller.cpp" line="353"/>
         <source>Unable to use kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -642,13 +642,13 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
         <translation>Araç  kalınlığını değiştirin</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="139"/>
+        <location filename="../src/widgets/infowindow.cpp" line="138"/>
         <source>Available shortcuts in the screen capture mode.</source>
         <translation>Ekran yakalama modunda kullanılabilir kısayollar.</translation>
     </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="110"/>
-        <location filename="../src/widgets/infowindow.cpp" line="150"/>
+        <location filename="../src/widgets/infowindow.cpp" line="149"/>
         <source>Key</source>
         <translation>Anahtar</translation>
     </message>
@@ -679,32 +679,32 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="110"/>
-        <location filename="../src/widgets/infowindow.cpp" line="150"/>
+        <location filename="../src/widgets/infowindow.cpp" line="149"/>
         <source>Description</source>
         <translation>Tanım</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="180"/>
+        <location filename="../src/widgets/infowindow.cpp" line="179"/>
         <source>&lt;u&gt;&lt;b&gt;License&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;Lisans&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="188"/>
+        <location filename="../src/widgets/infowindow.cpp" line="187"/>
         <source>&lt;u&gt;&lt;b&gt;Version&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;Sürüm&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="191"/>
+        <location filename="../src/widgets/infowindow.cpp" line="190"/>
         <source>Kylin-ScreenShot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="192"/>
+        <location filename="../src/widgets/infowindow.cpp" line="191"/>
         <source>Compiled with Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="199"/>
+        <location filename="../src/widgets/infowindow.cpp" line="198"/>
         <source>&lt;u&gt;&lt;b&gt;Shortcuts&lt;/b&gt;&lt;/u&gt;</source>
         <translation>&lt;u&gt;&lt;b&gt;Kısayollar&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
@@ -1443,39 +1443,39 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1456"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="130"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1475"/>
         <source>Save Error</source>
         <translation>Kaydetme Hatası</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="67"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="104"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1450"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="111"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1469"/>
         <source>Capture saved as </source>
         <translation>Yakalama farklı kaydedildi </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="32"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="34"/>
         <source>Capture saved to clipboard</source>
         <translation>Yakalama panoya kaydedildi</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="118"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1453"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="51"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="71"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="126"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1472"/>
         <source>Error trying to save as </source>
         <translation>Farklı kaydetmeye çalışılırken hata oluştu </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="110"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="118"/>
         <source>file name can not contains &apos;/&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="114"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
         <source>can not save file as hide file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1599,7 +1599,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="88"/>
+        <location filename="../src/utils/screengrabber.cpp" line="89"/>
         <source>Unable to capture screen</source>
         <translation type="unfinished">Ekran resmi alınamadı</translation>
     </message>
@@ -1613,8 +1613,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
     <message>
         <location filename="../src/tools/selection/selectiontool.cpp" line="63"/>
+        <source>Set the rectangle as the paint tool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Set Selection as the paint tool</source>
-        <translation>Seçimi boyama aracı olarak ayarlar</translation>
+        <translation type="vanished">Seçimi boyama aracı olarak ayarlar</translation>
     </message>
 </context>
 <context>

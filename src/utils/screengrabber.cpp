@@ -24,6 +24,8 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QPainter>
+#include <QWindow>
+#include <QDebug>
 #include <KF5/KWindowSystem/KWindowSystem>
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
 #include <QDBusInterface>
@@ -151,9 +153,17 @@ QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok) {
         }
     }
     else {
-        QList<WId> windows = KWindowSystem::windows();
-        QScreen* screen = QApplication::screens().at(0);
-        p =screen->grabWindow(KWindowSystem::activeWindow());
+        QPixmap p1 = this->grabEntireDesktop(ok);
+        QWindow *window = QWindow::fromWinId(KWindowSystem::activeWindow());
+        if (nullptr == window)
+        {
+            qDebug() << "window is null";
+        }
+        else
+        {
+            KWindowInfo info(KWindowSystem::activeWindow(), NET::WMGeometry);
+            p = p1.copy(info.frameGeometry());
+        }
         ok = true;
     }
     return p;

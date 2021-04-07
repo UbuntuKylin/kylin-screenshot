@@ -156,13 +156,13 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+101"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+103"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+163"/>
+        <location line="+162"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -173,7 +173,7 @@
         <translation type="obsolete">另存为....</translation>
     </message>
     <message>
-        <location line="+139"/>
+        <location line="+146"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -190,7 +190,7 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="-37"/>
+        <location line="-43"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -238,7 +238,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="+231"/>
+        <location filename="../src/core/controller.cpp" line="+235"/>
         <source>&amp;Take Screenshot</source>
         <translation>进行截图(&amp;T)</translation>
     </message>
@@ -713,13 +713,13 @@ Press Space to open the side panel.</source>
     </message>
     <message>
         <location line="+10"/>
-        <location line="+40"/>
+        <location line="+39"/>
         <source>Key</source>
         <translation>键</translation>
     </message>
     <message>
-        <location line="-40"/>
-        <location line="+40"/>
+        <location line="-39"/>
+        <location line="+39"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
@@ -1505,28 +1505,28 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="+122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1090"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="+130"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1107"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
     <message>
-        <location line="-75"/>
+        <location line="-81"/>
         <location line="+20"/>
-        <location line="+37"/>
+        <location line="+42"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="-6"/>
         <source>Capture saved as </source>
         <translation>捕获已保存为 </translation>
     </message>
     <message>
-        <location line="-72"/>
+        <location line="-77"/>
         <source>Capture saved to clipboard</source>
         <translation>捕获已保存至剪贴板</translation>
     </message>
     <message>
         <location line="+17"/>
         <location line="+20"/>
-        <location line="+49"/>
+        <location line="+55"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="+3"/>
         <source>Error trying to save as </source>
         <translation>尝试另存为时出错 </translation>
@@ -1713,7 +1713,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="+88"/>
+        <location filename="../src/utils/screengrabber.cpp" line="+89"/>
         <source>Unable to capture screen</source>
         <translation>无法捕获屏幕</translation>
     </message>
@@ -1742,14 +1742,13 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="+55"/>
-        <source>Rectangular Selection</source>
-        <translation>矩形选择</translation>
+        <location line="+8"/>
+        <source>Set the rectangle as the paint tool</source>
+        <translation>将矩形选择设置为绘画工具</translation>
     </message>
     <message>
-        <location line="+8"/>
         <source>Set Selection as the paint tool</source>
-        <translation>将矩形选择设置为绘画工具</translation>
+        <translation type="vanished">将矩形选择设置为绘画工具</translation>
     </message>
 </context>
 <context>

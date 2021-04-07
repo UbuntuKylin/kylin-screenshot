@@ -60,7 +60,7 @@ QString SelectionTool::nameID() {
 }
 
 QString SelectionTool::description() const {
-    return tr("Set Selection as the paint tool");
+    return tr("Set the rectangle as the paint tool");
 }
 
 CaptureTool* SelectionTool::copy(QObject *parent) {
