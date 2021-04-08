@@ -16,11 +16,19 @@
 */
 
 #include "capturecontext.h"
+#include <QScreen>
+#include <QDesktopWidget>
+#include <QApplication>
 
 QPixmap CaptureContext::selectedScreenshotArea() const {
     if (selection.isNull()) {
         return screenshot;
     } else {
-        return screenshot.copy(selection);
+	auto screenNumber = QApplication::desktop()->screenNumber();
+        QScreen *screen = QApplication::screens()[screenNumber];
+        return screenshot.copy(selection.x() * screen->devicePixelRatio(),
+                               selection.y() * screen->devicePixelRatio(),
+                               selection.width() * screen->devicePixelRatio(),
+                               selection.height() * screen->devicePixelRatio());
     }
 }

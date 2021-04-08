@@ -449,7 +449,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             QPixmap p = m_context.origScreenshot.copy(r1);
             auto pixelRatio = p.devicePixelRatio();
 
-            QRect selection = QRect(r1.topLeft(), r1.bottomRight()).normalized();
+            QRect selection = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
             QRect selectionScaled = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
 
             QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
@@ -683,10 +683,12 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
 
 void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     m_context.mousePos = e->globalPos();
-    w = 26;
-    h = 26;
-   //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
-    mypixmap = mypixmap.grabWidget(this,e->pos().x()-10,e->pos().y()-10,w,h);
+    auto screenNumber = QApplication::desktop()->screenNumber();
+    QScreen *screen = QApplication::screens()[screenNumber];
+    w = 26 * screen->devicePixelRatio();
+    h = 26 * screen->devicePixelRatio();
+    //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
+    mypixmap = mypixmap.grabWidget(this,e->pos().x()-10,e->pos().y()-10,26,26);
     QImage crosstmp=mypixmap.toImage();
     QRgb value = qRgb(0,0,255);
     for(int i=0;i<w;i++)
