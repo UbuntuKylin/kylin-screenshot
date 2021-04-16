@@ -211,7 +211,7 @@
     </message>
     <message>
         <location filename="../src/core/controller.cpp" line="240"/>
-        <source>&amp;Open Launcher</source>
+        <source>&amp;Open Screenshot Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1428,7 +1428,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="130"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1475"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1481"/>
         <source>Save Error</source>
         <translation>存檔錯誤</translation>
     </message>
@@ -1436,7 +1436,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="111"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1469"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1475"/>
         <source>Capture saved as </source>
         <translation>截圖已另存為 </translation>
     </message>
@@ -1449,7 +1449,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="51"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="71"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="126"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1472"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1478"/>
         <source>Error trying to save as </source>
         <translation>嘗試另存新檔時發生錯誤 </translation>
     </message>
@@ -1583,7 +1583,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="89"/>
+        <location filename="../src/utils/screengrabber.cpp" line="91"/>
         <source>Unable to capture screen</source>
         <translation type="unfinished">無法擷取螢幕</translation>
     </message>

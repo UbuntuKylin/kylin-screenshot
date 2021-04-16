@@ -243,9 +243,13 @@ Press Space to open the side panel.</source>
         <translation>进行截图(&amp;T)</translation>
     </message>
     <message>
-        <location line="+5"/>
         <source>&amp;Open Launcher</source>
-        <translation>打开启动器(&amp;O)</translation>
+        <translation type="vanished">打开启动器(&amp;O)</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>&amp;Open Screenshot Option</source>
+        <translation>打开截图选项(&amp;O)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1506,7 +1510,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+130"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1107"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1113"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1713,7 +1717,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="+89"/>
+        <location filename="../src/utils/screengrabber.cpp" line="+91"/>
         <source>Unable to capture screen</source>
         <translation>无法捕获屏幕</translation>
     </message>
@@ -1741,6 +1745,11 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 </context>
 <context>
     <name>SelectionTool</name>
+    <message>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="+55"/>
+        <source>Rectangular Selection</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location line="+8"/>
         <source>Set the rectangle as the paint tool</source>
