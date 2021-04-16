@@ -38,7 +38,6 @@
 #include "font_options.h"
 #include "font_options2.h"
 #include <QGSettings/qgsettings.h>
-
 class QPaintEvent;
 class QResizeEvent;
 class QMouseEvent;
@@ -52,7 +51,6 @@ class HoverEventFilter;
 #ifdef ENABLE_RECORD
 #include "recorder.h"
 #endif
-
 class CaptureWidget : public QWidget {
     Q_OBJECT
 

@@ -449,7 +449,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             QPixmap p = m_context.origScreenshot.copy(r1);
             auto pixelRatio = p.devicePixelRatio();
 
-            QRect selection = QRect(r1.topLeft(), r1.bottomRight()).normalized();
+            QRect selection = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
             QRect selectionScaled = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
 
             QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
@@ -683,10 +683,12 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
 
 void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     m_context.mousePos = e->globalPos();
-    w = 26;
-    h = 26;
-   //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
-    mypixmap = mypixmap.grabWidget(this,e->pos().x()-10,e->pos().y()-10,w,h);
+    auto screenNumber = QApplication::desktop()->screenNumber();
+    QScreen *screen = QApplication::screens()[screenNumber];
+    w = 26 * screen->devicePixelRatio();
+    h = 26 * screen->devicePixelRatio();
+    //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
+    mypixmap = mypixmap.grabWidget(this,e->pos().x()-10,e->pos().y()-10,26,26);
     QImage crosstmp=mypixmap.toImage();
     QRgb value = qRgb(0,0,255);
     for(int i=0;i<w;i++)
@@ -1196,13 +1198,19 @@ void CaptureWidget::setState(CaptureButton *b) {
              if (m_toolWidget) {
                  m_toolWidget->deleteLater();
              }
+	     // 鼠标位于框选区域内  子窗口才有效
              m_toolWidget = m_activeTool->widget();
              if (m_toolWidget) {
+	        if(m_context.selection.contains(QPoint(m_context.mousePos.x()+m_context.text_thickness*3,m_context.mousePos.y()+ m_context.text_thickness*3)))
+                {
                  makeChild(m_toolWidget);
                  m_toolWidget->move(m_context.mousePos);
                  m_toolWidget->show();
                  m_toolWidget->setFocus();
-             }
+                }
+		else
+		  m_toolWidget->hide();
+	     }
              break;
          case CaptureTool::REQ_ADD_CHILD_WINDOW:
              if (!m_activeTool) {
@@ -1221,7 +1229,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                  QWidget *w = m_activeTool->widget();
                  w->setAttribute(Qt::WA_DeleteOnClose);
                  w->show();
-             }
+	     }
              break;
 #ifdef ENABLE_RECORD
          case CaptureTool::REQ_CURSOR_RECORD:
