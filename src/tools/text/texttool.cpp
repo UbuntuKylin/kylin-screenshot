@@ -132,16 +132,66 @@ void TextTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo
     }
     QFontMetrics fm(m_font);
     QSize size(fm.boundingRect(QRect(), 0, m_text).size());
+    qDebug() << "size" << size;
     m_backupArea.setSize(size);
+    //分割字符
+    splitString(m_text,size,rect.x()+rect.width()-m_backupArea.topLeft().x()-size.width());
+    //撤销操作  更新编辑区域
     if (recordUndo) {
-        m_pixmapBackup = pixmap.copy(m_backupArea + QMargins(0, 0, 5, 5));
+        m_pixmapBackup = pixmap.copy(QRect(m_backupArea.x(),
+                               m_backupArea.y(),
+                               m_backupArea.width(),
+                               m_backupArea.height()+m_listString.length()*size.height()) + QMargins(0, 0, 5, 5));
     }
-    // draw text
     painter.setFont(m_font);
     painter.setPen(m_color);
-    painter.drawText(m_backupArea + QMargins(-5, -5, 5, 5), m_text);
+    for (int i = 0; i <  m_listString.length(); i++) 
+    {
+	//绘制文字
+	if (m_backupArea.y()+ (i+1)*size.height() <= rect.y()+rect.height())
+	{
+		painter.drawText(QRect(m_backupArea.x(),
+			       m_backupArea.y()+ i*size.height(),
+			       m_backupArea.width(),
+			       m_backupArea.height())
+		               + QMargins(-5, -5, 5, 5),
+			       m_listString.at(i));
+	}
+    }
+    if (m_widget) {
+        m_widget->setFont(m_font);
+    }
 }
 
+//分割字符  超出区域的部分 重新储存
+//参数 text：输入的字符串   size: 输入字符串的size信息  n:文字末端距离框选区域的距离
+void  TextTool::splitString(QString text,QSize size, int n)
+{
+    //输入字体未超出区域
+    if (n > 0)
+    {
+      m_listString.append(text);
+    } 
+    else 
+    {
+      //获取文字起始位置距离框选区域右侧的内容
+      int  widt = rect.x()+rect.width()-m_backupArea.x()-10;
+     //可以容纳的行数 需要几次换行
+      int num= size.width()/widt;
+      // 每个字符所占的长度比
+      int ii  =  size.width()/text.length();
+      //每行可容纳几个字符
+      int mm = widt/ii;
+      //将每行可容纳的字符依次存储在m_listString中
+    for (int i = 0; i < num; i++)
+    {
+	m_listString.append(text.mid(i*widt/ii,mm));
+    }
+    //最后未能整除 剩余的字符也存储起来
+    if (!(0 == size.width()%widt))
+        m_listString.append(text.mid(num*widt/ii,size.width()%widt/ii));
+    }
+}
 void TextTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
     Q_UNUSED(painter);
     m_font = context.font_type;
@@ -164,6 +214,7 @@ void TextTool::drawMove(const QPoint &p) {
 }
 
 void TextTool::drawStart(const CaptureContext &context) {
+    rect = context.selection;
     m_color = context.color;
     m_size = context.text_thickness;
     m_font.setFamily(context.font_type.family());
@@ -171,12 +222,12 @@ void TextTool::drawStart(const CaptureContext &context) {
     m_font.setItalic(context.italic);
     m_font.setUnderline(context.underline);
     m_font.setStrikeOut(context.deleteline);
-    qDebug()<<"start draw";
     emit requestAction(REQ_ADD_CHILD_WIDGET);
 
 }
 
 void TextTool::pressed(const CaptureContext &context) {
+    rect = context.selection;
     m_color = context.color;
     m_size = context.thickness;
     m_font.setFamily(context.font_type.family());

@@ -69,9 +69,24 @@ void BlurTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo
     if (recordUndo) {
         updateBackup(pixmap);
     }
-    QPoint &p0 = m_points.first;
-    QPoint &p1 = m_points.second;
+    //QPoint &p0 = m_points.first;
+    //QPoint &p1 = m_points.second;
     auto pixelRatio = pixmap.devicePixelRatio();
+    // 绘制模糊工具 限定区域为框选区域
+    if (rect.contains(m_points.first))
+    {
+	  QPoint p0 ;
+	  QPoint p1;
+         if (rect.contains(m_points.second))
+         {   
+            p0 = m_points.first;
+            p1 = m_points.second;
+         }
+         else
+         {  
+	     p0 = m_points.first;
+             p1 = QPoint(qBound(rect.x(), m_points.second.x(), rect.x()+ rect.width()),qBound(rect.y(), m_points.second.y(), rect.y()+rect.height())); 
+         }
 
     QRect selection = QRect(p0, p1).normalized();
     QRect selectionScaled = QRect(p0 * pixelRatio, p1 * pixelRatio).normalized();
@@ -90,13 +105,16 @@ void BlurTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo
     scene.render(&painter, selection, QRectF());
     scene.render(&painter, selection, QRectF());
 }
+}
 
 void BlurTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
+    rect = context.selection;
     Q_UNUSED(context);
     Q_UNUSED(painter);
 }
 
 void BlurTool::drawStart(const CaptureContext &context) {
+    rect = context.selection;
     m_thickness = context.thickness;
     m_points.first = context.mousePos;
     m_points.second = context.mousePos;

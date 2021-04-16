@@ -47,4 +47,5 @@ protected:
     int m_thickness;
     // use m_padding to extend the area of the backup
     int m_padding;
+    QRect  rect;
 };

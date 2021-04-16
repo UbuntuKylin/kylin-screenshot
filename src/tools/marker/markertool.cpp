@@ -72,10 +72,19 @@ void MarkerTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUn
     painter.setCompositionMode(QPainter::CompositionMode_Multiply);
     painter.setOpacity(0.35);
     painter.setPen(QPen(m_color, m_thickness));
-    painter.drawLine(m_points.first, m_points.second);
+    //绘制直线  以框选区域为边界
+    if (rect.contains(m_points.first))
+    {
+        painter.drawLine(QPoint(qBound(rect.x()+m_thickness/2, m_points.first.x(), rect.x()+ rect.width()-m_thickness/2),
+                                qBound(rect.y()+m_thickness/2, m_points.first.y(), rect.y()+rect.height()-m_thickness/2)),
+                         QPoint(qBound(rect.x()+m_thickness/2, m_points.second.x(), rect.x()+ rect.width()-m_thickness/2),
+                                qBound(rect.y()+m_thickness/2, m_points.second.y(), rect.y()+rect.height()-m_thickness/2)));
+    }
+
 }
 
 void MarkerTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
+    rect = context.selection;
     painter.setCompositionMode(QPainter::CompositionMode_Multiply);
     painter.setOpacity(0.35);
     painter.setPen(QPen(context.color, PADDING_VALUE + context.thickness));
@@ -83,6 +92,7 @@ void MarkerTool::paintMousePreview(QPainter &painter, const CaptureContext &cont
 }
 
 void MarkerTool::drawStart(const CaptureContext &context) {
+    rect = context.selection;
     m_color = context.color;
     m_thickness = context.thickness + PADDING_VALUE;
     m_points.first = context.mousePos;
@@ -90,6 +100,7 @@ void MarkerTool::drawStart(const CaptureContext &context) {
 }
 
 void MarkerTool::pressed(const CaptureContext &context) {
+    rect = context.selection;
     Q_UNUSED(context);
 }
 

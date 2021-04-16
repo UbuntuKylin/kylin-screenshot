@@ -64,15 +64,26 @@ void PencilTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUn
         updateBackup(pixmap);
     }
     painter.setPen(QPen(m_color, m_thickness));
+    //int date = m_points.data();
+    // 绘制画笔工具 限定区域为框选区域
+    for (int i = 0 ; i < m_points.size(); i++)
+    {
+	 if (!rect.contains(m_points.at(i)))
+	 {
+	     m_points.remove(i);
+	 }
+    }
     painter.drawPolyline(m_points.data(), m_points.size());
 }
 
 void PencilTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
     painter.setPen(QPen(context.color, context.thickness + 2));
+    rect = context.selection;
     painter.drawLine(context.mousePos, context.mousePos);
 }
 
 void PencilTool::drawStart(const CaptureContext &context) {
+    rect = context.selection;
     m_color = context.color;
     m_thickness = context.thickness + 2;
     m_points.append(context.mousePos);
@@ -81,5 +92,6 @@ void PencilTool::drawStart(const CaptureContext &context) {
 }
 
 void PencilTool::pressed(const CaptureContext &context) {
-    Q_UNUSED(context);
+    rect = context.selection;
+     //Q_UNUSED(context);
 }

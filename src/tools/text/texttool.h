@@ -75,6 +75,9 @@ private:
     QColor m_color;
     QPixmap m_pixmapBackup;
     QRect m_backupArea;
+    QRect rect;
     QPointer<TextWidget> m_widget;
     QPointer<TextConfig> m_confW;
+    QVector<QString> m_listString;
+    void splitString(QString text,QSize size, int n);
 };

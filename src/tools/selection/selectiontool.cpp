@@ -72,18 +72,38 @@ void SelectionTool::process(QPainter &painter, const QPixmap &pixmap, bool recor
         updateBackup(pixmap);
     }
     painter.setPen(QPen(m_color, m_thickness));
-    painter.drawLine(QLine(m_points.first, QPoint(m_points.second.x(),m_points.first.y())));
-    painter.drawLine(QLine(m_points.first, QPoint(m_points.first.x(),m_points.second.y())));
-    painter.drawLine(QLine(m_points.second, QPoint(m_points.first.x(),m_points.second.y())));
-    painter.drawLine(QLine(m_points.second, QPoint(m_points.second.x(),m_points.first.y())));
+    //绘制矩形  以框选区域为边界
+    if (rect.contains(m_points.first))
+    {    painter.drawLine(QLine(QPoint(qBound(rect.x()+m_thickness, m_points.first.x(), rect.x()+ rect.width()-m_thickness),
+                                       qBound(rect.y()+m_thickness, m_points.first.y(), rect.y()+rect.height()-m_thickness)),
+			        QPoint(qBound(rect.x()+m_thickness, m_points.second.x(), rect.x()+ rect.width()-m_thickness),
+				       qBound(rect.y()+m_thickness, m_points.first.y(), rect.y()+rect.height()-m_thickness))));
+
+         painter.drawLine(QLine(QPoint(qBound(rect.x()+m_thickness, m_points.first.x(), rect.x()+ rect.width()-m_thickness),
+                                       qBound(rect.y()+m_thickness, m_points.first.y(), rect.y()+rect.height()-m_thickness)),
+                                QPoint(qBound(rect.x()+m_thickness, m_points.first.x(), rect.x()+ rect.width()-m_thickness),
+                                       qBound(rect.y()+m_thickness, m_points.second.y(), rect.y()+rect.height()-m_thickness))));
+
+	 painter.drawLine(QLine(QPoint(qBound(rect.x()+m_thickness, m_points.second.x(), rect.x()+ rect.width()-m_thickness),
+                                       qBound(rect.y()+m_thickness, m_points.second.y(), rect.y()+rect.height()-m_thickness)),
+                                QPoint(qBound(rect.x()+m_thickness, m_points.first.x(), rect.x()+ rect.width()-m_thickness),
+                                       qBound(rect.y()+m_thickness, m_points.second.y(), rect.y()+rect.height()-m_thickness))));
+
+	 painter.drawLine(QLine(QPoint(qBound(rect.x()+m_thickness, m_points.second.x(), rect.x()+ rect.width()-m_thickness),
+                                       qBound(rect.y()+m_thickness, m_points.second.y(), rect.y()+rect.height()-m_thickness)),
+                                QPoint(qBound(rect.x()+m_thickness, m_points.second.x(), rect.x()+ rect.width()-m_thickness),
+                                       qBound(rect.y()+m_thickness, m_points.first.y(), rect.y()+rect.height()-m_thickness))));
+    }
 }
 
 void SelectionTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
+    rect = context.selection;
     painter.setPen(QPen(context.color, PADDING_VALUE + context.thickness));
     painter.drawLine(context.mousePos, context.mousePos);
 }
 
 void SelectionTool::drawStart(const CaptureContext &context) {
+    rect = context.selection;
     m_color = context.color;
     m_thickness = context.thickness + PADDING_VALUE;
     m_points.first = context.mousePos;

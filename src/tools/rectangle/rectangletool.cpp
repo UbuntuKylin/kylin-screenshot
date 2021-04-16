@@ -73,11 +73,13 @@ void RectangleTool::process(QPainter &painter, const QPixmap &pixmap, bool recor
 }
 
 void RectangleTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
+    rect = context.selection;
     painter.setPen(QPen(context.color, PADDING_VALUE + context.thickness));
     painter.drawLine(context.mousePos, context.mousePos);
 }
 
 void RectangleTool::drawStart(const CaptureContext &context) {
+    rect = context.selection;
     m_color = context.color;
     m_thickness = context.thickness + PADDING_VALUE;
     m_points.first = context.mousePos;

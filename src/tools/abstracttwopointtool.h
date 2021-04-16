@@ -54,6 +54,7 @@ protected:
     bool m_supportsOrthogonalAdj = false;
     bool m_supportsDiagonalAdj = false;
 
+    QRect  rect;
 private:
     QPoint adjustedVector(QPoint v) const;
 };
