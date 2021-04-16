@@ -92,7 +92,7 @@ int main(int argc, char *argv[]) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
         app.setApplicationName(QObject::tr("kylin-screenshot"));
         app.setOrganizationName(QStringLiteral("Dharkael"));
-
+        app.setProperty("useFileDialog",false);
         auto c = Controller::getInstance();
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
         new FlameshotDBusAdapter(c);
