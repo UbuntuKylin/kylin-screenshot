@@ -237,7 +237,7 @@ void Controller::enableTrayIcon() {
         // Wait 400 ms to hide the QMenu
         doLater(400, this, [this](){ this->startVisualCapture(); });
     });
-    QAction *launcherAction = new QAction(tr("&Open Launcher"), this);
+    QAction *launcherAction = new QAction(tr("&Open Screenshot Option"), this);
     connect(launcherAction, &QAction::triggered, this,
             &Controller::openLauncherWindow);
     QAction *configAction = new QAction(tr("&Configuration"), this);
