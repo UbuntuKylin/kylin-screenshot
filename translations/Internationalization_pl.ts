@@ -103,42 +103,47 @@
 <context>
     <name>CaptureLauncher</name>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="63"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="44"/>
+        <source>Screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="64"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="68"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="69"/>
         <source>Rectangular Region</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="69"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="70"/>
         <source>Full Screen (All Monitors)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="83"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="84"/>
         <source> second</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="83"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="84"/>
         <source> seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="87"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="88"/>
         <source>Take new screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="94"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="95"/>
         <source>Area:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="95"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="96"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -180,12 +185,12 @@ Spacja, aby pokazać panel boczny.</translation>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="51"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="50"/>
         <source>Circle</source>
         <translation>Okręgi</translation>
     </message>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="59"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="58"/>
         <source>Set the Circle as the paint tool</source>
         <translation>Rysowanie okręgów i elips</translation>
     </message>
@@ -242,7 +247,7 @@ Spacja, aby pokazać panel boczny.</translation>
     </message>
     <message>
         <location filename="../src/core/controller.cpp" line="265"/>
-        <source>Kylin-Screenshot</source>
+        <source>Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -694,7 +699,7 @@ Spacja, aby pokazać panel boczny.</translation>
     </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="190"/>
-        <source>Kylin-ScreenShot</source>
+        <source>Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1384,6 +1389,14 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>MySaveDialog</name>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="33"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OptionRecordTool</name>
     <message>
         <location filename="../src/tools/option_record/option_record_tool.cpp" line="32"/>
@@ -1443,7 +1456,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="130"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1481"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1483"/>
         <source>Save Error</source>
         <translation>Błąd zapisu</translation>
     </message>
@@ -1451,7 +1464,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="111"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1475"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1477"/>
         <source>Capture saved as </source>
         <translation>Zaznaczenie zapisano jako </translation>
     </message>
@@ -1464,7 +1477,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="51"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="71"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="126"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1478"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1480"/>
         <source>Error trying to save as </source>
         <translation>Błąd przy próbie zapisu jako </translation>
     </message>
@@ -1479,21 +1492,21 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="93"/>
+        <location filename="../src/main.cpp" line="145"/>
         <source>kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="102"/>
-        <location filename="../src/main.cpp" line="252"/>
-        <location filename="../src/main.cpp" line="411"/>
-        <location filename="../src/main.cpp" line="435"/>
-        <location filename="../src/main.cpp" line="464"/>
+        <location filename="../src/main.cpp" line="154"/>
+        <location filename="../src/main.cpp" line="304"/>
+        <location filename="../src/main.cpp" line="463"/>
+        <location filename="../src/main.cpp" line="487"/>
+        <location filename="../src/main.cpp" line="516"/>
         <source>Unable to connect via DBus</source>
         <translation>Nie udało się połączyć za pomocą DBus</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="118"/>
+        <location filename="../src/main.cpp" line="170"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>

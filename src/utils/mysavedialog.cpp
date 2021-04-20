@@ -30,6 +30,7 @@ MySaveDialog::MySaveDialog(QWidget *parent) :
     setNameFilter(QLatin1String(" PNG(*.png);;BMP(*.bmp);;JPEG(*.jpg)"));
     setDirectory(QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0));
     setAcceptMode(QFileDialog::AcceptSave);
+    setLabelText(QFileDialog::Reject, tr("Cancel"));
     QString a =  FileNameHandler().parsedPattern()+ ".png";
     this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
     connect(this->findChildren<QComboBox *>("fileTypeCombo").at(0), QOverload<int>::of(&QComboBox::currentIndexChanged),

@@ -109,7 +109,7 @@
 <context>
     <name>CaptureLauncher</name>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="+63"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="+64"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
         <translation>&lt;b&gt;捕获模式&lt;/b&gt;</translation>
     </message>
@@ -128,7 +128,12 @@
         <translation type="vanished">无延迟</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="-26"/>
+        <source>Screenshot</source>
+        <translation>截图</translation>
+    </message>
+    <message>
+        <location line="+40"/>
         <source> second</source>
         <translation> 秒</translation>
     </message>
@@ -202,7 +207,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="+51"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="+50"/>
         <source>Circle</source>
         <translation>圆环</translation>
     </message>
@@ -268,8 +273,12 @@ Press Space to open the side panel.</source>
     </message>
     <message>
         <location line="+16"/>
+        <source>Screenshot</source>
+        <translation>截图</translation>
+    </message>
+    <message>
         <source>Kylin-Screenshot</source>
-        <translation>麒麟截图</translation>
+        <translation type="vanished">麒麟截图</translation>
     </message>
     <message>
         <location line="+88"/>
@@ -739,9 +748,13 @@ Press Space to open the side panel.</source>
     </message>
     <message>
         <location line="+3"/>
+        <source>Screenshot</source>
+        <translation>截图</translation>
+    </message>
+    <message>
         <source>Kylin-ScreenShot</source>
         <translatorcomment>麒麟截图</translatorcomment>
-        <translation>麒麟截图</translation>
+        <translation type="vanished">麒麟截图</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1449,6 +1462,11 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <source>JPEG file (*.jpg)</source>
         <translation type="vanished">JPEG 格式 （*.jpg）</translation>
     </message>
+    <message>
+        <location filename="../src/utils/mysavedialog.cpp" line="+33"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
 </context>
 <context>
     <name>OptionRecordTool</name>
@@ -1510,7 +1528,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+130"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1113"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1115"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1548,7 +1566,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>不能将文件保存为隐藏文件</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+93"/>
+        <location filename="../src/main.cpp" line="+145"/>
         <source>kylin-screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>
