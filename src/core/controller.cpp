@@ -262,7 +262,7 @@ void Controller::enableTrayIcon() {
     trayIconMenu->addAction(quitAction);
 
     m_trayIcon = new QSystemTrayIcon();
-    m_trayIcon->setToolTip(tr("Kylin-Screenshot"));
+    m_trayIcon->setToolTip(tr("Screenshot"));
     m_trayIcon->setContextMenu(trayIconMenu);
     QIcon trayicon = QIcon::fromTheme("kylin-screenshot");
     //QIcon trayicon = QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png");

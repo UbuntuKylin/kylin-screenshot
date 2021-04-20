@@ -334,10 +334,11 @@ void ButtonHandler::positionButtonsInside(int index) {
     // selection.
     QRect mainArea = m_selection;
     mainArea = intersectWithAreas(mainArea);
-    const int buttonsPerRow = (mainArea.width()) / (m_buttonExtendedSize);
+    /*const int buttonsPerRow = (mainArea.width()) / (m_buttonExtendedSize);
     if (buttonsPerRow == 0) {
         return;
-    }
+    }*/
+    const int buttonsPerRow = 19;
     QPoint center = QPoint(mainArea.center().x(),
                            mainArea.bottom() - m_buttonExtendedSize);
 
