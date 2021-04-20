@@ -53,8 +53,60 @@ int getScreenWidth()
     }
     return width;
 }
-int main(int argc, char *argv[]) {
 
+void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    // �~J| �~T~A
+    static QMutex mutex;
+    mutex.lock();
+
+    QByteArray localMsg = msg.toLocal8Bit();
+
+    QString strMsg("");
+    switch(type)
+    {
+    case QtDebugMsg:
+        strMsg = QString("Debug    ");
+        break;
+    case QtWarningMsg:
+        strMsg = QString("Warning    ");
+        break;
+    case QtCriticalMsg:
+        strMsg = QString("Critical    ");
+        break;
+    case QtFatalMsg:
+        strMsg = QString("Fatal    ");
+        break;
+    case QtInfoMsg:
+        strMsg = QString("Info    ");
+        break;
+    }
+
+    // 设置�~S�~G�信�~A��| ��~O
+    QString strDateTime = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd");
+    //QString strMessage = QString("[Message]: %1 [File]: %2  [Line]: %3  [Function]: %4  [DateTime]: %5")
+    //        .arg(localMsg.constData()).arg(context.file).arg(context.line).arg(context.function).arg(strDateTime);
+    QString strMessage = QString("[DateTime]: %1  [Message]: %2  [Line]: %3  [Function]: %4")
+            .arg(strDateTime).arg(localMsg.constData()).arg(context.line).arg(context.function);
+
+    // �~S�~G�信�~A��~G��~V~G件中�~H读�~F~Y�~@~A追�~J| 形�~O�~I
+    //QString url_filepath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation)+"/.config/kylin-screenshot_output.log";
+    QString url_filepath =  "/tmp/kylin-screenshot_output.log";
+    QFile file(url_filepath);
+    file.open(QIODevice::ReadWrite | QIODevice::Append);
+    QTextStream stream(&file);
+    stream << strMsg << strMessage << "\r\n";
+    file.flush();
+    file.close();
+
+    // 解�~T~A
+    mutex.unlock();
+}
+
+
+int main(int argc, char *argv[]) {
+    //�~G��~Z�~I�~W��~W
+    qInstallMessageHandler(myMessageOutput);
     // required for the button serialization
     // TODO: change to QVector in v1.0
     if (getScreenWidth() > 2560) {
