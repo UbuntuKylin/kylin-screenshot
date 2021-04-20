@@ -93,6 +93,7 @@ void MarkerTool::paintMousePreview(QPainter &painter, const CaptureContext &cont
 
 void MarkerTool::drawStart(const CaptureContext &context) {
     rect = context.selection;
+    pixelRatio = context.origScreenshot.devicePixelRatio();
     m_color = context.color;
     m_thickness = context.thickness + PADDING_VALUE;
     m_points.first = context.mousePos;
@@ -101,7 +102,8 @@ void MarkerTool::drawStart(const CaptureContext &context) {
 
 void MarkerTool::pressed(const CaptureContext &context) {
     rect = context.selection;
-    Q_UNUSED(context);
+    pixelRatio = context.origScreenshot.devicePixelRatio();
+   // Q_UNUSED(context);
 }
 
 void MarkerTool::thicknessChanged(const int th) {

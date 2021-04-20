@@ -80,4 +80,5 @@ private:
     QPointer<TextConfig> m_confW;
     QVector<QString> m_listString;
     void splitString(QString text,QSize size, int n);
+    qreal  devicePixelRatio;
 };

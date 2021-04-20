@@ -79,11 +79,13 @@ void PencilTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUn
 void PencilTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
     painter.setPen(QPen(context.color, context.thickness + 2));
     rect = context.selection;
+    pixelRatio = context.origScreenshot.devicePixelRatio();
     painter.drawLine(context.mousePos, context.mousePos);
 }
 
 void PencilTool::drawStart(const CaptureContext &context) {
     rect = context.selection;
+    pixelRatio = context.origScreenshot.devicePixelRatio();
     m_color = context.color;
     m_thickness = context.thickness + 2;
     m_points.append(context.mousePos);

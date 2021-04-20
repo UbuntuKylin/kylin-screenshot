@@ -68,8 +68,11 @@ void AbstractPathTool::textthicknessChanged(const int th) {
 
 void AbstractPathTool::updateBackup(const QPixmap &pixmap) {
     const int val = m_thickness + m_padding;
-    QRect area = m_backupArea.normalized() + QMargins(val, val, val, val);
-    m_pixmapBackup = pixmap.copy(area);
+    QRect area = QRect(m_backupArea.x()*pixelRatio,m_backupArea.y()*pixelRatio,
+		    m_backupArea.width(),m_backupArea.height()).normalized() 
+			    + QMargins(val, val, val, val);
+    m_pixmapBackup = pixmap.copy(QRect(area.x(),area.y(),
+			    area.width()*pixelRatio,area.height()*pixelRatio));
 }
 
 void AbstractPathTool::addPoint(const QPoint &point) {

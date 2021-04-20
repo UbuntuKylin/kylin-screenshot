@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
-
 #include "abstracttwopointtool.h"
 #include <cmath>
-
 namespace {
 
 const double ADJ_UNIT = std::atan(1.0);
@@ -90,12 +88,49 @@ void AbstractTwoPointTool::textthicknessChanged(const int th) {
     Q_UNUSED(th);
 }
 
-void AbstractTwoPointTool::updateBackup(const QPixmap &pixmap) {
-    m_pixmapBackup = pixmap.copy(backupRect(pixmap.rect()));
+void AbstractTwoPointTool::updateBackup(const QPixmap &pixmap) 
+{
+    QRect r = QRect(backupRect(pixmap.rect()));
+    m_pixmapBackup = pixmap.copy(QRect(r.x()*pixelRatio,
+				    r.y()*pixelRatio,
+				    r.width()+m_thickness + m_padding +2,
+				    r.height()+m_thickness + m_padding +2));
 }
 
 QRect AbstractTwoPointTool::backupRect(const QRect &limits) const {
-    QRect r = QRect(m_points.first, m_points.second).normalized();
+    QRect  r;
+    if(m_points.first.x() < m_points.second.x()){
+	if (m_points.first.y() < m_points.second.y()){
+            r = QRect(m_points.first.x(),m_points.first.y(),
+	             (m_points.second.x()-m_points.first.x())*pixelRatio,
+		     (m_points.second.y()-m_points.first.y())*pixelRatio)
+	            .normalized();
+	}
+	else
+	{
+           r = QRect(m_points.first.x(),m_points.second.y(),
+                     (m_points.second.x()-m_points.first.x())*pixelRatio,
+                     (m_points.first.y()-m_points.second.y())*pixelRatio)
+                    .normalized();
+	}
+    }
+    else
+    {
+	 if (m_points.first.y() < m_points.second.y()){
+            r = QRect(m_points.second.x(),m_points.first.y(),
+                     (m_points.first.x()-m_points.second.x())*pixelRatio,
+                     (m_points.second.y()-m_points.first.y())*pixelRatio)
+                    .normalized();
+         }
+	 else
+	 {
+            r = QRect(m_points.second.x(),m_points.second.y(),
+                     (m_points.first.x()-m_points.second.x())*pixelRatio,
+                     (m_points.first.y()-m_points.second.y())*pixelRatio)
+                    .normalized();
+	 }
+
+    }
     const int val = m_thickness + m_padding;
     r += QMargins(val, val, val, val);
     return r.intersected(limits);

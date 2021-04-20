@@ -138,10 +138,10 @@ void TextTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo
     splitString(m_text,size,rect.x()+rect.width()-m_backupArea.topLeft().x()-size.width());
     //撤销操作  更新编辑区域
     if (recordUndo) {
-        m_pixmapBackup = pixmap.copy(QRect(m_backupArea.x(),
-                               m_backupArea.y(),
-                               m_backupArea.width(),
-                               m_backupArea.height()+m_listString.length()*size.height()) + QMargins(0, 0, 5, 5));
+        m_pixmapBackup = pixmap.copy(QRect(m_backupArea.x()*devicePixelRatio,
+                               m_backupArea.y()*devicePixelRatio,
+                               m_backupArea.width()*devicePixelRatio,
+                               (m_backupArea.height()+m_listString.length()*size.height())*devicePixelRatio) + QMargins(0, 0, 5, 5));
     }
     painter.setFont(m_font);
     painter.setPen(m_color);
@@ -222,8 +222,8 @@ void TextTool::drawStart(const CaptureContext &context) {
     m_font.setItalic(context.italic);
     m_font.setUnderline(context.underline);
     m_font.setStrikeOut(context.deleteline);
+    devicePixelRatio = context.screenshot.devicePixelRatio();
     emit requestAction(REQ_ADD_CHILD_WIDGET);
-
 }
 
 void TextTool::pressed(const CaptureContext &context) {
@@ -235,6 +235,7 @@ void TextTool::pressed(const CaptureContext &context) {
     m_font.setItalic(context.italic);
     m_font.setUnderline(context.underline);
     m_font.setStrikeOut(context.deleteline);
+    devicePixelRatio = context.screenshot.devicePixelRatio();
 }
 
 void TextTool::colorChanged(const QColor &c) {

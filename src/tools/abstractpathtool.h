@@ -48,4 +48,5 @@ protected:
     // use m_padding to extend the area of the backup
     int m_padding;
     QRect  rect;
+    qreal pixelRatio;
 };

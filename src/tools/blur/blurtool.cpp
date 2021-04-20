@@ -109,12 +109,14 @@ void BlurTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo
 
 void BlurTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
     rect = context.selection;
+    pixelRatio = context.origScreenshot.devicePixelRatio();
     Q_UNUSED(context);
     Q_UNUSED(painter);
 }
 
 void BlurTool::drawStart(const CaptureContext &context) {
     rect = context.selection;
+    pixelRatio = context.origScreenshot.devicePixelRatio();
     m_thickness = context.thickness;
     m_points.first = context.mousePos;
     m_points.second = context.mousePos;

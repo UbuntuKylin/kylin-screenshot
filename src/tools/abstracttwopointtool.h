@@ -53,7 +53,7 @@ protected:
 
     bool m_supportsOrthogonalAdj = false;
     bool m_supportsDiagonalAdj = false;
-
+    qreal pixelRatio;
     QRect  rect;
 private:
     QPoint adjustedVector(QPoint v) const;
