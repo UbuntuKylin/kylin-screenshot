@@ -6,7 +6,7 @@
 
 win32:LIBS += -luser32 -lshell32
 
-LIBS += -lavutil -lavformat -lavcodec -lswscale -lX11 -lXext -lXtst -lXfixes -lXinerama -lpulse
+LIBS += -lukui-log4qt -lavutil -lavformat -lavcodec -lswscale -lX11 -lXext -lXtst -lXfixes -lXinerama -lpulse
 
 TAG_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
 isEmpty(TAG_VERSION){

@@ -3,7 +3,7 @@ Section: graphics
 Priority: optional
 Maintainer: Kylin Team <team+kylin@tracker.debian.org>
 Uploaders: handsome_feng <jianfengli@ubuntukylin.com>
-Build-Depends: debhelper-compat (= 13),
+Build-Depends: debhelper-compat (= 12),
                qt5-qmake,
                qtbase5-dev,
                qttools5-dev-tools,
@@ -23,6 +23,7 @@ Build-Depends: debhelper-compat (= 13),
 	       libgsettings-qt-dev,
 	       libkf5windowsystem5,
 	       libkf5windowsystem-dev,
+               libukui-log4qt-dev,
                libxtst-dev,
 Standards-Version: 4.5.0
 Rules-Requires-Root: no
