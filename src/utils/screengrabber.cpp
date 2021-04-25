@@ -132,7 +132,7 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
 
 QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok) {
     QPixmap p;
-    bool isVirtual = QApplication::desktop()->isVirtualDesktop();
+/*    bool isVirtual = QApplication::desktop()->isVirtualDesktop();
     if (isVirtual || m_info.waylandDectected()) {
         p = grabEntireDesktop(ok);
         if (ok) {
@@ -152,7 +152,7 @@ QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok) {
             p = p.copy(geometry);
         }
     }
-    else {
+    else {*/
         QPixmap p1 = this->grabEntireDesktop(ok);
         QWindow *window = QWindow::fromWinId(KWindowSystem::activeWindow());
         if (nullptr == window)
@@ -165,6 +165,6 @@ QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok) {
             p = p1.copy(info.frameGeometry());
         }
         ok = true;
-    }
+    //}
     return p;
 }
