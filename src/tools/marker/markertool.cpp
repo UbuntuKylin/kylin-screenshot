@@ -70,7 +70,7 @@ void MarkerTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUn
         updateBackup(pixmap);
     }
     painter.setCompositionMode(QPainter::CompositionMode_Multiply);
-    painter.setOpacity(0.35);
+    painter.setOpacity(0.5);
     painter.setPen(QPen(m_color, m_thickness));
     //绘制直线  以框选区域为边界
     if (rect.contains(m_points.first))
