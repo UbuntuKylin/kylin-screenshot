@@ -1442,7 +1442,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="130"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1483"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1485"/>
         <source>Save Error</source>
         <translation>S&apos;ha produït un error en guardar</translation>
     </message>
@@ -1450,7 +1450,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="111"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1477"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1479"/>
         <source>Capture saved as </source>
         <translation>Anomena i guarda la captura </translation>
     </message>
@@ -1458,7 +1458,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="51"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="71"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="126"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1480"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1482"/>
         <source>Error trying to save as </source>
         <translation>S&apos;ha produït un error en anomenar i guardar </translation>
     </message>
@@ -1473,21 +1473,21 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="145"/>
+        <location filename="../src/main.cpp" line="95"/>
         <source>kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="154"/>
-        <location filename="../src/main.cpp" line="304"/>
-        <location filename="../src/main.cpp" line="463"/>
-        <location filename="../src/main.cpp" line="487"/>
-        <location filename="../src/main.cpp" line="516"/>
+        <location filename="../src/main.cpp" line="104"/>
+        <location filename="../src/main.cpp" line="254"/>
+        <location filename="../src/main.cpp" line="413"/>
+        <location filename="../src/main.cpp" line="437"/>
+        <location filename="../src/main.cpp" line="466"/>
         <source>Unable to connect via DBus</source>
         <translation>No es pot connectar mitjançant DBus</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="170"/>
+        <location filename="../src/main.cpp" line="120"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1799,12 +1799,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>SystemNotification</name>
     <message>
         <location filename="../src/utils/systemnotification.cpp" line="45"/>
-        <source>Kylin-ScreenShot Info</source>
+        <source>ScreenShot Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/utils/systemnotification.cpp" line="66"/>
-        <source>kylin-screenshot</source>
+        <source>screenshot</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

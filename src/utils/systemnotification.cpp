@@ -42,7 +42,7 @@ SystemNotification::SystemNotification(QObject *parent) : QObject(parent) {
 #endif
 
 void SystemNotification::sendMessage(const QString &text, const QString &savePath) {
-    sendMessage(text, tr("Kylin-ScreenShot Info"), savePath);
+    sendMessage(text, tr("ScreenShot Info"), savePath);
 }
 
 void SystemNotification::sendMessage(
@@ -63,7 +63,7 @@ void SystemNotification::sendMessage(
         // allows the notification to be dragged and dropped
         hintsMap[QStringLiteral("x-kde-urls")] = QStringList({fullPath.toString()});
     }
-    args << tr("kylin-screenshot")                 //appname
+    args << tr("screenshot")                 //appname
          << static_cast<unsigned int>(0) //id
          << "kylin-screenshot"                  //icon
          << title                        //summary

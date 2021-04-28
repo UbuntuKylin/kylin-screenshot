@@ -1528,7 +1528,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+130"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1115"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1117"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1566,7 +1566,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>不能将文件保存为隐藏文件</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+145"/>
+        <location filename="../src/main.cpp" line="+95"/>
         <source>kylin-screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>
@@ -1957,14 +1957,22 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>SystemNotification</name>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="+45"/>
         <source>Kylin-ScreenShot Info</source>
-        <translation>麒麟截图 消息</translation>
+        <translation type="vanished">麒麟截图 消息</translation>
+    </message>
+    <message>
+        <source>kylin-screenshot</source>
+        <translation type="vanished">麒麟截图</translation>
+    </message>
+    <message>
+        <location filename="../src/utils/systemnotification.cpp" line="+45"/>
+        <source>ScreenShot Info</source>
+        <translation >截图 消息</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>kylin-screenshot</source>
-        <translation>麒麟截图</translation>
+        <source>screenshot</source>
+        <translation>截图</translation>
     </message>
 </context>
 <context>
