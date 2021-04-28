@@ -659,6 +659,8 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
                     m_activeTool, &CaptureTool::textthicknessChanged);
             connect(m_activeTool, &CaptureTool::requestAction,
                     this, &CaptureWidget::handleButtonSignal);
+            connect(this,&CaptureWidget::textchanged,
+                    m_activeTool, &CaptureTool::textChanged);
             m_activeTool->drawStart(m_context);
             return;
         }
@@ -1323,7 +1325,7 @@ void CaptureWidget::setState(CaptureButton *b) {
          new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Left), this, SLOT(leftResize()));
          new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Up), this, SLOT(upResize()));
          new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Down), this, SLOT(downResize()));
-         // new QShortcut(Qt::Key_Space, this, SLOT(togglePanel()));
+         new QShortcut(Qt::Key_Space, this, SLOT(togglePanel()));
          new QShortcut(Qt::Key_Escape, this, SLOT(deleteToolwidgetOrClose()));
          new QShortcut(Qt::Key_Return, this, SLOT(copyScreenshot()));
          new QShortcut(Qt::Key_Enter, this, SLOT(copyScreenshot()));
@@ -1540,19 +1542,23 @@ void CaptureWidget::setState(CaptureButton *b) {
      void  CaptureWidget::font_bold_clicked(bool b)
      {
          m_context.bold = b;
+         emit textchanged(m_context);
      }
      void  CaptureWidget::font_delete_clicked(bool b)
      {
          m_context.deleteline = b;
+         emit textchanged(m_context);
      }
      void CaptureWidget::font_underline_clicked(bool b)
      {
          m_context.underline =b;
+         emit textchanged(m_context);
 
      }
      void CaptureWidget::font_italic_clicked(bool b)
      {
          m_context.italic =b;
+         emit textchanged(m_context);
      }
      void CaptureWidget::ClickedSaveType(int i)
      {

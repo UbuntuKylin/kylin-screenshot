@@ -262,6 +262,16 @@ void TextTool::textthicknessChanged(const int th) {
     }
 }
 
+void TextTool::textChanged(const CaptureContext &context)
+{
+    m_font.setUnderline(context.underline);
+    m_font.setStrikeOut(context.deleteline);
+    m_font.setItalic(context.italic);
+    m_font.setBold(context.bold);
+    if (m_widget) {
+        m_widget->setFont(m_font);
+    }
+}
 void TextTool::updateText(const QString &s) {
     m_text = s;
 }

@@ -171,3 +171,7 @@ QPoint AbstractTwoPointTool::adjustedVector(QPoint v) const {
     }
     return v;
 }
+
+void AbstractTwoPointTool::textChanged(const CaptureContext &context) {
+    Q_UNUSED(context);
+}

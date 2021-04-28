@@ -87,6 +87,7 @@ signals:
     void colorChanged(const QColor &c);
     void thicknessChanged(const int thickness);
     void textThicknessChanged(const int text_thickness);
+    void textchanged(CaptureContext m_context);
 private slots:
     // TODO replace with tools
     void copyScreenshot();

@@ -40,6 +40,7 @@ public slots:
     void colorChanged(const QColor &c) override;
     void thicknessChanged(const int th) override;
     void textthicknessChanged(const int th) override;
+    void textChanged(const CaptureContext &context) override;
 protected:
     void updateBackup(const QPixmap &pixmap);
     QRect backupRect(const QRect &limits) const;

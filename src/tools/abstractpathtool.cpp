@@ -88,3 +88,8 @@ void AbstractPathTool::addPoint(const QPoint &point) {
     }
     m_points.append(point);
 }
+
+
+void AbstractPathTool::textChanged(const CaptureContext &context) {
+    Q_UNUSED(context);
+}

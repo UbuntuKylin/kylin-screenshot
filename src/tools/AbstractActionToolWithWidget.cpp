@@ -89,3 +89,7 @@ void AbstractActionToolWithWidget::thicknessChanged(const int th) {
 void AbstractActionToolWithWidget::textthicknessChanged(const int th) {
     Q_UNUSED(th);
 }
+
+void AbstractActionToolWithWidget::textChanged(const CaptureContext &context) {
+    Q_UNUSED(context);
+}
