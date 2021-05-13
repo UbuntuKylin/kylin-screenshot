@@ -40,7 +40,8 @@
 CaptureLauncher::CaptureLauncher(QWidget *parent) :
     QWidget(parent), m_id(0)
 {
-    setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
+    setWindowIcon(QIcon::fromTheme("kylin-screenshot"));
+    //setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
     setAttribute(Qt::WA_DeleteOnClose);
     connect(Controller::getInstance(), &Controller::captureTaken,
             this, &CaptureLauncher::captureTaken);
