@@ -181,6 +181,7 @@ private:
     void hide_ChildWindow();
 
     void  size_label_option();
+    void  updateCrosspixmap(QPoint e);
 #ifdef ENABLE_RECORD
     void record_do_sth(CaptureButton *b);
 #endif
@@ -191,6 +192,7 @@ private:
     void updateMagnifier(CaptureContext m_context);
 
     QVector<QRect> areas;
+    QVector <QRect > rects;
     QLabel *size_label;
     QRect extendedSelection() const;
     QRect extendedRect(QRect *r) const;
@@ -217,8 +219,9 @@ private:
     int magnifier_y;
     //signed  width between FontSize_Color_Chose_Window and fistbutton
     int length;
-
     QGSettings *isrunning;
+   //确定框选区域值 
+    bool  isSure;
 #ifdef ENABLE_RECORD
     Recorder *recorder;
     QMap<CaptureButton::ButtonType, CaptureTool*> m_isolatedButtons;

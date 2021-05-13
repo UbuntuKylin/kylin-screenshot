@@ -55,6 +55,8 @@
 #include <QGraphicsBlurEffect>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
+#include <KF5/KWindowSystem/KWindowSystem>
+
 #ifdef ENABLE_RECORD
 #include "ssrtools.h"
 #include "mypopup.h"
@@ -91,6 +93,22 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     initContext(savePath, fullScreen);
     initShortcuts();
 
+//  按照当前窗口活跃状态存储窗口ID
+    QList<WId> windows = KWindowSystem::stackingOrder();
+    for (long long unsigned int const id: windows)
+    {
+	// 获取窗口状态信息
+        KWindowInfo info(id, NET::WMState);
+        //判断窗口是否显示    
+    	if(false == info.hasState(NET::Hidden))
+        {
+            // 获取窗口位置 长宽信息
+            KWindowInfo info2(id, NET::WMFrameExtents);
+            rects.append(info2.frameGeometry());
+         }
+    }
+   // 默认未选中框选区域
+    isSure = false;
 #ifdef Q_OS_WIN
     // Top left of the whole set of screens
     QPoint topLeft(0,0);
@@ -142,7 +160,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     }
     m_buttonHandler->updateScreenRegions(areas);
     m_buttonHandler->hide();
-
+ 
     initSelection();
     updateCursor();
     // Init color picker
@@ -243,7 +261,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     m_notifierBox = new NotifierBox(this);
     m_notifierBox->hide();
 #ifdef ENABLE_RECORD
-    recorder->m_pushbutton_cancel->setFixedSize(QSize(50, 50));
+    recorder->m_pushbutton_cancel->setFixedSize(QSize(50, 50));微信网页版
     recorder->m_pushbutton_cancel->move(200, 100);
     recorder->m_pushbutton_cancel->setText(QString::fromUtf8("cancel"));
     recorder->m_pushbutton_save->setFixedSize(QSize(50, 50));
@@ -637,6 +655,7 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
     } else if (e->button() == Qt::LeftButton) {
         m_showInitialMsg = false;
         m_mouseIsClicked = true;
+        isSure = true;
         // Click using a tool
         if (m_activeButton) {
             if (m_activeTool) {
@@ -683,48 +702,13 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
 
 void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     m_context.mousePos = e->globalPos();
-    auto screenNumber = QApplication::desktop()->screenNumber();
-    QScreen *screen = QApplication::screens()[screenNumber];
-    w = 26 * screen->devicePixelRatio();
-    h = 26 * screen->devicePixelRatio();
-    //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
-    mypixmap = mypixmap.grabWidget(this,e->pos().x()-10,e->pos().y()-10,26,26);
-    QImage crosstmp=mypixmap.toImage();
-    QRgb value = qRgb(0,0,255);
-    for(int i=0;i<w;i++)
-    {
-        for(int j=h/2-1;j<h/2;j++)
-        {
-           crosstmp.setPixel(i,j,value);
-        }
-    }
-    for(int i=w/2-1;i<w/2;i++)
-    {
-        for(int j=0;j<h;j++)
-        {
-            crosstmp.setPixel(i,j,value);
-        }
-    }
-    for (int i=0;i<1;i++)
-    {
-        for(int j=0;j<h;j++)
-        {
-           crosstmp.setPixel(i,j,value);
-           crosstmp.setPixel(j,i,value);
-        }
-    }
-    for (int i=w-1;i<w;i++)
-    {
-        for(int j=0;j<h;j++)
-        {
-           crosstmp.setPixel(i,j,value);
-           crosstmp.setPixel(j,i,value);
-        }
-    }
-    crosspixmap=QPixmap::fromImage( crosstmp.scaled(w*5,h*5,Qt::KeepAspectRatio) );
-    pixmap2 = mypixmap.scaled(w * 5,h * 5,Qt::KeepAspectRatio);
-    update();
+    updateCrosspixmap(e->globalPos());
     if (m_mouseIsClicked && !m_activeButton) {
+	 // 选框区域确定
+        if (isSure)
+        {
+            m_buttonHandler->show();
+        }
         if (m_buttonHandler->isVisible()) {
             m_buttonHandler->hide();
      }
@@ -816,12 +800,75 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     } else if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
         update();
     } else {
+        //框选区域未确定  实时更新
+	if (!isSure)
+        {
+        for(QRect const rect : rects)
+        {
+          if(rect.contains(m_context.mousePos))
+          {
+              qDebug() << "now  at  rect  is" << rect;
+              m_selection->setGeometry(rect);
+              m_selection->show();
+              m_buttonHandler->updatePosition(rect);
+              m_buttonHandler->hide();
+          }
+        }
+        }
+        update();
         if (!m_selection->isVisible()) {
+            isSure = false;
+            m_buttonHandler->hide();
             return;
         }
         m_mouseOverHandle = m_selection->getMouseSide(m_context.mousePos);
         updateCursor();
+        }
+}
+
+void CaptureWidget::updateCrosspixmap(QPoint e)
+{
+    auto screenNumber = QApplication::desktop()->screenNumber();
+    QScreen *screen = QApplication::screens()[screenNumber];
+    w = 26 * screen->devicePixelRatio();
+    h = 26 * screen->devicePixelRatio();
+    //mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
+    mypixmap = mypixmap.grabWidget(this,e.x()-10,e.y()-10,26,26);
+    QImage crosstmp=mypixmap.toImage();
+    QRgb value = qRgb(0,0,255);
+    for(int i=0;i<w;i++)
+    {
+        for(int j=h/2-1;j<h/2;j++)
+        {
+           crosstmp.setPixel(i,j,value);
+        }
     }
+    for(int i=w/2-1;i<w/2;i++)
+    {
+        for(int j=0;j<h;j++)
+        {
+            crosstmp.setPixel(i,j,value);
+        }
+    }
+    for (int i=0;i<1;i++)
+    {
+        for(int j=0;j<h;j++)
+        {
+           crosstmp.setPixel(i,j,value);
+           crosstmp.setPixel(j,i,value);
+        }
+    }
+    for (int i=w-1;i<w;i++)
+    {
+        for(int j=0;j<h;j++)
+        {
+           crosstmp.setPixel(i,j,value);
+           crosstmp.setPixel(j,i,value);
+        }
+    }
+    crosspixmap=QPixmap::fromImage( crosstmp.scaled(w*5,h*5,Qt::KeepAspectRatio) );
+    pixmap2 = mypixmap.scaled(w * 5,h * 5,Qt::KeepAspectRatio);
+    update();
 }
 
 void CaptureWidget::mouseReleaseEvent(QMouseEvent *e) {
