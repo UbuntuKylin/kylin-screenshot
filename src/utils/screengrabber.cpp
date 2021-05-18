@@ -161,7 +161,7 @@ QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok) {
         }
         else
         {
-            KWindowInfo info(KWindowSystem::activeWindow(), NET::WMGeometry);
+            KWindowInfo info(KWindowSystem::activeWindow(), NET::WMFrameExtents);
             p = p1.copy(info.frameGeometry());
         }
         ok = true;
