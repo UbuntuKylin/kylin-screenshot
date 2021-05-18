@@ -51,25 +51,25 @@ class HoverEventFilter;
 #ifdef ENABLE_RECORD
 #include "recorder.h"
 #endif
-class CaptureWidget : public QWidget {
+class CaptureWidget : public QWidget
+{
     Q_OBJECT
 
 public:
     explicit CaptureWidget(const uint id = 0,
-                           const QString &savePath = QString(),
-                           bool fullScreen = true,
+                           const QString &savePath = QString(), bool fullScreen = true,
                            QWidget *parent = nullptr);
     ~CaptureWidget();
 
     QString file;
     void updateButtons(
         #ifdef ENABLE_RECORD
-            bool isRecord = false
+        bool isRecord = false
         #endif
-            );
+        );
     QPixmap pixmap();
-    QVector<CaptureButton*> vectorButtons;
-    QPoint  *font_color_point;
+    QVector<CaptureButton *> vectorButtons;
+    QPoint *font_color_point;
     void hide_window();
     void show_window();
 
@@ -162,8 +162,8 @@ protected:
     QPixmap mypixmap;
     QPixmap pixmap2;
     QPixmap crosspixmap;
-    double w,h;
-   // QGSettings  *style_settings;
+    double w, h;
+    // QGSettings  *style_settings;
 private:
     void initContext(const QString &savePath, bool fullscreen);
     void initPanel();
@@ -175,11 +175,12 @@ private:
     void makeChild(QWidget *w);
 
     void updateChildWindow();
-      //format code
+    // format code
     void show_childwindow(CaptureButton *b);
     void hide_ChildWindow();
 
     void  size_label_option();
+    void  updateCrosspixmap(QPoint e);
 #ifdef ENABLE_RECORD
     void record_do_sth(CaptureButton *b);
 #endif
@@ -214,13 +215,17 @@ private:
     uint m_id;
     int magnifier_x;
     int magnifier_y;
-    //signed  width between FontSize_Color_Chose_Window and fistbutton
+    // signed  width between FontSize_Color_Chose_Window and fistbutton
     int length;
 
     QGSettings *isrunning;
+    // 存储当前已打开窗口信息
+    QVector <QRect > rects;
+    // 确定框选区域值
+    bool isSure;
+
 #ifdef ENABLE_RECORD
     Recorder *recorder;
-    QMap<CaptureButton::ButtonType, CaptureTool*> m_isolatedButtons;
+    QMap<CaptureButton::ButtonType, CaptureTool *> m_isolatedButtons;
 #endif
-
 };

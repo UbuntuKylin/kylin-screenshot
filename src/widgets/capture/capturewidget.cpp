@@ -54,6 +54,7 @@
 #include <QGraphicsBlurEffect>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
+#include <KF5/KWindowSystem/KWindowSystem>
 #ifdef ENABLE_RECORD
 #include "ssrtools.h"
 #include "mypopup.h"
@@ -134,6 +135,26 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
 #endif
         resize(pixmap().size());
     }
+    auto devicePixelRatio = m_context.screenshot.devicePixelRatio();
+    // 照当前窗口活跃状态存储窗口ID
+    QList<WId> windows = KWindowSystem::stackingOrder();
+    for (long long unsigned int const id: windows) {
+        // 获取窗口状态信息
+        KWindowInfo info(id, NET::WMState);
+        // 判断窗口是否显示
+        if (false == info.hasState(NET::Hidden)) {
+            // 获取窗口位置 长宽信息
+            KWindowInfo info2(id, NET::WMFrameExtents);
+            rects.append(QRect(info2.frameGeometry().x()/devicePixelRatio,
+                               info2.frameGeometry().y()/devicePixelRatio,
+                               info2.frameGeometry().width()/devicePixelRatio,
+                               info2.frameGeometry().height()/devicePixelRatio
+                               )
+                         );
+        }
+    }
+    // 默认未选中框选区域
+    isSure = false;
     // Create buttons
     m_buttonHandler = new ButtonHandler(this);
     updateButtons();
@@ -445,26 +466,29 @@ void CaptureWidget::paintEvent(QPaintEvent *)
         // paint handlers
         painter.setPen(m_uiColor);
         size_label->show();
+        auto pixelRatio = m_context.origScreenshot.devicePixelRatio();
         if ((vectorButtons.first()->pos().x() > 0 && m_buttonHandler->isVisible())) {
-#ifndef ENABLE_RECORD
-            QRect rr = QRect(vectorButtons.first()->pos().x()-15, vectorButtons.first()->pos().y(),
+            QRect rr
+                = QRect((vectorButtons.first()->pos().x()-15)*pixelRatio,
+                        (vectorButtons.first()->pos().y())*pixelRatio,
 #ifndef SUPPORT_NEWUI
-                             735, 44);
+                        735, 44);
 #else
-                             612, 44);
+                        612, 44);
 #endif
             // blur
             {
                 QRect r1 = rr.adjusted(1, 1, -1, -1);
                 painter.setOpacity(0.8);
                 QPixmap p = m_context.origScreenshot.copy(r1);
-                auto pixelRatio = p.devicePixelRatio();
-
                 QRect selection
-                    = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
+                    = QRect(r1.x()/pixelRatio, r1.y()/pixelRatio,
+                            r1.width(), r1.height()).normalized();
+                // r1.topLeft(), r1.bottomRight()).normalized();
                 QRect selectionScaled
-                    = QRect(r1.topLeft()* pixelRatio, r1.bottomRight()* pixelRatio).normalized();
-
+                // = QRect(r1.topLeft(), r1.bottomRight()).normalized();
+                    = QRect(r1.x()/pixelRatio, r1.y()/pixelRatio,
+                            r1.width(), r1.height()).normalized();
                 QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
                 blur->setBlurRadius(10);
                 QGraphicsPixmapItem *item = new QGraphicsPixmapItem(
@@ -473,7 +497,7 @@ void CaptureWidget::paintEvent(QPaintEvent *)
 
                 QGraphicsScene scene;
                 scene.addItem(item);
-                scene.render(&painter, selection, QRectF());
+                // scene.render(&painter, selection, QRectF());
                 blur->setBlurRadius(10);
                 scene.render(&painter, selection, QRectF());
             }
@@ -482,93 +506,55 @@ void CaptureWidget::paintEvent(QPaintEvent *)
                 painter.setBrush(QColor(0, 0, 0));
                 painter.setPen(QColor(0, 0, 0));
                 painter.setOpacity(0.5);
-                painter.drawRoundedRect(rr, 6, 6, Qt::AbsoluteSize);
-                painter.drawRoundedRect(vectorButtons.last()->pos().x(),
-                                        vectorButtons.last()->pos().y(),
-                                        GlobalValues::buttonBaseSize(),
-                                        GlobalValues::buttonBaseSize(),
-                                        GlobalValues::buttonBaseSize()/2,
-                                        GlobalValues::buttonBaseSize()/2);
-                painter.setOpacity(0.8);
-                QColor rectColor2(QColor(0, 98, 240));
-                painter.setBrush(rectColor2);
-#ifndef SUPPORT_NEWUI
-                painter.drawRoundRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,
-                    vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6, 90, 30, 20,
-                    20);
-#else
-                painter.drawRoundedRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,
-                    vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,
-                    66, 30, 6, 6, Qt::AbsoluteSize);
-#endif
-                // 两个分隔符
-                painter.setBrush(QColor(0, 0, 0, 100));
-                painter.setPen(QColor(0, 0, 0, 100));
-                painter.drawRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,
-                    vectorButtons.first()->pos().y()+14, 1, 16);
-#ifndef SUPPORT_NEWUI
-                painter.drawRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,
-                    vectorButtons.first()->pos().y()+14, 1, 16);
-                painter.drawRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,
-                    vectorButtons.first()->pos().y()+14, 1, 16);
-#endif
-            }
-            // if((m_context.style_name.compare("ukui-white")==0) || (m_context.style_name.compare("ukui-default")==0) || (m_context.style_name.compare("ukui-light")==0)){
-            else {
+            } else {
                 painter.setBrush(QColor(200, 200, 200));
                 painter.setPen(QColor(200, 200, 200));
                 painter.setOpacity(0.5);
-                painter.drawRoundedRect(rr, 6, 6, Qt::AbsoluteSize);
-                painter.drawRoundedRect(vectorButtons.last()->pos().x(),
-                                        vectorButtons.last()->pos().y(),
-                                        GlobalValues::buttonBaseSize(),
-                                        GlobalValues::buttonBaseSize(),
-                                        GlobalValues::buttonBaseSize()/2,
-                                        GlobalValues::buttonBaseSize()/2);
-                painter.setOpacity(0.8);
-                QColor rectColor2(QColor(0, 98, 240));
-                painter.setBrush(rectColor2);
-#ifndef SUPPORT_NEWUI
-                painter.drawRoundRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,
-                    vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6, 90, 30, 20,
-                    20);
-#else
-                painter.drawRoundedRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,
-                    vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6, 66,
-                    30, 6, 6, Qt::AbsoluteSize);
-#endif
-                // 两个分隔符
-                painter.setBrush(QColor(0, 0, 0, 100));
-                painter.setPen(QColor(0, 0, 0, 100));
-                painter.drawRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,
-                    vectorButtons.first()->pos().y()+14, 1, 16);
-#ifndef SUPPORT_NEWUI
-                painter.drawRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,
-                    vectorButtons.first()->pos().y()+14, 1, 16);
-                painter.setBrush(QColor(255, 255, 255));
-                painter.setPen(QColor(255, 255, 255));
-                painter.drawRect(
-                    vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,
-                    vectorButtons.first()->pos().y()+14, 1, 16);
-#endif
             }
+            painter.drawRoundedRect(QRect(rr.x()/pixelRatio, rr.y()/pixelRatio, rr.width(),
+                                          rr.height()), 6, 6, Qt::AbsoluteSize);
+            // painter.drawRoundedRect(rr, 6, 6, Qt::AbsoluteSize);
+            painter.drawRoundedRect(vectorButtons.last()->pos().x(),
+                                    vectorButtons.last()->pos().y(),
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize()/2,
+                                    GlobalValues::buttonBaseSize()/2);
+            painter.setOpacity(0.8);
+            QColor rectColor2(QColor(0, 98, 240));
+            painter.setBrush(rectColor2);
+#ifndef SUPPORT_NEWUI
+            painter.drawRoundRect(
+                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,
+                vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6, 90, 30, 20,
+                20);
+#else
+            painter.drawRoundedRect(
+                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,
+                vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,
+                66, 30, 6, 6, Qt::AbsoluteSize);
 #endif
-        }
-        update();
-        painter.setOpacity(1);
-        painter.setBrush(QColor(160, 160, 160));
-        for (auto r: m_selection->handlerAreas()) {
-            // painter.drawRoundRect(r, 80, 80);
-            painter.drawPixmap(r, QPixmap(QStringLiteral(":/img/material/control_point.png")));
+            // 两个分隔符
+            painter.setBrush(QColor(0, 0, 0, 100));
+            painter.setPen(QColor(0, 0, 0, 100));
+            painter.drawRect(
+                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,
+                vectorButtons.first()->pos().y()+14, 1, 16);
+#ifndef SUPPORT_NEWUI
+            painter.drawRect(
+                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,
+                vectorButtons.first()->pos().y()+14, 1, 16);
+            painter.drawRect(
+                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,
+                vectorButtons.first()->pos().y()+14, 1, 16);
+#endif
+            update();
+            painter.setOpacity(1);
+            painter.setBrush(QColor(160, 160, 160));
+            for (auto r: m_selection->handlerAreas()) {
+                // painter.drawRoundRect(r, 80, 80);
+                painter.drawPixmap(r, QPixmap(QStringLiteral(":/img/material/control_point.png")));
+            }
         }
     }
     updateChildWindow();
@@ -660,6 +646,7 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e)
     } else if (e->button() == Qt::LeftButton) {
         m_showInitialMsg = false;
         m_mouseIsClicked = true;
+        isSure = true;
         // Click using a tool
         if (m_activeButton) {
             if (m_activeTool) {
@@ -708,40 +695,13 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e)
 void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
 {
     m_context.mousePos = e->globalPos();
-    auto screenNumber = QApplication::desktop()->screenNumber();
-    QScreen *screen = QApplication::screens()[screenNumber];
-    w = 26 * screen->devicePixelRatio();
-    h = 26 * screen->devicePixelRatio();
-    // mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
-    mypixmap = mypixmap.grabWidget(this, e->pos().x()-10, e->pos().y()-10, 26, 26);
-    QImage crosstmp = mypixmap.toImage();
-    QRgb value = qRgb(0, 0, 255);
-    for (int i = 0; i < w; i++) {
-        for (int j = h/2-1; j < h/2; j++) {
-            crosstmp.setPixel(i, j, value);
-        }
-    }
-    for (int i = w/2-1; i < w/2; i++) {
-        for (int j = 0; j < h; j++) {
-            crosstmp.setPixel(i, j, value);
-        }
-    }
-    for (int i = 0; i < 1; i++) {
-        for (int j = 0; j < h; j++) {
-            crosstmp.setPixel(i, j, value);
-            crosstmp.setPixel(j, i, value);
-        }
-    }
-    for (int i = w-1; i < w; i++) {
-        for (int j = 0; j < h; j++) {
-            crosstmp.setPixel(i, j, value);
-            crosstmp.setPixel(j, i, value);
-        }
-    }
-    crosspixmap = QPixmap::fromImage(crosstmp.scaled(w*5, h*5, Qt::KeepAspectRatio));
-    pixmap2 = mypixmap.scaled(w * 5, h * 5, Qt::KeepAspectRatio);
-    update();
+    updateCrosspixmap(e->globalPos());
     if (m_mouseIsClicked && !m_activeButton) {
+        // 确定框选区域
+        if (isSure) {
+            m_buttonHandler->show();
+        }
+
         if (m_buttonHandler->isVisible()) {
             m_buttonHandler->hide();
         }
@@ -820,21 +780,68 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
         // Hides the buttons under the mouse. If the mouse leaves, it shows them.
         if (m_buttonHandler->buttonsAreInside()) {
             const bool containsMouse = m_buttonHandler->contains(m_context.mousePos);
-            if (containsMouse) {
-                m_buttonHandler->hide();
-            } else {
-                m_buttonHandler->show();
-            }
+            m_buttonHandler->show();
         }
     } else if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
         update();
     } else {
+        // 框选区域未确定  实时更新
+        if (!isSure) {
+            for (QRect const rect : rects) {
+                if (rect.contains(m_context.mousePos)) {
+                    m_selection->setGeometry(rect);
+                    m_selection->show();
+                    m_buttonHandler->updatePosition(rect);
+                    m_buttonHandler->hide();
+                }
+            }
+        }
+        update();
         if (!m_selection->isVisible()) {
+            isSure = false;
+            m_buttonHandler->hide();
             return;
         }
         m_mouseOverHandle = m_selection->getMouseSide(m_context.mousePos);
         updateCursor();
     }
+}
+
+void CaptureWidget::updateCrosspixmap(QPoint e)
+{
+    auto screenNumber = QApplication::desktop()->screenNumber();
+    QScreen *screen = QApplication::screens()[screenNumber];
+    w = 26 * screen->devicePixelRatio();
+    h = 26 * screen->devicePixelRatio();
+    // mypixmap = mypixmap.grabWidget(this,e->pos().x()-w/2-1,e->pos().y()-h/2-1,w,h);
+    mypixmap = mypixmap.grabWidget(this, e.x()-10, e.y()-10, 26, 26);
+    QImage crosstmp = mypixmap.toImage();
+    QRgb value = qRgb(0, 0, 255);
+    for (int i = 0; i < w; i++) {
+        for (int j = h/2-1; j < h/2; j++) {
+            crosstmp.setPixel(i, j, value);
+        }
+    }
+    for (int i = w/2-1; i < w/2; i++) {
+        for (int j = 0; j < h; j++) {
+            crosstmp.setPixel(i, j, value);
+        }
+    }
+    for (int i = 0; i < 1; i++) {
+        for (int j = 0; j < h; j++) {
+            crosstmp.setPixel(i, j, value);
+            crosstmp.setPixel(j, i, value);
+        }
+    }
+    for (int i = w-1; i < w; i++) {
+        for (int j = 0; j < h; j++) {
+            crosstmp.setPixel(i, j, value);
+            crosstmp.setPixel(j, i, value);
+        }
+    }
+    crosspixmap = QPixmap::fromImage(crosstmp.scaled(w*5, h*5, Qt::KeepAspectRatio));
+    pixmap2 = mypixmap.scaled(w * 5, h * 5, Qt::KeepAspectRatio);
+    update();
 }
 
 void CaptureWidget::mouseReleaseEvent(QMouseEvent *e)
