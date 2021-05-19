@@ -135,27 +135,29 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
 #endif
         resize(pixmap().size());
     }
-    auto devicePixelRatio = m_context.screenshot.devicePixelRatio();
-    // 照当前窗口活跃状态存储窗口ID
-    QList<WId> windows = KWindowSystem::stackingOrder();
-    for (long long unsigned int const id: windows) {
-        // 获取窗口状态信息
-        KWindowInfo info(id, NET::WMState);
-        // 判断窗口是否显示
-        if (false == info.hasState(NET::Hidden)) {
-            // 获取窗口位置 长宽信息
-            KWindowInfo info2(id, NET::WMFrameExtents);
-            rects.append(QRect(info2.frameGeometry().x()/devicePixelRatio,
-                               info2.frameGeometry().y()/devicePixelRatio,
-                               info2.frameGeometry().width()/devicePixelRatio,
-                               info2.frameGeometry().height()/devicePixelRatio
-                               )
-                         );
-        }
-    }
-    // 默认未选中框选区域
-    isSure = false;
-    // Create buttons
+    /*
+       auto devicePixelRatio = m_context.screenshot.devicePixelRatio();
+      // 照当前窗口活跃状态存储窗口ID
+      QList<WId> windows = KWindowSystem::stackingOrder();
+      for (long long unsigned int const id: windows) {
+          // 获取窗口状态信息
+          KWindowInfo info(id, NET::WMState);
+          // 判断窗口是否显示
+          if (false == info.hasState(NET::Hidden)) {
+              // 获取窗口位置 长宽信息
+              KWindowInfo info2(id, NET::WMFrameExtents);
+              rects.append(QRect(info2.frameGeometry().x()/devicePixelRatio,
+                                 info2.frameGeometry().y()/devicePixelRatio,
+                                 info2.frameGeometry().width()/devicePixelRatio,
+                                 info2.frameGeometry().height()/devicePixelRatio
+                                 )
+                           );
+          }
+      }
+      // 默认未选中框选区域
+      isSure = false;
+      // Create buttons
+      */
     m_buttonHandler = new ButtonHandler(this);
     updateButtons();
     if (m_context.fullscreen) {
@@ -646,7 +648,7 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e)
     } else if (e->button() == Qt::LeftButton) {
         m_showInitialMsg = false;
         m_mouseIsClicked = true;
-        isSure = true;
+        // isSure = true;
         // Click using a tool
         if (m_activeButton) {
             if (m_activeTool) {
@@ -697,11 +699,12 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
     m_context.mousePos = e->globalPos();
     updateCrosspixmap(e->globalPos());
     if (m_mouseIsClicked && !m_activeButton) {
-        // 确定框选区域
-        if (isSure) {
-            m_buttonHandler->show();
-        }
-
+        /*
+      // 确定框选区域
+         if (isSure) {
+             m_buttonHandler->show();
+         }
+         */
         if (m_buttonHandler->isVisible()) {
             m_buttonHandler->hide();
         }
@@ -780,25 +783,32 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
         // Hides the buttons under the mouse. If the mouse leaves, it shows them.
         if (m_buttonHandler->buttonsAreInside()) {
             const bool containsMouse = m_buttonHandler->contains(m_context.mousePos);
-            m_buttonHandler->show();
+            // m_buttonHandler->show();
+            if (containsMouse) {
+                m_buttonHandler->hide();
+            } else {
+                m_buttonHandler->show();
+            }
         }
     } else if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
         update();
     } else {
-        // 框选区域未确定  实时更新
-        if (!isSure) {
-            for (QRect const rect : rects) {
-                if (rect.contains(m_context.mousePos)) {
-                    m_selection->setGeometry(rect);
-                    m_selection->show();
-                    m_buttonHandler->updatePosition(rect);
-                    m_buttonHandler->hide();
+        /*
+            // 框选区域未确定  实时更新
+            if (!isSure) {
+                for (QRect const rect : rects) {
+                    if (rect.contains(m_context.mousePos)) {
+                        m_selection->setGeometry(rect);
+                        m_selection->show();
+                        m_buttonHandler->updatePosition(rect);
+                        m_buttonHandler->hide();
+                    }
                 }
             }
-        }
-        update();
+            update();
+        */
         if (!m_selection->isVisible()) {
-            isSure = false;
+            // isSure = false;
             m_buttonHandler->hide();
             return;
         }

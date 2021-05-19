@@ -220,9 +220,10 @@ private:
 
     QGSettings *isrunning;
     // 存储当前已打开窗口信息
-    QVector <QRect > rects;
+  //    
+     //QVector <QRect > rects;
     // 确定框选区域值
-    bool isSure;
+    //bool isSure;
 
 #ifdef ENABLE_RECORD
     Recorder *recorder;
