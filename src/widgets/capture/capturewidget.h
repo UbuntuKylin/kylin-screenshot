@@ -189,7 +189,8 @@ private:
     void show_Font_Options_Window(CaptureButton *b);
     void deal_with_SaveAs(CaptureButton *b);
     void updateMagnifier(CaptureContext m_context);
-
+    QPixmap PixmapToRound(const QPixmap &img, int radius);
+    QPixmap applyEffectToImage(QPixmap src, QGraphicsEffect *effect, int extent = 0);
     QVector<QRect> areas;
     QLabel *size_label;
     QRect extendedSelection() const;
@@ -220,11 +221,14 @@ private:
 
     QGSettings *isrunning;
     // 存储当前已打开窗口信息
-  //    
-     //QVector <QRect > rects;
-    // 确定框选区域值
-    //bool isSure;
-
+    QVector <QRect > rects;
+    bool isfirstPress;
+    bool isfirstMove;
+    bool isfirstRelease;
+    bool isPressButton;
+    bool isReleaseButton;
+    bool isDrag;
+    bool isMove;
 #ifdef ENABLE_RECORD
     Recorder *recorder;
     QMap<CaptureButton::ButtonType, CaptureTool *> m_isolatedButtons;

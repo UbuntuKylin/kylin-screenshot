@@ -21,70 +21,86 @@ namespace {
 #define PADDING_VALUE 2
 }
 
-CircleTool::CircleTool(QObject *parent) : AbstractTwoPointTool(parent) {
+CircleTool::CircleTool(QObject *parent) : AbstractTwoPointTool(parent)
+{
     m_supportsDiagonalAdj = true;
 }
 
-QIcon CircleTool::icon(const QColor &background, bool inEditor) const {
-   // Q_UNUSED(inEditor);
-    //return QIcon(iconPath(background) + "circle-outline.svg");
+QIcon CircleTool::icon(const QColor &background, bool inEditor) const
+{
+    // Q_UNUSED(inEditor);
+    // return QIcon(iconPath(background) + "circle-outline.svg");
     Q_UNUSED(background);
-    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "circle-outline.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "circle-outline.svg");
+    return inEditor ? QIcon(QStringLiteral(":/img/material/black/") + "circle-outline.svg")
+           : QIcon(QStringLiteral(":/img/material/white/") + "circle-outline.svg");
 }
+
 #ifdef SUPPORT_UKUI
-QIcon CircleTool::icon(const QColor &background, bool inEditor ,const CaptureContext &context ) const {
+QIcon CircleTool::icon(const QColor &background, bool inEditor, const CaptureContext &context) const
+{
     Q_UNUSED(background);
-    if((context.style_name.compare("ukui-dark")==0) || (context.style_name.compare("ukui-black")==0)){
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "circle-outline.svg") :
-                      QIcon(QStringLiteral(":/img/material/dark-theme/") + "circle-outline.png");
+    if ((context.style_name.compare("ukui-dark") == 0)
+        || (context.style_name.compare("ukui-black") == 0)) {
+        return inEditor ? QIcon(QStringLiteral(":/img/material/black/") + "circle-outline.svg")
+               : QIcon(QStringLiteral(":/img/material/dark-theme/") + "circle-outline.png");
     }
-    //if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
-    else{
-        return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "circle-outline.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "circle-outline.svg");
+    // if((context.style_name.compare("ukui-white")==0) || (context.style_name.compare("ukui-default")==0) || (context.style_name.compare("ukui-light")==0)){
+    else {
+        return inEditor ? QIcon(QStringLiteral(":/img/material/black/") + "circle-outline.svg")
+               : QIcon(QStringLiteral(":/img/material/white/") + "circle-outline.svg");
     }
 }
+
 #endif
-QString CircleTool::name() const {
+QString CircleTool::name() const
+{
     return tr("Circle");
 }
 
-QString CircleTool::nameID() {
+QString CircleTool::nameID()
+{
     return QLatin1String("");
 }
 
-QString CircleTool::description() const {
+QString CircleTool::description() const
+{
     return tr("Set the Circle as the paint tool");
 }
 
-CaptureTool* CircleTool::copy(QObject *parent) {
+CaptureTool *CircleTool::copy(QObject *parent)
+{
     return new CircleTool(parent);
 }
 
-void CircleTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo) {
+void CircleTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo)
+{
     if (recordUndo) {
         updateBackup(pixmap);
     }
     painter.setPen(QPen(m_color, m_thickness));
-    //绘制椭圆  以框选区域为边界
-    if (rect.contains(m_points.first))
-    {
-             painter.drawEllipse(QRect(QPoint(qBound(rect.x()+m_thickness, m_points.first.x(), rect.x()+ rect.width()-m_thickness),
-					      qBound(rect.y()+m_thickness, m_points.first.y(), rect.y()+rect.height()-m_thickness)),
-				       QPoint(qBound(rect.x()+m_thickness, m_points.second.x(), rect.x()+ rect.width()-m_thickness),
-					      qBound(rect.y()+m_thickness, m_points.second.y(), rect.y()+rect.height()-m_thickness))));
+    // 绘制椭圆  以框选区域为边界
+    if (rect.contains(m_points.first)) {
+        painter.drawEllipse(QRect(QPoint(qBound(rect.x()+m_thickness, m_points.first.x(),
+                                                rect.x()+ rect.width()-m_thickness),
+                                         qBound(rect.y()+m_thickness, m_points.first.y(),
+                                                rect.y()+rect.height()-m_thickness)),
+                                  QPoint(qBound(rect.x()+m_thickness, m_points.second.x(),
+                                                rect.x()+ rect.width()-m_thickness),
+                                         qBound(rect.y()+m_thickness, m_points.second.y(),
+                                                rect.y()+rect.height()-m_thickness))));
     }
 }
 
-void CircleTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
+void CircleTool::paintMousePreview(QPainter &painter, const CaptureContext &context)
+{
     pixelRatio = context.origScreenshot.devicePixelRatio();
     rect = context.selection;
     painter.setPen(QPen(context.color, PADDING_VALUE + context.thickness));
     painter.drawLine(context.mousePos, context.mousePos);
 }
 
-void CircleTool::drawStart(const CaptureContext &context) {
+void CircleTool::drawStart(const CaptureContext &context)
+{
     pixelRatio = context.origScreenshot.devicePixelRatio();
     rect = context.selection;
     m_color = context.color;
@@ -93,6 +109,7 @@ void CircleTool::drawStart(const CaptureContext &context) {
     m_points.second = context.mousePos;
 }
 
-void CircleTool::pressed(const CaptureContext &context) {
+void CircleTool::pressed(const CaptureContext &context)
+{
     Q_UNUSED(context);
 }

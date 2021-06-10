@@ -95,12 +95,12 @@
         <translation type="vanished">选项</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="+50"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="+49"/>
         <source>option</source>
         <translation>选项</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+19"/>
         <source>Save</source>
         <translatorcomment>保存</translatorcomment>
         <translation>保存</translation>
@@ -109,12 +109,11 @@
 <context>
     <name>CaptureLauncher</name>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="+64"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
-        <translation>&lt;b&gt;捕获模式&lt;/b&gt;</translation>
+        <translation type="vanished">&lt;b&gt;捕获模式&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="+74"/>
         <source>Rectangular Region</source>
         <translation>方形区域</translation>
     </message>
@@ -124,16 +123,26 @@
         <translation>全屏（所有显示器）</translation>
     </message>
     <message>
+        <location line="+15"/>
+        <source>Take shot</source>
+        <translation>开始截图</translation>
+    </message>
+    <message>
         <source>No Delay</source>
         <translation type="vanished">无延迟</translation>
     </message>
     <message>
-        <location line="-26"/>
+        <location line="-46"/>
         <source>Screenshot</source>
         <translation>截图</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+20"/>
+        <source>Capture Mode</source>
+        <translation>捕获模式</translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source> second</source>
         <translation> 秒</translation>
     </message>
@@ -143,17 +152,16 @@
         <translation> 秒</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>Take new screenshot</source>
-        <translation>获取新屏幕截图</translation>
+        <translation type="vanished">获取新屏幕截图</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+15"/>
         <source>Area:</source>
         <translation>区域：</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+5"/>
         <source>Delay:</source>
         <translation>延迟：</translation>
     </message>
@@ -161,13 +169,13 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+103"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+111"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+190"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -178,7 +186,7 @@
         <translation type="obsolete">另存为....</translation>
     </message>
     <message>
-        <location line="+146"/>
+        <location line="+144"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -195,7 +203,7 @@ Press Space to open the side panel.</source>
 按下空格键以打开侧边面板。</translation>
     </message>
     <message>
-        <location line="-43"/>
+        <location line="-39"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -207,12 +215,12 @@ Press Space to open the side panel.</source>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="+50"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="+57"/>
         <source>Circle</source>
         <translation>圆环</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+10"/>
         <source>Set the Circle as the paint tool</source>
         <translation>选择圆环作为绘画工具</translation>
     </message>
@@ -243,7 +251,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="+235"/>
+        <location filename="../src/core/controller.cpp" line="+258"/>
         <source>&amp;Take Screenshot</source>
         <translation>进行截图(&amp;T)</translation>
     </message>
@@ -252,7 +260,7 @@ Press Space to open the side panel.</source>
         <translation type="vanished">打开启动器(&amp;O)</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>&amp;Open Screenshot Option</source>
         <translation>打开截图选项(&amp;O)</translation>
     </message>
@@ -272,7 +280,12 @@ Press Space to open the side panel.</source>
         <translation>退出(&amp;Q)</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+6"/>
+        <source>&amp;ShortCut</source>
+        <translation>快捷键(&amp;S)</translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>Screenshot</source>
         <translation>截图</translation>
     </message>
@@ -281,7 +294,7 @@ Press Space to open the side panel.</source>
         <translation type="vanished">麒麟截图</translation>
     </message>
     <message>
-        <location line="+88"/>
+        <location line="+94"/>
         <source>Unable to use kylin-screenshot</source>
         <translatorcomment>麒麟截图已禁用</translatorcomment>
         <translation>麒麟截图已禁用</translation>
@@ -639,9 +652,8 @@ Press Space to open the side panel.</source>
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="+40"/>
         <source>About</source>
-        <translation>信息</translation>
+        <translation type="vanished">信息</translation>
     </message>
     <message>
         <source>SPACEBAR</source>
@@ -652,39 +664,32 @@ Press Space to open the side panel.</source>
         <translation type="vanished">右键</translation>
     </message>
     <message>
-        <location line="+27"/>
         <source>Mouse Wheel</source>
-        <translation>鼠标滑轮</translation>
+        <translation type="vanished">鼠标滑轮</translation>
     </message>
     <message>
-        <location line="+10"/>
         <source>Move selection 1px</source>
-        <translation>移动选择 1 px</translation>
+        <translation type="vanished">移动选择 1 px</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Resize selection 1px</source>
-        <translation>调整选择大小 1 px</translation>
+        <translation type="vanished">调整选择大小 1 px</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Quit capture</source>
-        <translation>退出捕获</translation>
+        <translation type="vanished">退出捕获</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Copy to clipboard</source>
-        <translation>复制到剪贴板</translation>
+        <translation type="vanished">复制到剪贴板</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Save selection as a file</source>
-        <translation>将选择保存为文件</translation>
+        <translation type="vanished">将选择保存为文件</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Undo the last modification</source>
-        <translation>撤消上次修改</translation>
+        <translation type="vanished">撤消上次修改</translation>
     </message>
     <message>
         <source>Toggle visibility of sidebar with options of the selected tool</source>
@@ -695,61 +700,48 @@ Press Space to open the side panel.</source>
         <translation type="vanished">显示颜色选择器</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Change the tool&apos;s thickness</source>
-        <translation>改变工具的厚度</translation>
+        <translation type="vanished">改变工具的厚度</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>Capturn Full Screen</source>
-        <translation>全屏截图</translation>
+        <translation type="vanished">全屏截图</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Capture Top Screen</source>
-        <translation>截取窗口的截图</translation>
+        <translation type="vanished">截取窗口的截图</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Capture Screen selection</source>
-        <translation>截取一个区域的截图</translation>
+        <translation type="vanished">截取一个区域的截图</translation>
     </message>
     <message>
-        <location line="+5"/>
         <source>&lt;u&gt;&lt;b&gt;sysShortcuts&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;系统快捷键&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;系统快捷键&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>Available System shortcuts.</source>
-        <translation>可截图的系统快捷键</translation>
+        <translation type="vanished">可截图的系统快捷键</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <location line="+39"/>
         <source>Key</source>
-        <translation>键</translation>
+        <translation type="vanished">键</translation>
     </message>
     <message>
-        <location line="-39"/>
-        <location line="+39"/>
         <source>Description</source>
-        <translation>描述</translation>
+        <translation type="vanished">描述</translation>
     </message>
     <message>
-        <location line="+30"/>
         <source>&lt;u&gt;&lt;b&gt;License&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;许可证&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;许可证&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location line="+8"/>
         <source>&lt;u&gt;&lt;b&gt;Version&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;版本&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;版本&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Screenshot</source>
-        <translation>截图</translation>
+        <translation type="vanished">截图</translation>
     </message>
     <message>
         <source>Kylin-ScreenShot</source>
@@ -757,20 +749,17 @@ Press Space to open the side panel.</source>
         <translation type="vanished">麒麟截图</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Compiled with Qt</source>
         <translatorcomment>Qt编译版本</translatorcomment>
-        <translation>Qt编译版本</translation>
+        <translation type="vanished">Qt编译版本</translation>
     </message>
     <message>
-        <location line="+7"/>
         <source>&lt;u&gt;&lt;b&gt;Shortcuts&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;快捷键&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;快捷键&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location line="-60"/>
         <source>Available shortcuts in the screen capture mode.</source>
-        <translation>屏幕捕捉模式中的可用快捷键。</translation>
+        <translation type="vanished">屏幕捕捉模式中的可用快捷键。</translation>
     </message>
 </context>
 <context>
@@ -1527,15 +1516,15 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="+130"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1117"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="+126"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1162"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
     <message>
-        <location line="-81"/>
-        <location line="+20"/>
-        <location line="+42"/>
+        <location line="-76"/>
+        <location line="+22"/>
+        <location line="+41"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="-6"/>
         <source>Capture saved as </source>
         <translation>捕获已保存为 </translation>
@@ -1547,41 +1536,41 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
     <message>
         <location line="+17"/>
-        <location line="+20"/>
-        <location line="+55"/>
+        <location line="+21"/>
+        <location line="+48"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="+3"/>
         <source>Error trying to save as </source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location line="-8"/>
+        <location line="-4"/>
         <source>file name can not contains &apos;/&apos;</source>
         <translatorcomment>保存文件名称中不能包含字符&apos;/&apos;</translatorcomment>
         <translation>保存文件名称中不能包含字符&apos;/&apos;</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
         <source>can not save file as hide file</source>
         <translatorcomment>不能将文件保存为隐藏文件</translatorcomment>
         <translation>不能将文件保存为隐藏文件</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="+95"/>
+        <location filename="../src/main.cpp" line="+97"/>
         <source>kylin-screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+150"/>
+        <location line="+10"/>
         <location line="+159"/>
-        <location line="+24"/>
-        <location line="+29"/>
+        <location line="+163"/>
+        <location line="+26"/>
+        <location line="+31"/>
         <source>Unable to connect via DBus</source>
         <translation>无法通过DBus进行连接</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-363"/>
         <source>Kylin-Screenshot</source>
         <translatorcomment>麒麟截图</translatorcomment>
         <translation>麒麟截图</translation>
@@ -1779,6 +1768,88 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     </message>
 </context>
 <context>
+    <name>ShortCutWidget</name>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="+11"/>
+        <source>Screenshot</source>
+        <translation>截图</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>ShortCut</source>
+        <translation>快捷键</translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Keypress</source>
+        <translation>按键</translation>
+    </message>
+    <message>
+        <source>Keypr</source>
+        <translation type="vanished">按键</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Mouse Wheel</source>
+        <translation>鼠标滑轮</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Description</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Capturn Full Screen</source>
+        <translation>全屏截图</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Capture Top Screen</source>
+        <translation>截取窗口的截图</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Capture Screen selection</source>
+        <translation>截取一个区域的截图</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Move selection 1px</source>
+        <translation>移动选择 1 px</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Resize selection 1px</source>
+        <translation>调整选择大小 1 px</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Quit capture</source>
+        <translation>退出捕获</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy to clipboard</source>
+        <translation>复制到剪贴板</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Save selection as a file</source>
+        <translation>将选择保存为文件</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Undo the last modification</source>
+        <translation>撤消上次修改</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Change the tool&apos;s thickness</source>
+        <translation>改变工具的厚度</translation>
+    </message>
+</context>
+<context>
     <name>SidePanelWidget</name>
     <message>
         <location filename="../src/widgets/panel/sidepanelwidget.cpp" line="+67"/>
@@ -1967,7 +2038,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <location filename="../src/utils/systemnotification.cpp" line="+45"/>
         <source>ScreenShot Info</source>
-        <translation >截图 消息</translation>
+        <translation>截图 消息</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -2005,12 +2076,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="vanished">文本</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="+67"/>
+        <location filename="../src/tools/text/texttool.cpp" line="+77"/>
         <source>text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+10"/>
         <source>Add text to your capture</source>
         <translation>在您的捕获中添加文本</translation>
     </message>
@@ -2086,6 +2157,29 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location line="+6"/>
         <source>Select All</source>
         <translation>全选</translation>
+    </message>
+</context>
+<context>
+    <name>infoWidget</name>
+    <message>
+        <location filename="../src/widgets/infowidget.cpp" line="+44"/>
+        <source>screenshot</source>
+        <translation>截图</translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>version:v1.0.0</source>
+        <translation>版本:v1.0.0</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools.</source>
+        <translation>截图，由麒麟软件开发,包括可以在计算机上运行的程序,通常采用软件开发工具可以进行开发。</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Service and support teams:</source>
+        <translation>服务与支持团队：</translation>
     </message>
 </context>
 <context>

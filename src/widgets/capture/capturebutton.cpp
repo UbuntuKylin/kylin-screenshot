@@ -37,7 +37,6 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     initButton();
     setCursor(Qt::ArrowCursor);
     updateIcon();
-    QFont font("Noto Sans CJK Regular", 11, 25);
 #ifndef SUPPORT_NEWUI
     if (t == TYPE_OPTION) {
         QLabel *label = new  QLabel(this);
@@ -64,9 +63,20 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
 #endif
     if (t == TYPE_SAVE) {
         setFlat(false);
-        setFont(font);
         setText(tr("Save"));
-        this->setFixedSize(66, 40);
+        this->setFixedSize(66, 30);
+        setStyleSheet("CaptureButton {"
+                      "border-width:0px;"                     // 边框宽度像素
+                      "border-radius:6px;"
+                      "background-color: #0062f0; color: white }"
+                      "CaptureButton:hover { background-color: #0062f0; }"
+                      "CaptureButton:pressed:!hover { "
+                      "background-color: #0062f0; }"
+                      "CaptureButton{font-family:'Noto Sans CJK SC Regular';"
+                      "text-align :center;font-size:14px;}"
+                      );
+    } else if (t == TYPE_PIN) {
+        this->setFixedSize(31, 31);
     }
 #ifndef SUPPORT_NEWUI
 }
@@ -97,6 +107,8 @@ void CaptureButton::initButton()
         resize(GlobalValues::buttonBaseSize()*2+12, GlobalValues::buttonBaseSize());
         setMask(QRegion(QRect(-1, -1, 66, 40),
                         QRegion::Rectangle));
+    } else if (m_buttonType == CaptureButton::TYPE_PIN) {
+        resize(GlobalValues::buttonBaseSize()-9, GlobalValues::buttonBaseSize()-9);
     }
 #ifndef SUPPORT_NEWUI
 }
@@ -201,7 +213,7 @@ CaptureTool *CaptureButton::tool() const
 void CaptureButton::setColor(const QColor &c)
 {
     m_mainColor = c;
-    setStyleSheet(styleSheet());
+    // setStyleSheet(styleSheet());
     // updateIcon();
 }
 

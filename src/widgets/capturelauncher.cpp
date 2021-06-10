@@ -15,7 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-
 #include "capturelauncher.h"
 #include "src/core/controller.h"
 #include "src/widgets/imagelabel.h"
@@ -38,7 +37,8 @@
 // https://github.com/KDE/spectacle/blob/941c1a517be82bed25d1254ebd735c29b0d2951c/src/Gui/KSMainWindow.cpp
 
 CaptureLauncher::CaptureLauncher(QWidget *parent) :
-    QWidget(parent), m_id(0)
+    QWidget(parent),
+    m_id(0)
 {
     setWindowIcon(QIcon::fromTheme("kylin-screenshot"));
     setWindowTitle(tr("Screenshot"));
@@ -52,74 +52,77 @@ CaptureLauncher::CaptureLauncher(QWidget *parent) :
     bool ok;
     m_imageLabel->setScreenshot(ScreenGrabber().grabEntireDesktop(ok));
     if (!ok) {
-
     }
-    m_imageLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    m_imageLabel->setFixedSize(320, 180);
+    m_imageLabel->move(24, 16);
+
     connect(m_imageLabel, &ImageLabel::dragInitiated,
             this, &CaptureLauncher::startDrag);
 
-    QGridLayout *layout = new QGridLayout(this);
-    layout->addWidget(m_imageLabel, 0, 0);
+    font.setFamily("Noto Sans CJK SC Medium");
+    font.setWeight(16);
+    m_CaptureModeLabel = new QLabel(tr("Capture Mode"), this);
+    // m_CaptureModeLabel->setFixedSize(64, 24);
+    m_CaptureModeLabel->move(376, 16);
 
-    m_CaptureModeLabel = new QLabel(tr("<b>Capture Mode</b>"));
-
-    m_captureType = new QComboBox();
-    m_captureType->setMinimumWidth(240);
+    font.setFamily("Noto Sans CJK SC Regular");
+    font.setWeight(14);
+    m_captureType = new QComboBox(this);
+    m_captureType->setFixedSize(192, 36);
+    m_captureType->move(414, 56);
     // TODO remember number
     m_captureType->insertItem(1, tr("Rectangular Region"), CaptureRequest::GRAPHICAL_MODE);
     m_captureType->insertItem(2, tr("Full Screen (All Monitors)"), CaptureRequest::FULLSCREEN_MODE);
-    //m_captureType->insertItem(3, tr("Single Screen"), CaptureRequest::SCREEN_MODE);
-
-    m_delaySpinBox = new QSpinBox();
+    m_captureType->setFont(font);
+    m_delaySpinBox = new QSpinBox(this);
     m_delaySpinBox->setSingleStep(1.0);
-    m_delaySpinBox->setMinimum(0.0);
-    m_delaySpinBox->setMaximum(999.0);
-    //m_delaySpinBox->setSpecialValueText(tr("No Delay"));
+    m_delaySpinBox->setFixedSize(192, 36);
+    m_delaySpinBox->move(414, 100);
     m_delaySpinBox->setMinimumWidth(160);
-    // with QT 5.7 qOverload<int>(&QSpinBox::valueChanged),
     connect(m_delaySpinBox,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, [this](int val)
     {
-        QString sufix = val == 1 ?tr(" second") : tr(" seconds");
+        QString sufix = val == 1 ? tr(" second") : tr(" seconds");
         this->m_delaySpinBox->setSuffix(sufix);
     });
 
-    m_launchButton = new QPushButton(tr("Take new screenshot"));
-    m_launchButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_launchButton = new QPushButton(tr("Take shot"), this);
+    m_launchButton->setFont(font);
+    m_launchButton->setFixedSize(96, 36);
+    m_launchButton->move(510, 160);
     connect(m_launchButton, &QPushButton::pressed,
             this, &CaptureLauncher::startCapture);
     m_launchButton->setFocus();
-
-    QFormLayout *captureModeForm = new QFormLayout;
-    captureModeForm->addRow(tr("Area:"), m_captureType);
-    captureModeForm->addRow(tr("Delay:"), m_delaySpinBox);
-    captureModeForm->setContentsMargins(24, 0, 0, 0);
-
-    m_mainLayout = new QVBoxLayout();
-    m_mainLayout->addStretch(1);
-    m_mainLayout->addWidget(m_CaptureModeLabel);
-    m_mainLayout->addLayout(captureModeForm);
-    m_mainLayout->addStretch(10);
-    m_mainLayout->addWidget(m_launchButton, 1 , Qt::AlignCenter);
-    m_mainLayout->setContentsMargins(10, 0, 0, 10);
-    layout->addLayout(m_mainLayout, 0 ,1);
-    layout->setColumnMinimumWidth(0, 320);
-    layout->setColumnMinimumWidth(1, 320);
-
+// m_launchButton->setProperty(
+    m_launchButton->setStyleSheet(
+        ".QPushButton{background-color:#3790FA;border-radius:4px;color:rgb(255,255,255);}");
+    QLabel *m_areaLabel = new  QLabel(this);
+    m_areaLabel->setText(tr("Area:"));
+    m_areaLabel->setFont(font);
+    // m_areaLabel->setFixedSize(28, 24);
+    m_areaLabel->move(376, 60);
+    QLabel *m_delayLabel = new  QLabel(this);
+    m_delayLabel->setText(tr("Delay:"));
+    m_delayLabel->setFont(font);
+    // m_delayLabel->setFixedSize(28, 24);
+    m_delayLabel->move(376, 106);
+    setFixedSize(630, 220);
 }
 
 // HACK: https://github.com/KDE/spectacle/blob/fa1e780b8bf3df3ac36c410b9ece4ace041f401b/src/Gui/KSMainWindow.cpp#L70
-void CaptureLauncher::startCapture() {
+void CaptureLauncher::startCapture()
+{
     hide();
     auto mode = static_cast<CaptureRequest::CaptureMode>(
-                m_captureType->currentData().toInt());
+        m_captureType->currentData().toInt());
     CaptureRequest req(mode, 600 + m_delaySpinBox->value() * 1000);
     m_id = req.id();
     Controller::getInstance()->requestCapture(req);
 }
 
-void CaptureLauncher::startDrag() {
+void CaptureLauncher::startDrag()
+{
     QDrag *dragHandler = new QDrag(this);
     QMimeData *mimeData = new QMimeData;
     mimeData->setImageData(m_imageLabel->pixmap());
@@ -127,25 +130,27 @@ void CaptureLauncher::startDrag() {
 
     dragHandler->setPixmap(m_imageLabel->pixmap()
                            ->scaled(256, 256, Qt::KeepAspectRatioByExpanding,
-                                   Qt::SmoothTransformation));
+                                    Qt::SmoothTransformation));
     dragHandler->exec();
 }
 
-void CaptureLauncher::captureTaken(uint id, QPixmap p) {
+void CaptureLauncher::captureTaken(uint id, QPixmap p)
+{
     if (id == m_id) {
         m_id = 0;
         m_imageLabel->setScreenshot(p);
         auto mode = static_cast<CaptureRequest::CaptureMode>(
-    	m_captureType->currentData().toInt());
+            m_captureType->currentData().toInt());
         QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
-  	if (mode == CaptureRequest::FULLSCREEN_MODE) {
-        ScreenshotSaver().saveToFilesystem(p,a.at(0));
-  	}
+        if (mode == CaptureRequest::FULLSCREEN_MODE) {
+            ScreenshotSaver().saveToFilesystem(p, a.at(0));
+        }
         show();
     }
 }
 
-void CaptureLauncher::captureFailed(uint id) {
+void CaptureLauncher::captureFailed(uint id)
+{
     if (id == m_id) {
         m_id = 0;
         show();

@@ -24,22 +24,23 @@
 #include <QTimer>
 #include <functional>
 #include "src/widgets/capturelauncher.h"
-
+#include "src/widgets/shortcutwidget.h"
+#include "src/widgets/infowidget.h"
 class CaptureWidget;
 class ConfigWindow;
-class InfoWindow;
 class QSystemTrayIcon;
 
-using lambda = std::function<void(void)>;
+using lambda = std::function<void (void)>;
 
-class Controller : public QObject {
+class Controller : public QObject
+{
     Q_OBJECT
 
 public:
-    static Controller* getInstance();
+    static Controller *getInstance();
 
-    Controller(const Controller&) = delete;
-    void operator =(const Controller&) = delete;
+    Controller(const Controller &) = delete;
+    void operator =(const Controller &) = delete;
 
     void enableExports();
     void disableScreenCut();
@@ -51,6 +52,7 @@ public slots:
     void requestCapture(const CaptureRequest &request);
 
     void openConfigWindow();
+    void openShotCutWindow();
     void openInfoWindow();
     void openLauncherWindow();
     void enableTrayIcon();
@@ -65,8 +67,7 @@ public slots:
 
 private slots:
     void startFullscreenCapture(const uint id = 0);
-    void startVisualCapture(const uint id = 0,
-                             const QString &forcedSavePath = QString());
+    void startVisualCapture(const uint id = 0, const QString &forcedSavePath = QString());
     void startScreenGrab(const uint id = 0, const int screenNumber = -1);
 
     void handleCaptureTaken(uint id, QPixmap p);
@@ -81,8 +82,9 @@ private:
 
     QMap<uint, CaptureRequest> m_requestMap;
     QPointer<CaptureWidget> m_captureWindow;
-    QPointer<InfoWindow> m_infoWindow;
+    QPointer<infoWidget> m_infoWindow;
     QPointer<ConfigWindow> m_configWindow;
     QPointer<QSystemTrayIcon> m_trayIcon;
     QPointer<CaptureLauncher> m_launcherWindow;
+    QPointer<ShortCutWidget> m_shortCutWindow;
 };

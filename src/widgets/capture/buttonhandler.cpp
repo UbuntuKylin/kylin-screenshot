@@ -412,7 +412,7 @@ void ButtonHandler::moveButtonsToPoints(
             button->move(p.x()+29, p.y());
             break;
         case CaptureButton::TYPE_SAVE:
-            button->move(p.x()+34, p.y());
+            button->move(p.x()+34, p.y()+4);
             break;
         case CaptureButton::TYPE_TEXT:
             Font_Options_Window_Pos = move_Font_Options_Window(p.x(), p.y());

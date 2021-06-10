@@ -26,15 +26,16 @@
 MySaveDialog::MySaveDialog(QWidget *parent) :
     QFileDialog(parent)
 {
-    setWindowIcon(QIcon::fromTheme("kylin-screenshot"));
+    // setWindowIcon(QIcon::fromTheme("kylin-screenshot"));
     setNameFilter(QLatin1String(" PNG(*.png);;BMP(*.bmp);;JPEG(*.jpg)"));
     setDirectory(QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0));
     setAcceptMode(QFileDialog::AcceptSave);
     setLabelText(QFileDialog::Reject, tr("Cancel"));
-    QString a =  FileNameHandler().parsedPattern()+ ".png";
+    QString a = FileNameHandler().parsedPattern()+ ".png";
     this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
-    connect(this->findChildren<QComboBox *>("fileTypeCombo").at(0), QOverload<int>::of(&QComboBox::currentIndexChanged),
-                  [=](int index)
+    connect(this->findChildren<QComboBox *>("fileTypeCombo").at(0),
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            [=](int index)
     {
         switch (index) {
         case 0:
@@ -49,10 +50,11 @@ MySaveDialog::MySaveDialog(QWidget *parent) :
         default:
             break;
         }
-       this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
+        this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
     });
 }
-QString  MySaveDialog::filename()
+
+QString MySaveDialog::filename()
 {
-    return  this->findChildren<QLineEdit *>("fileNameEdit").at(0)->text();
+    return this->findChildren<QLineEdit *>("fileNameEdit").at(0)->text();
 }

@@ -26,7 +26,7 @@ unix:!macx {
 
 CONFIG += c++11 link_pkgconfig 
 PKGCONFIG += gsettings-qt
-QMAKE_CXXFLAGS += -std=c++0x
+QMAKE_CXXFLAGS += -std=c++0x -D_FORTIFY_SOURCE=2 -O2
 PKGCONFIG += libavutil libavformat libavcodec libswscale x11 xext xfixes xinerama libpulse
 
 #CONFIG += packaging   # Enables "make install" for packaging paths
@@ -93,7 +93,7 @@ SOURCES += src/main.cpp \
     src/widgets/capture/buttonhandler.cpp \
     src/widgets/capture/font_options.cpp \
     src/widgets/capture/font_options2.cpp \
-    src/widgets/infowindow.cpp \
+    src/widgets/infowidget.cpp \
     src/config/configwindow.cpp \
     src/widgets/capture/capturewidget.cpp \
     src/widgets/capture/colorpicker.cpp \
@@ -170,7 +170,7 @@ SOURCES += src/main.cpp \
     src/tools/options/options.cpp \
     src/tools/save/saveastool.cpp \
     src/widgets/screentype.cpp \
-#    src/widgets/widget.cpp
+    src/widgets/shortcutwidget.cpp
 
 HEADERS  += src/common/Global.h src/common/my_qt.h src/common/my_x.h src/common/my_av.h src/widgets/capture/buttonhandler.h \
     src/common/CommandLineOptions.h \
@@ -180,7 +180,7 @@ HEADERS  += src/common/Global.h src/common/my_qt.h src/common/my_x.h src/common/
     src/utils/mysavedialog.h \
     src/widgets/capture/font_options.h \
     src/widgets/capture/font_options2.h \
-    src/widgets/infowindow.h \
+    src/widgets/infowidget.h \
     src/config/configwindow.h \
     src/widgets/capture/capturewidget.h \
     src/widgets/capture/colorpicker.h \
@@ -258,7 +258,7 @@ HEADERS  += src/common/Global.h src/common/my_qt.h src/common/my_x.h src/common/
     src/tools/options/options.h \
     src/tools/save/saveastool.h \
     src/widgets/screentype.h \
-#    src/widgets/widget.h
+    src/widgets/shortcutwidget.h
 
 unix:!macx {
     SOURCES += src/core/flameshotdbusadapter.cpp \

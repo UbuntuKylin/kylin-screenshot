@@ -17,7 +17,8 @@
 #pragma once
 
 #include <QWidget>
-
+#include <QFont>
+#include "src/tools/capturecontext.h"
 class QCheckBox;
 class QPushButton;
 class QVBoxLayout;
@@ -42,9 +43,9 @@ private:
 
     QSpinBox *m_delaySpinBox;
     QComboBox *m_captureType;
-    QVBoxLayout *m_mainLayout;
     QPushButton *m_launchButton;
     QLabel *m_CaptureModeLabel;
     ImageLabel *m_imageLabel;
     uint m_id;
+    QFont font;
 };

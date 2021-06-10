@@ -20,7 +20,8 @@
 #include <QPropertyAnimation>
 
 SelectionWidget::SelectionWidget(const QColor &c, QWidget *parent) :
-    QWidget(parent), m_color(c)
+    QWidget(parent),
+    m_color(c)
 {
     m_animation = new QPropertyAnimation(this, "geometry", this);
     m_animation->setEasingCurve(QEasingCurve::InOutQuad);
@@ -33,15 +34,18 @@ SelectionWidget::SelectionWidget(const QColor &c, QWidget *parent) :
     int handleSide = sideVal / 4;
     const QRect areaRect(0, 0, sideVal, sideVal);
     const QRect handleRect(0, 0, handleSide, handleSide);
-    m_TLHandle = m_TRHandle = m_BLHandle = m_BRHandle =
-            m_LHandle = m_THandle = m_RHandle = m_BHandle= handleRect;
+    m_TLHandle = m_TRHandle = m_BLHandle = m_BRHandle
+                                               = m_LHandle = m_THandle = m_RHandle = m_BHandle
+                                                                                         =
+                                                     handleRect;
     m_TLArea = m_TRArea = m_BLArea = m_BRArea = areaRect;
 
     m_areaOffset = QPoint(-sideVal/2, -sideVal/2);
     m_handleOffset = QPoint(-handleSide/2+1, -handleSide/2+1);
 }
 
-SelectionWidget::SideType SelectionWidget::getMouseSide(const QPoint &point) const {
+SelectionWidget::SideType SelectionWidget::getMouseSide(const QPoint &point) const
+{
     if (m_TLArea.contains(point)) {
         return TOPLEFT_SIDE;
     } else if (m_TRArea.contains(point)) {
@@ -57,20 +61,22 @@ SelectionWidget::SideType SelectionWidget::getMouseSide(const QPoint &point) con
     } else if (m_RArea.contains(point)) {
         return RIGHT_SIDE;
     } else if (m_BArea.contains(point)) {
-        return  BOTTON_SIDE;
+        return BOTTON_SIDE;
     } else {
         return NO_SIDE;
     }
 }
 
-QVector<QRect> SelectionWidget::handlerAreas() {
+QVector<QRect> SelectionWidget::handlerAreas()
+{
     QVector<QRect> areas;
     areas << m_TLHandle << m_TRHandle << m_BLHandle << m_BRHandle
-      <<m_LHandle << m_THandle << m_RHandle << m_BHandle;
+          <<m_LHandle << m_THandle << m_RHandle << m_BHandle;
     return areas;
 }
 
-void SelectionWidget::setGeometryAnimated(const QRect &r) {
+void SelectionWidget::setGeometryAnimated(const QRect &r)
+{
     if (isVisible()) {
         m_animation->setStartValue(geometry());
         m_animation->setEndValue(r);
@@ -78,33 +84,41 @@ void SelectionWidget::setGeometryAnimated(const QRect &r) {
     }
 }
 
-void SelectionWidget::saveGeometry() {
+void SelectionWidget::saveGeometry()
+{
     m_geometryBackup = geometry();
 }
 
-QRect SelectionWidget::savedGeometry() {
+QRect SelectionWidget::savedGeometry()
+{
     return m_geometryBackup;
 }
 
-void SelectionWidget::paintEvent(QPaintEvent *) {
+void SelectionWidget::paintEvent(QPaintEvent *)
+{
     QPainter p(this);
+    p.setOpacity(0);
     p.setPen(m_color);
     p.drawRect(rect() + QMargins(0, 0, -1, -1));
 }
 
-void SelectionWidget::resizeEvent(QResizeEvent *) {
+void SelectionWidget::resizeEvent(QResizeEvent *)
+{
     updateAreas();
 }
 
-void SelectionWidget::moveEvent(QMoveEvent *) {
+void SelectionWidget::moveEvent(QMoveEvent *)
+{
     updateAreas();
 }
 
-void SelectionWidget::updateColor(const QColor &c) {
+void SelectionWidget::updateColor(const QColor &c)
+{
     m_color = c;
 }
 
-void SelectionWidget::updateAreas() {
+void SelectionWidget::updateAreas()
+{
     QRect r = rect();
     m_TLArea.moveTo(m_areaOffset + pos());
     m_TRArea.moveTo(r.topRight() + m_areaOffset + pos());

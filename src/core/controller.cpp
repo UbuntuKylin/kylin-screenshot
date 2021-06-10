@@ -18,14 +18,14 @@
 #include "controller.h"
 #include "src/widgets/capture/capturewidget.h"
 #include "src/utils/confighandler.h"
-#include "src/widgets/infowindow.h"
 #include "src/config/configwindow.h"
 #include "src/widgets/capture/capturebutton.h"
 #include "src/utils/systemnotification.h"
 #include "src/utils/screengrabber.h"
 #include "my_qt.h"
 #include "src/utils/systemnotification.h"
-//#include "Logger.h"
+
+// #include "Logger.h"
 #ifdef Q_OS_WIN
 #include "src/core/globalshortcutfilter.h"
 #endif
@@ -33,7 +33,8 @@
 // Controller is the core component of kylin-screenshot, creates the trayIcon and
 // launches the capture widget
 
-Controller::Controller() : m_captureWindow(nullptr) {
+Controller::Controller() : m_captureWindow(nullptr)
+{
     qApp->setQuitOnLastWindowClosed(false);
 
     // init tray icon
@@ -56,124 +57,121 @@ Controller::Controller() : m_captureWindow(nullptr) {
     qApp->setStyleSheet(StyleSheet);
 }
 
-Controller *Controller::getInstance() {
+Controller *Controller::getInstance()
+{
     static Controller c;
     return &c;
 }
 
-void Controller::enableExports() {
+void Controller::enableExports()
+{
     connect(this, &Controller::captureTaken,
             this, &Controller::handleCaptureTaken);
     connect(this, &Controller::captureFailed,
             this, &Controller::handleCaptureFailed);
 }
 
-void Controller::requestCapture(const CaptureRequest &request) {
+void Controller::requestCapture(const CaptureRequest &request)
+{
     uint id = request.id();
     m_requestMap.insert(id, request);
 
-    QGSettings *screen= new QGSettings("org.ukui.screenshot");
+    QGSettings *screen = new QGSettings("org.ukui.screenshot");
     QString screenshot = screen->get("screenshot").toString();
     switch (request.captureMode()) {
     case CaptureRequest::FULLSCREEN_MODE:
-        if (screenshot.compare("true")==0){
+        if (screenshot.compare("true") == 0) {
             doLater(request.delay(), this, [this, id](){
                 this->startFullscreenCapture(id);
             });
-        }
-        else
-        {
+        } else {
             disableScreenCut();
         }
         break;
-    case CaptureRequest::SCREEN_MODE: {
-        if (screenshot.compare("true")==0){
+    case CaptureRequest::SCREEN_MODE:
+        if (screenshot.compare("true") == 0) {
             int &&number = request.data().toInt();
             doLater(request.delay(), this, [this, id, number](){
-            this->startScreenGrab(id, number);
+                this->startScreenGrab(id, number);
             });
-        }
-        else
-        {
+        } else {
             disableScreenCut();
         }
         break;
-    } case CaptureRequest::GRAPHICAL_MODE: {
-        if (screenshot.compare("true")==0){
+    case CaptureRequest::GRAPHICAL_MODE:
+        if (screenshot.compare("true") == 0) {
             QString &&path = request.path();
             doLater(request.delay(), this, [this, id, path](){
                 this->startVisualCapture(id, path);
             });
-        }
-        else
-        {
+        } else {
             disableScreenCut();
         }
         break;
-    } default:
+    default:
         emit captureFailed(id);
         break;
     }
 }
 
 // creation of a new capture in GUI mode
-void Controller::startVisualCapture(const uint id, const QString &forcedSavePath) {
+void Controller::startVisualCapture(const uint id, const QString &forcedSavePath)
+{
 #ifdef SUPPORT_UKUI
-    QGSettings *screen= new QGSettings("org.ukui.screenshot");
-//    if (!screen) {
-//        Logger::LogInfo("[Controller::startVisualCapture] " + Logger::tr("not support org.ukui.screenshot..."));
-//        exit(1);
-//    }
+    QGSettings *screen = new QGSettings("org.ukui.screenshot");
+// if (!screen) {
+// Logger::LogInfo("[Controller::startVisualCapture] " + Logger::tr("not support org.ukui.screenshot..."));
+// exit(1);
+// }
     QString screenshot = screen->get("screenshot").toString();
 #endif
     if (!m_captureWindow) {
 #ifdef SUPPORT_UKUI
-        if (screenshot.compare("true")==0){
+        if (screenshot.compare("true") == 0) {
 #endif
-            QWidget *modalWidget = nullptr;
-            do {
-                modalWidget = qApp->activeModalWidget();
-                if (modalWidget) {
-                    modalWidget->close();
-                    modalWidget->deleteLater();
-                }
-            } while (modalWidget);
+        QWidget *modalWidget = nullptr;
+        do {
+            modalWidget = qApp->activeModalWidget();
+            if (modalWidget) {
+                modalWidget->close();
+                modalWidget->deleteLater();
+            }
+        } while (modalWidget);
 
-            m_captureWindow = new CaptureWidget(id, forcedSavePath);
-        //m_captureWindow = new CaptureWidget(id, forcedSavePath, false); // debug
-            connect(m_captureWindow, &CaptureWidget::captureFailed,
+        m_captureWindow = new CaptureWidget(id, forcedSavePath);
+        // m_captureWindow = new CaptureWidget(id, forcedSavePath, false); // debug
+        connect(m_captureWindow, &CaptureWidget::captureFailed,
                 this, &Controller::captureFailed);
-            connect(m_captureWindow, &CaptureWidget::captureTaken,
+        connect(m_captureWindow, &CaptureWidget::captureTaken,
                 this, &Controller::captureTaken);
 #ifdef SUPPORT_UKUI
-        }
-        else
-        {
-            disconnect(m_captureWindow, &CaptureWidget::captureFailed,
-                this, &Controller::captureFailed);
-            disconnect(m_captureWindow, &CaptureWidget::captureTaken,
-                this, &Controller::captureTaken);
-            disableScreenCut();
-        }
+    } else {
+        disconnect(m_captureWindow, &CaptureWidget::captureFailed,
+                   this, &Controller::captureFailed);
+        disconnect(m_captureWindow, &CaptureWidget::captureTaken,
+                   this, &Controller::captureTaken);
+        disableScreenCut();
+    }
 #endif
 #ifdef Q_OS_WIN
         m_captureWindow->show();
 #else
 #ifdef SUPPORT_UKUI
-        if (screenshot.compare("true")==0){
+        if (screenshot.compare("true") == 0) {
 #endif
-            m_captureWindow->showFullScreen();
+        m_captureWindow->showFullScreen();
 #ifdef SUPPORT_UKUI
-        }
+    }
 #endif
-        //m_captureWindow->show(); // Debug
+        // m_captureWindow->show(); // Debug
 #endif
     } else {
         emit captureFailed(id);
     }
 }
 
-void Controller::startScreenGrab(const uint id, const int screenNumber) {
+void Controller::startScreenGrab(const uint id, const int screenNumber)
+{
     bool ok = true;
     int n = screenNumber;
 
@@ -190,52 +188,79 @@ void Controller::startScreenGrab(const uint id, const int screenNumber) {
 }
 
 // creation of the configuration window
-void Controller::openConfigWindow() {
+void Controller::openConfigWindow()
+{
     if (!m_configWindow) {
         m_configWindow = new ConfigWindow();
-        m_configWindow->move(((qApp->desktop()->screenGeometry().width()-m_configWindow->width())/2),
-                             ((qApp->desktop()->screenGeometry().height()-m_configWindow->height())/2));
         m_configWindow->show();
     }
 }
 
-// creation of the window of information
-void Controller::openInfoWindow() {
-    if (!m_infoWindow) {
-        m_infoWindow = new InfoWindow();
+void Controller::openShotCutWindow()
+{
+    if (m_shortCutWindow) {
+        delete m_shortCutWindow;
+    }
+    if (!m_shortCutWindow) {
+        m_shortCutWindow = new ShortCutWidget();
+        m_shortCutWindow->show();
+        m_shortCutWindow->move(
+            ((qApp->desktop()->screenGeometry().width()-m_shortCutWindow->width())/2),
+            ((qApp->desktop()->screenGeometry().height()-m_shortCutWindow->height())
+             /2));
     }
 }
 
-void Controller::openLauncherWindow() {
-    QGSettings *screen= new QGSettings("org.ukui.screenshot");
+// creation of the window of information
+void Controller::openInfoWindow()
+{
+    if (m_infoWindow) {
+        delete m_infoWindow;
+    }
+    if (!m_infoWindow) {
+        m_infoWindow = new infoWidget();
+        m_infoWindow->move(
+            ((qApp->desktop()->screenGeometry().width()-m_infoWindow->width())/2),
+            ((qApp->desktop()->screenGeometry().height()-m_infoWindow->height())
+             /2));
+        m_infoWindow->show();
+    }
+}
+
+void Controller::openLauncherWindow()
+{
+    QGSettings *screen = new QGSettings("org.ukui.screenshot");
     QString screenshot = screen->get("screenshot").toString();
-    if (m_launcherWindow)
-    {   
+    if (m_launcherWindow) {
         delete m_launcherWindow;
     }
     if (!m_launcherWindow) {
         m_launcherWindow = new CaptureLauncher();
-        m_launcherWindow->move(((qApp->desktop()->screenGeometry().width()-m_launcherWindow->width())/2),
-            ((qApp->desktop()->screenGeometry().height()-m_launcherWindow->height())/2));
-        if (screenshot.compare("true")==0){
+        m_launcherWindow->move(((qApp->desktop()->screenGeometry().width()
+                                 -m_launcherWindow->width())/2),
+                               ((qApp->desktop()->screenGeometry().height()
+                                 -m_launcherWindow->height())/2));
+        if (screenshot.compare("true") == 0) {
             m_launcherWindow->show();
-        }
-	else
+        } else
             disableScreenCut();
-        }
+    }
 }
 
-void Controller::enableTrayIcon() {
+void Controller::enableTrayIcon()
+{
     if (m_trayIcon) {
         return;
     }
     ConfigHandler().setDisabledTrayIcon(false);
-    //Start the screenshot from the start menu and add a delay by zhanghanhuan
-    //doLater(400, this, [this](){ this->startVisualCapture(); });
+    // Start the screenshot from the start menu and add a delay by zhanghanhuan
+    // doLater(400, this, [this](){ this->startVisualCapture(); });
     QAction *captureAction = new QAction(tr("&Take Screenshot"), this);
     connect(captureAction, &QAction::triggered, this, [this](){
         // Wait 400 ms to hide the QMenu
-        doLater(400, this, [this](){ this->startVisualCapture(); });
+        doLater(400, this, [this](){
+            this->startVisualCapture();
+        });
     });
     QAction *launcherAction = new QAction(tr("&Open Screenshot Option"), this);
     connect(launcherAction, &QAction::triggered, this,
@@ -252,11 +277,16 @@ void Controller::enableTrayIcon() {
     connect(quitAction, &QAction::triggered, qApp,
             &QCoreApplication::quit);
 
+    QAction *shortcutAction = new QAction(tr("&ShortCut"), this);
+    connect(shortcutAction, &QAction::triggered, this,
+            &Controller::openShotCutWindow);
+
     QMenu *trayIconMenu = new QMenu();
     trayIconMenu->addAction(captureAction);
     trayIconMenu->addAction(launcherAction);
     trayIconMenu->addSeparator();
-    //trayIconMenu->addAction(configAction);
+    // trayIconMenu->addAction(configAction);
+    trayIconMenu->addAction(shortcutAction);
     trayIconMenu->addAction(infoAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
@@ -265,19 +295,20 @@ void Controller::enableTrayIcon() {
     m_trayIcon->setToolTip(tr("Screenshot"));
     m_trayIcon->setContextMenu(trayIconMenu);
     QIcon trayicon = QIcon::fromTheme("kylin-screenshot");
-    //QIcon trayicon = QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png");
+    // QIcon trayicon = QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png");
     m_trayIcon->setIcon(trayicon);
 
     auto trayIconActivated = [this](QSystemTrayIcon::ActivationReason r){
-        if (r == QSystemTrayIcon::Trigger) {
-            startVisualCapture();
-        }
-    };
+                                 if (r == QSystemTrayIcon::Trigger) {
+                                     startVisualCapture();
+                                 }
+                             };
     connect(m_trayIcon, &QSystemTrayIcon::activated, this, trayIconActivated);
     m_trayIcon->show();
 }
 
-void Controller::disableTrayIcon() {
+void Controller::disableTrayIcon()
+{
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
     if (m_trayIcon) {
         m_trayIcon->deleteLater();
@@ -287,16 +318,15 @@ void Controller::disableTrayIcon() {
 }
 
 void Controller::sendTrayNotification(
-        const QString &text,
-        const QString &title,
-        const int timeout)
+    const QString &text, const QString &title, const int timeout)
 {
     if (m_trayIcon) {
         m_trayIcon->showMessage(title, text, QSystemTrayIcon::Information, timeout);
     }
 }
 
-void Controller::updateConfigComponents() {
+void Controller::updateConfigComponents()
+{
     if (m_configWindow) {
         m_configWindow->updateChildren();
     }
@@ -305,13 +335,13 @@ void Controller::updateConfigComponents() {
 void Controller::deletePidfile()
 {
     QFile file("/tmp/screenshot.pid");
-    if (file.exists())
-    {
+    if (file.exists()) {
         file.remove();
     }
 }
 
-void Controller::startFullscreenCapture(const uint id) {
+void Controller::startFullscreenCapture(const uint id)
+{
     bool ok = true;
     QPixmap p(ScreenGrabber().grabEntireDesktop(ok));
     if (ok) {
@@ -321,7 +351,8 @@ void Controller::startFullscreenCapture(const uint id) {
     }
 }
 
-void Controller::handleCaptureTaken(uint id, QPixmap p) {
+void Controller::handleCaptureTaken(uint id, QPixmap p)
+{
     auto it = m_requestMap.find(id);
     if (it != m_requestMap.end()) {
         it.value().exportCapture(p);
@@ -332,7 +363,8 @@ void Controller::handleCaptureTaken(uint id, QPixmap p) {
     }
 }
 
-void Controller::handleCaptureFailed(uint id) {
+void Controller::handleCaptureFailed(uint id)
+{
     m_requestMap.remove(id);
 
     if (ConfigHandler().closeAfterScreenshotValue()) {
@@ -340,10 +372,14 @@ void Controller::handleCaptureFailed(uint id) {
     }
 }
 
-void Controller::doLater(int msec, QObject *receiver, lambda func)  {
+void Controller::doLater(int msec, QObject *receiver, lambda func)
+{
     QTimer *timer = new QTimer(receiver);
     QObject::connect(timer, &QTimer::timeout, receiver,
-                     [timer, func](){ func(); timer->deleteLater(); });
+                     [timer, func](){
+        func();
+        timer->deleteLater();
+    });
     timer->setInterval(msec);
     timer->start();
 }

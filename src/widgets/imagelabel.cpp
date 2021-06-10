@@ -16,12 +16,13 @@
 */
 
 // This code is a modified version of the KDE software Spectacle
-// /src/Gui/KSImageWidget.cpp commit cbbd6d45f6426ccbf1a82b15fdf98613ccccbbe9
+///src/Gui/KSImageWidget.cpp commit cbbd6d45f6426ccbf1a82b15fdf98613ccccbbe9
 
 #include "imagelabel.h"
 
-ImageLabel::ImageLabel(QWidget *parent):
-    QLabel(parent), m_pixmap(QPixmap())
+ImageLabel::ImageLabel(QWidget *parent) :
+    QLabel(parent),
+    m_pixmap(QPixmap())
 {
     m_DSEffect = new QGraphicsDropShadowEffect(this);
 
@@ -35,17 +36,19 @@ ImageLabel::ImageLabel(QWidget *parent):
     setMinimumSize(size());
 }
 
-void ImageLabel::setScreenshot(const QPixmap &pixmap) {
+void ImageLabel::setScreenshot(const QPixmap &pixmap)
+{
     m_pixmap = pixmap;
     const QString tooltip = QStringLiteral("%1x%2 px").arg(m_pixmap.width())
-            .arg(m_pixmap.height());
+                            .arg(m_pixmap.height());
     setToolTip(tooltip);
     setScaledPixmap();
 }
 
-void ImageLabel::setScaledPixmap() {
+void ImageLabel::setScaledPixmap()
+{
     const qreal scale = qApp->devicePixelRatio();
-    QPixmap scaledPixmap = m_pixmap.scaled(size() * scale, Qt::KeepAspectRatio,
+    QPixmap scaledPixmap = m_pixmap.scaled(size() * scale, Qt::IgnoreAspectRatio,
                                            Qt::SmoothTransformation);
     scaledPixmap.setDevicePixelRatio(scale);
     setPixmap(scaledPixmap);
@@ -53,26 +56,28 @@ void ImageLabel::setScaledPixmap() {
 
 // drag handlers
 
-void ImageLabel::mousePressEvent(QMouseEvent *event) {
+void ImageLabel::mousePressEvent(QMouseEvent *event)
+{
     if (event->button() == Qt::LeftButton) {
         m_dragStartPosition = event->pos();
         setCursor(Qt::ClosedHandCursor);
     }
 }
 
-void ImageLabel::mouseReleaseEvent(QMouseEvent *event) {
+void ImageLabel::mouseReleaseEvent(QMouseEvent *event)
+{
     if (event->button() == Qt::LeftButton) {
         setCursor(Qt::OpenHandCursor);
     }
 }
 
-void ImageLabel::mouseMoveEvent(QMouseEvent *event) {
+void ImageLabel::mouseMoveEvent(QMouseEvent *event)
+{
     if (!(event->buttons() & Qt::LeftButton)) {
         return;
     }
-    if ((event->pos() - m_dragStartPosition).manhattanLength() <
-            QGuiApplication::styleHints()->startDragDistance())
-    {
+    if ((event->pos() - m_dragStartPosition).manhattanLength()
+        < QGuiApplication::styleHints()->startDragDistance()) {
         return;
     }
     setCursor(Qt::OpenHandCursor);
@@ -80,7 +85,8 @@ void ImageLabel::mouseMoveEvent(QMouseEvent *event) {
 }
 
 // resize handler
-void ImageLabel::resizeEvent(QResizeEvent *event) {
+void ImageLabel::resizeEvent(QResizeEvent *event)
+{
     Q_UNUSED(event);
     setScaledPixmap();
 }

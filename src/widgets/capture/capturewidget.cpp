@@ -22,7 +22,6 @@
 // released under the GNU LGPL  <http://www.gnu.org/licenses/old-licenses/library.txt>
 #include "src/utils/systemnotification.h"
 #include "src/utils/filenamehandler.h"
-
 #include "capturewidget.h"
 #include "src/widgets/capture/hovereventfilter.h"
 #include "src/widgets/panel/sidepanelwidget.h"
@@ -54,6 +53,7 @@
 #include <QGraphicsBlurEffect>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
+#include <QBitmap>
 #include <KF5/KWindowSystem/KWindowSystem>
 #ifdef ENABLE_RECORD
 #include "ssrtools.h"
@@ -135,29 +135,33 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
 #endif
         resize(pixmap().size());
     }
-    /*
-       auto devicePixelRatio = m_context.screenshot.devicePixelRatio();
-      // 照当前窗口活跃状态存储窗口ID
-      QList<WId> windows = KWindowSystem::stackingOrder();
-      for (long long unsigned int const id: windows) {
-          // 获取窗口状态信息
-          KWindowInfo info(id, NET::WMState);
-          // 判断窗口是否显示
-          if (false == info.hasState(NET::Hidden)) {
-              // 获取窗口位置 长宽信息
-              KWindowInfo info2(id, NET::WMFrameExtents);
-              rects.append(QRect(info2.frameGeometry().x()/devicePixelRatio,
-                                 info2.frameGeometry().y()/devicePixelRatio,
-                                 info2.frameGeometry().width()/devicePixelRatio,
-                                 info2.frameGeometry().height()/devicePixelRatio
-                                 )
-                           );
-          }
-      }
-      // 默认未选中框选区域
-      isSure = false;
-      // Create buttons
-      */
+    auto devicePixelRatio = m_context.screenshot.devicePixelRatio();
+    // 照当前窗口活跃状态存储窗口ID
+    QList<WId> windows = KWindowSystem::stackingOrder();
+    for (long long unsigned int const id: windows) {
+        // 获取窗口状态信息
+        KWindowInfo info(id, NET::WMState);
+        // 判断窗口是否显示
+        if (false == info.hasState(NET::Hidden)) {
+            // 获取窗口位置 长宽信息
+            KWindowInfo info2(id, NET::WMFrameExtents);
+            rects.append(QRect(info2.frameGeometry().x()/devicePixelRatio,
+                               info2.frameGeometry().y()/devicePixelRatio,
+                               info2.frameGeometry().width()/devicePixelRatio,
+                               info2.frameGeometry().height()/devicePixelRatio
+                               )
+                         );
+        }
+    }
+    isDrag = false;
+    isfirstMove = false;
+    isfirstPress = false;
+    isfirstRelease = false;
+    isPressButton = false;
+    isReleaseButton = false;
+    m_grabbing = false;
+    isMove = false;
+    // Create buttons
     m_buttonHandler = new ButtonHandler(this);
     updateButtons();
     if (m_context.fullscreen) {
@@ -252,12 +256,12 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
 
     font_options->setStartPos(130);
     font_options->setTriangleInfo(20, 10);
-    font_options->setFixedSize(QSize(261, 90));
+    font_options->setFixedSize(QSize(300, 86));
     font_options->setCenterWidget();
 
     font_options2->setStartPos(130);
     font_options2->setTriangleInfo(20, 10);
-    font_options2->setFixedSize(QSize(261, 80));
+    font_options2->setFixedSize(QSize(300, 86));
     font_options2->setCenterWidget();
 
     size_label = new QLabel(this);
@@ -401,11 +405,8 @@ void CaptureWidget::size_label_option()
               "color: black}";
     size_label->setStyleSheet(str);
     size_label->setText(tr("%1 * %2")
-                        .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->
-                                                                                      geometry().
-                                                                                      intersected(
-                                                                                          rect()).
-                                                                                      height()));
+                        .arg(m_selection->geometry().intersected(rect()).width())
+                        .arg(m_selection->geometry().intersected(rect()).height()));
     if (size_label->x() + size_label->width() + 10 >= vectorButtons.first()->pos().x()
         && size_label->y() > vectorButtons.first()->pos().y() && m_buttonHandler->isVisible())
         size_label->move(m_selection->geometry().intersected(rect()).x(),
@@ -472,73 +473,69 @@ void CaptureWidget::paintEvent(QPaintEvent *)
         if ((vectorButtons.first()->pos().x() > 0 && m_buttonHandler->isVisible())) {
             QRect rr
                 = QRect((vectorButtons.first()->pos().x()-15)*pixelRatio,
-                        (vectorButtons.first()->pos().y())*pixelRatio,
+                        (vectorButtons.first()->pos().y() - 3)*pixelRatio,
 #ifndef SUPPORT_NEWUI
                         735, 44);
 #else
                         612, 44);
 #endif
-            // blur
-            {
-                QRect r1 = rr.adjusted(1, 1, -1, -1);
-                painter.setOpacity(0.8);
-                QPixmap p = m_context.origScreenshot.copy(r1);
-                QRect selection
-                    = QRect(r1.x()/pixelRatio, r1.y()/pixelRatio,
-                            r1.width(), r1.height()).normalized();
-                // r1.topLeft(), r1.bottomRight()).normalized();
-                QRect selectionScaled
-                // = QRect(r1.topLeft(), r1.bottomRight()).normalized();
-                    = QRect(r1.x()/pixelRatio, r1.y()/pixelRatio,
-                            r1.width(), r1.height()).normalized();
-                QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
-                blur->setBlurRadius(10);
-                QGraphicsPixmapItem *item = new QGraphicsPixmapItem(
-                    p.copy(selectionScaled));
-                item->setGraphicsEffect(blur);
 
-                QGraphicsScene scene;
-                scene.addItem(item);
-                // scene.render(&painter, selection, QRectF());
-                blur->setBlurRadius(10);
-                scene.render(&painter, selection, QRectF());
-            }
+            painter.setOpacity(0.68);
+            //// blur
+            QRect r1 = QRect(rr.x(), rr.y(),
+                             rr.width()*pixelRatio,
+                             rr.height()*pixelRatio);    // .adjusted(-2, -2, 2, 2);
+            QPixmap p;
+            p = PixmapToRound(m_context.origScreenshot.copy(r1), 6);
+            QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+            QPixmap p2 = applyEffectToImage(p, blur);
+            p2.fill(Qt::transparent);
+            painter.drawPixmap(r1.x()/pixelRatio, r1.y()/pixelRatio,
+                               PixmapToRound(p2, 6));
+
             if ((m_context.style_name.compare("ukui-dark") == 0)
                 || (m_context.style_name.compare("ukui-black") == 0)) {
                 painter.setBrush(QColor(0, 0, 0));
                 painter.setPen(QColor(0, 0, 0));
-                painter.setOpacity(0.5);
             } else {
+                QPixmap p3;
+                QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect;
+                effect->setOffset(4, 4);
+                effect->setColor(QColor(0, 0, 0, 150));
+                effect->setBlurRadius(30);
+                p3 = applyEffectToImage(p, effect);
+                painter.drawPixmap(r1.x()/pixelRatio, r1.y()/pixelRatio,
+                                   r1.width(), r1.height(),
+                                   PixmapToRound(p3, 6));
+
                 painter.setBrush(QColor(200, 200, 200));
                 painter.setPen(QColor(200, 200, 200));
-                painter.setOpacity(0.5);
             }
             painter.drawRoundedRect(QRect(rr.x()/pixelRatio, rr.y()/pixelRatio, rr.width(),
                                           rr.height()), 6, 6, Qt::AbsoluteSize);
             // painter.drawRoundedRect(rr, 6, 6, Qt::AbsoluteSize);
             painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
-                                    GlobalValues::buttonBaseSize(),
-                                    GlobalValues::buttonBaseSize(),
-                                    GlobalValues::buttonBaseSize()/2,
-                                    GlobalValues::buttonBaseSize()/2);
-            painter.setOpacity(0.8);
-            QColor rectColor2(QColor(0, 98, 240));
-            painter.setBrush(rectColor2);
+                                    GlobalValues::buttonBaseSize()-9,
+                                    GlobalValues::buttonBaseSize()-9,
+                                    (GlobalValues::buttonBaseSize()-9)/2,
+                                    (GlobalValues::buttonBaseSize()-9)/2);
 #ifndef SUPPORT_NEWUI
             painter.drawRoundRect(
                 vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,
                 vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6, 90, 30, 20,
                 20);
-#else
-            painter.drawRoundedRect(
-                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*13-3,
-                vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6,
-                66, 30, 6, 6, Qt::AbsoluteSize);
 #endif
-            // 两个分隔符
-            painter.setBrush(QColor(0, 0, 0, 100));
-            painter.setPen(QColor(0, 0, 0, 100));
+            if ((m_context.style_name.compare("ukui-dark") == 0)
+                || (m_context.style_name.compare("ukui-black") == 0)) {
+                // 两个分隔符
+                painter.setBrush(QColor(255, 255, 255, 100));
+                painter.setPen(QColor(255, 255, 255, 100));
+            } else {
+                // 两个分隔符
+                painter.setBrush(QColor(0, 0, 0, 100));
+                painter.setPen(QColor(0, 0, 0, 100));
+            }
             painter.drawRect(
                 vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,
                 vectorButtons.first()->pos().y()+14, 1, 16);
@@ -551,15 +548,65 @@ void CaptureWidget::paintEvent(QPaintEvent *)
                 vectorButtons.first()->pos().y()+14, 1, 16);
 #endif
             update();
+            painter.setPen(QColor(255, 255, 255));
             painter.setOpacity(1);
-            painter.setBrush(QColor(160, 160, 160));
+            painter.drawLine(r.topLeft(), r.bottomLeft());
+            painter.drawLine(r.topLeft(), r.topRight());
+            painter.drawLine(r.bottomRight(), r.topRight());
+            painter.drawLine(r.bottomRight(), r.bottomLeft());
             for (auto r: m_selection->handlerAreas()) {
-                // painter.drawRoundRect(r, 80, 80);
+                // painter.drawRoundRect(r, 80, 80)
+                painter.setBrush(QColor(160, 160, 160));
+                painter.setPen(QColor(255, 255, 255));
+                painter.drawRoundedRect(r, r.width()/2, r.height()/2, Qt::AbsoluteSize);
                 painter.drawPixmap(r, QPixmap(QStringLiteral(":/img/material/control_point.png")));
             }
         }
     }
     updateChildWindow();
+}
+
+QPixmap CaptureWidget::applyEffectToImage(QPixmap src, QGraphicsEffect *effect, int extent)
+{
+    if (src.isNull()) return QPixmap();  // No need to do anything else!
+    if (!effect) return src;            // No need to do anything else!
+    QGraphicsScene scene;
+    QGraphicsPixmapItem item;
+    item.setPixmap(src);
+    item.setGraphicsEffect(effect);
+    scene.addItem(&item);
+    QPixmap res(src.size()+QSize(extent*2, extent*2));
+    // QImage res(src.size()+QSize(extent*2, extent*2), QImage::Format_ARGB32);
+    res.fill(Qt::transparent);
+    QPainter ptr(&res);
+    scene.render(&ptr, QRectF(),
+                 QRectF(-extent, -extent, src.width()+extent*2, src.height()+extent*2));
+    return res;
+}
+
+QPixmap CaptureWidget::PixmapToRound(const QPixmap &img, int radius)
+{
+    if (img.isNull()) {
+        return QPixmap();
+    }
+
+    QSize size(img.size());
+    QBitmap mask(size);
+    QPainter painter(&mask);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform);
+    if ((m_context.style_name.compare("ukui-dark") == 0)
+        || (m_context.style_name.compare("ukui-black") == 0)) {
+        painter.fillRect(mask.rect(), Qt::black);
+    } else {
+        painter.fillRect(mask.rect(), Qt::white);
+    }
+    painter.setBrush(QColor(0, 0, 0));
+    painter.drawRoundedRect(mask.rect(), radius, radius, Qt::AbsoluteSize);
+
+    QPixmap image = img;    // .scaled(size);
+    image.setMask(mask);
+    return image;
 }
 
 void CaptureWidget::updateChildWindow()
@@ -641,16 +688,19 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e)
 {
     update();
     if (e->button() == Qt::RightButton) {
-        /* m_rightClick = true;
-        m_colorPicker->move(e->pos().x()-m_colorPicker->width()/2,
-                             e->pos().y()-m_colorPicker->height()/2);
-         m_colorPicker->show();*/
+        if (!isfirstPress)
+            return;
     } else if (e->button() == Qt::LeftButton) {
         m_showInitialMsg = false;
         m_mouseIsClicked = true;
-        // isSure = true;
+        isPressButton = true;
+        m_dragStartPoint = e->pos();
+        // 第一次按下 确定框选区域
+        if (!isfirstPress) {
+            isfirstPress = true;
+        }
         // Click using a tool
-        if (m_activeButton) {
+        else if (m_activeButton) {
             if (m_activeTool) {
                 if (m_activeTool->isValid() && m_toolWidget) {
                     pushToolToStack();
@@ -673,23 +723,15 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e)
                     this, &CaptureWidget::handleButtonSignal);
             connect(this, &CaptureWidget::textchanged,
                     m_activeTool, &CaptureTool::textChanged);
+            qDebug() << "m_activeTool is  pressed";
             m_activeTool->drawStart(m_context);
             return;
+        } else if (m_mouseOverHandle == SelectionWidget::NO_SIDE
+                   && m_selection->geometry().contains(e->pos())) {
+            isMove = true;
         }
-        m_dragStartPoint = e->pos();
         m_selection->saveGeometry();
-        // New selection
-        if (!m_selection->geometry().contains(e->pos())
-            && m_mouseOverHandle == SelectionWidget::NO_SIDE) {
-            m_selection->setGeometry(QRect(e->pos(), e->pos()));
-            m_selection->setVisible(false);
-            m_newSelection = true;
-            size_label->hide();
-            m_buttonHandler->hide();
-            update();
-        } else {
-            m_grabbing = true;
-        }
+        isReleaseButton = false;
     }
     updateCursor();
 }
@@ -698,122 +740,128 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
 {
     m_context.mousePos = e->globalPos();
     updateCrosspixmap(e->globalPos());
-    if (m_mouseIsClicked && !m_activeButton) {
-        /*
-      // 确定框选区域
-         if (isSure) {
-             m_buttonHandler->show();
-         }
-         */
-        if (m_buttonHandler->isVisible()) {
-            m_buttonHandler->hide();
+    if (!isfirstMove) {
+        isfirstMove = true;
+    }
+    if (isfirstPress && isPressButton) {
+        if (!isDrag) {
+            isDrag = true;
         }
-        if (m_newSelection) {
+    }
+    // QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(e);
+    if (isfirstPress) {
+        if (!isfirstRelease) {
             m_selection->setVisible(true);
             m_selection->setGeometry(
                 QRect(m_dragStartPoint, m_context.mousePos).normalized());
             update();
-        } else if (m_mouseOverHandle == SelectionWidget::NO_SIDE) {
-            // Moving the whole selection
-            QRect initialRect = m_selection->savedGeometry().normalized();
-            QPoint newTopLeft = initialRect.topLeft() + (e->pos() - m_dragStartPoint);
-            QRect finalRect(newTopLeft, initialRect.size());
-            if (finalRect.left() < rect().left()) {
-                finalRect.setLeft(rect().left());
-            } else if (finalRect.right() > rect().right()) {
-                finalRect.setRight(rect().right());
-            }
-            if (finalRect.top() < rect().top()) {
-                finalRect.setTop(rect().top());
-            } else if (finalRect.bottom() > rect().bottom()) {
-                finalRect.setBottom(rect().bottom());
-            }
-            m_selection->setGeometry(finalRect.normalized().intersected(rect()));
-            update();
-        } else {
-            // Dragging a handle
-            QRect r = m_selection->savedGeometry();
-            QPoint offset = e->pos() - m_dragStartPoint;
-            bool symmetryMod = qApp->keyboardModifiers() & Qt::ShiftModifier;
-
-            using sw = SelectionWidget;
-            if (m_mouseOverHandle == sw::TOPLEFT_SIDE
-                || m_mouseOverHandle == sw::TOP_SIDE
-                || m_mouseOverHandle == sw::TOPRIGHT_SIDE) { // dragging one of the top handles
-                r.setTop(r.top() + offset.y());
-                if (symmetryMod) {
-                    r.setBottom(r.bottom() - offset.y());
+        } else if (isPressButton && !m_activeButton) {
+            // updateCursor();
+            if (m_mouseOverHandle == SelectionWidget::NO_SIDE
+                && isMove
+                ) {
+                // Moving the whole selection
+                QRect initialRect = m_selection->savedGeometry().normalized();
+                QPoint newTopLeft = initialRect.topLeft() + (e->pos() - m_dragStartPoint);
+                QRect finalRect(newTopLeft, initialRect.size());
+                if (finalRect.left() < rect().left()) {
+                    finalRect.setLeft(rect().left());
+                } else if (finalRect.right() > rect().right()) {
+                    finalRect.setRight(rect().right());
                 }
-            }
-            if (m_mouseOverHandle == sw::TOPLEFT_SIDE
-                || m_mouseOverHandle == sw::LEFT_SIDE
-                || m_mouseOverHandle == sw::BOTTONLEFT_SIDE) { // dragging one of the left handles
-                r.setLeft(r.left() + offset.x());
-                if (symmetryMod) {
-                    r.setRight(r.right() - offset.x());
+                if (finalRect.top() < rect().top()) {
+                    finalRect.setTop(rect().top());
+                } else if (finalRect.bottom() > rect().bottom()) {
+                    finalRect.setBottom(rect().bottom());
                 }
-            }
-            if (m_mouseOverHandle == sw::BOTTONLEFT_SIDE
-                || m_mouseOverHandle == sw::BOTTON_SIDE
-                || m_mouseOverHandle == sw::BOTTONRIGHT_SIDE) { // dragging one of the bottom handles
-                r.setBottom(r.bottom() + offset.y());
-                if (symmetryMod) {
-                    r.setTop(r.top() - offset.y());
-                }
-            }
-            if (m_mouseOverHandle == sw::TOPRIGHT_SIDE
-                || m_mouseOverHandle == sw::RIGHT_SIDE
-                || m_mouseOverHandle == sw::BOTTONRIGHT_SIDE) { // dragging one of the right handles
-                r.setRight(r.right() + offset.x());
-                if (symmetryMod) {
-                    r.setLeft(r.left() - offset.x());
-                }
-            }
-            m_selection->setGeometry(r.intersected(rect()).normalized());
-            update();
-        }
-    } else if (m_mouseIsClicked && m_activeTool) {
-        // drawing with a tool
-        if (m_adjustmentButtonPressed) {
-            m_activeTool->drawMoveWithAdjustment(e->pos());
-        } else {
-            m_activeTool->drawMove(e->pos());
-        }
-        update();
-        // Hides the buttons under the mouse. If the mouse leaves, it shows them.
-        if (m_buttonHandler->buttonsAreInside()) {
-            const bool containsMouse = m_buttonHandler->contains(m_context.mousePos);
-            // m_buttonHandler->show();
-            if (containsMouse) {
+                m_selection->setGeometry(finalRect.normalized().intersected(rect()));
+                m_context.selection = m_selection->geometry();
+                m_buttonHandler->updatePosition(m_selection->geometry());
                 m_buttonHandler->hide();
+                update();
             } else {
-                m_buttonHandler->show();
-            }
-        }
-    } else if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
-        update();
-    } else {
-        /*
-            // 框选区域未确定  实时更新
-            if (!isSure) {
-                for (QRect const rect : rects) {
-                    if (rect.contains(m_context.mousePos)) {
-                        m_selection->setGeometry(rect);
-                        m_selection->show();
-                        m_buttonHandler->updatePosition(rect);
-                        m_buttonHandler->hide();
+                // Dragging a handle
+                QRect r = m_selection->savedGeometry();
+                QPoint offset = e->pos() - m_dragStartPoint;
+                bool symmetryMod = qApp->keyboardModifiers() & Qt::ShiftModifier;
+
+                using sw = SelectionWidget;
+                if (m_mouseOverHandle == sw::TOPLEFT_SIDE
+                    || m_mouseOverHandle == sw::TOP_SIDE
+                    || m_mouseOverHandle == sw::TOPRIGHT_SIDE) {             // dragging one of the top handles
+                    r.setTop(r.top() + offset.y());
+                    if (symmetryMod) {
+                        r.setBottom(r.bottom() - offset.y());
                     }
                 }
+                if (m_mouseOverHandle == sw::TOPLEFT_SIDE
+                    || m_mouseOverHandle == sw::LEFT_SIDE
+                    || m_mouseOverHandle == sw::BOTTONLEFT_SIDE) {             // dragging one of the left handles
+                    r.setLeft(r.left() + offset.x());
+                    if (symmetryMod) {
+                        r.setRight(r.right() - offset.x());
+                    }
+                }
+                if (m_mouseOverHandle == sw::BOTTONLEFT_SIDE
+                    || m_mouseOverHandle == sw::BOTTON_SIDE
+                    || m_mouseOverHandle == sw::BOTTONRIGHT_SIDE) {             // dragging one of the bottom handles
+                    r.setBottom(r.bottom() + offset.y());
+                    if (symmetryMod) {
+                        r.setTop(r.top() - offset.y());
+                    }
+                }
+                if (m_mouseOverHandle == sw::TOPRIGHT_SIDE
+                    || m_mouseOverHandle == sw::RIGHT_SIDE
+                    || m_mouseOverHandle == sw::BOTTONRIGHT_SIDE) {             // dragging one of the right handles
+                    r.setRight(r.right() + offset.x());
+                    if (symmetryMod) {
+                        r.setLeft(r.left() - offset.x());
+                    }
+                }
+                m_selection->setGeometry(r.intersected(rect()).normalized());
+                m_context.selection = m_selection->geometry();
+                m_buttonHandler->hide();
+                update();
+            }
+        } else if (isPressButton && m_activeTool) {
+            // drawing with a tool
+            if (m_adjustmentButtonPressed) {
+                m_activeTool->drawMoveWithAdjustment(e->pos());
+            } else {
+                m_activeTool->drawMove(e->pos());
             }
             update();
-        */
-        if (!m_selection->isVisible()) {
-            // isSure = false;
-            m_buttonHandler->hide();
-            return;
+            // Hides the buttons under the mouse. If the mouse leaves, it shows them.
+            if (m_buttonHandler->buttonsAreInside()) {
+                const bool containsMouse = m_buttonHandler->contains(m_context.mousePos);
+                // m_buttonHandler->show();
+// if (containsMouse) {
+// m_buttonHandler->hide();
+// } else {
+// m_buttonHandler->show();
+// }
+                m_buttonHandler->show();
+            }
+        } else if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
+            update();
+        } else {
+            if (!m_selection->isVisible()) {
+                // isSure = false;
+                m_buttonHandler->hide();
+                return;
+            }
+            m_mouseOverHandle = m_selection->getMouseSide(m_context.mousePos);
+            updateCursor();
         }
-        m_mouseOverHandle = m_selection->getMouseSide(m_context.mousePos);
-        updateCursor();
+    } else {
+        if (!isfirstPress) {
+            for (QRect const rect : rects) {
+                if (rect.contains(e->pos())) {
+                    m_selection->setGeometry(rect);
+                    m_selection->setVisible(true);
+                }
+            }
+        }
     }
 }
 
@@ -861,45 +909,61 @@ void CaptureWidget::mouseReleaseEvent(QMouseEvent *e)
         m_rightClick = false;
         // when we end the drawing we have to register the last  point and
         // add the temp modification to the list of modifications
-    } else if (m_mouseIsClicked && m_activeTool) {
-        // font_color->hide();
-        m_activeTool->drawEnd(m_context.mousePos);
-        if (m_activeTool->isValid()) {
-            pushToolToStack();
-        } else if (!m_toolWidget) {
-            m_activeTool->deleteLater();
-            m_activeTool = nullptr;
+    } else if (Qt::LeftButton == e->button()) {
+        if (!isfirstRelease) {
+            isfirstRelease = true;
+            if (!isDrag) {
+                for (QRect const rect : rects) {
+                    if (rect.contains(e->pos())) {
+                        m_selection->setGeometry(rect);
+                    }
+                }
+            }
+            m_buttonHandler->show();
+        } else {
+            if (m_mouseIsClicked && m_activeTool) {
+                // font_color->hide();
+                m_activeTool->drawEnd(m_context.mousePos);
+                if (m_activeTool->isValid()) {
+                    pushToolToStack();
+                } else if (!m_toolWidget) {
+                    m_activeTool->deleteLater();
+                    m_activeTool = nullptr;
+                }
+            } else if (!m_buttonHandler->isVisible() && m_selection->isVisible()) {
+                // Don't go outside
+                QRect newGeometry = m_selection->geometry().intersected(rect());
+                // normalize
+                if (newGeometry.width() <= 0) {
+                    int left = newGeometry.left();
+                    newGeometry.setLeft(newGeometry.right());
+                    newGeometry.setRight(left);
+                }
+                if (newGeometry.height() <= 0) {
+                    int top = newGeometry.top();
+                    newGeometry.setTop(newGeometry.bottom());
+                    newGeometry.setBottom(top);
+                }
+                m_selection->setGeometry(newGeometry);
+        #ifdef ENABLE_RECORD
+                recorder->ssr->OnUpdateVideoAreaFields_(newGeometry);// bybobbi
+        #endif
+                m_context.selection = extendedRect(&newGeometry);
+                updateSizeIndicator();
+                m_buttonHandler->updatePosition(newGeometry);
+                m_buttonHandler->show();
+            }
         }
-    }
-    // Show the buttons after the resize of the selection or the creation
-    // of a new one.
-    if (!m_buttonHandler->isVisible() && m_selection->isVisible()) {
-        // Don't go outside
-        QRect newGeometry = m_selection->geometry().intersected(rect());
-        // normalize
-        if (newGeometry.width() <= 0) {
-            int left = newGeometry.left();
-            newGeometry.setLeft(newGeometry.right());
-            newGeometry.setRight(left);
-        }
-        if (newGeometry.height() <= 0) {
-            int top = newGeometry.top();
-            newGeometry.setTop(newGeometry.bottom());
-            newGeometry.setBottom(top);
-        }
-        m_selection->setGeometry(newGeometry);
-#ifdef ENABLE_RECORD
-        recorder->ssr->OnUpdateVideoAreaFields_(newGeometry);// bybobbi
-#endif
-        m_context.selection = extendedRect(&newGeometry);
+        m_context.selection = m_selection->geometry();
         updateSizeIndicator();
-        m_buttonHandler->updatePosition(newGeometry);
-        m_buttonHandler->show();
+        m_buttonHandler->updatePosition(m_selection->geometry());
+        m_mouseIsClicked = false;
+        m_newSelection = false;
+        m_grabbing = false;
+        isPressButton = false;
+        isReleaseButton = true;
+        isMove = false;
     }
-    m_mouseIsClicked = false;
-    m_newSelection = false;
-    m_grabbing = false;
-
     updateCursor();
 }
 
@@ -1387,10 +1451,8 @@ void CaptureWidget::updateSizeIndicator()
 
 void CaptureWidget::updateCursor()
 {
-    if (m_rightClick) {
-        setCursor(Qt::ArrowCursor);
-    } else if (m_grabbing) {
-        setCursor(Qt::ClosedHandCursor);
+    if (!isfirstPress) {
+        setCursor(Qt::CrossCursor);
     } else if (!m_activeButton) {
         using sw = SelectionWidget;
         if (m_mouseOverHandle != sw::NO_SIDE) {

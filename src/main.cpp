@@ -55,20 +55,21 @@ int getScreenWidth()
     return width;
 }
 
-int main(int argc, char *argv[]) {
-    initUkuiLog4qt("kylin-screenshot");
+int main(int argc, char *argv[])
+{
+     initUkuiLog4qt("kylin-screenshot");
     // required for the button serialization
     // TODO: change to QVector in v1.0
     if (getScreenWidth() > 2560) {
             #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
-                    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-                    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
             #endif
     }
     qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
     qApp->setApplicationVersion(static_cast<QString>(APP_VERSION));
     if (qgetenv("QT_QPA_PLATFORMTHEME") != "ukui")
-            qputenv("QT_QPA_PLATFORMTHEME", "ukui");
+        qputenv("QT_QPA_PLATFORMTHEME", "ukui");
     // no arguments, just launch kylin-screenshot
     if (argc == 1) {
         SingleApplication app(argc, argv);
@@ -79,29 +80,31 @@ int main(int argc, char *argv[]) {
 
         for (const QString &path: trPaths) {
             bool match = translator.load(QLocale(),
-                                    QStringLiteral("Internationalization"), QStringLiteral("_"),
-                                    path);
+                                         QStringLiteral("Internationalization"), QStringLiteral(
+                                             "_"),
+                                         path);
             if (match) {
                 break;
             }
         }
 
         qtTranslator.load(QLocale::system(), "qt", "_",
-            QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+                          QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 
         app.installTranslator(&translator);
         app.installTranslator(&qtTranslator);
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
         app.setApplicationName(QObject::tr("kylin-screenshot"));
         app.setOrganizationName(QStringLiteral("Dharkael"));
-        app.setProperty("useFileDialog",false);
+        app.setProperty("useFileDialog", false);
+        app.setWindowIcon(QIcon::fromTheme("kylin-screenshot"));
         auto c = Controller::getInstance();
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
         new FlameshotDBusAdapter(c);
         QDBusConnection dbus = QDBusConnection::sessionBus();
         if (!dbus.isConnected()) {
             SystemNotification().sendMessage(
-                        QObject::tr("Unable to connect via DBus"));
+                QObject::tr("Unable to connect via DBus"));
         }
         dbus.registerObject(QStringLiteral("/"), c);
         dbus.registerService(QStringLiteral("org.dharkael.kylinscreenshot"));
@@ -123,64 +126,69 @@ int main(int argc, char *argv[]) {
     CommandLineParser parser;
     // Add description
     parser.setDescription(
-                QStringLiteral("Powerful yet simple to use screenshot software."));
+        QStringLiteral("Powerful yet simple to use screenshot software."));
     parser.setGeneralErrorMessage(QStringLiteral("See 'kylin-screenshot --help'."));
     // Arguments
-    CommandArgument fullArgument(QStringLiteral("full"), QStringLiteral("Capture the entire desktop."));
-    CommandArgument launcherArgument(QStringLiteral("launcher"), QStringLiteral("Open the capture launcher."));
-    CommandArgument guiArgument(QStringLiteral("gui"), QStringLiteral("Start a manual capture in GUI mode."));
-    CommandArgument configArgument(QStringLiteral("config"), QStringLiteral("Configure Kylin-Screenshot."));
-    CommandArgument screenArgument(QStringLiteral("screen"), QStringLiteral("Capture a single screen."));
+    CommandArgument fullArgument(QStringLiteral("full"),
+                                 QStringLiteral("Capture the entire desktop."));
+    CommandArgument launcherArgument(QStringLiteral("launcher"),
+                                     QStringLiteral("Open the capture launcher."));
+    CommandArgument guiArgument(QStringLiteral("gui"),
+                                QStringLiteral("Start a manual capture in GUI mode."));
+    CommandArgument configArgument(QStringLiteral("config"),
+                                   QStringLiteral("Configure Kylin-Screenshot."));
+    CommandArgument screenArgument(QStringLiteral("screen"),
+                                   QStringLiteral("Capture a single screen."));
 
     // Options
     CommandOption pathOption(
-                {"p", "path"},
-                QStringLiteral("Path where the capture will be saved"),
-                QStringLiteral("path"));
+        {"p", "path"},
+        QStringLiteral("Path where the capture will be saved"),
+        QStringLiteral("path"));
     CommandOption clipboardOption(
-                {"c", "clipboard"},
-                QStringLiteral("Save the capture to the clipboard"));
+        {"c", "clipboard"},
+        QStringLiteral("Save the capture to the clipboard"));
     CommandOption delayOption(
-                {"d", "delay"},
-                QStringLiteral("Delay time in milliseconds"),
-                QStringLiteral("milliseconds"));
+        {"d", "delay"},
+        QStringLiteral("Delay time in milliseconds"),
+        QStringLiteral("milliseconds"));
     CommandOption filenameOption(
-                {"f", "filename"},
-                QStringLiteral("Set the filename pattern"),
-                QStringLiteral("pattern"));
+        {"f", "filename"},
+        QStringLiteral("Set the filename pattern"),
+        QStringLiteral("pattern"));
     CommandOption trayOption(
-                {"t", "trayicon"},
-                QStringLiteral("Enable or disable the trayicon"),
-                QStringLiteral("bool"));
+        {"t", "trayicon"},
+        QStringLiteral("Enable or disable the trayicon"),
+        QStringLiteral("bool"));
     CommandOption autostartOption(
-                {"a", "autostart"},
-                QStringLiteral("Enable or disable run at startup"),
-                QStringLiteral("bool"));
+        {"a", "autostart"},
+        QStringLiteral("Enable or disable run at startup"),
+        QStringLiteral("bool"));
     CommandOption showHelpOption(
-                {"s", "showhelp"},
-                QStringLiteral("Show the help message in the capture mode"),
-                QStringLiteral("bool"));
+        {"s", "showhelp"},
+        QStringLiteral("Show the help message in the capture mode"),
+        QStringLiteral("bool"));
     CommandOption mainColorOption(
-                {"m", "maincolor"},
-                QStringLiteral("Define the main UI color"),
-                QStringLiteral("color-code"));
+        {"m", "maincolor"},
+        QStringLiteral("Define the main UI color"),
+        QStringLiteral("color-code"));
     CommandOption contrastColorOption(
-                {"k", "contrastcolor"},
-                QStringLiteral("Define the contrast UI color"),
-                QStringLiteral("color-code"));
+        {"k", "contrastcolor"},
+        QStringLiteral("Define the contrast UI color"),
+        QStringLiteral("color-code"));
     CommandOption rawImageOption(
-                {"r", "raw"},
-                QStringLiteral("Print raw PNG capture"));
+        {"r", "raw"},
+        QStringLiteral("Print raw PNG capture"));
     CommandOption screenNumberOption(
-                {"n", "number"},
-                QStringLiteral("Define the screen to capture,\ndefault: screen containing the cursor"),
-                QStringLiteral("Screen number"), QStringLiteral("-1"));
+        {"n", "number"},
+        QStringLiteral("Define the screen to capture,\ndefault: screen containing the cursor"),
+        QStringLiteral("Screen number"), QStringLiteral("-1"));
 
     // Add checkers
     auto colorChecker = [](const QString &colorCode) -> bool {
-        QColor parsedColor(colorCode);
-        return parsedColor.isValid() && parsedColor.alphaF() == 1.0;
-    };
+                            QColor parsedColor(colorCode);
+                            return parsedColor.isValid() && parsedColor.alphaF() == 1.0;
+                        };
     QString colorErr = "Invalid color, "
                        "this flag supports the following formats:\n"
                        "- #RGB (each of R, G, and B is a single hex digit)\n"
@@ -192,23 +200,26 @@ int main(int argc, char *argv[]) {
     const QString delayErr = QStringLiteral("Invalid delay, it must be higher than 0");
     const QString numberErr = QStringLiteral("Invalid screen number, it must be non negative");
     auto numericChecker = [](const QString &delayValue) -> bool {
-        int value = delayValue.toInt();
-        return value >= 0;
-    };
+                              int value = delayValue.toInt();
+                              return value >= 0;
+                          };
 
     const QString pathErr = QStringLiteral("Invalid path, it must be a real path in the system");
     auto pathChecker = [pathErr](const QString &pathValue) -> bool {
-        bool res = QDir(pathValue).exists();
-        if (!res) {
-            SystemNotification().sendMessage(QObject::tr(pathErr.toLatin1().data()));
-        }
-        return res;
-    };
+                           bool res = QDir(pathValue).exists();
+                           if (!res) {
+                               SystemNotification().sendMessage(QObject::tr(
+                                                                    pathErr.toLatin1().data()));
+                           }
+                           return res;
+                       };
 
-    const QString booleanErr = QStringLiteral("Invalid value, it must be defined as 'true' or 'false'");
+    const QString booleanErr = QStringLiteral(
+        "Invalid value, it must be defined as 'true' or 'false'");
     auto booleanChecker = [](const QString &value) -> bool {
-        return value == QLatin1String("true") || value == QLatin1String("false");
-    };
+                              return value == QLatin1String("true") || value == QLatin1String(
+                                  "false");
+                          };
 
     contrastColorOption.addChecker(colorChecker, colorErr);
     mainColorOption.addChecker(colorChecker, colorErr);
@@ -242,20 +253,20 @@ int main(int argc, char *argv[]) {
     }
 
     // PROCESS DATA
-    //--------------
+    // --------------
     if (parser.isSet(helpOption) || parser.isSet(versionOption)) {
-    }
-    else if (parser.isSet(launcherArgument)) { // LAUNCHER
-        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
-                                           QStringLiteral("/"), QLatin1String(""), QStringLiteral("openLauncher"));
+    } else if (parser.isSet(launcherArgument)) { // LAUNCHER
+        QDBusMessage m
+            = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
+                                             QStringLiteral("/"), QLatin1String(
+                                                 ""), QStringLiteral("openLauncher"));
         QDBusConnection sessionBus = QDBusConnection::sessionBus();
         if (!sessionBus.isConnected()) {
             SystemNotification().sendMessage(
-                        QObject::tr("Unable to connect via DBus"));
+                QObject::tr("Unable to connect via DBus"));
         }
         sessionBus.call(m);
-    }
-    else if (parser.isSet(guiArgument)) { // GUI
+    } else if (parser.isSet(guiArgument)) { // GUI
         QString pathValue = parser.value(pathOption);
         int delay = parser.value(delayOption).toInt();
         bool isRaw = parser.isSet(rawImageOption);
@@ -264,8 +275,10 @@ int main(int argc, char *argv[]) {
         uint id = req.id();
 
         // Send message
-        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
-                                           QStringLiteral("/"), QLatin1String(""), QStringLiteral("graphicCapture"));
+        QDBusMessage m
+            = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
+                                             QStringLiteral("/"), QLatin1String(
+                                                 ""), QStringLiteral("graphicCapture"));
         m << pathValue << delay << id;
         QDBusConnection sessionBus = QDBusConnection::sessionBus();
         dbusUtils.checkDBusConnection(sessionBus);
@@ -281,17 +294,15 @@ int main(int argc, char *argv[]) {
             // wait
             return app.exec();
         }
-    }
-    else if (parser.isSet(fullArgument)) { // FULL
+    } else if (parser.isSet(fullArgument)) { // FULL
         QString pathValue = parser.value(pathOption);
         int delay = parser.value(delayOption).toInt();
         bool toClipboard = parser.isSet(clipboardOption);
         bool isRaw = parser.isSet(rawImageOption);
         // Not a valid command
-        if(pathValue.isEmpty())
-        {
+        if (pathValue.isEmpty()) {
             QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
-            pathValue= a.at(0);
+            pathValue = a.at(0);
         }
         if (!isRaw && !toClipboard && pathValue.isEmpty()) {
             QTextStream out(stdout);
@@ -300,7 +311,8 @@ int main(int argc, char *argv[]) {
                 << pathOption.dashedNames().join(QStringLiteral(", ")) << "\n "
                 << rawImageOption.dashedNames().join(QStringLiteral(", ")) << "\n "
                 << clipboardOption.dashedNames().join(QStringLiteral(", ")) << "\n\n";
-            parser.parse(QStringList() << argv[0] << QStringLiteral("full") << QStringLiteral("-h"));
+            parser.parse(QStringList() << argv[0] << QStringLiteral("full") <<
+                         QStringLiteral("-h"));
             goto finish;
         }
 
@@ -315,8 +327,10 @@ int main(int argc, char *argv[]) {
         DBusUtils dbusUtils;
 
         // Send message
-        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
-                                               QStringLiteral("/"), QLatin1String(""), QStringLiteral("fullScreen"));
+        QDBusMessage m
+            = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
+                                             QStringLiteral("/"), QLatin1String(
+                                                 ""), QStringLiteral("fullScreen"));
         m << pathValue << toClipboard << delay << id;
         QDBusConnection sessionBus = QDBusConnection::sessionBus();
         dbusUtils.checkDBusConnection(sessionBus);
@@ -333,8 +347,7 @@ int main(int argc, char *argv[]) {
             // wait
             return app.exec();
         }
-    }
-    else if (parser.isSet(screenArgument)) { // SCREEN
+    } else if (parser.isSet(screenArgument)) { // SCREEN
         QString numberStr = parser.value(screenNumberOption);
         int number = numberStr.startsWith(QLatin1String("-")) ? -1 : numberStr.toInt();
         QString pathValue = parser.value(pathOption);
@@ -342,10 +355,9 @@ int main(int argc, char *argv[]) {
         bool toClipboard = parser.isSet(clipboardOption);
         bool isRaw = parser.isSet(rawImageOption);
         // Not a valid command
-        if(pathValue.isEmpty())
-        {
+        if (pathValue.isEmpty()) {
             QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
-            pathValue= a.at(0);
+            pathValue = a.at(0);
         }
         if (!isRaw && !toClipboard && pathValue.isEmpty()) {
             QTextStream out(stdout);
@@ -354,7 +366,8 @@ int main(int argc, char *argv[]) {
                 << pathOption.dashedNames().join(QStringLiteral(", ")) << "\n "
                 << rawImageOption.dashedNames().join(QStringLiteral(", ")) << "\n "
                 << clipboardOption.dashedNames().join(QStringLiteral(", ")) << "\n\n";
-            parser.parse(QStringList() << argv[0] << QStringLiteral("screen") << QStringLiteral("-h"));
+            parser.parse(QStringList() << argv[0] << QStringLiteral("screen") << QStringLiteral(
+                             "-h"));
             goto finish;
         }
 
@@ -370,8 +383,10 @@ int main(int argc, char *argv[]) {
         DBusUtils dbusUtils;
 
         // Send message
-        QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
-                                               QStringLiteral("/"), QLatin1String(""), QStringLiteral("captureScreen"));
+        QDBusMessage m
+            = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
+                                             QStringLiteral("/"), QLatin1String(
+                                                 ""), QStringLiteral("captureScreen"));
         m << number << pathValue << toClipboard << delay << id;
         QDBusConnection sessionBus = QDBusConnection::sessionBus();
         dbusUtils.checkDBusConnection(sessionBus);
@@ -388,20 +403,21 @@ int main(int argc, char *argv[]) {
             // wait
             return app.exec();
         }
-    }
-    else if (parser.isSet(configArgument)) { // CONFIG
+    } else if (parser.isSet(configArgument)) { // CONFIG
         bool autostart = parser.isSet(autostartOption);
         bool filename = parser.isSet(filenameOption);
         bool tray = parser.isSet(trayOption);
         bool help = parser.isSet(showHelpOption);
         bool mainColor = parser.isSet(mainColorOption);
         bool contrastColor = parser.isSet(contrastColorOption);
-        bool someFlagSet = (filename || tray || help ||
-                            mainColor || contrastColor);
+        bool someFlagSet = (filename || tray || help
+                            || mainColor || contrastColor);
         ConfigHandler config;
         if (autostart) {
-            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
-                                               QStringLiteral("/"), QLatin1String(""), QStringLiteral("autostartEnabled"));
+            QDBusMessage m
+                = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
+                                                 QStringLiteral("/"), QLatin1String(
+                                                     ""), QStringLiteral("autostartEnabled"));
             if (parser.value(autostartOption) == QLatin1String("false")) {
                 m << false;
             } else if (parser.value(autostartOption) == QLatin1String("true")) {
@@ -410,7 +426,7 @@ int main(int argc, char *argv[]) {
             QDBusConnection sessionBus = QDBusConnection::sessionBus();
             if (!sessionBus.isConnected()) {
                 SystemNotification().sendMessage(
-                            QObject::tr("Unable to connect via DBus"));
+                    QObject::tr("Unable to connect via DBus"));
             }
             sessionBus.call(m);
         }
@@ -419,13 +435,15 @@ int main(int argc, char *argv[]) {
             config.setFilenamePattern(newFilename);
             FileNameHandler fh;
             QTextStream(stdout)
-                    << QStringLiteral("The new pattern is '%1'\n"
-                                      "Parsed pattern example: %2\n").arg(newFilename)
-                       .arg(fh.parsedPattern());
+                << QStringLiteral("The new pattern is '%1'\n"
+                                  "Parsed pattern example: %2\n").arg(newFilename)
+                .arg(fh.parsedPattern());
         }
         if (tray) {
-            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
-                                               QStringLiteral("/"), QLatin1String(""), QStringLiteral("trayIconEnabled"));
+            QDBusMessage m
+                = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
+                                                 QStringLiteral("/"), QLatin1String(
+                                                     ""), QStringLiteral("trayIconEnabled"));
             if (parser.value(trayOption) == QLatin1String("false")) {
                 m << false;
             } else if (parser.value(trayOption) == QLatin1String("true")) {
@@ -434,7 +452,7 @@ int main(int argc, char *argv[]) {
             QDBusConnection sessionBus = QDBusConnection::sessionBus();
             if (!sessionBus.isConnected()) {
                 SystemNotification().sendMessage(
-                            QObject::tr("Unable to connect via DBus"));
+                    QObject::tr("Unable to connect via DBus"));
             }
             sessionBus.call(m);
         }
@@ -458,12 +476,14 @@ int main(int argc, char *argv[]) {
 
         // Open gui when no options
         if (!someFlagSet) {
-            QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
-                                               QStringLiteral("/"), QLatin1String(""), QStringLiteral("openConfig"));
+            QDBusMessage m
+                = QDBusMessage::createMethodCall(QStringLiteral("org.dharkael.kylinscreenshot"),
+                                                 QStringLiteral("/"), QLatin1String(
+                                                     ""), QStringLiteral("openConfig"));
             QDBusConnection sessionBus = QDBusConnection::sessionBus();
             if (!sessionBus.isConnected()) {
                 SystemNotification().sendMessage(
-                            QObject::tr("Unable to connect via DBus"));
+                    QObject::tr("Unable to connect via DBus"));
             }
             sessionBus.call(m);
         }

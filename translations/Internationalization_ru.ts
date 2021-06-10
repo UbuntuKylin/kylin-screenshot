@@ -90,12 +90,12 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="50"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="49"/>
         <source>option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="70"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="68"/>
         <source>Save</source>
         <translation type="unfinished">Сохранить</translation>
     </message>
@@ -109,41 +109,41 @@
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="64"/>
-        <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
+        <source>Capture Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="69"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="74"/>
         <source>Rectangular Region</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="70"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="75"/>
         <source>Full Screen (All Monitors)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="84"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="86"/>
         <source> second</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="84"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="86"/>
         <source> seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="88"/>
-        <source>Take new screenshot</source>
+        <location filename="../src/widgets/capturelauncher.cpp" line="90"/>
+        <source>Take shot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="95"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="101"/>
         <source>Area:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="96"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="106"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -151,17 +151,17 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="103"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="111"/>
         <source>Unable to capture screen</source>
         <translation>Не удалось захватить экран</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="265"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="301"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="411"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="445"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -178,7 +178,7 @@ Press Space to open the side panel.</source>
 Нажмите Пробел чтобы открыть боковую панель.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="368"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="406"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -186,12 +186,12 @@ Press Space to open the side panel.</source>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="50"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="57"/>
         <source>Circle</source>
         <translation>Окружность</translation>
     </message>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="58"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="67"/>
         <source>Set the Circle as the paint tool</source>
         <translation>Выбрать Окружность инструментом для рисования</translation>
     </message>
@@ -222,37 +222,42 @@ Press Space to open the side panel.</source>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="235"/>
+        <location filename="../src/core/controller.cpp" line="258"/>
         <source>&amp;Take Screenshot</source>
         <translation>&amp;Сделать снимок</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="240"/>
+        <location filename="../src/core/controller.cpp" line="265"/>
         <source>&amp;Open Screenshot Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="243"/>
+        <location filename="../src/core/controller.cpp" line="268"/>
         <source>&amp;Configuration</source>
         <translation>&amp;Настройка</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="246"/>
+        <location filename="../src/core/controller.cpp" line="271"/>
         <source>&amp;Information</source>
         <translation>&amp;Информация</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="249"/>
+        <location filename="../src/core/controller.cpp" line="274"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="265"/>
+        <location filename="../src/core/controller.cpp" line="280"/>
+        <source>&amp;ShortCut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/core/controller.cpp" line="295"/>
         <source>Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="353"/>
+        <location filename="../src/core/controller.cpp" line="389"/>
         <source>Unable to use kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -594,48 +599,40 @@ Press Space to open the side panel.</source>
 <context>
     <name>InfoWindow</name>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="40"/>
         <source>About</source>
-        <translation>Информация</translation>
+        <translation type="vanished">Информация</translation>
     </message>
     <message>
         <source>Right Click</source>
         <translation type="vanished">Правый клик</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="67"/>
         <source>Mouse Wheel</source>
-        <translation>Колесико мыши</translation>
+        <translation type="vanished">Колесико мыши</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="77"/>
         <source>Move selection 1px</source>
-        <translation>Переместить выделение на 1px</translation>
+        <translation type="vanished">Переместить выделение на 1px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="78"/>
         <source>Resize selection 1px</source>
-        <translation>Изменить размер выделения на 1px</translation>
+        <translation type="vanished">Изменить размер выделения на 1px</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="79"/>
         <source>Quit capture</source>
-        <translation>Выйти из захвата экрана</translation>
+        <translation type="vanished">Выйти из захвата экрана</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="80"/>
         <source>Copy to clipboard</source>
-        <translation>Скопировать в буфер обмена</translation>
+        <translation type="vanished">Скопировать в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="81"/>
         <source>Save selection as a file</source>
-        <translation>Сохранить выделение в файл</translation>
+        <translation type="vanished">Сохранить выделение в файл</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="82"/>
         <source>Undo the last modification</source>
-        <translation>Отменить последнее изменение</translation>
+        <translation type="vanished">Отменить последнее изменение</translation>
     </message>
     <message>
         <source>Toggle visibility of sidebar with options of the selected tool</source>
@@ -646,76 +643,32 @@ Press Space to open the side panel.</source>
         <translation type="vanished">Показать выбор цвета</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="85"/>
         <source>Change the tool&apos;s thickness</source>
-        <translation>Изменить толщину инструмента</translation>
+        <translation type="vanished">Изменить толщину инструмента</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="138"/>
         <source>Available shortcuts in the screen capture mode.</source>
-        <translation>Доступные горячие клавиши в режиме захвата экрана.</translation>
+        <translation type="vanished">Доступные горячие клавиши в режиме захвата экрана.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="110"/>
-        <location filename="../src/widgets/infowindow.cpp" line="149"/>
         <source>Key</source>
-        <translation>Клавиша</translation>
+        <translation type="vanished">Клавиша</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="89"/>
-        <source>Capturn Full Screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="90"/>
-        <source>Capture Top Screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="91"/>
-        <source>Capture Screen selection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="96"/>
-        <source>&lt;u&gt;&lt;b&gt;sysShortcuts&lt;/b&gt;&lt;/u&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="100"/>
-        <source>Available System shortcuts.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="110"/>
-        <location filename="../src/widgets/infowindow.cpp" line="149"/>
         <source>Description</source>
-        <translation>Описание</translation>
+        <translation type="vanished">Описание</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="179"/>
         <source>&lt;u&gt;&lt;b&gt;License&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;Лицензия&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;Лицензия&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="187"/>
         <source>&lt;u&gt;&lt;b&gt;Version&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;Версия&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;Версия&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowindow.cpp" line="190"/>
-        <source>Screenshot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="191"/>
-        <source>Compiled with Qt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/widgets/infowindow.cpp" line="198"/>
         <source>&lt;u&gt;&lt;b&gt;Shortcuts&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>&lt;u&gt;&lt;b&gt;Горячие клавиши&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation type="vanished">&lt;u&gt;&lt;b&gt;Горячие клавиши&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
 </context>
 <context>
@@ -1460,29 +1413,29 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="130"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1485"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="126"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1568"/>
         <source>Save Error</source>
         <translation>Ошибка сохранения</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="69"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="111"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1479"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="50"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="72"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="113"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1562"/>
         <source>Capture saved as </source>
         <translation>Снимок сохранён как </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="34"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="36"/>
         <source>Capture saved to clipboard</source>
         <translation>Снимок сохранён в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="51"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="71"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="126"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1482"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="53"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="74"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1565"/>
         <source>Error trying to save as </source>
         <translation>Ошибка при попытке сохранить как </translation>
     </message>
@@ -1492,26 +1445,26 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="120"/>
         <source>can not save file as hide file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="95"/>
+        <location filename="../src/main.cpp" line="97"/>
         <source>kylin-screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="104"/>
-        <location filename="../src/main.cpp" line="254"/>
-        <location filename="../src/main.cpp" line="413"/>
-        <location filename="../src/main.cpp" line="437"/>
-        <location filename="../src/main.cpp" line="466"/>
+        <location filename="../src/main.cpp" line="107"/>
+        <location filename="../src/main.cpp" line="266"/>
+        <location filename="../src/main.cpp" line="429"/>
+        <location filename="../src/main.cpp" line="455"/>
+        <location filename="../src/main.cpp" line="486"/>
         <source>Unable to connect via DBus</source>
         <translation>Не удалось подключиться через DBus</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="120"/>
+        <location filename="../src/main.cpp" line="123"/>
         <source>Kylin-Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1636,6 +1589,84 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <message>
         <source>Set Selection as the paint tool</source>
         <translation type="vanished">Выбрать Прямоугольное выделение инструментом для рисования</translation>
+    </message>
+</context>
+<context>
+    <name>ShortCutWidget</name>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="11"/>
+        <source>Screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="15"/>
+        <source>ShortCut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="44"/>
+        <source>Keypress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="54"/>
+        <source>Mouse Wheel</source>
+        <translation type="unfinished">Колесико мыши</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="59"/>
+        <source>Description</source>
+        <translation type="unfinished">Описание</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="60"/>
+        <source>Capturn Full Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="61"/>
+        <source>Capture Top Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="62"/>
+        <source>Capture Screen selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="63"/>
+        <source>Move selection 1px</source>
+        <translation type="unfinished">Переместить выделение на 1px</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="64"/>
+        <source>Resize selection 1px</source>
+        <translation type="unfinished">Изменить размер выделения на 1px</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="65"/>
+        <source>Quit capture</source>
+        <translation type="unfinished">Выйти из захвата экрана</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="66"/>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished">Скопировать в буфер обмена</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="67"/>
+        <source>Save selection as a file</source>
+        <translation type="unfinished">Сохранить выделение в файл</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="68"/>
+        <source>Undo the last modification</source>
+        <translation type="unfinished">Отменить последнее изменение</translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/shortcutwidget.cpp" line="69"/>
+        <source>Change the tool&apos;s thickness</source>
+        <translation type="unfinished">Изменить толщину инструмента</translation>
     </message>
 </context>
 <context>
@@ -1857,12 +1888,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="vanished">Текст</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="67"/>
+        <location filename="../src/tools/text/texttool.cpp" line="77"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="75"/>
+        <location filename="../src/tools/text/texttool.cpp" line="87"/>
         <source>Add text to your capture</source>
         <translation>Добавить текст на снимок</translation>
     </message>
@@ -1938,6 +1969,29 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/config/visualseditor.cpp" line="82"/>
         <source>Select All</source>
         <translation>Выбрать все</translation>
+    </message>
+</context>
+<context>
+    <name>infoWidget</name>
+    <message>
+        <location filename="../src/widgets/infowidget.cpp" line="44"/>
+        <source>screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/infowidget.cpp" line="55"/>
+        <source>version:v1.0.0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/infowidget.cpp" line="67"/>
+        <source>Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/infowidget.cpp" line="80"/>
+        <source>Service and support teams:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
