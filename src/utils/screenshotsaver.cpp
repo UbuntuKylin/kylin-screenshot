@@ -23,11 +23,22 @@
 #include <QMessageBox>
 #include <QImageWriter>
 #include <QStandardPaths>
+#include <QFileInfo>
 #include "mysavedialog.h"
-QString typeStr = ".png";
-QString PathStr = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0);
 ScreenshotSaver::ScreenshotSaver()
 {
+    ScreenshotGsettings = new QGSettings("org.ukui.screenshot");
+    m_savePath = ScreenshotGsettings->get("screenshot-path").toString();
+    m_saveName = ScreenshotGsettings->get("screenshot-name").toString();
+    m_saveType = ScreenshotGsettings->get("screenshot-type").toString();
+    if (m_savePath.isNull()) {
+        m_savePath = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0);
+        ScreenshotGsettings->set("screenshot-path", m_savePath);
+    }
+    if (m_saveType.isNull()) {
+        m_saveType = ".png";
+        ScreenshotGsettings->set("screenshot-type", m_saveType);
+    }
 }
 
 void ScreenshotSaver::saveToClipboard(const QPixmap &capture)
@@ -39,8 +50,9 @@ void ScreenshotSaver::saveToClipboard(const QPixmap &capture)
 
 bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture, const QString &path)
 {
-    QString completePath = FileNameHandler().generateAbsolutePath(PathStr);  // = FileNameHandler().generateAbsolutePath(path);
-    completePath = completePath + typeStr; // QLatin1String(".png");
+    QString completePath = FileNameHandler().generateAbsolutePath(
+        ScreenshotGsettings->get("screenshot-path").toString());          // = FileNameHandler().generateAbsolutePath(path);
+    completePath = completePath + m_saveType; // QLatin1String(".png");
     bool ok = capture.save(completePath);
     QString saveMessage;
     QString notificationPath = completePath;
@@ -88,21 +100,17 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
         if (a->exec() == QFileDialog::Accepted) {
             QString savePath = a->selectedFiles().at(0);
 
+            QFileInfo fileName = savePath;
             if (savePath.isNull()) {
                 break;
             }
 
-            if (savePath.endsWith(QLatin1String(".png"), Qt::CaseInsensitive))
-                typeStr = ".png";
-            else if (savePath.endsWith(QLatin1String(".bmp"), Qt::CaseInsensitive))
-                typeStr = ".bmp";
-            else if (savePath.endsWith(QLatin1String(".jpg"), Qt::CaseInsensitive))
-                typeStr = ".jpg";
-            else {
-                typeStr = ".png";
+            if (fileName.suffix().isNull()) {
                 savePath += QLatin1String(".png");
             }
-            QString name = a->filename();
+            fileName = savePath;
+            ScreenshotGsettings->set("screenshot-type", QLatin1String(".") +fileName.suffix());
+            QString name = fileName.fileName();
             QString msg;
             if (!name.startsWith(QChar('.'), Qt::CaseInsensitive)) {
                 ok = capture.save(savePath);
@@ -112,7 +120,8 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
                 ConfigHandler().setSavePath(pathNoFile);
                 msg = QObject::tr("Capture saved as ") + savePath;
                 SystemNotification().sendMessage(msg, savePath);
-                PathStr = pathNoFile;
+                ScreenshotGsettings->set("screenshot-path", pathNoFile);
+                ScreenshotGsettings->set("screenshot-name", name);
             } else {
                 if (name.contains(QChar('/'))) {
                     msg = QObject::tr("file name can not contains '/'");

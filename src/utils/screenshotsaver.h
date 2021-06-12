@@ -16,17 +16,20 @@
 */
 
 #pragma once
-
+#include <QGSettings/qgsettings.h>
 class QPixmap;
 class QString;
 
-class ScreenshotSaver {
+class ScreenshotSaver
+{
 public:
     ScreenshotSaver();
 
     void saveToClipboard(const QPixmap &capture);
     bool saveToFilesystem(const QPixmap &capture, const QString &path);
-    bool saveToFilesystem(const QPixmap &capture, const QString &path,const QString &type);
+    bool saveToFilesystem(const QPixmap &capture, const QString &path, const QString &type);
     bool saveToFilesystemGUI(const QPixmap &capture);
-
+private:
+    QGSettings *ScreenshotGsettings;
+    QString m_savePath, m_saveName, m_saveType;
 };
