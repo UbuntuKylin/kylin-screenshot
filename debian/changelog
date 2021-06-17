@@ -1,3 +1,9 @@
+kylin-screenshot (1.0.1-1) focal; urgency=medium
+
+  * New upstream release.
+
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Thu, 17 Jun 2021 20:05:52 +0800
+
 kylin-screenshot (1.0.0-1) unstable; urgency=medium
 
   * Initial release. (Closes: #969417)
