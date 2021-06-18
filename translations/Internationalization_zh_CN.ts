@@ -115,7 +115,7 @@
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="+74"/>
         <source>Rectangular Region</source>
-        <translation>方形区域</translation>
+        <translation>框选区域</translation>
     </message>
     <message>
         <location line="+1"/>

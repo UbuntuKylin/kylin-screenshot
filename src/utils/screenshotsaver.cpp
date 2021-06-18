@@ -52,6 +52,7 @@ bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture, const QString &pa
 {
     QString completePath = FileNameHandler().generateAbsolutePath(
         ScreenshotGsettings->get("screenshot-path").toString());          // = FileNameHandler().generateAbsolutePath(path);
+    ScreenshotGsettings->set("screenshot-name", FileNameHandler().parsedPattern()+m_saveType);
     completePath = completePath + m_saveType; // QLatin1String(".png");
     bool ok = capture.save(completePath);
     QString saveMessage;
