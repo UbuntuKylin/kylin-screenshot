@@ -10,7 +10,7 @@ ShortCutWidget::ShortCutWidget(QWidget *parent) :
     tableName = new  QLabel(this);
     setWindowTitle(tr("Screenshot"));
     font.setFamily("Noto Sans CJK SC Medium");
-    font.setWeight(16);
+    font.setPixelSize(16);
     tableName->setFont(font);
     tableName->setText(tr("ShortCut"));
     tableName->move(25, 16);
