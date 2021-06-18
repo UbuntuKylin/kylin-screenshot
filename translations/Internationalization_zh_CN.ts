@@ -77,12 +77,12 @@
         <translation type="vanished">模糊</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="+53"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="+59"/>
         <source>blur</source>
         <translation>模糊</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+10"/>
         <source>Set Blur as the paint tool</source>
         <translation>选择模糊作为绘画工具</translation>
     </message>
@@ -95,12 +95,12 @@
         <translation type="vanished">选项</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="+49"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="+48"/>
         <source>option</source>
         <translation>选项</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+18"/>
         <source>Save</source>
         <translatorcomment>保存</translatorcomment>
         <translation>保存</translation>
@@ -115,7 +115,7 @@
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="+74"/>
         <source>Rectangular Region</source>
-        <translation>框选区域</translation>
+        <translation>方形区域</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -169,7 +169,7 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+111"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+112"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
@@ -423,7 +423,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+110"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -450,7 +450,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+114"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+122"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -1516,34 +1516,34 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="+126"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1162"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="+137"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1227"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="-75"/>
         <location line="+22"/>
-        <location line="+41"/>
+        <location line="+37"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="-6"/>
         <source>Capture saved as </source>
         <translation>捕获已保存为 </translation>
     </message>
     <message>
-        <location line="-77"/>
+        <location line="-74"/>
         <source>Capture saved to clipboard</source>
         <translation>捕获已保存至剪贴板</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+18"/>
         <location line="+21"/>
-        <location line="+48"/>
+        <location line="+47"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="+3"/>
         <source>Error trying to save as </source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location line="-4"/>
+        <location line="-6"/>
         <source>file name can not contains &apos;/&apos;</source>
         <translatorcomment>保存文件名称中不能包含字符&apos;/&apos;</translatorcomment>
         <translation>保存文件名称中不能包含字符&apos;/&apos;</translation>
@@ -1553,6 +1553,11 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <source>can not save file as hide file</source>
         <translatorcomment>不能将文件保存为隐藏文件</translatorcomment>
         <translation>不能将文件保存为隐藏文件</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>can not save  because filename too long</source>
+        <translation>由于文件名太长而无法保存</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="+97"/>
@@ -1659,7 +1664,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location</name>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="+63"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="+71"/>
         <source>save location</source>
         <translatorcomment>存储位置</translatorcomment>
         <translation>存储位置</translation>
@@ -1674,7 +1679,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location2</name>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="+64"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="+72"/>
         <source>save location</source>
         <translatorcomment>存储位置</translatorcomment>
         <translation>存储位置</translation>
@@ -1724,7 +1729,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="+91"/>
+        <location filename="../src/utils/screengrabber.cpp" line="+96"/>
         <source>Unable to capture screen</source>
         <translation>无法捕获屏幕</translation>
     </message>
@@ -2177,7 +2182,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>截图，由麒麟软件开发,包括可以在计算机上运行的程序,通常采用软件开发工具可以进行开发。</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+16"/>
         <source>Service and support teams:</source>
         <translation>服务与支持团队：</translation>
     </message>

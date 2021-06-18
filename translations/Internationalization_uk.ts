@@ -77,12 +77,12 @@
         <translation type="vanished">Розмиття</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="53"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="59"/>
         <source>blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="61"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="69"/>
         <source>Set Blur as the paint tool</source>
         <translation>Вибрати розмиття інструментом малювання</translation>
     </message>
@@ -90,12 +90,12 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="49"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="48"/>
         <source>option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="68"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="66"/>
         <source>Save</source>
         <translation type="unfinished">Зберегти</translation>
     </message>
@@ -151,17 +151,17 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="111"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="112"/>
         <source>Unable to capture screen</source>
         <translation>Не вдалось захопити екран</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="301"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="302"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="445"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="446"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -178,7 +178,7 @@ Press Space to open the side panel.</source>
 Натисніть Пробіл, щоб відкрити бічну панель.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="406"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="407"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -378,22 +378,22 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="110"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Перекреслення</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="105"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="113"/>
         <source>Underline</source>
         <translation type="unfinished">Підкреслення</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="109"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="117"/>
         <source>Bold</source>
         <translation type="unfinished">Жирний</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="111"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="119"/>
         <source>Italic</source>
         <translation type="unfinished">Курсив</translation>
     </message>
@@ -401,22 +401,22 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="114"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="122"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Перекреслення</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="115"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="123"/>
         <source>Underline</source>
         <translation type="unfinished">Підкреслення</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="116"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="124"/>
         <source>Bold</source>
         <translation type="unfinished">Жирний</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="117"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="125"/>
         <source>Italic</source>
         <translation type="unfinished">Курсив</translation>
     </message>
@@ -1413,40 +1413,45 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="126"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1568"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="137"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1634"/>
         <source>Save Error</source>
         <translation>Помилка збереження</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="50"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="72"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="113"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1562"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="62"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="84"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="121"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1628"/>
         <source>Capture saved as </source>
         <translation>Знімок збережено як </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="36"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <source>Capture saved to clipboard</source>
         <translation>Знімок збережено до буферу обміну</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="53"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="74"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1565"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="65"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="86"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="133"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1631"/>
         <source>Error trying to save as </source>
         <translation>Помилка під час збереження як </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="118"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="127"/>
         <source>file name can not contains &apos;/&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="120"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="129"/>
         <source>can not save file as hide file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/utils/screenshotsaver.cpp" line="131"/>
+        <source>can not save  because filename too long</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1543,12 +1548,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location</name>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="63"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="71"/>
         <source>save location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="73"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="81"/>
         <source>save type</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1556,12 +1561,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location2</name>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="64"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="72"/>
         <source>save location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="74"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="82"/>
         <source>save type</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1569,7 +1574,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="91"/>
+        <location filename="../src/utils/screengrabber.cpp" line="96"/>
         <source>Unable to capture screen</source>
         <translation>Не вдалось захопити екран</translation>
     </message>
@@ -1989,7 +1994,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="80"/>
+        <location filename="../src/widgets/infowidget.cpp" line="83"/>
         <source>Service and support teams:</source>
         <translation type="unfinished"></translation>
     </message>

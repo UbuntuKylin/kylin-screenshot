@@ -36,7 +36,7 @@ ScreenshotSaver::ScreenshotSaver()
         ScreenshotGsettings->set("screenshot-path", m_savePath);
     }
     if (m_saveType.isNull()) {
-        m_saveType = ".png";
+        m_saveType = QLatin1String(".png");
         ScreenshotGsettings->set("screenshot-type", m_saveType);
     }
 }
@@ -52,7 +52,6 @@ bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture, const QString &pa
 {
     QString completePath = FileNameHandler().generateAbsolutePath(
         ScreenshotGsettings->get("screenshot-path").toString());          // = FileNameHandler().generateAbsolutePath(path);
-    ScreenshotGsettings->set("screenshot-name", FileNameHandler().parsedPattern()+m_saveType);
     completePath = completePath + m_saveType; // QLatin1String(".png");
     bool ok = capture.save(completePath);
     QString saveMessage;
@@ -128,6 +127,8 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
                     msg = QObject::tr("file name can not contains '/'");
                 } else if (name.startsWith(QChar('.'), Qt::CaseInsensitive)) {
                     msg = QObject::tr("can not save file as hide file");
+                } else if (name.length() > 255) {
+                    msg = QObject::tr("can not save  because filename too long");
                 } else {
                     msg = QObject::tr("Error trying to save as ") + savePath;
                 }
@@ -135,8 +136,6 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
                     QMessageBox::Warning,
                     QObject::tr("Save Error"),
                     msg);
-                saveErrBox.setWindowIcon(QIcon(
-                                             "/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
                 saveErrBox.exec();
             }
         } else {
