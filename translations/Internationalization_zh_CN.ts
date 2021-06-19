@@ -77,12 +77,12 @@
         <translation type="vanished">模糊</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="+59"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="+53"/>
         <source>blur</source>
         <translation>模糊</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+8"/>
         <source>Set Blur as the paint tool</source>
         <translation>选择模糊作为绘画工具</translation>
     </message>
@@ -115,15 +115,15 @@
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="+74"/>
         <source>Rectangular Region</source>
-        <translation>方形区域</translation>
+        <translation>框选区域</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Full Screen (All Monitors)</source>
-        <translation>全屏（所有显示器）</translation>
+        <translation>全屏截图</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+16"/>
         <source>Take shot</source>
         <translation>开始截图</translation>
     </message>
@@ -132,7 +132,7 @@
         <translation type="vanished">无延迟</translation>
     </message>
     <message>
-        <location line="-46"/>
+        <location line="-47"/>
         <source>Screenshot</source>
         <translation>截图</translation>
     </message>
@@ -142,7 +142,7 @@
         <translation>捕获模式</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+23"/>
         <source> second</source>
         <translation> 秒</translation>
     </message>
@@ -1516,8 +1516,8 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="+137"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1227"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="+138"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1205"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -1530,12 +1530,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>捕获已保存为 </translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-75"/>
         <source>Capture saved to clipboard</source>
         <translation>捕获已保存至剪贴板</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <location line="+21"/>
         <location line="+47"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="+3"/>
@@ -1729,7 +1729,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="+96"/>
+        <location filename="../src/utils/screengrabber.cpp" line="+91"/>
         <source>Unable to capture screen</source>
         <translation>无法捕获屏幕</translation>
     </message>
@@ -2167,7 +2167,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>infoWidget</name>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="+44"/>
+        <location filename="../src/widgets/infowidget.cpp" line="+47"/>
         <source>screenshot</source>
         <translation>截图</translation>
     </message>
@@ -2177,14 +2177,18 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>版本:v1.0.0</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+11"/>
         <source>Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools.</source>
         <translation>截图，由麒麟软件开发,包括可以在计算机上运行的程序,通常采用软件开发工具可以进行开发。</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+21"/>
+        <source>SUPPORT:%1</source>
+        <translation>服务与支持团队:%1</translation>
+    </message>
+    <message>
         <source>Service and support teams:</source>
-        <translation>服务与支持团队：</translation>
+        <translation type="vanished">服务与支持团队：</translation>
     </message>
 </context>
 <context>

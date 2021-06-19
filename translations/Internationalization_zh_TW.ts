@@ -77,12 +77,12 @@
         <translation type="vanished">模糊</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="59"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="53"/>
         <source>blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="69"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="61"/>
         <source>Set Blur as the paint tool</source>
         <translation>選擇模糊作為繪製工具</translation>
     </message>
@@ -123,27 +123,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="86"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="87"/>
         <source> second</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="86"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="87"/>
         <source> seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="90"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="91"/>
         <source>Take shot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="101"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="102"/>
         <source>Area:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="106"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="107"/>
         <source>Delay:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1393,16 +1393,16 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="137"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1634"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="138"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1612"/>
         <source>Save Error</source>
         <translation>存檔錯誤</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="62"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="84"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="121"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1628"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="63"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="85"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1606"/>
         <source>Capture saved as </source>
         <translation>截圖已另存為 </translation>
     </message>
@@ -1412,25 +1412,25 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="65"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="86"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="133"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1631"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="66"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="87"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="134"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1609"/>
         <source>Error trying to save as </source>
         <translation>嘗試另存新檔時發生錯誤 </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="127"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="128"/>
         <source>file name can not contains &apos;/&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="129"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="130"/>
         <source>can not save file as hide file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="131"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="132"/>
         <source>can not save  because filename too long</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1554,7 +1554,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>ScreenGrabber</name>
     <message>
-        <location filename="../src/utils/screengrabber.cpp" line="96"/>
+        <location filename="../src/utils/screengrabber.cpp" line="91"/>
         <source>Unable to capture screen</source>
         <translation type="unfinished">無法擷取螢幕</translation>
     </message>
@@ -1955,23 +1955,23 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>infoWidget</name>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="44"/>
+        <location filename="../src/widgets/infowidget.cpp" line="47"/>
         <source>screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="55"/>
+        <location filename="../src/widgets/infowidget.cpp" line="58"/>
         <source>version:v1.0.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="67"/>
+        <location filename="../src/widgets/infowidget.cpp" line="69"/>
         <source>Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="83"/>
-        <source>Service and support teams:</source>
+        <location filename="../src/widgets/infowidget.cpp" line="90"/>
+        <source>SUPPORT:%1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

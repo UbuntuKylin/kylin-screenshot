@@ -5,7 +5,10 @@
 #include <QScrollBar>
 #include <QPainter>
 #include <QPainterPath>
+#include <QDesktopServices>
 
+#define SUPPORT \
+    "< a href=  \"mailto://support@kylinos.cn\" style=\"color:palette(buttonText)\">support@kylinos.cn</ a>"
 infoWidget::infoWidget(QWidget *parent) :
     QWidget(parent)
 {
@@ -63,7 +66,6 @@ infoWidget::infoWidget(QWidget *parent) :
     font.setBold(false);
     font.setPixelSize(14);
     m_Descript->setFont(font);
-    // QTextBlockFormat blockFormat;
     m_Descript->setText(tr(
                             "Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools."));
     QString locale = QLocale::system().name();
@@ -77,18 +79,14 @@ infoWidget::infoWidget(QWidget *parent) :
     pl.setBrush(QPalette::Base, QBrush(QColor(255, 0, 0, 0)));
 
     m_Descript->setPalette(pl);
-    m_supportFrom = new QLabel(this);
-    m_supportFrom->setFixedSize(104, 32);
-
-    m_supportFrom->setText(tr("Service and support teams:"));
-    m_supportFrom->setFont(font);
-
     m_EmailInfo = new QLabel(this);
-    m_EmailInfo->setFixedSize(150, 32);
-
-    font.setUnderline(true);
+    connect(m_EmailInfo, &QLabel::linkActivated, this, [=](const QString url) {
+        QDesktopServices::openUrl(QUrl(url));
+    });
+    m_EmailInfo->setFixedSize(350, 32);
     m_EmailInfo->setFont(font);
-    m_EmailInfo->setText("support@kylinos.cn");
+    m_EmailInfo->setText(tr("SUPPORT:%1").arg(SUPPORT));
+    // m_EmailInfo->setText("support@kylinos.cn");
     if (locale == "zh_CN") {
         QTextBlockFormat blockFormat;
         blockFormat.setLineHeight(10, QTextBlockFormat::LineDistanceHeight);
@@ -96,8 +94,7 @@ infoWidget::infoWidget(QWidget *parent) :
         textCursor.setBlockFormat(blockFormat);
         m_Descript->setTextCursor(textCursor);
         m_Descript->setFixedHeight(120);
-        m_supportFrom->move(32, 310);
-        m_EmailInfo->move(147, 310);
+        m_EmailInfo->move(32, 310);
     } else {
         QTextBlockFormat blockFormat;
         blockFormat.setLineHeight(6, QTextBlockFormat::LineDistanceHeight);
@@ -106,8 +103,7 @@ infoWidget::infoWidget(QWidget *parent) :
         m_Descript->setTextCursor(textCursor);
         m_Descript->setFixedHeight(140);
         setFixedSize(388, 410);
-        m_supportFrom->move(32, 350);
-        m_EmailInfo->move(147, 350);
+        m_EmailInfo->move(32, 350);
     }
 }
 

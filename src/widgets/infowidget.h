@@ -27,7 +27,6 @@ private:
     QLabel *m_appName;
     QLabel *m_appVersion;
     QTextEdit *m_Descript;
-    QLabel *m_supportFrom;
     QLabel *m_EmailInfo;
     CaptureContext context;
 };
