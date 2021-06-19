@@ -731,6 +731,7 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e)
             isMove = true;
         }
         m_selection->saveGeometry();
+        m_selection->setVisible(true);
         isReleaseButton = false;
     }
     updateCursor();

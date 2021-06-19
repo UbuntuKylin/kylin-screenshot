@@ -31,11 +31,11 @@ ScreenshotSaver::ScreenshotSaver()
     m_savePath = ScreenshotGsettings->get("screenshot-path").toString();
     m_saveName = ScreenshotGsettings->get("screenshot-name").toString();
     m_saveType = ScreenshotGsettings->get("screenshot-type").toString();
-    if (m_savePath.isNull()) {
+    if (m_savePath == "" || m_savePath.isNull()) {
         m_savePath = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0);
         ScreenshotGsettings->set("screenshot-path", m_savePath);
     }
-    if (m_saveType.isNull()) {
+    if (m_saveType == "" || m_saveType.isNull()) {
         m_saveType = QLatin1String(".png");
         ScreenshotGsettings->set("screenshot-type", m_saveType);
     }
@@ -52,6 +52,7 @@ bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture, const QString &pa
 {
     QString completePath = FileNameHandler().generateAbsolutePath(
         ScreenshotGsettings->get("screenshot-path").toString());          // = FileNameHandler().generateAbsolutePath(path);
+    ScreenshotGsettings->set("screenshot-name", FileNameHandler().parsedPattern());
     completePath = completePath + m_saveType; // QLatin1String(".png");
     bool ok = capture.save(completePath);
     QString saveMessage;
