@@ -6,7 +6,7 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QDesktopServices>
-
+#include <QVector4D>
 #define SUPPORT \
     "< a href=  \"mailto://support@kylinos.cn\" style=\"color:palette(buttonText)\">support@kylinos.cn</ a>"
 infoWidget::infoWidget(QWidget *parent) :
