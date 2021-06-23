@@ -33,20 +33,21 @@
 
 // ConfigWindow contains the menus where you can configure the application
 
-ConfigWindow::ConfigWindow(QWidget *parent) : QTabWidget(parent) {
+ConfigWindow::ConfigWindow(QWidget *parent) : QTabWidget(parent)
+{
     setAttribute(Qt::WA_DeleteOnClose);
     const int size = GlobalValues::buttonBaseSize() * 12;
     setMinimumSize(size, size);
-    setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
+    // setWindowIcon(QIcon("/usr/share/icons/ukui-icon-theme-default/128x128/apps/kylin-screenshot.png"));
     setWindowTitle(tr("Configuration"));
 
     auto changedSlot = [this](QString s){
-        QStringList files = m_configWatcher->files();
-        if (!files.contains(s)) {
-            this->m_configWatcher->addPath(s);
-        }
-        emit updateChildren();
-    };
+                           QStringList files = m_configWatcher->files();
+                           if (!files.contains(s)) {
+                               this->m_configWatcher->addPath(s);
+                           }
+                           emit updateChildren();
+                       };
     m_configWatcher = new QFileSystemWatcher(this);
     m_configWatcher->addPath(ConfigHandler().configFilePath());
     connect(m_configWatcher, &QFileSystemWatcher::fileChanged,
@@ -54,8 +55,8 @@ ConfigWindow::ConfigWindow(QWidget *parent) : QTabWidget(parent) {
 
     QColor background = this->palette().background().color();
     bool isDark = ColorUtils::colorIsDark(background);
-    QString modifier = isDark ? PathInfo::whiteIconPath() :
-                                PathInfo::blackIconPath();
+    QString modifier = isDark ? PathInfo::whiteIconPath()
+                       : PathInfo::blackIconPath();
 
     // visuals
     m_visuals = new VisualsEditor();
@@ -81,8 +82,9 @@ ConfigWindow::ConfigWindow(QWidget *parent) : QTabWidget(parent) {
             m_generalConfig, &GeneneralConf::updateComponents);
 }
 
-void ConfigWindow::keyPressEvent(QKeyEvent *e) {
+void ConfigWindow::keyPressEvent(QKeyEvent *e)
+{
     if (e->key() == Qt::Key_Escape) {
-            close();
+        close();
     }
 }

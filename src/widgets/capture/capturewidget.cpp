@@ -136,7 +136,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
         resize(pixmap().size());
     }
     auto devicePixelRatio = m_context.screenshot.devicePixelRatio();
-    // 照当前窗口活跃状态存储窗口ID
+    // 当前窗口活跃状态存储窗口ID
     QList<WId> windows = KWindowSystem::stackingOrder();
     for (long long unsigned int const id: windows) {
         // 获取窗口状态信息
@@ -176,6 +176,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
         areas.append(rect());
     }
     m_buttonHandler->updateScreenRegions(areas);
+
     m_buttonHandler->hide();
 
     initSelection();
@@ -755,6 +756,7 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
             m_selection->setVisible(true);
             m_selection->setGeometry(
                 QRect(m_dragStartPoint, m_context.mousePos).normalized());
+            m_selection->setVisible(true);
             update();
         } else if (isPressButton && !m_activeButton) {
             // updateCursor();

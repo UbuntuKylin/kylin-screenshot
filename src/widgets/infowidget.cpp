@@ -105,6 +105,11 @@ infoWidget::infoWidget(QWidget *parent) :
         setFixedSize(388, 410);
         m_EmailInfo->move(32, 350);
     }
+    setProperty("useCustomShadow", true); // 启用协议
+    setProperty("customShadowDarkness", 1.0);    // 阴影暗度
+    setProperty("customShadowWidth", 10);    // 阴影边距大小
+    setProperty("customShadowRadius", QVector4D(6, 6, 6, 6));   // 阴影圆角，必须大于0，这个值应该和frameless窗口本身绘制的形状吻合
+    setProperty("customShadowMargins", QVector4D(10, 10, 10, 10));   // 阴影与窗口边缘的距离，一般和customShadowWidth保持一致
 }
 
 void infoWidget::paintEvent(QPaintEvent *event)
