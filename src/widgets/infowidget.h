@@ -9,6 +9,7 @@
 #include <QFont>
 #include <QPaintEvent>
 #include "src/tools/capturecontext.h"
+
 class infoWidget : public QWidget
 {
     Q_OBJECT
@@ -20,6 +21,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *event);
 private:
+    CaptureContext context;
     QPushButton *m_exitButton;
     QFont font;
     // QVBoxLayout *m_layout;
@@ -28,6 +30,5 @@ private:
     QLabel *m_appVersion;
     QTextEdit *m_Descript;
     QLabel *m_EmailInfo;
-    CaptureContext context;
 };
 #endif // WIDGET_H

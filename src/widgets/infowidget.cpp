@@ -7,11 +7,12 @@
 #include <QPainterPath>
 #include <QDesktopServices>
 #include <QVector4D>
-#define SUPPORT \
-    "< a href=  \"mailto://support@kylinos.cn\" style=\"color:palette(buttonText)\">support@kylinos.cn</ a>"
+
 infoWidget::infoWidget(QWidget *parent) :
     QWidget(parent)
 {
+    context.style_settings = new QGSettings("org.ukui.style");
+    context.style_name = context.style_settings->get("style-name").toString();
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
     setFixedSize(388, 384);
@@ -23,16 +24,10 @@ infoWidget::infoWidget(QWidget *parent) :
     m_exitButton->move(356, 12);
     connect(m_exitButton, &QPushButton::clicked,
             this, &infoWidget::close);
-    // 取消按钮默认灰色背景
-    QPalette palette = m_exitButton->palette();
-    QColor ColorPlaceholderText(255, 255, 255, 0);
-    QBrush brush;
-    brush.setColor(ColorPlaceholderText);
-    palette.setBrush(QPalette::Button, brush);
-    palette.setBrush(QPalette::ButtonText, brush);
-    m_exitButton->setPalette(palette);
-    m_exitButton->setProperty("isWindowButton", 0x1);
-    m_exitButton->setProperty("useIconHighlightEffect", 0x2);
+
+    m_exitButton->setProperty("isWindowButton", 0x2);
+    m_exitButton->setProperty("useIconHighlightEffect", 0x8);
+    m_exitButton->setFlat(true);
     m_appIcon = new  QLabel(this);
     m_appIcon->setPixmap(QPixmap(QIcon::fromTheme("kylin-screenshot").pixmap(QSize(96, 96))));
     m_appIcon->setAlignment(Qt::AlignHCenter);
@@ -61,7 +56,7 @@ infoWidget::infoWidget(QWidget *parent) :
     m_appVersion->setAlignment(Qt::AlignHCenter);
 
     m_Descript = new QTextEdit(this);
-    // m_Descript->setReadOnly(true);
+    m_Descript->setReadOnly(true);
     font.setFamily("Noto Sans CJK SC Regular");
     font.setBold(false);
     font.setPixelSize(14);
@@ -75,18 +70,28 @@ infoWidget::infoWidget(QWidget *parent) :
     m_Descript->setFrameShape(QFrame::NoFrame);
     m_Descript->move(32, 238);
 
-    QPalette pl = m_Descript->palette();
-    pl.setBrush(QPalette::Base, QBrush(QColor(255, 0, 0, 0)));
+// QPalette pl = m_Descript->palette();
+// pl.setBrush(QPalette::Base, QBrush(QColor(255, 0, 0, 0)));
 
-    m_Descript->setPalette(pl);
+// m_Descript->setPalette(pl);
     m_EmailInfo = new QLabel(this);
     connect(m_EmailInfo, &QLabel::linkActivated, this, [=](const QString url) {
         QDesktopServices::openUrl(QUrl(url));
     });
     m_EmailInfo->setFixedSize(350, 32);
     m_EmailInfo->setFont(font);
+    QString SUPPORT;
+    if ((context.style_name.compare("ukui-dark") == 0)
+        || (context.style_name.compare("ukui-black") == 0)) {
+        SUPPORT
+            =
+                "<a href= \"mailto://support@kylinos.cn\" style=\"color:white\">support@kylinos.cn</a>";
+    } else {
+        SUPPORT
+            =
+                "<a href= \"mailto://support@kylinos.cn\" style=\"color:black\">support@kylinos.cn</a>";
+    }
     m_EmailInfo->setText(tr("SUPPORT:%1").arg(SUPPORT));
-    // m_EmailInfo->setText("support@kylinos.cn");
     if (locale == "zh_CN") {
         QTextBlockFormat blockFormat;
         blockFormat.setLineHeight(10, QTextBlockFormat::LineDistanceHeight);
