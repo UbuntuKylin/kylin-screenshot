@@ -156,12 +156,12 @@
         <translation>Nie można przechwycić ekranu</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="302"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="303"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="446"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="447"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -177,7 +177,7 @@ Prawy klik, aby pokazać próbnik kolorów.
 Spacja, aby pokazać panel boczny.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="407"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="408"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -198,22 +198,22 @@ Spacja, aby pokazać panel boczny.</translation>
 <context>
     <name>ConfigWindow</name>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="41"/>
+        <location filename="../src/config/configwindow.cpp" line="42"/>
         <source>Configuration</source>
         <translation>Konfiguracja</translation>
     </message>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="63"/>
+        <location filename="../src/config/configwindow.cpp" line="64"/>
         <source>Interface</source>
         <translation>Interfejs</translation>
     </message>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="68"/>
+        <location filename="../src/config/configwindow.cpp" line="69"/>
         <source>Filename Editor</source>
         <translation>Edytor nazw plików</translation>
     </message>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="73"/>
+        <location filename="../src/config/configwindow.cpp" line="74"/>
         <source>General</source>
         <translation>Ogólne</translation>
     </message>
@@ -236,9 +236,13 @@ Spacja, aby pokazać panel boczny.</translation>
         <translation>&amp;Konfiguracja</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="271"/>
         <source>&amp;Information</source>
-        <translation>&amp;Informacje</translation>
+        <translation type="vanished">&amp;Informacje</translation>
+    </message>
+    <message>
+        <location filename="../src/core/controller.cpp" line="271"/>
+        <source>&amp;About</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/controller.cpp" line="274"/>
@@ -1409,7 +1413,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="138"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1612"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1614"/>
         <source>Save Error</source>
         <translation>Błąd zapisu</translation>
     </message>
@@ -1417,7 +1421,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="63"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="85"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1606"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1608"/>
         <source>Capture saved as </source>
         <translation>Zaznaczenie zapisano jako </translation>
     </message>
@@ -1430,7 +1434,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="66"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="87"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="134"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1609"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1611"/>
         <source>Error trying to save as </source>
         <translation>Błąd przy próbie zapisu jako </translation>
     </message>
@@ -1974,22 +1978,22 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>infoWidget</name>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="47"/>
+        <location filename="../src/widgets/infowidget.cpp" line="38"/>
         <source>screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="58"/>
+        <location filename="../src/widgets/infowidget.cpp" line="49"/>
         <source>version:v1.0.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="69"/>
-        <source>Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools.</source>
+        <location filename="../src/widgets/infowidget.cpp" line="59"/>
+        <source>Screenshot is an easy to use application.that supports the basic screenshot function,but also provides the draw rectangle tool, draw a circle tool, blur, add annotations, add text and other functions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="90"/>
+        <location filename="../src/widgets/infowidget.cpp" line="88"/>
         <source>SUPPORT:%1</source>
         <translation type="unfinished"></translation>
     </message>

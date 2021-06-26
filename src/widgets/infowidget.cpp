@@ -1,8 +1,5 @@
 #include "infowidget.h"
 #include <QDebug>
-#include <QTextBlockFormat>
-#include <QDebug>
-#include <QScrollBar>
 #include <QPainter>
 #include <QPainterPath>
 #include <QDesktopServices>
@@ -19,7 +16,6 @@ infoWidget::infoWidget(QWidget *parent) :
     m_exitButton = new QPushButton(this);
 
     m_exitButton->setIcon(QIcon::fromTheme("window-close-symbolic"));
-    // m_exitButton->setAttribute(Qt::WA_TranslucentBackground);
     m_exitButton->setFixedSize(24, 24);
     m_exitButton->move(356, 12);
     connect(m_exitButton, &QPushButton::clicked,
@@ -46,34 +42,32 @@ infoWidget::infoWidget(QWidget *parent) :
 
     m_appVersion = new QLabel(this);
     font.setFamily("Noto Sans CJK SC Regular");
-    font.setWeight(14);
+    // font.setWeight(14);
     font.setBold(false);
-    // font.setPixelSize(14);
+    font.setPixelSize(14);
     m_appVersion->setFont(font);
     m_appVersion->setText(tr("version:v1.0.0"));
     m_appVersion->setFixedSize(388, 25);
     m_appVersion->move(0, 190);
     m_appVersion->setAlignment(Qt::AlignHCenter);
 
-    m_Descript = new QTextEdit(this);
-    m_Descript->setReadOnly(true);
+    m_Descript = new QLabel(this);
     font.setFamily("Noto Sans CJK SC Regular");
     font.setBold(false);
     font.setPixelSize(14);
     m_Descript->setFont(font);
-    m_Descript->setText(tr(
-                            "Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools."));
+    m_Descript->setText(tr("Screenshot is an easy to use application."
+                           "that supports the basic screenshot function,"
+                           "but also provides the draw rectangle tool, "
+                           "draw a circle tool, blur, add annotations, "
+                           "add text and other functions"));
     QString locale = QLocale::system().name();
-    m_Descript->verticalScrollBar()->hide();
-    m_Descript->setWordWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
+    m_Descript->setAlignment(Qt::AlignJustify);
+    m_Descript->setWordWrap(true);
     m_Descript->setMinimumWidth(324);
     m_Descript->setFrameShape(QFrame::NoFrame);
     m_Descript->move(32, 238);
 
-// QPalette pl = m_Descript->palette();
-// pl.setBrush(QPalette::Base, QBrush(QColor(255, 0, 0, 0)));
-
-// m_Descript->setPalette(pl);
     m_EmailInfo = new QLabel(this);
     connect(m_EmailInfo, &QLabel::linkActivated, this, [=](const QString url) {
         QDesktopServices::openUrl(QUrl(url));
@@ -93,19 +87,9 @@ infoWidget::infoWidget(QWidget *parent) :
     }
     m_EmailInfo->setText(tr("SUPPORT:%1").arg(SUPPORT));
     if (locale == "zh_CN") {
-        QTextBlockFormat blockFormat;
-        blockFormat.setLineHeight(10, QTextBlockFormat::LineDistanceHeight);
-        auto textCursor = m_Descript->textCursor();
-        textCursor.setBlockFormat(blockFormat);
-        m_Descript->setTextCursor(textCursor);
         m_Descript->setFixedHeight(120);
         m_EmailInfo->move(32, 310);
     } else {
-        QTextBlockFormat blockFormat;
-        blockFormat.setLineHeight(6, QTextBlockFormat::LineDistanceHeight);
-        auto textCursor = m_Descript->textCursor();
-        textCursor.setBlockFormat(blockFormat);
-        m_Descript->setTextCursor(textCursor);
         m_Descript->setFixedHeight(140);
         setFixedSize(388, 410);
         m_EmailInfo->move(32, 350);

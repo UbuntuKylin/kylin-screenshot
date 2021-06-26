@@ -175,7 +175,7 @@
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+191"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -228,7 +228,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>ConfigWindow</name>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="+41"/>
+        <location filename="../src/config/configwindow.cpp" line="+42"/>
         <source>Configuration</source>
         <translation>配置</translation>
     </message>
@@ -270,9 +270,13 @@ Press Space to open the side panel.</source>
         <translation>配置(&amp;C)</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>&amp;Information</source>
-        <translation>信息(&amp;I)</translation>
+        <translation type="vanished">信息(&amp;I)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;About</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1517,7 +1521,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+138"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1205"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1206"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -2167,7 +2171,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>infoWidget</name>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="+47"/>
+        <location filename="../src/widgets/infowidget.cpp" line="+38"/>
         <source>screenshot</source>
         <translation>截图</translation>
     </message>
@@ -2177,12 +2181,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>版本:v1.0.0</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools.</source>
-        <translation>截图，由麒麟软件开发,包括可以在计算机上运行的程序,通常采用软件开发工具可以进行开发。</translation>
+        <location line="+10"/>
+        <source>Screenshot is an easy to use application.that supports the basic screenshot function,but also provides the draw rectangle tool, draw a circle tool, blur, add annotations, add text and other functions</source>
+        <translation>截图是一款易用的应用程序。该程序支持基础的截图功能之外，还提供了绘制矩形工具、绘制圆形工具、模糊、添加标注、添加文字等功能。</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+29"/>
         <source>SUPPORT:%1</source>
         <translation>服务与支持团队:%1</translation>
     </message>

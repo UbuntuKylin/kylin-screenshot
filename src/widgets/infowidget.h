@@ -5,7 +5,6 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QVBoxLayout>
-#include <QTextEdit>
 #include <QFont>
 #include <QPaintEvent>
 #include "src/tools/capturecontext.h"
@@ -28,7 +27,7 @@ private:
     QLabel *m_appIcon;
     QLabel *m_appName;
     QLabel *m_appVersion;
-    QTextEdit *m_Descript;
+    QLabel *m_Descript;
     QLabel *m_EmailInfo;
 };
 #endif // WIDGET_H
