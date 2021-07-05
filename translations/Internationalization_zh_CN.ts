@@ -276,7 +276,7 @@ Press Space to open the side panel.</source>
     <message>
         <location line="+3"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation>关于(&amp;A)</translation>
     </message>
     <message>
         <location line="+3"/>
