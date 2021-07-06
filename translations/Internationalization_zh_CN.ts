@@ -77,12 +77,12 @@
         <translation type="vanished">模糊</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="+53"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="+59"/>
         <source>blur</source>
         <translation>模糊</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+10"/>
         <source>Set Blur as the paint tool</source>
         <translation>选择模糊作为绘画工具</translation>
     </message>
@@ -169,13 +169,13 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+112"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+113"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+191"/>
+        <location line="+205"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -186,7 +186,7 @@
         <translation type="obsolete">另存为....</translation>
     </message>
     <message>
-        <location line="+144"/>
+        <location line="+154"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1521,7 +1521,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="+138"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1206"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1180"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
@@ -2045,14 +2045,18 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="vanished">麒麟截图</translation>
     </message>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="+45"/>
+        <location filename="../src/utils/systemnotification.cpp" line="+50"/>
         <source>ScreenShot Info</source>
         <translation>截图 消息</translation>
     </message>
     <message>
-        <location line="+21"/>
-        <source>screenshot</source>
+        <location line="+18"/>
+        <source>Screenshot</source>
         <translation>截图</translation>
+    </message>
+    <message>
+        <source>screenshot</source>
+        <translation type="vanished">截图</translation>
     </message>
 </context>
 <context>

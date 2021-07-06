@@ -77,12 +77,12 @@
         <translation type="vanished">模糊</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="53"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="59"/>
         <source>blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="61"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="69"/>
         <source>Set Blur as the paint tool</source>
         <translation>選擇模糊作為繪製工具</translation>
     </message>
@@ -151,22 +151,22 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="112"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="113"/>
         <source>Unable to capture screen</source>
         <translation>無法擷取螢幕</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="303"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="318"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="447"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="472"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="408"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="433"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1398,7 +1398,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
     <name>QObject</name>
     <message>
         <location filename="../src/utils/screenshotsaver.cpp" line="138"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1614"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1613"/>
         <source>Save Error</source>
         <translation>存檔錯誤</translation>
     </message>
@@ -1406,7 +1406,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="63"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="85"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1608"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1607"/>
         <source>Capture saved as </source>
         <translation>截圖已另存為 </translation>
     </message>
@@ -1419,7 +1419,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <location filename="../src/utils/screenshotsaver.cpp" line="66"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="87"/>
         <location filename="../src/utils/screenshotsaver.cpp" line="134"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1611"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1610"/>
         <source>Error trying to save as </source>
         <translation>嘗試另存新檔時發生錯誤 </translation>
     </message>
@@ -1837,13 +1837,13 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>SystemNotification</name>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="45"/>
+        <location filename="../src/utils/systemnotification.cpp" line="50"/>
         <source>ScreenShot Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="66"/>
-        <source>screenshot</source>
+        <location filename="../src/utils/systemnotification.cpp" line="68"/>
+        <source>Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
