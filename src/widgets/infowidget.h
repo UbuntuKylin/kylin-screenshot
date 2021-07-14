@@ -7,7 +7,6 @@
 #include <QVBoxLayout>
 #include <QFont>
 #include <QPaintEvent>
-#include "src/tools/capturecontext.h"
 
 class infoWidget : public QWidget
 {
@@ -20,7 +19,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *event);
 private:
-    CaptureContext context;
+    void listenToGsettings();
     QPushButton *m_exitButton;
     QFont font;
     // QVBoxLayout *m_layout;

@@ -109,7 +109,7 @@ void BlurTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo
         scene.addItem(item);
 
         scene.render(&painter, selection, QRectF());
-        blur->setBlurRadius(20);
+        blur->setBlurRadius(40);
         scene.render(&painter, selection, QRectF());
         scene.render(&painter, selection, QRectF());
     }

@@ -4,12 +4,18 @@
 #include <QPainterPath>
 #include <QDesktopServices>
 #include <QVector4D>
+ #include <QGSettings>
+#define UKUI_STYLE_SCHEMA          "org.ukui.style"
+#define STYLE_NAME                 "styleName"
+#define STYLE_NAME_KEY_DARK        "ukui-dark"
+#define STYLE_NAME_KEY_DEFAULT     "ukui-default"
+#define STYLE_NAME_KEY_BLACK       "ukui-black"
+#define STYLE_NAME_KEY_LIGHT       "ukui-light"
+#define STYLE_NAME_KEY_WHITE       "ukui-white"
 
 infoWidget::infoWidget(QWidget *parent) :
     QWidget(parent)
 {
-    context.style_settings = new QGSettings("org.ukui.style");
-    context.style_name = context.style_settings->get("style-name").toString();
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
     setFixedSize(388, 384);
@@ -74,18 +80,6 @@ infoWidget::infoWidget(QWidget *parent) :
     });
     m_EmailInfo->setFixedSize(350, 32);
     m_EmailInfo->setFont(font);
-    QString SUPPORT;
-    if ((context.style_name.compare("ukui-dark") == 0)
-        || (context.style_name.compare("ukui-black") == 0)) {
-        SUPPORT
-            =
-                "<a href= \"mailto://support@kylinos.cn\" style=\"color:white\">support@kylinos.cn</a>";
-    } else {
-        SUPPORT
-            =
-                "<a href= \"mailto://support@kylinos.cn\" style=\"color:black\">support@kylinos.cn</a>";
-    }
-    m_EmailInfo->setText(tr("SUPPORT:%1").arg(SUPPORT));
     if (locale == "zh_CN") {
         m_Descript->setFixedHeight(120);
         m_EmailInfo->move(32, 310);
@@ -99,6 +93,7 @@ infoWidget::infoWidget(QWidget *parent) :
     setProperty("customShadowWidth", 10);    // 阴影边距大小
     setProperty("customShadowRadius", QVector4D(6, 6, 6, 6));   // 阴影圆角，必须大于0，这个值应该和frameless窗口本身绘制的形状吻合
     setProperty("customShadowMargins", QVector4D(10, 10, 10, 10));   // 阴影与窗口边缘的距离，一般和customShadowWidth保持一致
+    listenToGsettings();
 }
 
 void infoWidget::paintEvent(QPaintEvent *event)
@@ -115,6 +110,37 @@ void infoWidget::paintEvent(QPaintEvent *event)
     // 也可用QPainterPath 绘制代替 painter.drawRoundedRect(rect, 15, 15);
 
     QWidget::paintEvent(event);
+}
+
+void infoWidget::listenToGsettings()
+{
+    const QByteArray styleID(UKUI_STYLE_SCHEMA);
+    QStringList stylelist;
+    if (QGSettings::isSchemaInstalled(styleID)) {
+        QGSettings *styleUKUI = new QGSettings(styleID, QByteArray(), this);
+        stylelist << STYLE_NAME_KEY_DARK << STYLE_NAME_KEY_BLACK;
+        // <<STYLE_NAME_KEY_DEFAULT;
+        if (stylelist.contains(styleUKUI->get(STYLE_NAME).toString())) {
+            m_EmailInfo->setText(tr("SUPPORT:%1").arg(
+                                     "<a href= \"mailto://support@kylinos.cn\" style=\"color:white\">support@kylinos.cn</a>"));
+        } else {
+            m_EmailInfo->setText(tr("SUPPORT:%1").arg(
+                                     "<a href= \"mailto://support@kylinos.cn\" style=\"color:black\">support@kylinos.cn</a>"));
+        }
+        connect(styleUKUI, &QGSettings::changed, this, [=](const QString &key)
+        {
+            if (key == STYLE_NAME) {
+                if (stylelist.contains(styleUKUI->get(
+                                           STYLE_NAME).toString())) {
+                    m_EmailInfo->setText(tr("SUPPORT:%1").arg(
+                                             "<a href= \"mailto://support@kylinos.cn\" style=\"color:white\">support@kylinos.cn</a>"));
+                } else {
+                    m_EmailInfo->setText(tr("SUPPORT:%1").arg(
+                                             "<a href= \"mailto://support@kylinos.cn\" style=\"color:black\">support@kylinos.cn</a>"));
+                }
+            }
+        });
+    }
 }
 
 infoWidget::~infoWidget()
