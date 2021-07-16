@@ -33,24 +33,27 @@
 #include <QDir>
 #endif
 
-ScreenGrabber::ScreenGrabber(QObject *parent) : QObject(parent) {
-
+ScreenGrabber::ScreenGrabber(QObject *parent) : QObject(parent)
+{
 }
 
-QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
+QPixmap ScreenGrabber::grabEntireDesktop(bool &ok)
+{
     ok = true;
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    if(m_info.waylandDectected()) {
+    if (m_info.waylandDectected()) {
         QPixmap res;
         // handle screenshot based on DE
         switch (m_info.windowManager()) {
-        case DesktopInfo::GNOME: {
+        case DesktopInfo::GNOME:
+        {
             // https://github.com/GNOME/gnome-shell/blob/695bfb96160033be55cfb5ac41c121998f98c328/data/org.gnome.Shell.Screenshot.xml
             QString path = FileNameHandler().generateAbsolutePath(QDir::tempPath()) + ".png";
             QDBusInterface gnomeInterface(QStringLiteral("org.gnome.Shell"),
                                           QStringLiteral("/org/gnome/Shell/Screenshot"),
                                           QStringLiteral("org.gnome.Shell.Screenshot"));
-            QDBusReply<bool> reply = gnomeInterface.call(QStringLiteral("Screenshot"), false, false, path);
+            QDBusReply<bool> reply = gnomeInterface.call(QStringLiteral(
+                                                             "Screenshot"), false, false, path);
             if (reply.value()) {
                 res = QPixmap(path);
                 QFile dbusResult(path);
@@ -59,7 +62,8 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
                 ok = false;
             }
             break;
-        } case DesktopInfo::KDE: {
+        } case DesktopInfo::KDE:
+        {
             // https://github.com/KDE/spectacle/blob/517a7baf46a4ca0a45f32fd3f2b1b7210b180134/src/PlatformBackends/KWinWaylandImageGrabber.cpp#L145
             QDBusInterface kwinInterface(QStringLiteral("org.kde.KWin"),
                                          QStringLiteral("/Screenshot"),
@@ -71,12 +75,16 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
                 dbusResult.remove();
             }
             break;
-        } case DesktopInfo::UKUI: {
+        } case DesktopInfo::UKUI:
+        {
             QDBusInterface UkuiInterface(QStringLiteral("org.ukui.KWin"),
                                          QStringLiteral("/Screenshot"),
                                          QStringLiteral("org.ukui.kwin.Screenshot"));
             QDBusReply<QString> reply = UkuiInterface.call(QStringLiteral("screenshotFullscreen"));
             res = QPixmap(reply.value());
+            auto screenNumber = QApplication::desktop()->screenNumber();
+            QScreen *screen = QApplication::screens()[screenNumber];
+            res.setDevicePixelRatio(screen->devicePixelRatio());
             if (!res.isNull()) {
                 QFile dbusResult(reply.value());
                 dbusResult.remove();
@@ -93,44 +101,45 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
         return res;
     }
 #endif
-    
+
     QRect geometry;
     QVector<QRect> rects;
-    for (QScreen *const screen : QGuiApplication::screens()) {
+    for (QScreen * const screen : QGuiApplication::screens()) {
         geometry = geometry.united(screen->geometry());
-	rects.append(screen->geometry());
+        rects.append(screen->geometry());
     }
     QPixmap p1(QApplication::primaryScreen()->grabWindow(
-                  QApplication::desktop()->winId(),
-                  geometry.x(),
-                  geometry.y(),
-                  geometry.width(),
-                  geometry.height())
-              );
-    QPixmap p(p1.width(),p1.height());
+                   QApplication::desktop()->winId(),
+                   geometry.x(),
+                   geometry.y(),
+                   geometry.width(),
+                   geometry.height())
+               );
+    QPixmap p(p1.width(), p1.height());
     p.fill(QColor(Qt::black));
     QPainter painter(&p);
     auto screenNumber = QApplication::desktop()->screenNumber();
     QScreen *screen = QApplication::screens()[screenNumber];
     for (QRect const &rect : rects) {
-	 QPixmap p2 = p1.copy(
-			 QRect(rect.x() * screen->devicePixelRatio(),
-			 rect.y() * screen->devicePixelRatio() ,
-			 rect.width() * screen->devicePixelRatio() ,
-			 rect.height() * screen->devicePixelRatio())
-			 );
-	 painter.drawPixmap(
-			 QRect(rect.x() * screen->devicePixelRatio(),
-                         rect.y() * screen->devicePixelRatio() ,
-                         rect.width() * screen->devicePixelRatio() ,
-                         rect.height() * screen->devicePixelRatio()),
-			 p2);
+        QPixmap p2 = p1.copy(
+            QRect(rect.x() * screen->devicePixelRatio(),
+                  rect.y() * screen->devicePixelRatio(),
+                  rect.width() * screen->devicePixelRatio(),
+                  rect.height() * screen->devicePixelRatio())
+            );
+        painter.drawPixmap(
+            QRect(rect.x() * screen->devicePixelRatio(),
+                  rect.y() * screen->devicePixelRatio(),
+                  rect.width() * screen->devicePixelRatio(),
+                  rect.height() * screen->devicePixelRatio()),
+            p2);
     }
     p.setDevicePixelRatio(screen->devicePixelRatio());
     return p;
 }
 
-QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok) {
+QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok)
+{
     QPixmap p;
 /*    bool isVirtual = QApplication::desktop()->isVirtualDesktop();
     if (isVirtual || m_info.waylandDectected()) {
@@ -153,18 +162,15 @@ QPixmap ScreenGrabber::grabScreen(int screenNumber, bool &ok) {
         }
     }
     else {*/
-        QPixmap p1 = this->grabEntireDesktop(ok);
-        QWindow *window = QWindow::fromWinId(KWindowSystem::activeWindow());
-        if (nullptr == window)
-        {
-            qDebug() << "window is null";
-        }
-        else
-        {
-            KWindowInfo info(KWindowSystem::activeWindow(), NET::WMFrameExtents);
-            p = p1.copy(info.frameGeometry());
-        }
-        ok = true;
-    //}
+    QPixmap p1 = this->grabEntireDesktop(ok);
+    QWindow *window = QWindow::fromWinId(KWindowSystem::activeWindow());
+    if (nullptr == window) {
+        qDebug() << "window is null";
+    } else {
+        KWindowInfo info(KWindowSystem::activeWindow(), NET::WMFrameExtents);
+        p = p1.copy(info.frameGeometry());
+    }
+    ok = true;
+    // }
     return p;
 }
