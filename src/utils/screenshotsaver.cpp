@@ -96,7 +96,6 @@ bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture, const QString &pa
 bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
 {
     bool ok = false;
-    bool reName = false;
     while (!ok) {
         MySaveDialog *a = new  MySaveDialog(nullptr);
         if (a->exec() == QFileDialog::Accepted) {
@@ -115,25 +114,7 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
             QString name = fileName.fileName();
             QString msg;
             if (!name.startsWith(QChar('.'), Qt::CaseInsensitive)) {
-                if (fileName.exists()) {
-                    if (QMessageBox::Ok
-                        == QMessageBox::critical(a, QObject::tr("file already exists"),
-                                                 QObject::tr(
-                                                     "file already exists，Do you want to replace?"),
-                                                 QMessageBox::Ok
-                                                 | QMessageBox::Default,
-                                                 QMessageBox::Cancel
-                                                 | QMessageBox::Escape, 0)) {
-                        ok = capture.save(savePath);
-                        reName = false;
-                    } else {
-                        ok = false;
-                        reName = true;
-                    }
-                } else {
-                    ok = capture.save(savePath);
-                    reName = false;
-                }
+                ok = capture.save(savePath);
             }
             if (ok) {
                 QString pathNoFile = savePath.left(savePath.lastIndexOf(QLatin1String("/")));
@@ -143,22 +124,20 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
                 ScreenshotGsettings->set("screenshot-path", pathNoFile);
                 ScreenshotGsettings->set("screenshot-name", name);
             } else {
-                if (!reName) {
-                    if (name.contains(QChar('/'))) {
-                        msg = QObject::tr("file name can not contains '/'");
-                    } else if (name.startsWith(QChar('.'), Qt::CaseInsensitive)) {
-                        msg = QObject::tr("can not save file as hide file");
-                    } else if (name.length() > 255) {
-                        msg = QObject::tr("can not save  because filename too long");
-                    } else {
-                        msg = QObject::tr("Error trying to save as ") + savePath;
-                    }
-                    QMessageBox saveErrBox(
-                        QMessageBox::Warning,
-                        QObject::tr("Save Error"),
-                        msg);
-                    saveErrBox.exec();
+                if (name.contains(QChar('/'))) {
+                    msg = QObject::tr("file name can not contains '/'");
+                } else if (name.startsWith(QChar('.'), Qt::CaseInsensitive)) {
+                    msg = QObject::tr("can not save file as hide file");
+                } else if (name.length() > 255) {
+                    msg = QObject::tr("can not save  because filename too long");
+                } else {
+                    msg = QObject::tr("Error trying to save as ") + savePath;
                 }
+                QMessageBox saveErrBox(
+                    QMessageBox::Warning,
+                    QObject::tr("Save Error"),
+                    msg);
+                saveErrBox.exec();
             }
         } else {
             return ok;
