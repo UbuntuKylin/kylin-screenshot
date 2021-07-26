@@ -1,30 +1,31 @@
 /* Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
-*           2020 KylinSoft Co., Ltd.
-* This file is part of Kylin-Screenshot.
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-#include "screenshotsaver.h"
-#include "src/utils/systemnotification.h"
-#include "src/utils/filenamehandler.h"
-#include "src/utils/confighandler.h"
-#include <QClipboard>
-#include <QApplication>
-#include <QMessageBox>
-#include <QImageWriter>
-#include <QStandardPaths>
-#include <QFileInfo>
-#include "mysavedialog.h"
+    *           2020 KylinSoft Co., Ltd.
+    * This file is part of Kylin-Screenshot.
+     * This program is free software: you can redistribute it and/or modify
+     * it under the terms of the GNU General Public License as published by
+     * the Free Software Foundation, either version 3 of the License, or
+     * (at your option) any later version.
+     *
+     * This program is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     * GNU General Public License for more details.
+     *
+     * You should have received a copy of the GNU General Public License
+     * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+    */
+    #include "screenshotsaver.h"
+    #include "src/utils/systemnotification.h"
+    #include "src/utils/filenamehandler.h"
+    #include "src/utils/confighandler.h"
+    #include <QClipboard>
+    #include <QApplication>
+    #include <QMessageBox>
+    #include <QImageWriter>
+    #include <QStandardPaths>
+    #include <QFileInfo>
+    #include "mysavedialog.h"
+    #include <QDebug>
 ScreenshotSaver::ScreenshotSaver()
 {
     ScreenshotGsettings = new QGSettings("org.ukui.screenshot");
@@ -51,9 +52,9 @@ void ScreenshotSaver::saveToClipboard(const QPixmap &capture)
 bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture, const QString &path)
 {
     QString completePath = FileNameHandler().generateAbsolutePath(
-        ScreenshotGsettings->get("screenshot-path").toString());          // = FileNameHandler().generateAbsolutePath(path);
+        ScreenshotGsettings->get("screenshot-path").toString());              // = FileNameHandler().generateAbsolutePath(path);
     ScreenshotGsettings->set("screenshot-name", FileNameHandler().parsedPattern());
-    completePath = completePath + m_saveType; // QLatin1String(".png");
+    completePath = completePath + m_saveType;     // QLatin1String(".png");
     bool ok = capture.save(completePath);
     QString saveMessage;
     QString notificationPath = completePath;
@@ -95,7 +96,7 @@ bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture, const QString &pa
 bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
 {
     bool ok = false;
-
+    bool reName = false;
     while (!ok) {
         MySaveDialog *a = new  MySaveDialog(nullptr);
         if (a->exec() == QFileDialog::Accepted) {
@@ -114,7 +115,25 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
             QString name = fileName.fileName();
             QString msg;
             if (!name.startsWith(QChar('.'), Qt::CaseInsensitive)) {
-                ok = capture.save(savePath);
+                if (fileName.exists()) {
+                    if (QMessageBox::Ok
+                        == QMessageBox::critical(a, QObject::tr("file already exists"),
+                                                 QObject::tr(
+                                                     "file already exists，Do you want to replace?"),
+                                                 QMessageBox::Ok
+                                                 | QMessageBox::Default,
+                                                 QMessageBox::Cancel
+                                                 | QMessageBox::Escape, 0)) {
+                        ok = capture.save(savePath);
+                        reName = false;
+                    } else {
+                        ok = false;
+                        reName = true;
+                    }
+                } else {
+                    ok = capture.save(savePath);
+                    reName = false;
+                }
             }
             if (ok) {
                 QString pathNoFile = savePath.left(savePath.lastIndexOf(QLatin1String("/")));
@@ -124,20 +143,22 @@ bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture)
                 ScreenshotGsettings->set("screenshot-path", pathNoFile);
                 ScreenshotGsettings->set("screenshot-name", name);
             } else {
-                if (name.contains(QChar('/'))) {
-                    msg = QObject::tr("file name can not contains '/'");
-                } else if (name.startsWith(QChar('.'), Qt::CaseInsensitive)) {
-                    msg = QObject::tr("can not save file as hide file");
-                } else if (name.length() > 255) {
-                    msg = QObject::tr("can not save  because filename too long");
-                } else {
-                    msg = QObject::tr("Error trying to save as ") + savePath;
+                if (!reName) {
+                    if (name.contains(QChar('/'))) {
+                        msg = QObject::tr("file name can not contains '/'");
+                    } else if (name.startsWith(QChar('.'), Qt::CaseInsensitive)) {
+                        msg = QObject::tr("can not save file as hide file");
+                    } else if (name.length() > 255) {
+                        msg = QObject::tr("can not save  because filename too long");
+                    } else {
+                        msg = QObject::tr("Error trying to save as ") + savePath;
+                    }
+                    QMessageBox saveErrBox(
+                        QMessageBox::Warning,
+                        QObject::tr("Save Error"),
+                        msg);
+                    saveErrBox.exec();
                 }
-                QMessageBox saveErrBox(
-                    QMessageBox::Warning,
-                    QObject::tr("Save Error"),
-                    msg);
-                saveErrBox.exec();
             }
         } else {
             return ok;
