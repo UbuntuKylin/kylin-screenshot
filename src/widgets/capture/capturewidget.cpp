@@ -51,6 +51,7 @@
 #include <QStandardPaths>
 #include <QMessageBox>
 #include <QGraphicsBlurEffect>
+#include <QGraphicsDropShadowEffect>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <QBitmap>
@@ -136,7 +137,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
         resize(pixmap().size());
     }
     auto devicePixelRatio = m_context.screenshot.devicePixelRatio();
-    // 照当前窗口活跃状态存储窗口ID
+    // 当前窗口活跃状态存储窗口ID
     QList<WId> windows = KWindowSystem::stackingOrder();
     for (long long unsigned int const id: windows) {
         // 获取窗口状态信息
@@ -162,7 +163,22 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
     m_grabbing = false;
     isMove = false;
     // Create buttons
-    m_buttonHandler = new ButtonHandler(this);
+
+    taskbar_label = new  QLabel(this);
+    taskbar_label->setFixedSize(612, 44);
+    // 设置阴影边框
+    auto shadowEffect = new QGraphicsDropShadowEffect(this);
+    shadowEffect->setOffset(0, 2);
+    shadowEffect->setColor(QColor(0, 0, 0, 70));
+    shadowEffect->setBlurRadius(20);
+    taskbar_label->setGraphicsEffect(shadowEffect);
+
+    QFrame *line = new QFrame(taskbar_label);
+    line->setFrameShape(QFrame::VLine);
+    line->setFixedSize(1, 16);
+    line->move(378, 15);
+
+    m_buttonHandler = new ButtonHandler(taskbar_label);
     updateButtons();
     if (m_context.fullscreen) {
         for (QScreen * const screen : QGuiApplication::screens()) {
@@ -177,7 +193,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath, bool fullSc
     }
     m_buttonHandler->updateScreenRegions(areas);
     m_buttonHandler->hide();
-
+    taskbar_label->hide();
     initSelection();
     updateCursor();
     // Init color picker
@@ -334,7 +350,7 @@ void CaptureWidget::updateButtons(
             #endif
         );
     for (const CaptureButton::ButtonType &t: buttons) {
-        CaptureButton *b = new CaptureButton(t, this);
+        CaptureButton *b = new CaptureButton(t, taskbar_label);
 #ifndef SUPPORT_NEWUI
         if (t == CaptureButton::TYPE_OPTION) {
             m_sizeIndButton = b;
@@ -389,20 +405,30 @@ void CaptureWidget::size_label_option()
 {
     QString str;
     if ((m_context.style_name.compare("ukui-dark") == 0)
-        || (m_context.style_name.compare("ukui-black") == 0))
+        || (m_context.style_name.compare("ukui-black") == 0)) {
+        taskbar_label->setStyleSheet("QLabel {"
+                                     "border-width: 0px; "
+                                     "border-radius: 4px; "
+                                     "background-color:rgb(25,25,25,209);}");
         str = "QLabel {"
               "border-width: 0px; "
               "border-radius: 4px; "
               "background-color: rgb(25,25,25,180);"
               "font-size: 15px;"
               "color: white}";
-    else
+    } else {
+        taskbar_label->setStyleSheet("QLabel {"
+                                     "border-width: 0px; "
+                                     "border-radius: 4px; "
+                                     "background-color:rgb(225,225,225,209);}");
+
         str = "QLabel {"
               "border-width: 0px; "
               "border-radius: 4px; "
               "background-color:rgb(225,225,225,180);"
               "font-size: 15px;"
               "color: black}";
+    }
     size_label->setStyleSheet(str);
     size_label->setText(tr("%1 * %2")
                         .arg(m_selection->geometry().intersected(rect()).width())
@@ -466,53 +492,19 @@ void CaptureWidget::paintEvent(QPaintEvent *)
     size_label_option();
     painter.setRenderHint(QPainter::Antialiasing);
     if (m_selection->isVisible()) {
-        // paint handlers
-        painter.setPen(m_uiColor);
-        size_label->show();
-        auto pixelRatio = m_context.origScreenshot.devicePixelRatio();
-        if ((vectorButtons.first()->pos().x() > 0 && m_buttonHandler->isVisible())) {
-            QRect rr
-                = QRect((vectorButtons.first()->pos().x()-15)*pixelRatio,
-                        (vectorButtons.first()->pos().y() - 3)*pixelRatio,
-#ifndef SUPPORT_NEWUI
-                        735, 44);
-#else
-                        612, 44);
-#endif
-
-            painter.setOpacity(0.68);
-            //// blur
-            QRect r1 = QRect(rr.x(), rr.y(),
-                             rr.width()*pixelRatio,
-                             rr.height()*pixelRatio);    // .adjusted(-2, -2, 2, 2);
-            QPixmap p;
-            p = PixmapToRound(m_context.origScreenshot.copy(r1), 6);
-            QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
-            QPixmap p2 = applyEffectToImage(p, blur);
-            p2.fill(Qt::transparent);
-            painter.drawPixmap(r1.x()/pixelRatio, r1.y()/pixelRatio,
-                               PixmapToRound(p2, 6));
-
+        // QPixmap p = PixmapToRound(m_context.origScreenshot.copy(taskbar_label->geometry()), 6);
+        // taskbar_label->setPixmap(p);
+        taskbar_label->setProperty("useSystemStyleBlur", true);
+        painter.setOpacity(0.6);
+        if (m_buttonHandler->isVisible()) {
             if ((m_context.style_name.compare("ukui-dark") == 0)
                 || (m_context.style_name.compare("ukui-black") == 0)) {
                 painter.setBrush(QColor(0, 0, 0));
                 painter.setPen(QColor(0, 0, 0));
             } else {
-                QPixmap p3;
-                QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect;
-                effect->setOffset(4, 4);
-                effect->setColor(QColor(0, 0, 0, 150));
-                effect->setBlurRadius(30);
-                p3 = applyEffectToImage(p, effect);
-                painter.drawPixmap(r1.x()/pixelRatio, r1.y()/pixelRatio,
-                                   r1.width(), r1.height(),
-                                   PixmapToRound(p3, 6));
-
                 painter.setBrush(QColor(200, 200, 200));
                 painter.setPen(QColor(200, 200, 200));
             }
-            painter.drawRoundedRect(QRect(rr.x()/pixelRatio, rr.y()/pixelRatio, rr.width(),
-                                          rr.height()), 6, 6, Qt::AbsoluteSize);
             // painter.drawRoundedRect(rr, 6, 6, Qt::AbsoluteSize);
             painter.drawRoundedRect(vectorButtons.last()->pos().x(),
                                     vectorButtons.last()->pos().y(),
@@ -520,34 +512,12 @@ void CaptureWidget::paintEvent(QPaintEvent *)
                                     GlobalValues::buttonBaseSize()-9,
                                     (GlobalValues::buttonBaseSize()-9)/2,
                                     (GlobalValues::buttonBaseSize()-9)/2);
-#ifndef SUPPORT_NEWUI
-            painter.drawRoundRect(
-                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*15+16,
-                vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/6, 90, 30, 20,
-                20);
-#endif
-            if ((m_context.style_name.compare("ukui-dark") == 0)
-                || (m_context.style_name.compare("ukui-black") == 0)) {
-                // 两个分隔符
-                painter.setBrush(QColor(255, 255, 255, 100));
-                painter.setPen(QColor(255, 255, 255, 100));
-            } else {
-                // 两个分隔符
-                painter.setBrush(QColor(0, 0, 0, 100));
-                painter.setPen(QColor(0, 0, 0, 100));
-            }
-            painter.drawRect(
-                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*8+38,
-                vectorButtons.first()->pos().y()+14, 1, 16);
-#ifndef SUPPORT_NEWUI
-            painter.drawRect(
-                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+21,
-                vectorButtons.first()->pos().y()+14, 1, 16);
-            painter.drawRect(
-                vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*17+11,
-                vectorButtons.first()->pos().y()+14, 1, 16);
-#endif
-            update();
+            // paint handlers
+        }
+        painter.setPen(m_uiColor);
+        size_label->show();
+        // auto pixelRatio = m_context.origScreenshot.devicePixelRatio();
+        if ((vectorButtons.first()->pos().x() > 0 && m_buttonHandler->isVisible())) {
             painter.setPen(QColor(255, 255, 255));
             painter.setOpacity(1);
             painter.drawLine(r.topLeft(), r.bottomLeft());
@@ -731,6 +701,7 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e)
             isMove = true;
         }
         m_selection->saveGeometry();
+        m_selection->setVisible(true);
         isReleaseButton = false;
     }
     updateCursor();
@@ -754,6 +725,7 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
             m_selection->setVisible(true);
             m_selection->setGeometry(
                 QRect(m_dragStartPoint, m_context.mousePos).normalized());
+            m_selection->setVisible(true);
             update();
         } else if (isPressButton && !m_activeButton) {
             // updateCursor();
@@ -777,7 +749,10 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
                 m_selection->setGeometry(finalRect.normalized().intersected(rect()));
                 m_context.selection = m_selection->geometry();
                 m_buttonHandler->updatePosition(m_selection->geometry());
+                taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                                    vectorButtons.first()->pos().y() - 3);
                 m_buttonHandler->hide();
+                taskbar_label->hide();
                 update();
             } else {
                 // Dragging a handle
@@ -821,6 +796,7 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
                 m_selection->setGeometry(r.intersected(rect()).normalized());
                 m_context.selection = m_selection->geometry();
                 m_buttonHandler->hide();
+                taskbar_label->hide();
                 update();
             }
         } else if (isPressButton && m_activeTool) {
@@ -841,6 +817,7 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
 // m_buttonHandler->show();
 // }
                 m_buttonHandler->show();
+                taskbar_label->show();
             }
         } else if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
             update();
@@ -848,6 +825,7 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e)
             if (!m_selection->isVisible()) {
                 // isSure = false;
                 m_buttonHandler->hide();
+                taskbar_label->hide();
                 return;
             }
             m_mouseOverHandle = m_selection->getMouseSide(m_context.mousePos);
@@ -920,6 +898,7 @@ void CaptureWidget::mouseReleaseEvent(QMouseEvent *e)
                 }
             }
             m_buttonHandler->show();
+            taskbar_label->show();
         } else {
             if (m_mouseIsClicked && m_activeTool) {
                 // font_color->hide();
@@ -951,12 +930,17 @@ void CaptureWidget::mouseReleaseEvent(QMouseEvent *e)
                 m_context.selection = extendedRect(&newGeometry);
                 updateSizeIndicator();
                 m_buttonHandler->updatePosition(newGeometry);
+                taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                                    vectorButtons.first()->pos().y() - 3);
+                taskbar_label->show();
                 m_buttonHandler->show();
             }
         }
         m_context.selection = m_selection->geometry();
         updateSizeIndicator();
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         m_mouseIsClicked = false;
         m_newSelection = false;
         m_grabbing = false;
@@ -977,6 +961,8 @@ void CaptureWidget::keyPressEvent(QKeyEvent *e)
         QRect newGeometry = m_selection->geometry().intersected(rect());
         m_context.selection = extendedRect(&newGeometry);
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         update();
     } else if (e->key() == Qt::Key_Down
                && m_selection->geometry().bottom() < rect().bottom()) {
@@ -984,11 +970,15 @@ void CaptureWidget::keyPressEvent(QKeyEvent *e)
         QRect newGeometry = m_selection->geometry().intersected(rect());
         m_context.selection = extendedRect(&newGeometry);
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         update();
     } else if (e->key() == Qt::Key_Left
                && m_selection->geometry().left() > rect().left()) {
         m_selection->move(QPoint(m_selection->x() -1, m_selection->y()));
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         update();
     } else if (e->key() == Qt::Key_Right
                && m_selection->geometry().right() < rect().right()) {
@@ -996,6 +986,8 @@ void CaptureWidget::keyPressEvent(QKeyEvent *e)
         QRect newGeometry = m_selection->geometry().intersected(rect());
         m_context.selection = extendedRect(&newGeometry);
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         update();
     } else if (e->key() == Qt::Key_Control) {
         m_adjustmentButtonPressed = true;
@@ -1110,6 +1102,8 @@ void CaptureWidget::initSelection()
     m_selection = new SelectionWidget(QColor(Qt::white), this);
     connect(m_selection, &SelectionWidget::animationEnded, this, [this](){
         this->m_buttonHandler->updatePosition(this->m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
     });
     m_selection->setVisible(false);
     m_selection->setGeometry(QRect());
@@ -1384,6 +1378,8 @@ void CaptureWidget::leftResize()
         QRect newGeometry = m_selection->geometry().intersected(rect());
         m_context.selection = extendedRect(&newGeometry);
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         updateSizeIndicator();
         update();
     }
@@ -1396,6 +1392,8 @@ void CaptureWidget::rightResize()
         QRect newGeometry = m_selection->geometry().intersected(rect());
         m_context.selection = extendedRect(&newGeometry);
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         updateSizeIndicator();
         update();
     }
@@ -1409,6 +1407,8 @@ void CaptureWidget::upResize()
         QRect newGeometry = m_selection->geometry().intersected(rect());
         m_context.selection = extendedRect(&newGeometry);
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         updateSizeIndicator();
         update();
     }
@@ -1421,6 +1421,8 @@ void CaptureWidget::downResize()
         QRect newGeometry = m_selection->geometry().intersected(rect());
         m_context.selection = extendedRect(&newGeometry);
         m_buttonHandler->updatePosition(m_selection->geometry());
+        taskbar_label->move(vectorButtons.first()->pos().x() - 15,
+                            vectorButtons.first()->pos().y() - 3);
         updateSizeIndicator();
         update();
     }

@@ -30,6 +30,7 @@ MySaveDialog::MySaveDialog(QWidget *parent) :
     setNameFilter(QLatin1String(" PNG(*.png);;BMP(*.bmp);;JPEG(*.jpg)"));
     setDirectory(QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).at(0));
     setAcceptMode(QFileDialog::AcceptSave);
+    setDefaultSuffix("png");
     setLabelText(QFileDialog::Reject, tr("Cancel"));
     QString a = FileNameHandler().parsedPattern()+ ".png";
     this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);
@@ -40,14 +41,18 @@ MySaveDialog::MySaveDialog(QWidget *parent) :
         switch (index) {
         case 0:
             qDebug()<<"change the type is png";
+            setDefaultSuffix("png");
             break;
         case 1:
+            setDefaultSuffix("bmp");
             qDebug()<<"change the type is bmp";
             break;
         case 2:
+            setDefaultSuffix("jpg");
             qDebug()<<"change the type is jpg";
             break;
         default:
+            setDefaultSuffix("png");
             break;
         }
         this->findChildren<QLineEdit *>("fileNameEdit").at(0)->setText(a);

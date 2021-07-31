@@ -77,12 +77,12 @@
         <translation type="vanished">Rozmazanie</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="53"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="59"/>
         <source>blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="61"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="69"/>
         <source>Set Blur as the paint tool</source>
         <translation>Nastaviť Rozmazanie ako nástroj pre úpravy</translation>
     </message>
@@ -90,12 +90,12 @@
 <context>
     <name>CaptureButton</name>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="49"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="48"/>
         <source>option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="68"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="66"/>
         <source>Save</source>
         <translation type="unfinished">Uložiť</translation>
     </message>
@@ -117,7 +117,7 @@
         <translation>Celá obrazovka (všetky monitory)</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="90"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="91"/>
         <source>Take shot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -136,12 +136,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="86"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="87"/>
         <source> second</source>
         <translation> sekunda</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="86"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="87"/>
         <source> seconds</source>
         <translation> sekundy</translation>
     </message>
@@ -150,12 +150,12 @@
         <translation type="vanished">Urobiť novú snímku</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="101"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="102"/>
         <source>Area:</source>
         <translation>Oblasť:</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capturelauncher.cpp" line="106"/>
+        <location filename="../src/widgets/capturelauncher.cpp" line="107"/>
         <source>Delay:</source>
         <translation>Oneskorenie:</translation>
     </message>
@@ -163,17 +163,17 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="111"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="113"/>
         <source>Unable to capture screen</source>
         <translation>Nepodarilo sa zachytiť obrazovku</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="301"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="318"/>
         <source>save as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="445"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="472"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -190,7 +190,7 @@ Použite kolečko myši pre zmenu hrúbky vybraného nástroja.
 Stlačte medzerník pre otvorenie postranného panelu.</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="406"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="433"/>
         <source>%1 * %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -211,22 +211,22 @@ Stlačte medzerník pre otvorenie postranného panelu.</translation>
 <context>
     <name>ConfigWindow</name>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="41"/>
+        <location filename="../src/config/configwindow.cpp" line="42"/>
         <source>Configuration</source>
         <translation>Konfigurácia</translation>
     </message>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="63"/>
+        <location filename="../src/config/configwindow.cpp" line="64"/>
         <source>Interface</source>
         <translation>Interfejs</translation>
     </message>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="68"/>
+        <location filename="../src/config/configwindow.cpp" line="69"/>
         <source>Filename Editor</source>
         <translation>Editor názvov súborov</translation>
     </message>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="73"/>
+        <location filename="../src/config/configwindow.cpp" line="74"/>
         <source>General</source>
         <translation>Všeobecné</translation>
     </message>
@@ -249,9 +249,13 @@ Stlačte medzerník pre otvorenie postranného panelu.</translation>
         <translation>&amp;Konfigurácia</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="271"/>
         <source>&amp;Information</source>
-        <translation>&amp;Informácie</translation>
+        <translation type="vanished">&amp;Informácie</translation>
+    </message>
+    <message>
+        <location filename="../src/core/controller.cpp" line="271"/>
+        <source>&amp;About</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/controller.cpp" line="274"/>
@@ -390,22 +394,22 @@ Stlačte medzerník pre otvorenie postranného panelu.</translation>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="110"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Preškrtnuté</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="105"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="113"/>
         <source>Underline</source>
         <translation type="unfinished">Podčiarknuté</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="109"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="117"/>
         <source>Bold</source>
         <translation type="unfinished">Tučné</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="111"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="119"/>
         <source>Italic</source>
         <translation type="unfinished">Kurzíva</translation>
     </message>
@@ -413,22 +417,22 @@ Stlačte medzerník pre otvorenie postranného panelu.</translation>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="114"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="122"/>
         <source>StrikeOut</source>
         <translation type="unfinished">Preškrtnuté</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="115"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="123"/>
         <source>Underline</source>
         <translation type="unfinished">Podčiarknuté</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="116"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="124"/>
         <source>Bold</source>
         <translation type="unfinished">Tučné</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="117"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="125"/>
         <source>Italic</source>
         <translation type="unfinished">Kurzíva</translation>
     </message>
@@ -1458,39 +1462,44 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>Zlyhal zápis do</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="36"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
         <source>Capture saved to clipboard</source>
         <translation>Snímka uložená do schránky</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="50"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="72"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="113"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1562"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="63"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="85"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1607"/>
         <source>Capture saved as </source>
         <translation>Snímka uložená ako </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="53"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="74"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="122"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1565"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="66"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="87"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="134"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1610"/>
         <source>Error trying to save as </source>
         <translation>Chyba pri ukladaní do </translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="118"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="128"/>
         <source>file name can not contains &apos;/&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="120"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="130"/>
         <source>can not save file as hide file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="126"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1568"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="132"/>
+        <source>can not save  because filename too long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/utils/screenshotsaver.cpp" line="138"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1613"/>
         <source>Save Error</source>
         <translation>Chyba pri ukladaní</translation>
     </message>
@@ -1559,12 +1568,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location</name>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="63"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="71"/>
         <source>save location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="73"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="81"/>
         <source>save type</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1572,12 +1581,12 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location2</name>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="64"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="72"/>
         <source>save location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="74"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="82"/>
         <source>save type</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1864,13 +1873,13 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>SystemNotification</name>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="45"/>
+        <location filename="../src/utils/systemnotification.cpp" line="50"/>
         <source>ScreenShot Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="66"/>
-        <source>screenshot</source>
+        <location filename="../src/utils/systemnotification.cpp" line="68"/>
+        <source>Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1990,23 +1999,23 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>infoWidget</name>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="44"/>
+        <location filename="../src/widgets/infowidget.cpp" line="38"/>
         <source>screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="55"/>
+        <location filename="../src/widgets/infowidget.cpp" line="49"/>
         <source>version:v1.0.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="67"/>
-        <source>Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools.</source>
+        <location filename="../src/widgets/infowidget.cpp" line="59"/>
+        <source>Screenshot is an easy to use application.that supports the basic screenshot function,but also provides the draw rectangle tool, draw a circle tool, blur, add annotations, add text and other functions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="80"/>
-        <source>Service and support teams:</source>
+        <location filename="../src/widgets/infowidget.cpp" line="88"/>
+        <source>SUPPORT:%1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

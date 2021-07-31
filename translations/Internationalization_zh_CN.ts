@@ -77,12 +77,12 @@
         <translation type="vanished">模糊</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="+53"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="+59"/>
         <source>blur</source>
         <translation>模糊</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+10"/>
         <source>Set Blur as the paint tool</source>
         <translation>选择模糊作为绘画工具</translation>
     </message>
@@ -95,12 +95,12 @@
         <translation type="vanished">选项</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturebutton.cpp" line="+49"/>
+        <location filename="../src/widgets/capture/capturebutton.cpp" line="+48"/>
         <source>option</source>
         <translation>选项</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+18"/>
         <source>Save</source>
         <translatorcomment>保存</translatorcomment>
         <translation>保存</translation>
@@ -115,15 +115,15 @@
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="+74"/>
         <source>Rectangular Region</source>
-        <translation>方形区域</translation>
+        <translation>框选区域</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Full Screen (All Monitors)</source>
-        <translation>全屏（所有显示器）</translation>
+        <translation>全屏截图</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+16"/>
         <source>Take shot</source>
         <translation>开始截图</translation>
     </message>
@@ -132,7 +132,7 @@
         <translation type="vanished">无延迟</translation>
     </message>
     <message>
-        <location line="-46"/>
+        <location line="-47"/>
         <source>Screenshot</source>
         <translation>截图</translation>
     </message>
@@ -142,7 +142,7 @@
         <translation>捕获模式</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+23"/>
         <source> second</source>
         <translation> 秒</translation>
     </message>
@@ -169,13 +169,13 @@
 <context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+111"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+113"/>
         <source>Unable to capture screen</source>
         <translatorcomment>无法捕获屏幕</translatorcomment>
         <translation>无法捕获屏幕</translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+205"/>
         <source>save as</source>
         <translatorcomment>另存为</translatorcomment>
         <translation>另存为</translation>
@@ -186,7 +186,7 @@
         <translation type="obsolete">另存为....</translation>
     </message>
     <message>
-        <location line="+144"/>
+        <location line="+154"/>
         <source>%1 , %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -228,7 +228,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>ConfigWindow</name>
     <message>
-        <location filename="../src/config/configwindow.cpp" line="+41"/>
+        <location filename="../src/config/configwindow.cpp" line="+42"/>
         <source>Configuration</source>
         <translation>配置</translation>
     </message>
@@ -270,9 +270,13 @@ Press Space to open the side panel.</source>
         <translation>配置(&amp;C)</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>&amp;Information</source>
-        <translation>信息(&amp;I)</translation>
+        <translation type="vanished">信息(&amp;I)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;About</source>
+        <translation>关于(&amp;A)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -423,7 +427,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options</name>
     <message>
-        <location filename="../src/widgets/capture/font_options.cpp" line="+102"/>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+110"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -450,7 +454,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>Font_Options2</name>
     <message>
-        <location filename="../src/widgets/capture/font_options2.cpp" line="+114"/>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+122"/>
         <source>StrikeOut</source>
         <translatorcomment>删除线</translatorcomment>
         <translation>删除线</translation>
@@ -1516,34 +1520,34 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="+126"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1162"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="+138"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="+1180"/>
         <source>Save Error</source>
         <translation>保存错误</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="-75"/>
         <location line="+22"/>
-        <location line="+41"/>
+        <location line="+37"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="-6"/>
         <source>Capture saved as </source>
         <translation>捕获已保存为 </translation>
     </message>
     <message>
-        <location line="-77"/>
+        <location line="-75"/>
         <source>Capture saved to clipboard</source>
         <translation>捕获已保存至剪贴板</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+19"/>
         <location line="+21"/>
-        <location line="+48"/>
+        <location line="+47"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="+3"/>
         <source>Error trying to save as </source>
         <translation>尝试另存为时出错 </translation>
     </message>
     <message>
-        <location line="-4"/>
+        <location line="-6"/>
         <source>file name can not contains &apos;/&apos;</source>
         <translatorcomment>保存文件名称中不能包含字符&apos;/&apos;</translatorcomment>
         <translation>保存文件名称中不能包含字符&apos;/&apos;</translation>
@@ -1553,6 +1557,11 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <source>can not save file as hide file</source>
         <translatorcomment>不能将文件保存为隐藏文件</translatorcomment>
         <translation>不能将文件保存为隐藏文件</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>can not save  because filename too long</source>
+        <translation>由于文件名太长而无法保存</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="+97"/>
@@ -1659,7 +1668,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location</name>
     <message>
-        <location filename="../src/widgets/capture/save_location.cpp" line="+63"/>
+        <location filename="../src/widgets/capture/save_location.cpp" line="+71"/>
         <source>save location</source>
         <translatorcomment>存储位置</translatorcomment>
         <translation>存储位置</translation>
@@ -1674,7 +1683,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>Save_Location2</name>
     <message>
-        <location filename="../src/widgets/capture/save_location2.cpp" line="+64"/>
+        <location filename="../src/widgets/capture/save_location2.cpp" line="+72"/>
         <source>save location</source>
         <translatorcomment>存储位置</translatorcomment>
         <translation>存储位置</translation>
@@ -2036,14 +2045,18 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation type="vanished">麒麟截图</translation>
     </message>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="+45"/>
+        <location filename="../src/utils/systemnotification.cpp" line="+50"/>
         <source>ScreenShot Info</source>
         <translation>截图 消息</translation>
     </message>
     <message>
-        <location line="+21"/>
-        <source>screenshot</source>
+        <location line="+18"/>
+        <source>Screenshot</source>
         <translation>截图</translation>
+    </message>
+    <message>
+        <source>screenshot</source>
+        <translation type="vanished">截图</translation>
     </message>
 </context>
 <context>
@@ -2162,7 +2175,7 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
 <context>
     <name>infoWidget</name>
     <message>
-        <location filename="../src/widgets/infowidget.cpp" line="+44"/>
+        <location filename="../src/widgets/infowidget.cpp" line="+38"/>
         <source>screenshot</source>
         <translation>截图</translation>
     </message>
@@ -2172,14 +2185,18 @@ It is possible that your system doesn&apos;t use PulseAudio.</source>
         <translation>版本:v1.0.0</translation>
     </message>
     <message>
-        <location line="+12"/>
-        <source>Screenshot, developed by KylinSoftware, includes programs that can be run on a computer, usually with software development tools.</source>
-        <translation>截图，由麒麟软件开发,包括可以在计算机上运行的程序,通常采用软件开发工具可以进行开发。</translation>
+        <location line="+10"/>
+        <source>Screenshot is an easy to use application.that supports the basic screenshot function,but also provides the draw rectangle tool, draw a circle tool, blur, add annotations, add text and other functions</source>
+        <translation>截图是一款易用的应用程序。该程序支持基础的截图功能之外，还提供了绘制矩形工具、绘制圆形工具、模糊、添加标注、添加文字等功能。</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+29"/>
+        <source>SUPPORT:%1</source>
+        <translation>服务与支持团队:%1</translation>
+    </message>
+    <message>
         <source>Service and support teams:</source>
-        <translation>服务与支持团队：</translation>
+        <translation type="vanished">服务与支持团队：</translation>
     </message>
 </context>
 <context>

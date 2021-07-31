@@ -137,14 +137,26 @@ void FontSize_Color_Chose::paintEvent(QPaintEvent *event)
             Rect_w = rect.width()+4;
             painter.setBrush(QColor(255, 255, 255));
             painter.drawEllipse(QRect(rect.x()-2, rect.y()-2, Rect_h, Rect_w));
-            painter.setBrush(QColor(0, 0, 0));
+            if ((context.style_name.compare("ukui-dark") == 0)
+                || (context.style_name.compare("ukui-black") == 0)) {
+                painter.setBrush(QColor(Qt::gray));
+            } else
+                painter.setBrush(QColor(0, 0, 0));
             painter.drawEllipse(rect);
         } else {
-            painter.setBrush(QColor(78, 78, 78));
+            if ((context.style_name.compare("ukui-dark") == 0)
+                || (context.style_name.compare("ukui-black") == 0)) {
+                painter.setBrush(QColor(Qt::gray));
+            } else
+                painter.setBrush(QColor(78, 78, 78));
             painter.drawEllipse(rect);
         }
     }
-    painter.setBrush(QColor(25, 25, 25, 153));
+    if ((context.style_name.compare("ukui-dark") == 0)
+        || (context.style_name.compare("ukui-black") == 0)) {
+        painter.setBrush(QColor(Qt::gray));
+    } else
+        painter.setBrush(QColor(25, 25, 25, 153));
     painter.drawRect(85, 33, 1.52, 16);
     for (int i = 4; i < 12; i++) {
         QRect rect = m_colorAreaList.at(i);

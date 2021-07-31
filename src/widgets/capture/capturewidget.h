@@ -38,6 +38,7 @@
 #include "font_options.h"
 #include "font_options2.h"
 #include <QGSettings/qgsettings.h>
+
 class QPaintEvent;
 class QResizeEvent;
 class QMouseEvent;
@@ -211,6 +212,7 @@ private:
     HoverEventFilter *m_eventFilter;
     SelectionWidget *m_selection;
 
+    QLabel *taskbar_label;
     QPoint m_dragStartPoint;
     SelectionWidget::SideType m_mouseOverHandle;
     uint m_id;

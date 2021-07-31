@@ -28,30 +28,32 @@
 #include "src/core/controller.h"
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-SystemNotification::SystemNotification(QObject *parent) : QObject(parent) {
+SystemNotification::SystemNotification(QObject *parent) : QObject(parent)
+{
     m_interface = new QDBusInterface(QStringLiteral("org.freedesktop.Notifications"),
                                      QStringLiteral("/org/freedesktop/Notifications"),
                                      QStringLiteral("org.freedesktop.Notifications"),
                                      QDBusConnection::sessionBus(),
                                      this);
 }
+
 #else
-SystemNotification::SystemNotification(QObject *parent) : QObject(parent) {
+SystemNotification::SystemNotification(QObject *parent) : QObject(parent)
+{
     m_interface = nullptr;
 }
+
 #endif
 
-void SystemNotification::sendMessage(const QString &text, const QString &savePath) {
+void SystemNotification::sendMessage(const QString &text, const QString &savePath)
+{
     sendMessage(text, tr("ScreenShot Info"), savePath);
 }
 
 void SystemNotification::sendMessage(
-        const QString &text,
-        const QString &title,
-        const QString &savePath,
-        const int timeout)
+    const QString &text, const QString &title, const QString &savePath, const int timeout)
 {
-    if(!ConfigHandler().desktopNotificationValue()) {
+    if (!ConfigHandler().desktopNotificationValue()) {
         return;
     }
 
@@ -63,14 +65,14 @@ void SystemNotification::sendMessage(
         // allows the notification to be dragged and dropped
         hintsMap[QStringLiteral("x-kde-urls")] = QStringList({fullPath.toString()});
     }
-    args << tr("screenshot")                 //appname
-         << static_cast<unsigned int>(0) //id
-         << "kylin-screenshot"                  //icon
-         << title                        //summary
-         << text                         //body
-         << QStringList()                //actions
-         << hintsMap                     //hints
-         << timeout;                     //timeout
+    args << tr("Screenshot")                 // appname
+         << static_cast<unsigned int>(0) // id
+         << "kylin-screenshot"                  // icon
+         << title                        // summary
+         << text                         // body
+         << QStringList()                // actions
+         << hintsMap                     // hints
+         << timeout;                     // timeout
     m_interface->callWithArgumentList(QDBus::AutoDetect, QStringLiteral("Notify"), args);
 #else
     auto c = Controller::getInstance();

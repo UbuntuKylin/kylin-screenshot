@@ -6,17 +6,17 @@
             <description>Whether enable to use kylin-screenshot</description>
     </key>
     <key type="s" name="screenshot-path">
-            <default>''</default>
+            <default>""</default>
             <summary>kylin-screenshot save path</summary>
             <description>Record  kylin-screenshot save path</description>
     </key>
     <key type="s" name="screenshot-name">
-            <default>''</default>
+            <default>""</default>
             <summary>kylin-screenshot save name</summary>
             <description>Record  kylin-screenshot saved name</description>
     </key>
     <key type="s" name="screenshot-type">
-            <default>".png"</default>
+            <default>""</default>
             <summary>kylin-screenshot save type</summary>
             <description>Record  kylin-screenshot save type</description>
     </key>

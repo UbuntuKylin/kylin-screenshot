@@ -60,13 +60,13 @@ CaptureLauncher::CaptureLauncher(QWidget *parent) :
             this, &CaptureLauncher::startDrag);
 
     font.setFamily("Noto Sans CJK SC Medium");
-    font.setWeight(16);
+    font.setPixelSize(16);
     m_CaptureModeLabel = new QLabel(tr("Capture Mode"), this);
     // m_CaptureModeLabel->setFixedSize(64, 24);
     m_CaptureModeLabel->move(376, 16);
 
     font.setFamily("Noto Sans CJK SC Regular");
-    font.setWeight(14);
+    font.setPixelSize(14);
     m_captureType = new QComboBox(this);
     m_captureType->setFixedSize(192, 36);
     m_captureType->move(414, 56);
@@ -75,6 +75,7 @@ CaptureLauncher::CaptureLauncher(QWidget *parent) :
     m_captureType->insertItem(2, tr("Full Screen (All Monitors)"), CaptureRequest::FULLSCREEN_MODE);
     m_captureType->setFont(font);
     m_delaySpinBox = new QSpinBox(this);
+    m_delaySpinBox->setFont(font);
     m_delaySpinBox->setSingleStep(1.0);
     m_delaySpinBox->setFixedSize(192, 36);
     m_delaySpinBox->move(414, 100);
