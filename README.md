@@ -14,8 +14,8 @@
 - [Features](#features)
 - [Usage](#usage)
   - [Dependencies](#dependencies)
-  - [Installations](installations)
-  - [Terminal_Commond](terminal-commond)
+  - [Installations](#installations)
+  - [Terminal_Commond](#terminal-commond)
   - [Keyboard Shortcuts](#keyboard-shortcuts)
 
 ## Features
@@ -28,31 +28,31 @@
 ## Usage
 ### Dependencies
 You will need the following packages to compile kylin-screenshot:
--	            qt5-qmake,
--               qtbase5-dev,
--               qttools5-dev-tools,
--               libqt5svg5-dev,
--               libavformat-dev,
--               libavcodec-dev,
--               libavutil-dev,
--               libswscale-dev,
--               libpulse-dev,
--               libqt5x11extras5,
--               libqt5x11extras5-dev,
--               libxfixes3,
--               libxfixes-dev,
--               libx11-dev,
--               libxinerama1,
--               libxinerama-dev,
--               libgsettings-qt-dev,
--               libkf5windowsystem5
--               libkf5windowsystem-dev,
--               libxtst-dev,
+-	qt5-qmake,
+- qtbase5-dev,
+- qttools5-dev-tools,
+- libqt5svg5-dev,
+- libavformat-dev,
+- libavcodec-dev,
+- libavutil-dev,
+- libswscale-dev,
+- libpulse-dev,
+- libqt5x11extras5,
+- libqt5x11extras5-dev,
+- libxfixes3,
+- libxfixes-dev,
+- libx11-dev,
+- libxinerama1,
+- libxinerama-dev,
+- libgsettings-qt-dev,
+- libkf5windowsystem5
+- libkf5windowsystem-dev,
+- libxtst-dev
 You can Build and Install by apt command
 ```shell
 sudo mk-build-deps -i kylin-screenshot/debian/control
 ```
-###Installations
+### Installations
 After installing all the dependencies, finally run the following commands in the sources root directory:
 ```shell
 git clone https://github.com/ubuntukylin/kylin-screenshot.git
